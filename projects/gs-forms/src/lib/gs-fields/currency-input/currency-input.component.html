@@ -1,0 +1,14 @@
+<ng-container>
+  <div class="input currency-input" (click)="focusInput()">
+    <span class="symbol">{{ prefix }}</span>
+    <input
+      #inputElement
+      class="input gs-form-field_currency-input"
+      type="text"
+      [id]="field.config.model"
+      [placeholder]="field.config.placeholder || field.config.label || field.config.model"
+      [(ngModel)]="value"
+      (keyup)="formatCurrency(true)"/>
+    <span class="code">{{ suffix }}</span>
+  </div>
+</ng-container>

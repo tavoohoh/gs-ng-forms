@@ -1,0 +1,17 @@
+<ng-container [formGroup]="formGroup">
+  <ng-container *ngFor="let option of field.config.optionValues">
+    <label class="checkbox defult-font">
+      <span class="checkbox_label">
+        {{ option.text | translate }}
+      </span>
+      <input
+        class="gs-form-field_checkbox"
+        type="checkbox"
+        [name]="field.config.model"
+        [formControlName]="field.config.model"
+        [value]="option.value || null"
+        [checked]="field.config.value === option.value ? true : false">
+      <span class="checkmark"></span>
+    </label>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,11 @@
+<ng-container [formGroup]="formGroup">
+  <label class="toggle">
+    <input
+      class="input gs-form-field_toggle"
+      type="checkbox"
+      [id]="field.config.model"
+      [formControlName]="field.config.model"
+      [value]="field.config.value || null">
+    <span class="slider"></span>
+  </label>
+</ng-container>

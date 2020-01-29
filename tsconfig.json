@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "gs-form": [
+        "dist/gs-form"
+      ],
+      "gs-form/*": [
+        "dist/gs-form/*"
+      ],
+      "gs-forms": [
+        "dist/gs-forms"
+      ],
+      "gs-forms/*": [
+        "dist/gs-forms/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

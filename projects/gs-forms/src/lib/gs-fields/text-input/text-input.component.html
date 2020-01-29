@@ -1,0 +1,11 @@
+<ng-container [formGroup]="formGroup">
+  <input
+    class="input gs-form-field_text_input"
+    type="text"
+    [id]="field.config.model"
+    [minlength]="field.config.validators[fieldValidatorType.MIN_LENGTH] || null"
+    [maxlength]="field.config.validators[fieldValidatorType.MAX_LENGTH] || null"
+    [formControlName]="field.config.model"
+    [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+    [value]="field.config.value || null">
+</ng-container>

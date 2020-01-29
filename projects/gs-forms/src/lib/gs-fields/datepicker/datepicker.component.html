@@ -1,0 +1,103 @@
+<div class="date-input">
+  <input
+  #inputElement
+  class="input gs-form-field_phone-input"
+  type="text"
+  [id]="field.config.model"
+  [placeholder]="'YYYY-MM-DD'"
+  [(ngModel)]="dateValue"
+  (click)="toggleDatePickerSelector()"/>
+
+  <div class="datepicker-container">
+    <div class="datepicker" *ngIf="showDatePickerSelector">
+      
+      <div class="header">
+        <button type="button" class="arrow-left" (click)="navigateSelectors(false)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/>
+          </svg>
+        </button>
+    
+        <span class="selector">
+          <!-- day selector header -->
+          <button
+            type="button"
+            *ngIf="showSelector === showSelectorType.DAY"
+            (click)="toggleSelector(showSelectorType.MONTH)">
+            {{ months[currentMonth] }} {{ currentYear }}
+          </button>
+    
+          <!-- month selector header -->
+          <button
+            type="button"
+            *ngIf="showSelector === showSelectorType.MONTH"
+            (click)="toggleSelector(showSelectorType.YEAR)">
+            {{ currentYear }}
+          </button>
+    
+          <!-- year selector header -->
+          <button
+            type="button"
+            *ngIf="showSelector === showSelectorType.YEAR">
+            {{ currentYear + yearMultiplier }} - {{ currentYear + yearMultiplier + 11 }}
+          </button>
+        </span>
+    
+        <button type="button" class="arrow-right"(click)="navigateSelectors(true)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- days selector --> 
+      <div class="day-selector" *ngIf="showSelector === showSelectorType.DAY">
+        <div class="weekdays">
+          <span *ngFor="let day of weekdays">
+            {{ day }}
+          </span>
+        </div>
+    
+        <div class="days" *ngIf="daysInCurrentMonth">
+          <!-- previous month -->
+          <span *ngFor="let previousDay of daysInPreviousMonthWeek"
+            class="previous-days" 
+            (click)="changeMonth(false)">
+            {{ previousDay }}
+          </span>
+    
+          <!-- current and available days for current month -->
+          <span *ngFor="let date of daysInCurrentMonth" 
+            class="current-days"
+            [class.selected-day]="date.status === 'selected'"
+            (click)="selectDate(date.day)">
+             {{ date.day }}
+          </span>
+    
+          <!-- next month -->
+          <span *ngFor="let nextDay of daysInNextMonthWeek" 
+            class="next-days"
+            (click)="changeMonth(true)">
+            {{ nextDay }}
+          </span>
+        </div>
+      </div>
+    
+      <!-- months selector --> 
+      <div class="month-selector" *ngIf="showSelector === showSelectorType.MONTH">
+        <span *ngFor="let month of months; let i = index;" (click)="selectMonth(i)">
+          {{ month | slice:0:3 }}
+        </span>
+      </div>
+    
+      <!-- years selector --> 
+      <div class="month-selector" *ngIf="showSelector === showSelectorType.YEAR">
+        <span
+          *ngFor="let x of yearUiArray; let i = index;"
+          (click)="selectYear(currentYear + yearMultiplier + i)">
+          {{ currentYear + yearMultiplier + i }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

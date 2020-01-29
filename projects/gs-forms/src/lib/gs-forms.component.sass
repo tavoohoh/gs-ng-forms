@@ -1,0 +1,50 @@
+@import ./gs-forms.styles
+
+.gs-form
+
+  .gs-form-body
+    display: grid
+    grid-template-columns: var(--layout-columns-quantity, $layout-columns-quantity)
+    padding: var(--layout-padding, $layout-padding)
+    margin-bottom: 1rem
+    gap: 1rem
+
+    @media screen and (max-width: $smallScreen)
+      grid-template-columns: 1fr
+      padding: .8rem
+      gap: .8rem
+
+    .gs-form-field
+      .gs-form-field_label
+        display: block
+        font-size: .9rem
+        margin-bottom: 6px
+      
+      .gs-form-field_error_message
+        display: block
+        margin-top: 4px
+        color: $red
+        font-size: 80%
+      
+  .gs-form-actions
+    display: grid
+    grid-template-columns: auto
+    gap: 1rem
+
+    .button
+      width: 100%
+      &:first-child
+        margin-right: auto
+      
+      &:last-child
+        margin-left: auto
+      
+      @media screen and (max-width: $smallScreen)
+        width: 100%
+        margin: unset
+
+    @media screen and (max-width: $smallScreen)
+      grid-template-columns: 1fr
+      padding: .8rem
+      gap: .8rem
+

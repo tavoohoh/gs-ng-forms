@@ -1,0 +1,73 @@
+@import ../../gs-forms.styles
+
+/* change the toggle size by changing the following variable */
+$checkboxSize: 24px
+
+/* Do not modify the following variables! */
+$size: $checkboxSize
+$containerPadding: calc(#{$checkboxSize} + .5rem)
+$labelPadding: calc((#{$checkboxSize} - #{var(--ui-font-size, $ui-font-size)}) / 2)
+$checkmarkWidth: $checkboxSize / 5
+$checkmarkHeight: $checkboxSize / 2
+$checkmarkBorder: $checkboxSize / 8
+
+/* The container */
+.checkbox
+  @include transition()
+  display: block
+  position: relative
+  padding-left: $containerPadding
+  align-self: center
+  margin: 6px 
+  cursor: pointer
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  .checkbox_label
+    display: block
+    padding: $labelPadding 0
+    line-height: 1
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+
+  .checkmark
+    display: grid
+    position: absolute
+    top: 0
+    left: 0
+    height: $size
+    width: $size
+    background-color: var(--color-neutral, $color-neutral)
+
+    *
+      align-self: center
+
+    &:after
+      content: ""
+      display: none
+
+      width: $checkmarkWidth
+      height: $checkmarkHeight
+      margin: auto
+
+      border: solid var(--color-white, $color-white)
+      border-width: 0 $checkmarkBorder $checkmarkBorder 0
+      -webkit-transform: rotate(45deg)
+      -ms-transform: rotate(45deg)
+      transform: rotate(45deg)
+
+.checkbox:hover input ~ .checkmark
+  opacity: $opacity
+
+.checkbox input:checked ~ .checkmark
+  background-color: var(--color-primary, $color-primary)
+
+.checkbox input:checked ~ .checkmark:after
+  display: block

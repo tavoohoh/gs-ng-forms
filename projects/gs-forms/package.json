@@ -1,0 +1,19 @@
+{
+  "name": "gs-forms",
+  "version": "1.2.0",
+  "description": "Simple and easy to use Angular 8 dynamic forms",
+  "keywords": [
+    "angular",
+    "angular forms"
+  ],
+  "author": {
+    "name": "Gustavo Santamaria",
+    "email": "tavo_bajares@live.com",
+    "url": "https://github.com/tavoohoh"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  }
+}

@@ -1,0 +1,60 @@
+@import ../../gs-forms.styles
+
+  
+/* change the toggle size by changing the following variable */
+$toggleSize: 24px
+
+/* Do not modify the following variables! */
+$height: $toggleSize
+$wight: ($toggleSize * 2) - 4
+$translation: $toggleSize - 4
+$sliderSize: $toggleSize - 8
+$borderRadius: $toggleSize + 4
+
+.toggle
+  position: relative
+  display: inline-block
+  height: $height
+  width: $wight
+  align-self: center
+  margin: 6px 
+
+  input
+    opacity: 0
+    width: 0
+    height: 0
+
+    &:checked + span
+      background-color: var(--color-primary, $color-primary)
+    
+    &:focus + span
+      box-shadow: 0 0 1px var(--color-primary, $color-primary)
+    
+    &:checked + span:before
+      -webkit-transform: translateX($translation)
+      -ms-transform: translateX($translation)
+      transform: translateX($translation)
+
+  span
+    @include transition($time: 0.3s)
+    
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: var(--color-neutral, $color-neutral)
+    border-radius: $borderRadius
+  
+    &:before
+      @include transition($time: 0.4s)
+
+      position: absolute
+      content: ""
+      height: $sliderSize
+      width: $sliderSize
+      left: 4px
+      bottom: 4px
+      background-color: var(--color-white, $color-white)
+      border-radius: 50%

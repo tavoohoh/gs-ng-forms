@@ -120,6 +120,76 @@
           }
         }
       }
+    },
+    "gs-form": {
+      "projectType": "library",
+      "root": "projects/gs-form",
+      "sourceRoot": "projects/gs-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/gs-form/tsconfig.lib.json",
+            "project": "projects/gs-form/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/gs-form/src/test.ts",
+            "tsConfig": "projects/gs-form/tsconfig.spec.json",
+            "karmaConfig": "projects/gs-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/gs-form/tsconfig.lib.json",
+              "projects/gs-form/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "gs-forms": {
+      "projectType": "library",
+      "root": "projects/gs-forms",
+      "sourceRoot": "projects/gs-forms/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/gs-forms/tsconfig.lib.json",
+            "project": "projects/gs-forms/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/gs-forms/src/test.ts",
+            "tsConfig": "projects/gs-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/gs-forms/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/gs-forms/tsconfig.lib.json",
+              "projects/gs-forms/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "gsFormCore"
 }

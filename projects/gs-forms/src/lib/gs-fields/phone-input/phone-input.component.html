@@ -1,0 +1,30 @@
+<ng-container>
+  <div class="input phone-input">
+    <button 
+      class="country-code_select"
+      [class.disabled]="!editCountry"
+      (click)="toggleCountryOptions()"
+      type="button">
+      <span [class]="'flag ' + countryCode"></span>
+      <span>+{{ country }}</span>
+    </button>
+
+    <div class="country-code_select-options" *ngIf="showCountryOptions">
+      <div class="country-code_select-option"
+        *ngFor="let option of countryCodeOptions"
+        (click)="updatePhoneMask(option.country)">
+        <span [class]="'flag ' + option.country"></span>
+        <span>+{{ option.code }}</span>
+      </div>
+    </div>
+
+    <input
+      #inputElement
+      class="input gs-form-field_phone-input"
+      type="text"
+      [id]="field.config.model"
+      [placeholder]="phoneMask"
+      [(ngModel)]="value"
+      (keyup)="formatPhone(true)"/>
+  </div>
+</ng-container>

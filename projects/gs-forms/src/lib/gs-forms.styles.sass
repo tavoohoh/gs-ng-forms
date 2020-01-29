@@ -1,0 +1,138 @@
+$smallScreen: 576px
+$shadowSoft: 0 8px 14px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.10)
+$shadowStrong: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12)
+$opacity: .8
+
+// colors
+$red: #da6464
+$color-font: inherit
+$color-primary: #4588fd
+$color-secondary: #7a9e9f
+$color-neutral: #4f6367
+$color-white: #ffffff
+
+// font
+$ui-font-size: .9rem
+
+// input
+$ui-input-color: inherit
+$ui-input-padding: .6rem
+$ui-input-background: #ffffff
+
+$ui-input-border-size: 1px
+$ui-input-border-style: solid
+$ui-input-border-color: #cccccc
+$ui-input-border-radius: 0px
+
+// primary button
+$ui-primary-button-padding: .5rem
+$ui-primary-button-color: #ffffff
+$ui-primary-button-background: #4588fd
+$ui-primary-button-border-color: #4588fd
+$ui-primary-button-border-radius: 6px
+
+// secondary button
+$ui-secondary-button-padding: $ui-primary-button-padding
+$ui-secondary-button-color: #ffffff
+$ui-secondary-button-background: #555555
+$ui-secondary-button-border-color: #555555
+$ui-secondary-button-border-radius: $ui-primary-button-border-radius
+
+// layout
+$layout-columns-quantity: repeat(auto-fit, minmax(200px, 1fr))
+$layout-padding: 1rem 1rem 0
+
+// behavior
+@mixin transition($time: 0.2s)
+  transition: $time ease-in-out
+
+@mixin disabled()
+  opacity: .7
+  cursor: default
+  pointer-events: none
+    
+// styles
+*
+  font-family: Arial, Helvetica, sans-serif
+  color: var(--color-font, $color-font)
+  outline: none
+  box-sizing: border-box
+  line-height: 1.4
+
+// UI elements
+.disabled
+  @include disabled()
+
+.button
+  @include transition()
+  cursor: pointer
+  border: none
+  text-align: center
+  font-weight: bold
+  outline: none
+
+  padding: var(--ui-primary-button-padding, $ui-primary-button-padding)
+  color: var(--ui-primary-button-color, $color-white)
+  background-color: var(--ui-primary-button-background, $color-neutral)
+  border: 1px solid var(--ui-primary-button-border-color, $color-neutral)
+  border-radius: var(--ui-primary-button-border-radius, $ui-primary-button-border-radius)
+
+  &:hover
+    opacity: $opacity
+
+.button.button-primary
+  padding: var(--ui-primary-button-padding, $ui-primary-button-padding)
+  color: var(--ui-primary-button-color, $ui-primary-button-color)
+  background-color: var(--ui-primary-button-background, $ui-primary-button-background)
+  border: 1px solid var(--ui-primary-button-border-color, $ui-primary-button-border-color)
+  border-radius: var(--ui-primary-button-border-radius, $ui-primary-button-border-radius)
+
+.button.button-secondary
+  padding: var(--ui-secondary-button-padding, $ui-secondary-button-padding)
+  color: var(--ui-secondary-button-color, $ui-secondary-button-color)
+  background-color: var(--ui-secondary-button-background, $ui-secondary-button-background)
+  border: 1px solid var(--ui-secondary-button-border-color, $ui-secondary-button-border-color)
+  border-radius: var(--ui-secondary-button-border-radius, $ui-secondary-button-border-radius)
+
+.input
+  border: none
+  width: 100%
+
+  padding: var(--ui-input-padding, $ui-input-padding)
+  color: var(--ui-input-color, $ui-input-color)
+  background-color: var(--ui-input-background, $ui-input-background)
+
+  border: var(--ui-input-border-size, $ui-input-border-size) var(--ui-input-border-style, $ui-input-border-style) var(--ui-input-border-color, $ui-input-border-color)
+  border-radius: var(--ui-input-border-radius, $ui-input-border-radius)
+  border-top-width: var(--ui-input-border-top, var(--ui-input-border-size, $ui-input-border-size))
+  border-right-width: var(--ui-input-border-right, var(--ui-input-border-size, $ui-input-border-size))
+  border-bottom-width: var(--ui-input-border-bottom, var(--ui-input-border-size, $ui-input-border-size))
+  border-left-width: var(--ui-input-border-left, var(--ui-input-border-size, $ui-input-border-size))
+
+*,
+.defult-font,
+.defult-font *,
+.input, select, textarea
+  font-size: var(--ui-font-size, $ui-font-size)
+  font-family: inherit
+
+.relative
+  position: relative
+
+input,
+select,
+option,
+textarea
+  color: var(--color-font, $color-font)
+
+  &::-webkit-input-placeholder
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1
+
+  &:-ms-input-placeholder 
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1
+
+  &::placeholder
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1

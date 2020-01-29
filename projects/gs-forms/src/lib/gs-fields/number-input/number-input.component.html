@@ -1,0 +1,16 @@
+<ng-container [formGroup]="formGroup">
+  <input
+    class="input gs-form-field_number_input"
+    type="number"
+    pattern="[0-9]*"
+    inputmode="numeric"
+    autocomplete="off"
+    decimal="true"
+    [id]="field.config.model"
+    [min]="field.config.validators[fieldValidatorType.MIN] || null"
+    [max]="field.config.validators[fieldValidatorType.MAX] || null"
+    [formControlName]="field.config.model"
+    [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+    [value]="field.config.value || null"
+    gsDigitOnly>
+</ng-container>

@@ -1,0 +1,71 @@
+@import ../../gs-forms.styles
+
+/* change the toggle size by changing the following variable */
+$radioSize: 24px
+
+/* Do not modify the following variables! */
+$size: $radioSize
+$containerPadding: calc(#{$radioSize} + .5rem)
+$labelPadding: calc((#{$radioSize} - #{var(--ui-font-size, $ui-font-size)}) / 2)
+$checkmarkWidth: $radioSize / 5
+$checkmarkHeight: $radioSize / 2
+$checkmarkBorder: $radioSize / 3
+
+/* The container */
+.radio
+  display: block
+  position: relative
+  padding-left: $containerPadding
+  align-self: center
+  margin: 6px 
+  cursor: pointer
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  .radio_label
+    display: block
+    padding: $labelPadding 0
+    line-height: 1
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+
+  .checkmark
+    @include transition()
+    display: grid
+    position: absolute
+    top: 0
+    left: 0
+    height: $size
+    width: $size
+    background-color: var(--color-neutral, $color-neutral)
+    border-radius: 50%
+
+    *
+      align-self: center
+
+    &:after
+      content: ""
+      display: none
+
+      width: $checkmarkHeight
+      height: $checkmarkHeight
+      margin: auto
+      border-radius: 50%
+      background: var(--color-white, $color-white)
+
+
+.radio:hover input ~ .checkmark
+  opacity: $opacity
+
+.radio input:checked ~ .checkmark
+  background-color: var(--color-primary, $color-primary)
+
+.radio input:checked ~ .checkmark:after
+  display: block
