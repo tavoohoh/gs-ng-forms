@@ -1,46 +1,50 @@
-<form class="gs-form" [formGroup]="formGroup" (ngSubmit)="submit()">
-  <div class="gs-form-body">
-    <div class="gs-form-field" *ngFor="let field of formFields">
-      <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
-        {{ field.config.label | translate }}
-      </label>
+<ng-container *ngIf="formGroup">
 
-      <ng-container [ngSwitch]="field.selector">
-        <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
-        <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
-        <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
-        <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
-        <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup"></gs-toggle>
-        <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"></gs-checkbox>
-        <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"></gs-radio-button>
-        <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"></gs-dropdown>
-        <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup"></gs-currency-input>
-        <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup"></gs-phone-input>
-        <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
-      </ng-container>
+  <form class="gs-form" [formGroup]="formGroup" (ngSubmit)="submit()">
+    <div class="gs-form-body">
+      <div class="gs-form-field" *ngFor="let field of formFields">
+        <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
+          {{ field.config.label | translate }}
+        </label>
 
-      <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
-        {{ getFieldError(field.config.model) | translate }}
+        <ng-container [ngSwitch]="field.selector">
+          <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
+          <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
+          <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
+          <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
+          <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup"></gs-toggle>
+          <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"></gs-checkbox>
+          <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"></gs-radio-button>
+          <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"></gs-dropdown>
+          <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup"></gs-currency-input>
+          <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup"></gs-phone-input>
+          <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
+        </ng-container>
+
+        <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
+          {{ getFieldError(field.config.model) | translate }}
+        </span>
+      </div>
+    </div>
+
+    <div class="gs-form-actions">
+      <span *ngIf="formOptions.context.cancelButton && formOptions.context.cancelButton.show">
+        <button
+          type="reset"
+          class="button button-secondary">
+          {{ formOptions.context.cancelButton.text | translate  }}
+        </button>
+      </span>
+
+      <span *ngIf="formOptions.context.saveButton && formOptions.context.saveButton.show">
+        <button
+          type="submit"
+          class="button button-primary"
+          [class.disabled]="formOptions.onErrorDisableSubmit && formGroup.invalid">
+          {{ formOptions.context.saveButton.text | translate  }}
+        </button>
       </span>
     </div>
-  </div>
+  </form>
 
-  <div class="gs-form-actions">
-    <span *ngIf="formOptions.context.cancelButton && formOptions.context.cancelButton.show">
-      <button
-        type="reset"
-        class="button button-secondary">
-        {{ formOptions.context.cancelButton.text | translate  }}
-      </button>
-    </span>
-
-    <span *ngIf="formOptions.context.saveButton && formOptions.context.saveButton.show">
-      <button
-        type="submit"
-        class="button button-primary"
-        [class.disabled]="formOptions.onErrorDisableSubmit && formGroup.invalid">
-        {{ formOptions.context.saveButton.text | translate  }}
-      </button>
-    </span>
-  </div>
-</form>
+</ng-container>

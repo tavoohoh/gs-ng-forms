@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Inject, HostBinding, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { GsFormsService } from './gs-forms.service';
@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './gs-forms.component.html',
   styleUrls: ['./gs-forms.component.sass']
 })
-export class GsFormsComponent implements OnInit {
+export class GsFormsComponent implements OnInit, OnChanges {
   @Input() public formOptions: GFormOptions;
   @Input() public formFields: GFormFields;
   @Output() private formValue = new EventEmitter<[{ key: string }]>();
@@ -33,6 +33,13 @@ export class GsFormsComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.formsService.buildForm(this.formFields);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes.formGroup.currentValue) {
+      this.formGroup = this.formsService.buildForm(this.formFields);
+      this.formGroup.updateValueAndValidity();
+    }
   }
 
   public submit() {
