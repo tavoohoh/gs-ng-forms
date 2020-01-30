@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './gs-forms.component.html',
   styleUrls: ['./gs-forms.component.sass']
 })
-export class GsFormsComponent implements OnInit, OnChanges {
+export class GsFormsComponent implements OnChanges {
   @Input() public formOptions: GFormOptions;
   @Input() public formFields: GFormFields;
   @Output() private formValue = new EventEmitter<[{ key: string }]>();
@@ -31,13 +31,9 @@ export class GsFormsComponent implements OnInit, OnChanges {
     this.customStyles = customStyles;
   }
 
-  ngOnInit() {
-    this.formGroup = this.formsService.buildForm(this.formFields);
-  }
-
   ngOnChanges(changes: SimpleChanges) {
-    if (changes && changes.formGroup && changes.formGroup.currentValue) {
-      this.formGroup = this.formsService.buildForm(this.formFields);
+    if (changes && changes.formFields && changes.formFields.currentValue) {
+      this.formGroup = this.formsService.buildForm(changes.formFields.currentValue);
       this.formGroup.updateValueAndValidity();
     }
   }

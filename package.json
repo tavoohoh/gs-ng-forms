@@ -11,8 +11,8 @@
 
     "lib:build": "ng-packagr -p projects/gs-forms/ng-package.json",
     "lib:init-repo": "cd ./dist/gs-forms/ && git init && git remote add origin git@bitbucket.org:rappinc/rpp-ngforms-lib.git",
-    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m '1.2.4'",
-    "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin master",
+    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m '1.2.5'",
+    "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin release",
     "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:commit && npm run lib:push"
   },
   "private": true,
