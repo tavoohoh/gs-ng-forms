@@ -54,15 +54,14 @@ const directives = [
 })
 export class GsFormsModule {
   public static forRoot(styles?: GStyles): ModuleWithProviders {
-
     return {
-        ngModule: GsFormsModule,
-        providers: [
-            {
-                provide: 'customStyles',
-                useValue: styles
-            }
-        ]
+      ngModule: GsFormsModule,
+      providers: [
+        {
+          provide: 'customStyles',
+          useValue: styles
+        }
+      ]
     };
-}
+  }
 }
