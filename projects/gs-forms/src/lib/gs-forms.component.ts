@@ -36,7 +36,7 @@ export class GsFormsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes && changes.formGroup.currentValue) {
+    if (changes && changes.formGroup && changes.formGroup.currentValue) {
       this.formGroup = this.formsService.buildForm(this.formFields);
       this.formGroup.updateValueAndValidity();
     }
