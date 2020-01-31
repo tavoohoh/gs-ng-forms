@@ -27,6 +27,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
 
   public formOptions: GFormOptions = {
+    country: GFieldCountryCode.CO,
     onErrorDisableSubmit: false,
     layout: {
       columns: 'repeat(5, 1fr)',
@@ -205,8 +206,7 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.MIN]: 100000,
         [GFieldValidatorType.MAX]: 500000,
         [GFieldValidatorType.REQUIRED]: true
-      },
-      country: GFieldCountryCode.CO
+      }
     }),
 
     // phone input
@@ -217,7 +217,7 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
-      country: GFieldCountryCode.CO,
+      country: GFieldCountryCode.UY,
       editCountry: true
     }),
 

@@ -4,6 +4,10 @@ import { GFieldCountryCode, GFieldSelector, GFieldValidatorType } from './gs-for
  * Form options
  */
 export interface GFormOptions {
+  /**
+   * Set default country
+   */
+  country: GFieldCountryCode;
   onErrorDisableSubmit?: boolean;
   layout?: {
     /**
@@ -92,7 +96,7 @@ export class GFieldOptionValuesConfiguration extends GFieldConfiguration {
  * Field configuration including country option for `GCurrencyField` and `GPhoneField`
  */
 export class GFieldCountryFormmatConfiguration extends GFieldConfiguration {
-  country: GFieldCountryCode;
+  country?: GFieldCountryCode;
   editCountry?: boolean;
 }
 
