@@ -114,11 +114,11 @@ export class GsCurrencyInputComponent implements OnChanges {
 
   public returnBuildingError() {
     return console.error(
-      'GS Form building err: Please provide country for phone field:' + '\n\n' +
-      'In your component make sure you are passing a valid country to `GPhoneField`:' + '\n\n' +
+      'GS Form building err: Please provide country for currency field:' + '\n\n' +
+      'In your component make sure you are passing a valid country to `GCurrencyField`:' + '\n\n' +
       '\xa0' + 'public formFields: GFormFields = [' + '\n' +
-      '\xa0\xa0' + 'new GPhoneField({' + '\n' +
-      '\xa0\xa0\xa0' + `model: 'phone',` + '\n' +
+      '\xa0\xa0' + 'new GCurrencyField({' + '\n' +
+      '\xa0\xa0\xa0' + `model: 'currency',` + '\n' +
       '\xa0\xa0\xa0' + `country: GFieldCountryCode.CO` + '\n' +
       '\xa0\xa0\xa0' + '// other properties' + '\n' +
       '\xa0\xa0' + '}),' + '\n' +

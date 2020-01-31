@@ -9,3 +9,4 @@ export { GsRadioButtonComponent } from './radio-button/radio-button.component';
 export { GsTextInputComponent } from './text-input/text-input.component';
 export { GsTextareaComponent } from './textarea/textarea.component';
 export { GsToggleComponent } from './toggle/toggle.component';
+export { GsTaxTypeComponent } from './tax-type/tax-type.component';

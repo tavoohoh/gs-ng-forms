@@ -56,6 +56,11 @@ export enum GFieldSelector {
   DROPDOWN = 'dropdown',
 
   /**
+   * Tax type selector
+   */
+  TAX_TYPE = 'tax_type',
+
+  /**
    * Any currency value:
    * For example: any masked string formatted as currency value ($ 1.300,20)
    * This will create a non native currency type input with currency format and symbol.

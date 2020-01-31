@@ -18,6 +18,7 @@
           <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-currency-input>
           <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-phone-input>
           <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
+          <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
         </ng-container>
 
         <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">

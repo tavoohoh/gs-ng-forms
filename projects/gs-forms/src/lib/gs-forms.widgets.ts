@@ -81,6 +81,15 @@ export class GDropdownField implements GField {
 }
 
 /**
+ * Tax document widget
+ */
+export class GTaxDocumentTypeField implements GField {
+  selector = GFieldSelector.TAX_TYPE;
+
+  constructor(public config: GFieldCountryFormmatConfiguration) { }
+}
+
+/**
  * Currency widget
  */
 export class GCurrencyField implements GField {

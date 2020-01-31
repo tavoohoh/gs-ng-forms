@@ -1,5 +1,4 @@
 import { GLocation } from './gs-forms.models';
-import { GFieldCountryCode } from './gs-forms.enums';
 
 // https://lowpostayuda.zendesk.com/hc/es/articles/115004070469-Nombres-Identificaci%C3%B3n-tributaria-por-pa%C3%ADses
 // http://www.wtng.info/wtng-54-ar.html

@@ -15,7 +15,8 @@ import {
   GPhoneField,
   GCheckboxField,
   GDatePickerField,
-  GFormOptions
+  GFormOptions,
+  GTaxDocumentTypeField
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -219,6 +220,17 @@ export class AppComponent implements OnInit {
       },
       country: GFieldCountryCode.UY,
       editCountry: true
+    }),
+
+    // tax type
+    new GTaxDocumentTypeField({
+      model: 'taxType',
+      label: 'Tax type',
+      placeholder: 'Tax type placeholder',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+      country: GFieldCountryCode.BR
     }),
 
   ];
