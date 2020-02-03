@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { GFormFields, GField } from './gs-forms.models';
+import { GFormFields, GField, GFieldOptionValues } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
-import { GFieldOptionValues } from 'gs-forms/gs-forms';
 
 @Injectable({
   providedIn: 'root'
