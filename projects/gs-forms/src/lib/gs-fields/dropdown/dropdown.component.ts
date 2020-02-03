@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GDropdownField } from '../../gs-forms.widgets';
 import { GFieldValidatorType } from '../../gs-forms.enums';
+import { GFieldOptionValues } from '../../gs-forms.models';
 
 @Component({
   selector: 'gs-dropdown',
@@ -11,6 +12,7 @@ import { GFieldValidatorType } from '../../gs-forms.enums';
 export class GsDropdownComponent implements OnChanges {
   @Input() public field: GDropdownField;
   @Input() public formGroup: FormGroup;
+  @Input() public fieldOption: GFieldOptionValues;
 
   public fieldValidatorType = GFieldValidatorType;
 
@@ -19,6 +21,12 @@ export class GsDropdownComponent implements OnChanges {
       this.field.config.value = '';
       this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
       this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    }
+
+    if (changes.fieldOption.currentValue) {
+      this.fieldOption = changes.fieldOption.currentValue;
+    } else {
+      this.fieldOption = this.field.config.optionValues;
     }
   }
 }

@@ -1,5 +1,10 @@
 import { GFieldCountryCode, GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
 
+export type GFieldOptionValues = Array<{
+  value: string | number | boolean;
+  text: string;
+}>;
+
 /**
  * Form options
  */
@@ -9,6 +14,9 @@ export interface GFormOptions {
    */
   onErrorDisableSubmit?: boolean;
   country?: GFieldCountryCode;
+  fieldValues?: {
+    [key: string]: GFieldOptionValues;
+  };
   layout?: {
     /**
      * Number to specify the quantity of columns, an string to pass any valid value for `grid-template-columns`
@@ -86,10 +94,8 @@ export class GFieldBooleanConfiguration extends GFieldConfiguration {
  * Field configuration including option values for `GRadioField` and `GDropdownField`
  */
 export class GFieldOptionValuesConfiguration extends GFieldConfiguration {
-  optionValues: Array<{
-    value: string | number | boolean;
-    text: string;
-  }>;
+  optionValues?: GFieldOptionValues;
+  externalOptions?: boolean;
 }
 
 /**

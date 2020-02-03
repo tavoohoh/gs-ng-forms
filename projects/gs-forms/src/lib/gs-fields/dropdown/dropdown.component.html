@@ -7,7 +7,7 @@
       {{ field.config.placeholder | translate }}
     </option>
     <option 
-      *ngFor="let option of field.config.optionValues"
+      *ngFor="let option of fieldOption"
       [selected]="field.config.value === option.value ? true : false"
       [ngValue]="option.value">
       {{ option.text | translate }}

@@ -29,6 +29,39 @@ export class AppComponent implements OnInit {
 
   public formOptions: GFormOptions = {
     onErrorDisableSubmit: false,
+    country: GFieldCountryCode.CO,
+    fieldValues: {
+      checkbox: [
+        {
+          value: true,
+          text: 'true'
+        },
+        {
+          value: false,
+          text: 'false'
+        }
+      ],
+      radio: [
+        {
+          value: true,
+          text: 'radio true'
+        },
+        {
+          value: false,
+          text: 'radio false'
+        }
+      ],
+      dropdown: [
+        {
+          value: 'hola',
+          text: 'hola'
+        },
+        {
+          value: 'chao',
+          text: 'chao'
+        }
+      ]
+    },
     layout: {
       columns: 'repeat(5, 1fr)',
       innerPadding: '6px'
@@ -126,10 +159,11 @@ export class AppComponent implements OnInit {
     new GCheckboxField({
       model: 'checkbox',
       label: 'Checkbox',
-      value: 'red',
+      value: true,
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },
+      externalOptions: true,
       optionValues: [
         {
           value: 'blue',
@@ -150,11 +184,12 @@ export class AppComponent implements OnInit {
     new GRadioField({
       model: 'radio',
       label: 'Radio',
-      value: 'blue',
+      value: false,
       placeholder: 'Radio placeholder',
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },
+      externalOptions: true,
       optionValues: [
         {
           value: 'blue',
@@ -180,18 +215,19 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },
+      externalOptions: true,
       optionValues: [
         {
           value: 'blue',
-          text: 'Blue'
-        },
-        {
-          value: 'red',
-          text: 'Red'
+          text: 'blue'
         },
         {
           value: 'yellow',
-          text: 'Yellow'
+          text: 'yellow'
+        },
+        {
+          value: 'red',
+          text: 'red'
         }
       ]
     }),
