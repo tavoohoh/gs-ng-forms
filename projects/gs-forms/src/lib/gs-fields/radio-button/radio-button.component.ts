@@ -17,7 +17,7 @@ export class GsRadioButtonComponent implements OnChanges {
   public fieldValidatorType = GFieldValidatorType;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldOption.currentValue) {
+    if (changes.fieldOption && changes.fieldOption.currentValue) {
       this.fieldOption = changes.fieldOption.currentValue;
     } else {
       this.fieldOption = this.field.config.optionValues;

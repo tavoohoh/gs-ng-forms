@@ -17,13 +17,13 @@ export class GsDropdownComponent implements OnChanges {
   public fieldValidatorType = GFieldValidatorType;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.field.currentValue.config && !changes.field.currentValue.config.value) {
+    if (changes.field && changes.field.currentValue.config && !changes.field.currentValue.config.value) {
       this.field.config.value = '';
       this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
       this.formGroup.controls[this.field.config.model].updateValueAndValidity();
     }
 
-    if (changes.fieldOption.currentValue) {
+    if (changes.fieldOption && changes.fieldOption.currentValue) {
       this.fieldOption = changes.fieldOption.currentValue;
     } else {
       this.fieldOption = this.field.config.optionValues;

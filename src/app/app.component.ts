@@ -19,6 +19,7 @@ import {
   GTaxDocumentTypeField
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
+import { GsFormsService } from 'projects/gs-forms/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  private toMapOptions = [
+    {
+      value: true,
+      key: 'true'
+    },
+    {
+      value: false,
+      key: 'false'
+    }
+  ];
 
   public formOptions: GFormOptions = {
     onErrorDisableSubmit: false,
@@ -63,7 +75,7 @@ export class AppComponent implements OnInit {
       ]
     },
     layout: {
-      columns: 'repeat(5, 1fr)',
+      columns: 'repeat(4, 1fr)',
       innerPadding: '6px'
     },
     context: {
@@ -271,12 +283,16 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    private gsFormService: GsFormsService
   ) { }
 
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+
+    // map an array of values to a valid form field option values
+    const mappedValues = this.gsFormService.mapFieldOptionValues(this.toMapOptions, 'value', 'key');
   }
 
   public onSubmit(form: any) {

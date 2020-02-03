@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { GFormFields, GField } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
+import { GFieldOptionValues } from 'gs-forms/gs-forms';
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +91,17 @@ export class GsFormsService {
     } else {
       return 'This field has an unknow error';
     }
+  }
+
+  public mapFieldOptionValues(options: Array<{}>, optionValue: string, optionText: string, ): GFieldOptionValues {
+    const mappedValues = options.map(obj => {
+      return {
+        value: obj[optionValue],
+        text: obj[optionText]
+      };
+    });
+
+    return mappedValues;
   }
 
 }
