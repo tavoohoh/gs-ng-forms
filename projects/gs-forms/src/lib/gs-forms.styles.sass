@@ -60,6 +60,29 @@ $layout-padding: 1rem 1rem 0
   line-height: 1.4
 
 // UI elements
+input,
+select,
+option,
+textarea
+  border: none
+  outline: none
+  display: block
+  box-shadow: none
+  box-sizing: border-box
+  color: var(--color-font, $color-font)
+
+  &::-webkit-input-placeholder
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1
+
+  &:-ms-input-placeholder 
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1
+
+  &::placeholder
+    color: var(--color-neutral, $color-neutral)
+    opacity: 1
+
 .disabled
   @include disabled()
 
@@ -118,21 +141,3 @@ $layout-padding: 1rem 1rem 0
 
 .relative
   position: relative
-
-input,
-select,
-option,
-textarea
-  color: var(--color-font, $color-font)
-
-  &::-webkit-input-placeholder
-    color: var(--color-neutral, $color-neutral)
-    opacity: 1
-
-  &:-ms-input-placeholder 
-    color: var(--color-neutral, $color-neutral)
-    opacity: 1
-
-  &::placeholder
-    color: var(--color-neutral, $color-neutral)
-    opacity: 1

@@ -4,7 +4,7 @@
     [name]="field.config.model"
     [formControlName]="field.config.model">
     <option disabled selected value="">
-      {{ field.config.placeholder | translate }}
+      {{ field.config.placeholder || field.config.label || field.config.model | translate }}
     </option>
     <option 
       *ngFor="let option of taxTypeOptions"

@@ -5,8 +5,10 @@
       [class.disabled]="!editCountry"
       (click)="toggleCountryOptions()"
       type="button">
-      <span [class]="'flag ' + countryCode"></span>
-      <span>+{{ country }}</span>
+      <span class="country-code_select_grid"> 
+        <span [class]="'flag ' + countryCode"></span>
+        <span>+{{ country }}</span>
+      </span>
     </button>
 
     <div class="country-code_select-options" *ngIf="showCountryOptions">
