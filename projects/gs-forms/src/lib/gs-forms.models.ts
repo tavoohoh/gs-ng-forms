@@ -7,8 +7,8 @@ export interface GFormOptions {
   /**
    * Set default country
    */
-  country: GFieldCountryCode;
   onErrorDisableSubmit?: boolean;
+  country?: GFieldCountryCode;
   layout?: {
     /**
      * Number to specify the quantity of columns, an string to pass any valid value for `grid-template-columns`

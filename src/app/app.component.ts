@@ -28,7 +28,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
 
   public formOptions: GFormOptions = {
-    country: GFieldCountryCode.CO,
     onErrorDisableSubmit: false,
     layout: {
       columns: 'repeat(5, 1fr)',
