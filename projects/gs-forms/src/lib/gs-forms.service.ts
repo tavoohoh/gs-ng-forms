@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { GFormFields, GField, GFieldOptionValues } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
+import { TranslateService } from '@ngx-translate/core';
+import { VALIDATION_MESSAGES } from './gs-forms.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ import { GFieldValidatorType } from './gs-forms.enums';
 export class GsFormsService {
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private translateService: TranslateService
   ) { }
 
   private buildErrors(validator: string, value: any): Validators {
@@ -74,22 +77,54 @@ export class GsFormsService {
     const error = field.errors;
 
     if (error[GFieldValidatorType.MIN]) {
-      return `The value must be greater than or equal to ${error[GFieldValidatorType.MIN].min}`;
+      return this.getValidationMessage('ERR_MIN', error[GFieldValidatorType.MIN].min);
+
     } else if (error[GFieldValidatorType.MAX]) {
-      return `The value must be less than or equal to ${error[GFieldValidatorType.MAX].max}`;
+      return this.getValidationMessage('ERR_MAX', error[GFieldValidatorType.MAX].max);
+
     } else if (error[GFieldValidatorType.REQUIRED]) {
-      return 'This field is required';
+      return this.getValidationMessage('ERR_REQUERID');
+
     } else if (error[GFieldValidatorType.EMAIL]) {
-      return 'The email must have a valid format';
+      return this.getValidationMessage('ERR_EMAIL');
+
     } else if (error[GFieldValidatorType.MIN_LENGTH]) {
-      return `The value must be at least ${error[GFieldValidatorType.MIN_LENGTH].requiredLength} characters`;
+      return this.getValidationMessage('ERR_MIN_LENGTH', error[GFieldValidatorType.MIN_LENGTH].requiredLength);
+
     } else if (error[GFieldValidatorType.MAX_LENGTH]) {
-      return `The value must have a maximum of ${error[GFieldValidatorType.MAX_LENGTH].requiredLength} characters`;
+      return this.getValidationMessage('ERR_MAX_LENGTH', error[GFieldValidatorType.MAX_LENGTH].requiredLength);
+
     } else if (error[GFieldValidatorType.PATTERN]) {
-      return 'The value format is not correct';
+      return this.getValidationMessage('ERR_PATTERN');
+
     } else {
-      return 'This field has an unknow error';
+      return this.getValidationMessage('DEFAULT');
     }
+  }
+
+  private getValidationMessage(key: string, param?: string) {
+    let lang = this.translateService.currentLang;
+
+    if (!lang) {
+      console.warn(`translateService.currentLang is not set, using default language: 'en'`);
+      lang = 'en';
+    }
+
+    let messageLang = VALIDATION_MESSAGES.en;
+
+    if (!VALIDATION_MESSAGES[lang]) {
+      console.warn(`We don't have support for language ${lang}. Please email us to hi@tavoohoh.com. Using default language: 'en'`);
+    } else {
+      messageLang = VALIDATION_MESSAGES[lang];
+    }
+
+    let message = messageLang[key];
+
+    if (param) {
+      message = message.replace('${param}', param);
+    }
+
+    return message;
   }
 
   public mapFieldOptionValues(options: Array<{}>, optionValue: string, optionText: string, ): GFieldOptionValues {

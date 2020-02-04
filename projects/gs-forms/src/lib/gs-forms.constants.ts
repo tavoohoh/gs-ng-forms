@@ -294,3 +294,26 @@ export const LOCATION: { [key: string]: GLocation } = {
     }
   }
 };
+
+export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } = {
+  en: {
+    ERR_MIN: 'The value must be greater than or equal to ${param}',
+    ERR_MAX: 'The value must be less than or equal to ${param}',
+    ERR_REQUERID: 'This field is required',
+    ERR_EMAIL: 'The email must have a valid format',
+    ERR_MIN_LENGTH: 'The value must be at least ${param} characters',
+    ERR_MAX_LENGTH: 'The value must have a maximum of ${param} characters',
+    ERR_PATTERN: 'The value format is not correct',
+    DEFAULT: 'This field has an unknown error'
+  },
+  es: {
+    ERR_MIN: 'El valor debe ser mayor o igual que ${param}',
+    ERR_MAX: 'El valor debe ser menor o igual que ${param}',
+    ERR_REQUERID: 'Esta campo es requerido',
+    ERR_EMAIL: 'El correo debe tener un formato válido',
+    ERR_MIN_LENGTH: 'El valor debe tener al menos ${param} caracteres',
+    ERR_MAX_LENGTH: 'El valor debe tener un máximo de ${param} caracteres',
+    ERR_PATTERN: 'El formato del valor no es correcto.',
+    DEFAULT: 'Este campo tiene un error desconocido'
+  }
+};
