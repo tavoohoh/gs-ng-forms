@@ -127,6 +127,22 @@ export class GsFormsService {
     return message;
   }
 
+  /**
+   * @description
+   * Convert an array of values `Array<{[key: string]: any}> | Array<{[key: string]: any, [key: string]: any}>`
+   *
+   * @param options
+   * An array of values
+   * @param optionValue
+   * The key to be mapped to `GFieldOptionValues` key `value`
+   * @param optionText
+   * The key to be mapped to `GFieldOptionValues` key `text`
+   *
+   * @key value
+   * The value used in a select option
+   * @key text
+   * The text used inside of select option
+   */
   public mapFieldOptionValues(options: Array<{}>, optionValue: string, optionText: string, ): GFieldOptionValues {
     const mappedValues = options.map(obj => {
       return {

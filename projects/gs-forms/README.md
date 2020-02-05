@@ -13,6 +13,7 @@ Simple angular 8 forms library.
   * [gs-form fields](#gs-form-fields)
   * [gs-form fields options](#gs-form-fields-options)
   * [gs-form options](#gs-form-options)
+  * [gs-form service](#gs-form-service)
 
 ## Installation
 - [set up your SSH key](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html#SetupanSSHkey-ssh1)
@@ -249,8 +250,17 @@ interface GFieldOptions {
 ### gs-form options:
 ```ts
 interface GFormOptions {
-  /* If true disable de submit/save button */
+  /**
+   * Disable submit if the form has errors
+   */
   onErrorDisableSubmit?: boolean;
+  /**
+   * Set default country using `GFieldCountryCode` enum form gs-field
+   */
+  country?: GFieldCountryCode;
+  fieldValues?: {
+    [key: string]: GFieldOptionValues;
+  };
   layout?: {
     /**
      * Number to specify the quantity of columns, an string to pass any valid value for `grid-template-columns`
@@ -280,6 +290,32 @@ interface GFormOptions {
 }
 ```
 
+### gs-form service:
+You can consume the gs-form service to help you with the following scenarios:
 
+- If you need to pass dynamic or external options to a dropdown you can use `mapFieldOptionValues()` to map your option values to gs-form format:
+```ts
+  // Update your form options to set a field options
+  const formOptions = createFranchiseFormOptions;
+  formOptions.country = GFieldCountryCode.MX;
+  formOptions.fieldValues = {
+  /**
+   * Convert an array of values `Array<{[key: string]: any}> | Array<{[key: string]: any, [key: string]: any}>`
+   * 
+   * @param options
+   * An array of values
+   * @param optionValue
+   * The key to be mapped to `GFieldOptionValues` key `value`
+   * @param optionText
+   * The key to be mapped to `GFieldOptionValues` key `text`
+   *
+   * @key value
+   * The value used in a select option
+   * @key text
+   * The text used inside of select option
+     */
+    category: this.gsFormService.mapFieldOptionValues(response.data, 'key', 'value');
+  };
+```
 
 For issues or questions please contact `gustavo.santamaria` or email gustavo.santamaria@rappi.com

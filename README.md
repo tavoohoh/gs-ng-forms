@@ -4,11 +4,9 @@ You are welcome to collaborate!
 
 For library implementation please go to [gs-form readme](https://bitbucket.org/rappinc/rpp-ngforms-lib/src/master/README.md).
 
-
 TODO:
 - File field.
 - Image field.
-- Make validation error multilanguage.
 
 ## Install:
 ```sh

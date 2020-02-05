@@ -20,6 +20,7 @@ import {
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -297,5 +298,9 @@ export class AppComponent implements OnInit {
 
   public onSubmit(form: any) {
     console.log('form', form);
+  }
+
+  public onFormChange(form: FormGroup) {
+    console.log(form);
   }
 }

@@ -1,10 +1,13 @@
-import { Component, OnInit, Input, Inject, HostBinding, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Inject, HostBinding, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { GsFormsService } from './gs-forms.service';
 import { GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
 import { GFormFields, GStyles, GFormOptions } from './gs-forms.models';
-import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'gs-form',
@@ -12,16 +15,69 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./gs-forms.component.sass']
 })
 export class GsFormsComponent implements OnChanges {
+  /**
+   * Input: formOptions: GFormOptions
+   *
+   * @description
+   * Set custom configuration to the form
+   *
+   * @example
+   * public formOptions: GFormOptions = {
+   *   country: GFieldCountryCode.CO,
+   *   fieldValues: {
+   *     checkbox: [
+   *       {
+   *         value: true,
+   *         text: 'true'
+   *       }
+   *     ]
+   *   },
+   *   layout: {
+   *     columns: 'repeat(4, 1fr)',
+   *   }
+   * };
+   */
   @Input() public formOptions: GFormOptions;
+  /**
+   * Input: formFields: GFormFields
+   *
+   * @description
+   * Form fields array
+   *
+   * @example
+   * public formFields: GFormFields = [
+   *   new GTextField({
+   *     model: 'text',
+   *     label: 'TEXT',
+   *     placeholder: 'TEXT_INPUT',
+   *     value: 'Hello text input',
+   *     validators: {
+   *       [GFieldValidatorType.REQUIRED]: true
+   *     },
+   *   }),
+   * ];
+   */
   @Input() public formFields: GFormFields;
+  /**
+   * Get form values. formGroup: FormGroup `form.values`
+   *
+   * @deprecated
+   */
   @Output() private formValue = new EventEmitter<[{ key: string }]>();
+  /**
+   * Get form group. formGroup: FormGroup `form`
+   */
   @Output() private form = new EventEmitter<FormGroup>();
+  /**
+   * Get form group changes. formGroup: FormGroup `form`
+   */
+  @Output() private formChanges = new EventEmitter<FormGroup>();
 
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
   public fieldValidatorType = GFieldValidatorType;
-
   private customStyles: GStyles;
+  private destroyed$ = new Subject();
 
   constructor(
     private formsService: GsFormsService,
@@ -36,10 +92,18 @@ export class GsFormsComponent implements OnChanges {
       this.formGroup = this.formsService.buildForm(changes.formFields.currentValue);
       this.formGroup.updateValueAndValidity();
     }
+    this.onFormChanges();
   }
 
-  public submit() {
+  private onFormChanges(): void {
+    this.formGroup.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(val => {
+      this.formChanges.emit(this.formGroup);
+    });
+  }
+
+  public submit(): void {
     this.form.emit(this.formGroup);
+    // tslint:disable-next-line: deprecation
     this.formValue.emit(this.formGroup.value);
   }
 

@@ -10,9 +10,12 @@ export type GFieldOptionValues = Array<{
  */
 export interface GFormOptions {
   /**
-   * Set default country
+   * Disable submit if the form has errors.
    */
   onErrorDisableSubmit?: boolean;
+  /**
+   * Set default country using `GFieldCountryCode` enum form gs-field
+   */
   country?: GFieldCountryCode;
   fieldValues?: {
     [key: string]: GFieldOptionValues;
