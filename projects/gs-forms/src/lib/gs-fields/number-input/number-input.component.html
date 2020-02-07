@@ -6,6 +6,7 @@
     inputmode="numeric"
     autocomplete="off"
     decimal="true"
+    [autocomplete]="field.config.autocomplete || 'off'"
     [id]="field.config.model"
     [min]="field.config.validators[fieldValidatorType.MIN] || null"
     [max]="field.config.validators[fieldValidatorType.MAX] || null"

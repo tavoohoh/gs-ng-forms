@@ -1,5 +1,9 @@
 <ng-container *ngIf="formGroup">
-  <form class="gs-form" [formGroup]="formGroup" (ngSubmit)="submit()">
+  <form
+    class="gs-form"
+    [autocomplete]="formOptions.autocomplete || 'off'"
+    [formGroup]="formGroup"
+    (ngSubmit)="submit()">
     <div class="gs-form-body">
       <div class="gs-form-field" *ngFor="let field of formFields">
         <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
@@ -19,13 +23,13 @@
           <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
           
           <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config.externalOptions ? formOptions.fieldValues[field.config.model] : null">
+            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
           </gs-radio-button>
           <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config.externalOptions ? formOptions.fieldValues[field.config.model] : null">
+            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
           </gs-checkbox>
           <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config.externalOptions ? formOptions.fieldValues[field.config.model] : null">
+            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
           </gs-dropdown>
         </ng-container>
 

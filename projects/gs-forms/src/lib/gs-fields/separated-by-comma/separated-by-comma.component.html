@@ -1,15 +1,15 @@
 <ng-container>
-  <div class="input currency-input" (click)="focusInput()">
+  <div class="input separated-by-commas-input" (click)="focusInput()">
     <span class="symbol">{{ prefix }}</span>
     <input
       #inputElement
-      class="input gs-form-field_currency-input"
+      class="input gs-form-field_separated_by_commas-input"
       type="text"
-      [autocomplete]="field.config.autocomplete || 'off'"
+      [autocomplete]="'off'"
       [id]="field.config.model"
       [placeholder]="field.config.placeholder || field.config.label || field.config.model"
       [(ngModel)]="value"
-      (keyup)="formatCurrency(true)"/>
+      (keyup)=""/>
     <span class="code">{{ suffix }}</span>
   </div>
 </ng-container>

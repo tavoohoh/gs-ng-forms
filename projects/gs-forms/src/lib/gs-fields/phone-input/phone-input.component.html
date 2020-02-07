@@ -24,6 +24,7 @@
       #inputElement
       class="input gs-form-field_phone-input"
       type="text"
+      [autocomplete]="field.config.autocomplete || 'off'"
       [id]="field.config.model"
       [placeholder]="phoneMask"
       [(ngModel)]="value"

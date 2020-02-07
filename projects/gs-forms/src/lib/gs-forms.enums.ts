@@ -82,7 +82,12 @@ export enum GFieldSelector {
    * Any date value
    * This will create a non native date picker
    */
-  DATE = 'DATE'
+  DATE = 'date',
+
+  /**
+   * Separated by comma field
+   */
+  COMMA = 'comma'
 }
 
 export enum GFieldValidatorType {

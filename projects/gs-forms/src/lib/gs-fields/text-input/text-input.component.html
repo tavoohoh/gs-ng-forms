@@ -2,6 +2,7 @@
   <input
     class="input gs-form-field_text_input"
     type="text"
+    [autocomplete]="field.config.autocomplete || 'off'"
     [id]="field.config.model"
     [minlength]="field.config.validators[fieldValidatorType.MIN_LENGTH] || null"
     [maxlength]="field.config.validators[fieldValidatorType.MAX_LENGTH] || null"

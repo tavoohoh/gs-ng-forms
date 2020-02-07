@@ -115,3 +115,12 @@ export class GDatePickerField implements GField {
 
   constructor(public config: GFieldConfiguration) { }
 }
+
+/**
+ * Separated by Comma field
+ */
+export class GSeparatedByComma implements GField {
+  selector = GFieldSelector.COMMA;
+
+  constructor(public config: GFieldConfiguration) { }
+}

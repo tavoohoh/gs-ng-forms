@@ -10,6 +10,13 @@ export type GFieldOptionValues = Array<{
  */
 export interface GFormOptions {
   /**
+   * Pass any argument to the form:
+   *
+   * @example
+   * <form [autocomplete]="yourOptions.autocomplete">
+   */
+  autocomplete?: string;
+  /**
    * Disable submit if the form has errors.
    */
   onErrorDisableSubmit?: boolean;
@@ -17,6 +24,9 @@ export interface GFormOptions {
    * Set default country using `GFieldCountryCode` enum form gs-field
    */
   country?: GFieldCountryCode;
+  /**
+   * Object containing options for fields like `GDropdownField` where `[key: string]` is the model name of the `GField`.
+   */
   fieldValues?: {
     [key: string]: GFieldOptionValues;
   };
@@ -70,6 +80,7 @@ export class GFieldConfiguration {
   label?: string;
   placeholder?: string;
   value?: string | number | boolean;
+  autocomplete?: string;
 }
 
 /**
