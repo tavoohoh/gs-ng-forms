@@ -17,6 +17,7 @@ import { GsCurrencyInputComponent } from './gs-fields/currency-input/currency-in
 import { GsPhoneInputComponent } from './gs-fields/phone-input/phone-input.component';
 import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
 import { GsTaxTypeComponent } from './gs-fields/tax-type/tax-type.component';
+import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/separated-by-comma.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -35,6 +36,7 @@ import { GsFormsService } from './gs-forms.service';
     GsPhoneInputComponent,
     GsDatePickerComponent,
     GsTaxTypeComponent,
+    GsSeparatedByCommaComponent,
     GsFormsComponent
   ],
   imports: [
@@ -60,6 +62,7 @@ import { GsFormsService } from './gs-forms.service';
     GsPhoneInputComponent,
     GsDatePickerComponent,
     GsTaxTypeComponent,
+    GsSeparatedByCommaComponent,
     GsFormsComponent
   ],
   schemas: [

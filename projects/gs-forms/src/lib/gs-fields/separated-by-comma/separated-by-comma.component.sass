@@ -1,1 +1,49 @@
 @import ../../gs-forms.styles
+
+.separated-by-commas-input
+  display: flex
+  flex-wrap: wrap
+  width: 100%
+  padding: 0
+
+  .item_input
+    position: relative
+    display: flex
+    flex-grow: 1
+
+    button
+      cursor: pointer
+      background: none
+      border: none
+      outline: none
+      padding: 0
+      color: var(--color-primary, $color-primary)
+      font-size: 1.4rem
+
+    .input
+      background: none
+      border: none
+      outline: none
+
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+    li
+      padding: 4px 8px
+      color: var(--color-white, $color-white)
+      background-color: var(--color-primary, $color-primary)
+      margin: 4px 0 4px 4px
+      border-radius: 12px
+
+      button
+        cursor: pointer
+        background: none
+        border: none
+        outline: none
+        padding: 0
+        color: var(--color-white, $color-white)

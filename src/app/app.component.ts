@@ -16,7 +16,8 @@ import {
   GCheckboxField,
   GDatePickerField,
   GFormOptions,
-  GTaxDocumentTypeField
+  GTaxDocumentTypeField,
+  GSeparatedByComma
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
@@ -76,7 +77,7 @@ export class AppComponent implements OnInit {
       ]
     },
     layout: {
-      columns: 'repeat(4, 1fr)',
+      columns: 'repeat(2, 1fr)',
       innerPadding: '6px'
     },
     context: {
@@ -99,6 +100,16 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.MAX_LENGTH]: 30,
         [GFieldValidatorType.REQUIRED]: true
       },
+    }),
+
+    // separated by comma
+    new GSeparatedByComma({
+      model: 'comma',
+      label: 'Separated by comma',
+      placeholder: 'separated by comma placeholder',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      }
     }),
 
     // textarea input
@@ -280,7 +291,6 @@ export class AppComponent implements OnInit {
       },
       country: GFieldCountryCode.BR
     }),
-
   ];
 
   constructor(

@@ -1,12 +1,12 @@
 <div class="date-input">
   <input
-  #inputElement
-  class="input gs-form-field_phone-input"
-  type="text"
-  [id]="field.config.model"
-  [placeholder]="'YYYY-MM-DD'"
-  [(ngModel)]="dateValue"
-  (click)="toggleDatePickerSelector()"/>
+    #inputElement
+    class="input gs-form-field_phone-input"
+    type="text"
+    [id]="field.config.model"
+    [placeholder]="'YYYY-MM-DD'"
+    [(ngModel)]="dateValue"
+    (click)="toggleDatePickerSelector()"/>
 
   <div class="datepicker-container">
     <div class="datepicker" *ngIf="showDatePickerSelector">

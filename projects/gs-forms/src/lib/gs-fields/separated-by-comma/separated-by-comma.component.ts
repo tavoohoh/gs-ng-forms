@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GSeparatedByComma } from '../../gs-forms.widgets';
 import { GFieldValidatorType } from '../../gs-forms.enums';
@@ -12,7 +12,14 @@ import { GFieldOptionValues } from '../../gs-forms.models';
 export class GsSeparatedByCommaComponent {
   @Input() public field: GSeparatedByComma;
   @Input() public formGroup: FormGroup;
-  @Input() public fieldOption: GFieldOptionValues;
+  public fieldOption: Array<string> = ['red', 'blue', 'green', 'brown', 'purple'];
+  @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
   public fieldValidatorType = GFieldValidatorType;
+
+  public value = '';
+
+  public focusInput() {
+    this.inputElement.nativeElement.focus();
+  }
 }

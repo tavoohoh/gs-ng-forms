@@ -1,15 +1,24 @@
 <ng-container>
   <div class="input separated-by-commas-input" (click)="focusInput()">
-    <span class="symbol">{{ prefix }}</span>
-    <input
-      #inputElement
-      class="input gs-form-field_separated_by_commas-input"
-      type="text"
-      [autocomplete]="'off'"
-      [id]="field.config.model"
-      [placeholder]="field.config.placeholder || field.config.label || field.config.model"
-      [(ngModel)]="value"
-      (keyup)=""/>
-    <span class="code">{{ suffix }}</span>
+    <!-- field values -->
+    <ul>
+      <li *ngFor="let item of fieldOption">
+        {{ item }}
+        <button type="button">&times;</button>
+      </li>
+    </ul>
+    <!-- input -->
+    <div class="item_input">
+      <input
+        #inputElement
+        class="input gs-form-field_separated_by_commas-input"
+        type="text"
+        [autocomplete]="'off'"
+        [id]="field.config.model"
+        [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+        [(ngModel)]="value"
+        (keyup)="value"/>
+        <button type="button">&times;</button>
+    </div>
   </div>
 </ng-container>
