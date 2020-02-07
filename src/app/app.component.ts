@@ -109,7 +109,10 @@ export class AppComponent implements OnInit {
       placeholder: 'separated by comma placeholder',
       validators: {
         [GFieldValidatorType.REQUIRED]: true
-      }
+      },
+      optionValues: [
+        'red', 'blue'
+      ]
     }),
 
     // textarea input

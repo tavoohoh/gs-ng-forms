@@ -1,10 +1,10 @@
 <ng-container>
   <div class="input separated-by-commas-input" (click)="focusInput()">
     <!-- field values -->
-    <ul>
-      <li *ngFor="let item of fieldOption">
+    <ul *ngIf="fieldOption">
+      <li *ngFor="let item of fieldOption; let i = index;">
         {{ item }}
-        <button type="button">&times;</button>
+        <button type="button" (click)="removeValue(i)">&times;</button>
       </li>
     </ul>
     <!-- input -->
@@ -17,8 +17,10 @@
         [id]="field.config.model"
         [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
         [(ngModel)]="value"
-        (keyup)="value"/>
-        <button type="button">&times;</button>
+        (keydown.enter)="disableEnter($event)"
+        (keydown)="removeLastValue($event)"
+        (keyup)="addValue($event)"/>
+        <button type="button" (click)="removeAll()">&times;</button>
     </div>
   </div>
 </ng-container>

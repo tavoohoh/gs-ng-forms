@@ -5,7 +5,8 @@ import {
   GFieldOptionValuesConfiguration,
   GFieldCountryFormmatConfiguration,
   GFieldBooleanConfiguration,
-  GFieldNumberConfiguration
+  GFieldNumberConfiguration,
+  GFieldOptionValuesStringArrayConfiguration
 } from './gs-forms.models';
 
 /**
@@ -122,5 +123,5 @@ export class GDatePickerField implements GField {
 export class GSeparatedByComma implements GField {
   selector = GFieldSelector.COMMA;
 
-  constructor(public config: GFieldConfiguration) { }
+  constructor(public config: GFieldOptionValuesStringArrayConfiguration) { }
 }
