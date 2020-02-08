@@ -61,6 +61,9 @@ export class GsSeparatedByCommaComponent implements OnChanges {
       }
 
       this.fieldOption.push(value);
+      const valuesAsString = this.fieldOption.join(',');
+      this.formGroup.controls[this.field.config.model].patchValue(valuesAsString);
+      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
       this.value = '';
       return;
     }
