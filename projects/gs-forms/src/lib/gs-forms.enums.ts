@@ -102,6 +102,7 @@ export enum GFieldValidatorType {
 
 export enum GFieldCountryCode {
   AR = 'ar',
+  BO = 'bo',
   BR = 'br',
   CA = 'ca',
   CL = 'cl',
