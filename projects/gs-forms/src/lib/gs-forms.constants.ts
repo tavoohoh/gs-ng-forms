@@ -27,6 +27,29 @@ export const LOCATION: { [key: string]: GLocation } = {
       precision: 2
     }
   },
+  bo: {
+    tax: [
+      {
+        name: 'RUC (Registro Único de Contribuyentes)',
+        value: 'RUC'
+      }
+    ],
+    country: {
+      name: 'Bolivia',
+      alpha2Code: 'BO'
+    },
+    phoneFormat: {
+      code: '591',
+      mask: '000 - 0000000'
+    },
+    currencyFormat: {
+      code: 'BOB',
+      symbol: 'Bs.',
+      thousands: '.',
+      decimal: ',',
+      precision: 2
+    }
+  },
   br: {
     tax: [
       {

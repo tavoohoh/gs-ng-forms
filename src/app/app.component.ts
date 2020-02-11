@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
 
   public formOptions: GFormOptions = {
     onErrorDisableSubmit: false,
-    country: GFieldCountryCode.CO,
+    country: GFieldCountryCode.BO,
     fieldValues: {
       checkbox: [
         {
