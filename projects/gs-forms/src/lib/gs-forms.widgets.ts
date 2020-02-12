@@ -6,7 +6,8 @@ import {
   GFieldCountryFormmatConfiguration,
   GFieldBooleanConfiguration,
   GFieldNumberConfiguration,
-  GFieldOptionValuesStringArrayConfiguration
+  GFieldOptionValuesStringArrayConfiguration,
+  GFieldFileConfiguration
 } from './gs-forms.models';
 
 /**
@@ -124,4 +125,13 @@ export class GSeparatedByComma implements GField {
   selector = GFieldSelector.COMMA;
 
   constructor(public config: GFieldOptionValuesStringArrayConfiguration) { }
+}
+
+/**
+ * Field File Generic widget
+ */
+export class GFieldFile implements GField {
+  selector = GFieldSelector.FILE;
+
+  constructor(public config: GFieldFileConfiguration) { }
 }

@@ -17,6 +17,7 @@ import {
   GDatePickerField,
   GFormOptions,
   GTaxDocumentTypeField,
+  GFieldFile,
   GSeparatedByComma
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
@@ -127,14 +128,15 @@ export class AppComponent implements OnInit {
 
     // password input
     new GPasswordField({
-      model: 'password',
-      label: 'Passoword',
+      model: 'Password',
+      label: 'Password',
       placeholder: 'Password input',
       validators: {
         [GFieldValidatorType.REQUIRED]: true,
         [GFieldValidatorType.MIN_LENGTH]: 8,
         [GFieldValidatorType.MAX_LENGTH]: 30,
       },
+      autocomplete: 'false',
     }),
 
     // email input
@@ -232,6 +234,18 @@ export class AppComponent implements OnInit {
         }
       ]
     }),
+    // file input
+    new GFieldFile({
+      model: 'file',
+      label: 'File type',
+      placeholder: 'Click to upload file',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+      urlService: 'https://dummy-services.com/upload',
+      method: 'post',
+      fileType: '.jpg,  .jpeg,   .png'
+    }),
 
     // dropdown input
     new GDropdownField({
@@ -294,6 +308,7 @@ export class AppComponent implements OnInit {
       },
       country: GFieldCountryCode.BR
     }),
+
   ];
 
   constructor(

@@ -1,0 +1,26 @@
+<ng-container [formGroup]="formGroup">
+
+    <div class="file-input" (click)="file.click()">
+        <p *ngIf="!name && !size">{{field.config.placeholder || field.config.label || field.config.model | translate}}</p>
+        <img *ngIf="img" [src]="img" [alt]="name">
+        <div class="background-file-information" *ngIf="name && size">              
+            <div class="name"><strong>Nombre:</strong> {{name}}</div>
+            <div class="size"><strong>Tamaño:</strong> {{size}}</div>
+        </div>
+
+        <div *ngIf="loading">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+
+        </div>
+    </div>
+
+    <input #file class="input" type="file" [id]="field.config.model" [formControlName]="field.config.model"
+        [accept]="field.config.fileType || null" (change)="onFileChange($event)" [hidden]="false">
+
+    <small *ngIf="field.config.fileType!=''">Solo aceptamos {{field.config.fileType}}</small>
+    
+</ng-container>

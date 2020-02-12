@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { GStyles } from './gs-forms.models';
 import { DigitOnlyDirective } from './gs-directives/digit-only/digit-only.directive';
@@ -18,6 +19,7 @@ import { GsPhoneInputComponent } from './gs-fields/phone-input/phone-input.compo
 import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
 import { GsTaxTypeComponent } from './gs-fields/tax-type/tax-type.component';
 import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/separated-by-comma.component';
+import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -37,13 +39,15 @@ import { GsFormsService } from './gs-forms.service';
     GsDatePickerComponent,
     GsTaxTypeComponent,
     GsSeparatedByCommaComponent,
+    GsFileInputComponent,
     GsFormsComponent
   ],
   imports: [
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     GsFormsService
@@ -63,6 +67,7 @@ import { GsFormsService } from './gs-forms.service';
     GsDatePickerComponent,
     GsTaxTypeComponent,
     GsSeparatedByCommaComponent,
+    GsFileInputComponent,
     GsFormsComponent
   ],
   schemas: [

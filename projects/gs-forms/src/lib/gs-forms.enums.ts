@@ -87,7 +87,14 @@ export enum GFieldSelector {
   /**
    * Separated by comma field
    */
-  COMMA = 'comma'
+  COMMA = 'comma',
+
+  /**
+   * Any type file
+   * For Example: .pdf, .doc, .xml, etc
+   *  <input type="file"/>  
+   */
+  FILE = 'file'
 }
 
 export enum GFieldValidatorType {

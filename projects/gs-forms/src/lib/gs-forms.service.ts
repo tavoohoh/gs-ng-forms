@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -5,6 +6,7 @@ import { GFormFields, GField, GFieldOptionValues } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
 import { TranslateService } from '@ngx-translate/core';
 import { VALIDATION_MESSAGES } from './gs-forms.constants';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class GsFormsService {
 
   constructor(
     private formBuilder: FormBuilder,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private http: HttpClient
   ) { }
 
   private buildErrors(validator: string, value: any): Validators {
@@ -153,5 +156,10 @@ export class GsFormsService {
 
     return mappedValues;
   }
+
+  public uploadFileServices(url: string, method: string, payload): Observable<any> {
+    return this.http[method](url, payload);
+  }
+
 
 }

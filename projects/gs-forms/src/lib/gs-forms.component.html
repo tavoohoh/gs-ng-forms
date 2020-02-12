@@ -34,6 +34,8 @@
           <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"
             [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
           </gs-separated-by-comma>
+          <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup">
+        </gs-file-input>
         </ng-container>
 
         <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
