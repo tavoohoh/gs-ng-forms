@@ -6,8 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { GsFormsService } from './gs-forms.service';
 import { GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
-import { GFormFields, GStyles, GFormOptions } from './gs-forms.models';
-
+import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
 
 @Component({
   selector: 'gs-form',
@@ -113,6 +112,15 @@ export class GsFormsComponent implements OnChanges {
 
   public getFieldError(field: any): string {
     return this.formsService.fieldError(this.formGroup.controls[field]);
+  }
+
+  public checkCondition(field: GField) {
+    if (!field.config.displayIf) {
+      return true;
+    }
+
+    return field.config.displayIf.model &&
+      this.formGroup.controls[field.config.displayIf.model].value === field.config.displayIf.hasValue;
   }
 
   /**

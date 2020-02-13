@@ -81,6 +81,10 @@ export class GFieldConfiguration {
   placeholder?: string;
   value?: string | number | boolean;
   autocomplete?: string;
+  displayIf?: {
+    model: string;
+    hasValue: any
+  } = null;
 }
 
 /**

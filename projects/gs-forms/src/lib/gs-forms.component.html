@@ -5,41 +5,43 @@
     [formGroup]="formGroup"
     (ngSubmit)="submit()">
     <div class="gs-form-body">
-      <div class="gs-form-field" *ngFor="let field of formFields">
-        <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
-          {{ field.config.label | translate }}
-        </label>
+      <ng-container  *ngFor="let field of formFields">
+        <div class="gs-form-field" *ngIf="checkCondition(field)">
+          <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
+            {{ field.config.label | translate }}
+          </label>
 
-        <ng-container [ngSwitch]="field.selector">
-          <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
-          <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
-          <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
-          <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
-          <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup"></gs-toggle>
-          <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"></gs-radio-button>
-          <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-currency-input>
-          <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-phone-input>
-          <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
-          <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
+          <ng-container [ngSwitch]="field.selector">
+            <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
+            <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
+            <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
+            <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
+            <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup"></gs-toggle>
+            <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"></gs-radio-button>
+            <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-currency-input>
+            <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-phone-input>
+            <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
+            <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
+            
+            <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-radio-button>
+            <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-checkbox>
+            <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-dropdown>
+            <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-separated-by-comma>
+          </ng-container>
           
-          <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-          </gs-radio-button>
-          <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-          </gs-checkbox>
-          <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-          </gs-dropdown>
-          <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-          </gs-separated-by-comma>
-        </ng-container>
-
-        <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
-          {{ getFieldError(field.config.model) | translate }}
-        </span>
-      </div>
+          <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
+            {{ getFieldError(field.config.model) | translate }}
+          </span>
+        </div>
+      </ng-container>
     </div>
 
     <div class="gs-form-actions">

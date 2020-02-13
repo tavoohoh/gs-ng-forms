@@ -45,26 +45,6 @@ export class AppComponent implements OnInit {
     onErrorDisableSubmit: false,
     country: GFieldCountryCode.BO,
     fieldValues: {
-      checkbox: [
-        {
-          value: true,
-          text: 'true'
-        },
-        {
-          value: false,
-          text: 'false'
-        }
-      ],
-      radio: [
-        {
-          value: true,
-          text: 'radio true'
-        },
-        {
-          value: false,
-          text: 'radio false'
-        }
-      ],
       dropdown: [
         {
           value: 'hola',
@@ -97,8 +77,7 @@ export class AppComponent implements OnInit {
       value: 'Hello text input',
       validators: {
         [GFieldValidatorType.MIN_LENGTH]: 2,
-        [GFieldValidatorType.MAX_LENGTH]: 30,
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.MAX_LENGTH]: 30
       },
     }),
 
@@ -107,12 +86,9 @@ export class AppComponent implements OnInit {
       model: 'comma',
       label: 'Separated by comma',
       placeholder: 'separated by comma placeholder',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
       optionValues: [
         'red', 'blue'
-      ]
+      ],
     }),
 
     // textarea input
@@ -120,9 +96,6 @@ export class AppComponent implements OnInit {
       model: 'textarea',
       label: 'Textarea',
       placeholder: 'Textarea input',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
     }),
 
     // password input
@@ -131,7 +104,6 @@ export class AppComponent implements OnInit {
       label: 'Passoword',
       placeholder: 'Password input',
       validators: {
-        [GFieldValidatorType.REQUIRED]: true,
         [GFieldValidatorType.MIN_LENGTH]: 8,
         [GFieldValidatorType.MAX_LENGTH]: 30,
       },
@@ -143,8 +115,7 @@ export class AppComponent implements OnInit {
       label: 'Email Address',
       placeholder: 'What is your email address?',
       validators: {
-        [GFieldValidatorType.EMAIL]: true,
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.EMAIL]: true
       },
     }),
 
@@ -156,8 +127,7 @@ export class AppComponent implements OnInit {
       value: 22,
       validators: {
         [GFieldValidatorType.MIN]: 18,
-        [GFieldValidatorType.MAX]: 50,
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.MAX]: 50
       }
     }),
 
@@ -166,9 +136,6 @@ export class AppComponent implements OnInit {
       model: 'datepicker',
       label: 'Date Picker',
       placeholder: 'datepicker',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
       value: '1992-09-15'
     }),
 
@@ -176,21 +143,13 @@ export class AppComponent implements OnInit {
     new GToggleField({
       model: 'toggle',
       label: 'Toggle',
-      value: true,
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      }
+      value: true
     }),
 
     // checkbox input
     new GCheckboxField({
       model: 'checkbox',
       label: 'Checkbox',
-      value: true,
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
-      externalOptions: true,
       optionValues: [
         {
           value: 'blue',
@@ -211,12 +170,7 @@ export class AppComponent implements OnInit {
     new GRadioField({
       model: 'radio',
       label: 'Radio',
-      value: false,
       placeholder: 'Radio placeholder',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
-      externalOptions: true,
       optionValues: [
         {
           value: 'blue',
@@ -237,17 +191,9 @@ export class AppComponent implements OnInit {
     new GDropdownField({
       model: 'dropdown',
       label: 'Dropdown',
-      // value: 'red',
       placeholder: 'Dropdown placeholder',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
       externalOptions: true,
       optionValues: [
-        {
-          value: 'blue',
-          text: 'blue'
-        },
         {
           value: 'yellow',
           text: 'yellow'
@@ -259,16 +205,42 @@ export class AppComponent implements OnInit {
       ]
     }),
 
+     // Show/hide dropdown
+     new GDropdownField({
+      model: 'showHideDropdown',
+      label: 'Show or hide the dynamic field',
+      placeholder: 'Dropdown placeholder',
+      optionValues: [
+        {
+          value: 'show',
+          text: 'Show dynamic input'
+        },
+        {
+          value: 'hide',
+          text: 'Hide dynamic input'
+        }
+      ]
+    }),
+
+    // dynamic input
+    new GTextField({
+      model: 'dynamicInput',
+      label: 'Dinamic input',
+      displayIf: {
+        model: 'showHideDropdown',
+        hasValue: 'show'
+      }
+    }),
+
     // currency input
     new GCurrencyField({
       model: 'currency',
       label: 'Currency',
-      value: 302300,
+      value: 30230000,
       placeholder: 'Currency',
       validators: {
         [GFieldValidatorType.MIN]: 100000,
-        [GFieldValidatorType.MAX]: 500000,
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.MAX]: 500000
       }
     }),
 
@@ -277,9 +249,6 @@ export class AppComponent implements OnInit {
       model: 'phone',
       label: 'Phone',
       placeholder: 'Phone',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false
-      },
       country: GFieldCountryCode.UY,
       editCountry: true
     }),
@@ -289,9 +258,6 @@ export class AppComponent implements OnInit {
       model: 'taxType',
       label: 'Tax type',
       placeholder: 'Tax type placeholder',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false
-      },
       country: GFieldCountryCode.BR
     }),
   ];
