@@ -314,6 +314,7 @@ export class AppComponent implements OnInit {
 
   ];
 
+
   constructor(
     private translate: TranslateService,
     private gsFormService: GsFormsService
