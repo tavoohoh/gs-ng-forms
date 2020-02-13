@@ -1,5 +1,16 @@
-import { Component, Input, Inject, HostBinding, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {
+  Component,
+  Input,
+  Inject,
+  HostBinding,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectorRef,
+  AfterViewChecked
+} from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,7 +24,7 @@ import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
   templateUrl: './gs-forms.component.html',
   styleUrls: ['./gs-forms.component.sass']
 })
-export class GsFormsComponent implements OnChanges {
+export class GsFormsComponent implements OnChanges, AfterViewChecked  {
   /**
    * Input: formOptions: GFormOptions
    *
@@ -81,6 +92,7 @@ export class GsFormsComponent implements OnChanges {
   constructor(
     private formsService: GsFormsService,
     private sanitizer: DomSanitizer,
+    private cdRef: ChangeDetectorRef,
     @Inject('customStyles') customStyles
   ) {
     this.customStyles = customStyles;
@@ -92,6 +104,10 @@ export class GsFormsComponent implements OnChanges {
       this.formGroup.updateValueAndValidity();
     }
     this.onFormChanges();
+  }
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
   }
 
   private onFormChanges(): void {
@@ -119,8 +135,24 @@ export class GsFormsComponent implements OnChanges {
       return true;
     }
 
-    return field.config.displayIf.model &&
-      this.formGroup.controls[field.config.displayIf.model].value === field.config.displayIf.hasValue;
+    if (this.formGroup.controls[field.config.displayIf.model].value === field.config.displayIf.hasValue) {
+      const validators = [];
+      const fields = field.config.validators;
+
+      for (const validator in fields) {
+        if (Object.prototype.hasOwnProperty.call(fields, validator) && fields[validator]) {
+          validators.push(this.formsService.buildErrors(validator, fields[validator]));
+        }
+      }
+
+      this.formGroup.controls[field.config.model].setValidators(Validators.compose(validators));
+      this.formGroup.controls[field.config.model].updateValueAndValidity();
+      return true;
+    }
+
+    this.formGroup.controls[field.config.model].clearValidators();
+    this.formGroup.controls[field.config.model].updateValueAndValidity();
+    return false;
   }
 
   /**

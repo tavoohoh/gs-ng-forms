@@ -145,7 +145,14 @@ export class AppComponent implements OnInit {
     new GToggleField({
       model: 'toggle',
       label: 'Toggle',
-      value: true
+      value: true,
+      displayIf: {
+        model: 'showHideDropdown',
+        hasValue: 'show'
+      },
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
     }),
 
     // checkbox input
@@ -188,13 +195,14 @@ export class AppComponent implements OnInit {
         }
       ]
     }),
+
     // file input
     new GFieldFile({
       model: 'file',
       label: 'File type',
       placeholder: 'Click to upload file',
       validators: {
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.REQUIRED]: false
       },
       api: {
         url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
@@ -222,8 +230,8 @@ export class AppComponent implements OnInit {
       ]
     }),
 
-     // Show/hide dropdown
-     new GDropdownField({
+    // Show/hide dropdown
+    new GDropdownField({
       model: 'showHideDropdown',
       label: 'Show or hide the dynamic field',
       placeholder: 'Dropdown placeholder',
@@ -246,6 +254,10 @@ export class AppComponent implements OnInit {
       displayIf: {
         model: 'showHideDropdown',
         hasValue: 'show'
+      },
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true,
+        [GFieldValidatorType.MIN_LENGTH]: 3
       }
     }),
 
