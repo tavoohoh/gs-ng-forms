@@ -1,0 +1,53 @@
+@import ../../gs-forms.styles
+
+.file-input
+  margin-bottom: .5rem
+  border-width: 2px
+  overflow: hidden
+  padding: 0
+
+  .file-image
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+    .file-path
+      display: grid
+      grid-template-columns: auto max-content
+      background-color: rgba(0, 0, 0, .3)
+      padding: 4px 1rem
+      border-radius: 12px
+
+      .file-name
+        max-width: 100%
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+        text-align: right
+
+  .inner-margin, .inner-padding
+    display: block
+    color: var(--ui-primary-button-color, $color-white)
+    * 
+      color: var(--ui-primary-button-color, $color-white)
+
+  .inner-margin
+    margin: 1rem
+  
+  .inner-padding
+    padding: .8rem
+
+.file-accept, .file-error
+  display: block
+  text-align: right
+
+.file-accept
+  font-size: 80%
+
+.file-error
+  font-size: 70%
+  margin-bottom: 4px
+  color: $red
+
+.hiddenInput
+  display: none

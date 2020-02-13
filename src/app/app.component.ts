@@ -17,6 +17,7 @@ import {
   GDatePickerField,
   GFormOptions,
   GTaxDocumentTypeField,
+  GFieldFile,
   GSeparatedByComma
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
@@ -100,13 +101,14 @@ export class AppComponent implements OnInit {
 
     // password input
     new GPasswordField({
-      model: 'password',
-      label: 'Passoword',
+      model: 'Password',
+      label: 'Password',
       placeholder: 'Password input',
       validators: {
         [GFieldValidatorType.MIN_LENGTH]: 8,
         [GFieldValidatorType.MAX_LENGTH]: 30,
       },
+      autocomplete: 'false',
     }),
 
     // email input
@@ -143,7 +145,14 @@ export class AppComponent implements OnInit {
     new GToggleField({
       model: 'toggle',
       label: 'Toggle',
-      value: true
+      value: true,
+      displayIf: {
+        model: 'showHideDropdown',
+        hasValue: 'show'
+      },
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
     }),
 
     // checkbox input
@@ -187,6 +196,22 @@ export class AppComponent implements OnInit {
       ]
     }),
 
+    // file input
+    new GFieldFile({
+      model: 'file',
+      label: 'File type',
+      placeholder: 'Click to upload file',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+      api: {
+        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
+        method: 'post',
+        fileParamName: 'file'
+      },
+      accept: '.jpg, .jpeg, .png'
+    }),
+
     // dropdown input
     new GDropdownField({
       model: 'dropdown',
@@ -205,8 +230,8 @@ export class AppComponent implements OnInit {
       ]
     }),
 
-     // Show/hide dropdown
-     new GDropdownField({
+    // Show/hide dropdown
+    new GDropdownField({
       model: 'showHideDropdown',
       label: 'Show or hide the dynamic field',
       placeholder: 'Dropdown placeholder',
@@ -229,6 +254,10 @@ export class AppComponent implements OnInit {
       displayIf: {
         model: 'showHideDropdown',
         hasValue: 'show'
+      },
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true,
+        [GFieldValidatorType.MIN_LENGTH]: 3
       }
     }),
 
@@ -261,7 +290,9 @@ export class AppComponent implements OnInit {
       placeholder: 'Tax type placeholder',
       country: GFieldCountryCode.BR
     }),
+
   ];
+
 
   constructor(
     private translate: TranslateService,
@@ -281,6 +312,6 @@ export class AppComponent implements OnInit {
   }
 
   public onFormChange(form: FormGroup) {
-    console.log(form);
+    // console.log(form);
   }
 }

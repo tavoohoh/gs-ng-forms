@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -5,6 +6,7 @@ import { GFormFields, GField, GFieldOptionValues } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
 import { TranslateService } from '@ngx-translate/core';
 import { VALIDATION_MESSAGES } from './gs-forms.constants';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,11 @@ export class GsFormsService {
 
   constructor(
     private formBuilder: FormBuilder,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private http: HttpClient
   ) { }
 
-  private buildErrors(validator: string, value: any): Validators {
+  public buildErrors(validator: string, value: any): Validators {
     switch (validator) {
       case GFieldValidatorType.MIN:
         return Validators.min(value);
@@ -127,6 +130,10 @@ export class GsFormsService {
     return message;
   }
 
+  public getLang(): string {
+    return this.translateService.getDefaultLang();
+  }
+
   /**
    * @description
    * Convert an array of values `Array<{[key: string]: any}> | Array<{[key: string]: any, [key: string]: any}>`
@@ -153,5 +160,13 @@ export class GsFormsService {
 
     return mappedValues;
   }
+
+  public uploadFileServices(url: string, method: string, file: File, paramName: string): Observable<Response> {
+    const formData = new FormData();
+    formData.append(paramName, file);
+
+    return this.http[method](url, formData);
+  }
+
 
 }

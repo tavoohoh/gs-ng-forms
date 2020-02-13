@@ -1,0 +1,42 @@
+<ng-container [formGroup]="formGroup">
+
+  <div class="button file-input" (click)="file.click()">
+    <!-- input UI -->
+    <ng-container *ngIf="selectedFile">
+      <span class="file-image inner-padding" [style.background-image]="'url(' + selectedFile.path + ')'">
+        <span class="file-path">
+          <span class="file-name">
+            {{ selectedFile.name }}
+          </span>
+          <span class="file-type">
+            {{ selectedFile.type }}
+          </span>
+        </span>
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="!selectedFile">
+      <span class="inner-margin">
+        {{ field.config.placeholder || field.config.label || field.config.model | translate }}
+      </span>
+    </ng-container>
+  </div>
+
+  <span class="file-error">
+    {{ errorText }}
+  </span>
+
+  <span class="file-accept" *ngIf="field.config.accept">
+    {{ supportedFilesText }}: {{ field.config.accept }}
+  </span>
+
+  <input
+    #file
+    class="hiddenInput"
+    type="file"
+    [id]="field.config.model"
+    [accept]="field.config.accept || null"
+    (change)="onFileChange($event)"
+  />
+
+</ng-container>
