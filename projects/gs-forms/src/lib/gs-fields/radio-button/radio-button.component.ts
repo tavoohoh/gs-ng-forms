@@ -19,8 +19,10 @@ export class GsRadioButtonComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.fieldOption && changes.fieldOption.currentValue) {
       this.fieldOption = changes.fieldOption.currentValue;
+      console.log(this.fieldOption);
     } else {
       this.fieldOption = this.field.config.optionValues;
+      console.log(this.fieldOption);
     }
   }
 }

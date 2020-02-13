@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
       ]
     },
     layout: {
-      columns: 'repeat(2, 1fr)',
+      columns: 'repeat(3, 1fr)',
       innerPadding: '6px'
     },
     context: {
@@ -233,6 +233,7 @@ export class AppComponent implements OnInit {
     }),
 
     // currency input
+    // TODO (Gustavo): when default value does not include decimal and de formatter requires it, add decimals automatic
     new GCurrencyField({
       model: 'currency',
       label: 'Currency',

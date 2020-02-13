@@ -104,7 +104,7 @@ export class GsCurrencyInputComponent implements OnChanges {
     const controlValue = `${thousands}${decimals ? '.' + decimals : ''}`;
 
     this.value = formattedThousands + (decimals ? this.decimalSeparator + decimals : '');
-    
+
     setTimeout(() => {
       this.formGroup.controls[this.field.config.model].patchValue(Number(controlValue));
       this.formGroup.controls[this.field.config.model].updateValueAndValidity();
