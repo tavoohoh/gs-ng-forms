@@ -131,12 +131,13 @@ export class GFieldCountryFormmatConfiguration extends GFieldConfiguration {
  * Field configuration including country option for `GCurrencyField` and `GPhoneField`
  */
 export class GFieldFileConfiguration extends GFieldConfiguration {
-  urlService?: string;
-  method?:string;
-  fileType?: string;
+  api: {
+    url: string;
+    method: string;
+    fileParamName: string;
+  };
+  accept?: string;
 }
-
-
 
 /**
  * Field interface
