@@ -1,28 +1,53 @@
 @import ../../gs-forms.styles
 
 .file-input
-    border: 3px solid var(--color-primary, #4588fd)
-    border-radius: var(--ui-primary-button-border-radius, 6px)
-    cursor: pointer
-    margin: 10px 0
-    height: 80px
-    display: flex
-    justify-content: center
-    align-items: center
+  margin-bottom: .5rem
+  border-width: 2px
+  overflow: hidden
+  padding: 0
 
-    &:hover
-        opacity: 0.7
+  .file-image
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
 
-    img
-        object-fit: scale-down
-        width: 8%
-        height: 80%
-        
-.background-file-information
-    padding: var(--ui-primary-button-padding, $ui-primary-button-padding)
-    width: 75%
+    .file-path
+      display: grid
+      grid-template-columns: auto max-content
+      background-color: rgba(0, 0, 0, .3)
+      padding: 4px 1rem
+      border-radius: 12px
 
-    .name
+      .file-name
+        max-width: 100%
         text-overflow: ellipsis
-        white-space: nowrap
         overflow: hidden
+        white-space: nowrap
+        text-align: right
+
+  .inner-margin, .inner-padding
+    display: block
+    color: var(--ui-primary-button-color, $color-white)
+    * 
+      color: var(--ui-primary-button-color, $color-white)
+
+  .inner-margin
+    margin: 1rem
+  
+  .inner-padding
+    padding: .8rem
+
+.file-accept, .file-error
+  display: block
+  text-align: right
+
+.file-accept
+  font-size: 80%
+
+.file-error
+  font-size: 70%
+  margin-bottom: 4px
+  color: $red
+
+.hiddenInput
+  display: none

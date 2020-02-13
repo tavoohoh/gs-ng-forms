@@ -240,11 +240,14 @@ export class AppComponent implements OnInit {
       label: 'File type',
       placeholder: 'Click to upload file',
       validators: {
-        [GFieldValidatorType.REQUIRED]: false
+        [GFieldValidatorType.REQUIRED]: true
       },
-      urlService: 'https://dummy-services.com/upload',
-      method: 'post',
-      fileType: '.jpg,  .jpeg,   .png'
+      api: {
+        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
+        method: 'post',
+        fileParamName: 'file'
+      },
+      accept: '.jpg, .jpeg, .png'
     }),
 
     // dropdown input
@@ -329,6 +332,6 @@ export class AppComponent implements OnInit {
   }
 
   public onFormChange(form: FormGroup) {
-    console.log(form);
+    // console.log(form);
   }
 }

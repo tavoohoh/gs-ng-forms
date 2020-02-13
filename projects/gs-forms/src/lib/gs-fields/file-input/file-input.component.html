@@ -1,26 +1,42 @@
 <ng-container [formGroup]="formGroup">
 
-    <div class="file-input" (click)="file.click()">
-        <p *ngIf="!name && !size">{{field.config.placeholder || field.config.label || field.config.model | translate}}</p>
-        <img *ngIf="img" [src]="img" [alt]="name">
-        <div class="background-file-information" *ngIf="name && size">              
-            <div class="name"><strong>Nombre:</strong> {{name}}</div>
-            <div class="size"><strong>Tamaño:</strong> {{size}}</div>
-        </div>
+  <div class="button file-input" (click)="file.click()">
+    <!-- input UI -->
+    <ng-container *ngIf="selectedFile">
+      <span class="file-image inner-padding" [style.background-image]="'url(' + selectedFile.path + ')'">
+        <span class="file-path">
+          <span class="file-name">
+            {{ selectedFile.name }}
+          </span>
+          <span class="file-type">
+            {{ selectedFile.type }}
+          </span>
+        </span>
+      </span>
+    </ng-container>
 
-        <div *ngIf="loading">
-            <div class="spinner">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-              </div>
+    <ng-container *ngIf="!selectedFile">
+      <span class="inner-margin">
+        {{ field.config.placeholder || field.config.label || field.config.model | translate }}
+      </span>
+    </ng-container>
+  </div>
 
-        </div>
-    </div>
+  <span class="file-error">
+    {{ errorText }}
+  </span>
 
-    <input #file class="input" type="file" [id]="field.config.model" [formControlName]="field.config.model"
-        [accept]="field.config.fileType || null" (change)="onFileChange($event)" [hidden]="false">
+  <span class="file-accept" *ngIf="field.config.accept">
+    {{ supportedFilesText }}: {{ field.config.accept }}
+  </span>
 
-    <small *ngIf="field.config.fileType!=''">Solo aceptamos {{field.config.fileType}}</small>
-    
+  <input
+    #file
+    class="hiddenInput"
+    type="file"
+    [id]="field.config.model"
+    [accept]="field.config.accept || null"
+    (change)="onFileChange($event)"
+  />
+
 </ng-container>

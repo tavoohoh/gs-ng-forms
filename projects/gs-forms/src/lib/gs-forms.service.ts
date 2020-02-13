@@ -130,6 +130,10 @@ export class GsFormsService {
     return message;
   }
 
+  public getLang(): string {
+    return this.translateService.getDefaultLang();
+  }
+
   /**
    * @description
    * Convert an array of values `Array<{[key: string]: any}> | Array<{[key: string]: any, [key: string]: any}>`
@@ -157,8 +161,12 @@ export class GsFormsService {
     return mappedValues;
   }
 
-  public uploadFileServices(url: string, method: string, payload): Observable<any> {
-    return this.http[method](url, payload);
+  public uploadFileServices(url: string, method: string, file: File, paramName: string): Observable<Response> {
+    const formData = new FormData();
+
+    formData.append(paramName, file);
+
+    return this.http[method](url, formData);
   }
 
 
