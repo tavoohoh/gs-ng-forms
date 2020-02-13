@@ -19,7 +19,7 @@ export class GsFormsService {
     private http: HttpClient
   ) { }
 
-  private buildErrors(validator: string, value: any): Validators {
+  public buildErrors(validator: string, value: any): Validators {
     switch (validator) {
       case GFieldValidatorType.MIN:
         return Validators.min(value);
