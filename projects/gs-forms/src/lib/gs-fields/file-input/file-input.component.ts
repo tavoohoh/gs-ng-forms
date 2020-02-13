@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import { Component, Input, OnInit } from '@angular/core';
-=======
-import { Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
->>>>>>> origin/feature/added-input-file
 import { FormGroup } from '@angular/forms';
 
 import { GFieldFile } from './../../gs-forms.widgets';
@@ -14,11 +9,7 @@ import { GsFormsService } from '../../gs-forms.service';
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.sass']
 })
-<<<<<<< HEAD
 export class GsFileInputComponent implements OnInit {
-=======
-export class GsFileInputComponent {
->>>>>>> origin/feature/added-input-file
   @Input() public field: GFieldFile;
   @Input() public formGroup: FormGroup;
 
