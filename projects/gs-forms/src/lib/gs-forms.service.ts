@@ -163,7 +163,6 @@ export class GsFormsService {
 
   public uploadFileServices(url: string, method: string, file: File, paramName: string): Observable<Response> {
     const formData = new FormData();
-
     formData.append(paramName, file);
 
     return this.http[method](url, formData);
