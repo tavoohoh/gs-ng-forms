@@ -211,16 +211,20 @@ interface GInputStyle {
 
 |                           |                                                              |
 |---------------------------|--------------------------------------------------------------|
-| GTextareaField            | Any text field with string value                             |
-| GPasswordField            | A password field with an eye                                 |
+| GTextField                | Any text field with string value                             |
+| GTextareaField            | Textarea field                                               |
+| GPasswordField            | Password field with an eye                                   |
 | GNumberField              | Any numeric value. For currency values use `GCurrencyField`  |
 | GToggleField              | Any boolean value                                            |
 | GCheckboxField            | Multiple select boolean values                               |
 | GRadioField               | Multiple boolean values                                      |
 | GDropdownField            | Multiple values                                              |
+| GTaxDocumentTypeField     | Tax document type selector                                   |
 | GCurrencyField            | Any currency value                                           |
 | GPhoneField               | Any phone value                                              |
 | GDatePickerField          | Any date value                                               |
+| GSeparatedByComma         | Separated by comma string values                             |
+| GFieldFile                | File field with upload logic using multipart form            |
 
 More fields are yet to come, for fields properties please go to
 [gs-form fields options](#gs-form-fields-options)
@@ -231,19 +235,106 @@ More fields are yet to come, for fields properties please go to
 type GFormFields = Array<GField>;
 
 interface GFieldOptions {
+  /**
+   * form control name 
+   */
   model: string;
+  /**
+   * Field validators
+   *
+   * Available validators are:
+   *   [GFieldValidatorType.MIN]?: number;
+   *   [GFieldValidatorType.MAX]?: number;
+   *   [GFieldValidatorType.REQUIRED]?: boolean;
+   *   [GFieldValidatorType.EMAIL]?: boolean;
+   *   [GFieldValidatorType.MIN_LENGTH]?: number;
+   *   [GFieldValidatorType.MAX_LENGTH]?: number;
+   *   [GFieldValidatorType.PATTERN]?: string | RegExp;
+   *
+   */
   validators?: GFieldValidators;
+  /**
+   * Field label. To hide label set its value to null
+   */
   label?: string;
+  /**
+   * Field placeholder. If not specified will use label or model
+   */
   placeholder?: string;
+  /**
+   * Field default value
+   */
   value?: string | number | boolean;
-  /* Only `GRadioField` and `GDropdownField` */
+  /**
+   * Set the `autocomplete` attribute of an `input`
+   */
+  autocomplete?: string;
+  /**
+   * Dynamically display/hide this field by setting this property
+   */
+  displayIf?: {
+    /**
+     * Model that will be evaluated
+     */
+    model: string;
+    /**
+     * Display this field if that model has this value
+     */
+    hasValue: any
+  };
+  /**
+   * Field value options
+   * 
+   * Only `GRadioField` and `GDropdownField`
+   */
   optionValues: Array<{
     value: string | number | boolean;
     text: string;
   }>;
-  /* Only for `GCurrencyField` and `GPhoneField` */
+  /**
+   * If true this field will replace its `optionValues` with one passed in `FormOptions`
+   *
+   * Only `GRadioField` and `GDropdownField`
+   */
+  externalOptions?: boolean;
+  /**
+   * Country configuration
+   * Only for `GCurrencyField` and `GPhoneField`
+   */
   country: GFieldCountryCode;
+  /**
+   * If true the country can be changed
+   * 
+   * Only for `GPhoneField`
+   */
   editCountry?: boolean;
+  /**
+   * Set `GFieldFile` configurations
+   * 
+   * Only for `GFieldFile`
+   */
+  api: {    
+    /**
+     * Url to make the http request
+     */
+    url: string;
+    /**
+     * Http method for the request
+     * One of: 'post' || 'put'
+     */
+    method: string;
+    /**
+     * Property name in multipart form
+     */
+    fileParamName: string;
+  };
+  /**
+   * Supported file extensions
+   * For example: '.pdf, .doc, .xml, etc'
+   * 
+   * Only for `GFieldFile`
+   */
+  accept?: string;
 };
 ```
 
@@ -251,13 +342,23 @@ interface GFieldOptions {
 ```ts
 interface GFormOptions {
   /**
-   * Disable submit if the form has errors
+   * Pass any argument to the form:
+   *
+   * @example
+   * <form [autocomplete]="yourOptions.autocomplete">
+   */
+  autocomplete?: string;
+  /**
+   * Disable submit if the form has errors.
    */
   onErrorDisableSubmit?: boolean;
   /**
    * Set default country using `GFieldCountryCode` enum form gs-field
    */
   country?: GFieldCountryCode;
+  /**
+   * Object containing options for fields like `GDropdownField` where `[key: string]` is the model name of the `GField`.
+   */
   fieldValues?: {
     [key: string]: GFieldOptionValues;
   };

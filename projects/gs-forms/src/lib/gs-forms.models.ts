@@ -75,14 +75,51 @@ export interface GFieldValidators {
  * Default field configuration
  */
 export class GFieldConfiguration {
+  /**
+   * form control name
+   */
   model: string;
+  /**
+   * Field validators
+   *
+   * Available validators are:
+   *   [GFieldValidatorType.MIN]?: number;
+   *   [GFieldValidatorType.MAX]?: number;
+   *   [GFieldValidatorType.REQUIRED]?: boolean;
+   *   [GFieldValidatorType.EMAIL]?: boolean;
+   *   [GFieldValidatorType.MIN_LENGTH]?: number;
+   *   [GFieldValidatorType.MAX_LENGTH]?: number;
+   *   [GFieldValidatorType.PATTERN]?: string | RegExp;
+   *
+   */
   validators?: GFieldValidators;
+  /**
+   * Field label. To hide label set its value to null
+   */
   label?: string;
+  /**
+   * Field placeholder. If not specified will use label or model
+   */
   placeholder?: string;
+  /**
+   * Field default value
+   */
   value?: string | number | boolean;
+  /**
+   * Set the `autocomplete` attribute of an `input`
+   */
   autocomplete?: string;
+  /**
+   * Dynamically display/hide this field by setting this property
+   */
   displayIf?: {
+    /**
+     * Model that will be evaluated
+     */
     model: string;
+    /**
+     * Display this field if that model has this value
+     */
     hasValue: any
   } = null;
 }
@@ -91,6 +128,9 @@ export class GFieldConfiguration {
  * Field configuration for only string fields
  */
 export class GFieldStringConfiguration extends GFieldConfiguration {
+  /**
+   * Field default value
+   */
   value?: boolean;
 }
 
@@ -98,6 +138,9 @@ export class GFieldStringConfiguration extends GFieldConfiguration {
  * Field configuration for only number fields
  */
 export class GFieldNumberConfiguration extends GFieldConfiguration {
+  /**
+   * Field default value
+   */
   value?: number;
 }
 
@@ -105,6 +148,9 @@ export class GFieldNumberConfiguration extends GFieldConfiguration {
  * Field configuration for only boolean fields
  */
 export class GFieldBooleanConfiguration extends GFieldConfiguration {
+  /**
+   * Field default value
+   */
   value?: boolean;
 }
 
@@ -112,7 +158,13 @@ export class GFieldBooleanConfiguration extends GFieldConfiguration {
  * Field configuration including option values for `GRadioField` and `GDropdownField`
  */
 export class GFieldOptionValuesConfiguration extends GFieldConfiguration {
+  /**
+   * Field value options
+   */
   optionValues?: GFieldOptionValues;
+  /**
+   * If true this field will replace its `optionValues` with one passed in `FormOptions`
+   */
   externalOptions?: boolean;
 }
 
@@ -120,6 +172,9 @@ export class GFieldOptionValuesConfiguration extends GFieldConfiguration {
  * Field configuration including option values for `GSeparatedByComma`
  */
 export class GFieldOptionValuesStringArrayConfiguration extends GFieldConfiguration {
+  /**
+   * Field value options
+   */
   optionValues?: Array<string>;
 }
 
@@ -127,19 +182,42 @@ export class GFieldOptionValuesStringArrayConfiguration extends GFieldConfigurat
  * Field configuration including country option for `GCurrencyField` and `GPhoneField`
  */
 export class GFieldCountryFormmatConfiguration extends GFieldConfiguration {
+  /**
+   * Country configuration
+   */
   country?: GFieldCountryCode;
+  /**
+   * If true the country can be changed
+   */
   editCountry?: boolean;
 }
 
 /**
- * Field configuration including country option for `GCurrencyField` and `GPhoneField`
+ * Field configuration for `GFieldFile`
  */
 export class GFieldFileConfiguration extends GFieldConfiguration {
+  /**
+   * Set `GFieldFile` configurations
+   */
   api: {
+    /**
+     * Url to make the http request
+     */
     url: string;
+    /**
+     * Http method for the request
+     * One of: 'post' || 'put'
+     */
     method: string;
+    /**
+     * Property name in multipart form
+     */
     fileParamName: string;
   };
+  /**
+   * Supported file extensions
+   * For example: '.pdf, .doc, .xml, etc'
+   */
   accept?: string;
 }
 

@@ -92,7 +92,7 @@ export enum GFieldSelector {
   /**
    * Any type file
    * For Example: .pdf, .doc, .xml, etc
-   *  <input type="file"/>  
+   * <input type="file"/>
    */
   FILE = 'file'
 }
