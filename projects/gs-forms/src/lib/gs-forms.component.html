@@ -6,7 +6,11 @@
     (ngSubmit)="submit()">
     <div class="gs-form-body">
       <ng-container  *ngFor="let field of formFields">
-        <div class="gs-form-field" *ngIf="checkCondition(field)">
+        <div 
+          *ngIf="checkCondition(field)"
+          class="gs-form-field" 
+          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
+          [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
           <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
             {{ field.config.label | translate }}
           </label>

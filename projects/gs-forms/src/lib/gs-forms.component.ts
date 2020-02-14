@@ -130,6 +130,10 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
     return this.formsService.fieldError(this.formGroup.controls[field]);
   }
 
+  public sanitizeStyle(value: string) {
+    return this.sanitizer.bypassSecurityTrustStyle(value);
+  }
+
   public checkCondition(field: GField) {
     if (!field.config.displayIf) {
       return true;

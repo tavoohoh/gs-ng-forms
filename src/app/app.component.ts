@@ -97,6 +97,7 @@ export class AppComponent implements OnInit {
       model: 'textarea',
       label: 'Textarea',
       placeholder: 'Textarea input',
+      gridColumn: '1 / 4'
     }),
 
     // password input
@@ -209,7 +210,8 @@ export class AppComponent implements OnInit {
         method: 'post',
         fileParamName: 'file'
       },
-      accept: '.jpg, .jpeg, .png'
+      accept: '.jpg, .jpeg, .png',
+      gridColumn: '1'
     }),
 
     // dropdown input

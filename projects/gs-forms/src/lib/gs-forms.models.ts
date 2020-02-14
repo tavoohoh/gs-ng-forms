@@ -122,6 +122,20 @@ export class GFieldConfiguration {
      */
     hasValue: any
   } = null;
+  /**
+   * Field position on the grid columns
+   * Has to be a valid value for css `grid-column` attribute
+   *
+   * For example: '1 / 3' | '2'
+   */
+  gridColumn?: string;
+  /**
+   * Field position on the grid rows
+   * Has to be a valid value for css `grid-row` attribute
+   *
+   * For example: '1 / 3' | '2'
+   */
+  gridRow?: string;
 }
 
 /**
