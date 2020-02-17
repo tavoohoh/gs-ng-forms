@@ -87,9 +87,7 @@ export class AppComponent implements OnInit {
       model: 'comma',
       label: 'Separated by comma',
       placeholder: 'separated by comma placeholder',
-      optionValues: [
-        'red', 'blue'
-      ],
+      value: 'red, blue'
     }),
 
     // textarea input
@@ -307,10 +305,29 @@ export class AppComponent implements OnInit {
 
     // map an array of values to a valid form field option values
     const mappedValues = this.gsFormService.mapFieldOptionValues(this.toMapOptions, 'value', 'key');
+    const toPatchValues = {
+      text: 'text patched',
+      comma: 'patched, values',
+      textarea: 'textarea patched',
+      Password: 'passwordpatched',
+      email: 'email@patched.com',
+      age: 40,
+      datepicker: '1992-09-30',
+      toggle: true,
+      checkbox: true,
+      radio: 'yellow',
+      dropdown: 'hola',
+      showHideDropdown: 'show',
+      dynamicInput: 'dinamic input patched',
+      currency: 20000000,
+      phone: '123121231231',
+      taxType: 'CPF'
+    };
+    this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }
 
   public onSubmit(form: any) {
-    console.log('form', form);
+    console.log('form', form.value);
   }
 
   public onFormChange(form: FormGroup) {

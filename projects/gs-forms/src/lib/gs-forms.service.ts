@@ -134,6 +134,13 @@ export class GsFormsService {
     return this.translateService.getDefaultLang();
   }
 
+  public uploadFileServices(url: string, method: string, file: File, paramName: string): Observable<Response> {
+    const formData = new FormData();
+    formData.append(paramName, file);
+
+    return this.http[method](url, formData);
+  }
+
   /**
    * @description
    * Convert an array of values `Array<{[key: string]: any}> | Array<{[key: string]: any, [key: string]: any}>`
@@ -161,11 +168,23 @@ export class GsFormsService {
     return mappedValues;
   }
 
-  public uploadFileServices(url: string, method: string, file: File, paramName: string): Observable<Response> {
-    const formData = new FormData();
-    formData.append(paramName, file);
+  /**
+   * @description
+   * Patch form values
+   *
+   * @param formFields your `GFormFields`
+   * @param formValues an object of values like `FormGroup` value.
+   * The keys of `formValues` most match the model name of your `GFields`
+   */
+  public patchFormValues(formFields: GFormFields, formValues: {[key: string]: any}): GFormFields {
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < formFields.length; i++) {
+      if (formValues[formFields[i].config.model]) {
+        formFields[i].config.value = formValues[formFields[i].config.model];
+      }
+    }
 
-    return this.http[method](url, formData);
+    return formFields;
   }
 
 

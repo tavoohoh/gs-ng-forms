@@ -26,7 +26,7 @@
             <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup"></gs-datepicker>
             <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
             <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
-
+            <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
@@ -37,9 +37,6 @@
             <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
             </gs-dropdown>
-            <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"
-              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-            </gs-separated-by-comma>
           </ng-container>
           
           <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">

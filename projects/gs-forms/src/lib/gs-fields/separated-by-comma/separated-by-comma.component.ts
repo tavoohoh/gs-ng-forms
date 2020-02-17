@@ -11,17 +11,15 @@ import { GFieldValidatorType } from '../../gs-forms.enums';
 export class GsSeparatedByCommaComponent implements OnChanges {
   @Input() public field: GSeparatedByComma;
   @Input() public formGroup: FormGroup;
-  @Input() public fieldOption: Array<string> = [];
+  public fieldOption: Array<string> = [];
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
   public fieldValidatorType = GFieldValidatorType;
   public value = '';
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldOption && changes.fieldOption.currentValue) {
-      this.fieldOption = changes.fieldOption.currentValue;
-    } else {
-      this.fieldOption = this.field.config.optionValues || [];
+    if (changes.field && changes.field.currentValue && changes.field.currentValue.config.value) {
+      this.fieldOption = changes.field.currentValue.config.value.split(',');
     }
   }
 

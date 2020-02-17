@@ -183,16 +183,6 @@ export class GFieldOptionValuesConfiguration extends GFieldConfiguration {
 }
 
 /**
- * Field configuration including option values for `GSeparatedByComma`
- */
-export class GFieldOptionValuesStringArrayConfiguration extends GFieldConfiguration {
-  /**
-   * Field value options
-   */
-  optionValues?: Array<string>;
-}
-
-/**
  * Field configuration including country option for `GCurrencyField` and `GPhoneField`
  */
 export class GFieldCountryFormmatConfiguration extends GFieldConfiguration {
