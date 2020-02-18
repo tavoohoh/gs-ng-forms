@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 import { GDatePickerField } from '../../gs-forms.widgets';
 import { GFieldValidatorType } from '../../gs-forms.enums';
+import { GsFormsService } from '../../gs-forms.service';
 
 const MONTHS = {
   en: [
@@ -77,7 +78,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
 
   public fieldValidatorType = GFieldValidatorType;
   public dateValue: string;
-  public lang = 'en';
+  public lang: string;
   public months: Array<string>;
   public weekdays: Array<string>;
 
@@ -99,7 +100,12 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
   public yearMultiplier = 0;
   public showDatePickerSelector = false;
 
+  constructor(
+    private gsFormService: GsFormsService
+  ) {}
+
   ngOnInit() {
+    this.lang = this.gsFormService.getLang() || 'en';
     this.months = MONTHS[this.lang];
     this.weekdays = WEEKDAYS[this.lang];
   }

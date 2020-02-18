@@ -94,7 +94,13 @@ export enum GFieldSelector {
    * For Example: .pdf, .doc, .xml, etc
    * <input type="file"/>
    */
-  FILE = 'file'
+  FILE = 'file',
+
+  /**
+   * Divider
+   * This is not a field, it is a component to divide your form in sections
+   */
+  DIVIDER = 'divider'
 }
 
 export enum GFieldValidatorType {

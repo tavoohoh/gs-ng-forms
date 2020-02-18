@@ -225,6 +225,7 @@ interface GInputStyle {
 | GDatePickerField          | Any date value                                               |
 | GSeparatedByComma         | Separated by comma string values                             |
 | GFieldFile                | File field with upload logic using multipart form            |
+| GDivider                  | This is not a field, just a divider                          |
 
 More fields are yet to come, for fields properties please go to
 [gs-form fields options](#gs-form-fields-options)
@@ -349,6 +350,30 @@ interface GFieldOptions {
    * For example: '1 / 3' | '2'
    */
   gridRow?: string;
+  /**
+   * Use the divider as a section headline with a title
+   * 
+   * Only for `GDivider`
+   */
+  seccionName?: string;
+  /**
+   * Divider padding
+   * 
+   * Only for `GDivider`
+   */
+  padding?: string;
+  /**
+   * Divider padding
+   * 
+   * Only for `GDivider`
+   */
+  dividerColor?: string;
+  /**
+   * If true the divider horizontal line wont be showed
+   * 
+   * Only for `GDivider`
+   */
+  hideLine?: boolean;
 };
 ```
 

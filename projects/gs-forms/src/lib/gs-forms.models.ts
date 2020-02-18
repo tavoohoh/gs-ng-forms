@@ -225,12 +225,32 @@ export class GFieldFileConfiguration extends GFieldConfiguration {
   accept?: string;
 }
 
+export interface GFieldDividerConfiguration extends GFieldConfiguration {
+  /**
+   * Use the divider as a section headline with a title
+   */
+  seccionName?: string;
+  /**
+   * Divider padding
+   */
+  padding?: string;
+  /**
+   * Divider padding
+   */
+  dividerColor?: string;
+  /**
+   * If true the divider horizontal line wont be showed
+   */
+  hideLine?: boolean;
+}
+
 /**
  * Field interface
  */
 export interface GField {
   selector: GFieldSelector;
-  config: GFieldConfiguration | GFieldOptionValuesConfiguration | GFieldCountryFormmatConfiguration;
+  config: GFieldConfiguration | GFieldOptionValuesConfiguration | GFieldCountryFormmatConfiguration | GFieldDividerConfiguration;
+  notWidget?: boolean;
 }
 
 /**

@@ -1,0 +1,7 @@
+<section class="gs-divider" [style.padding]="divider.config.padding">
+  <span class="gs-divider-name" *ngIf="divider.config.seccionName">
+    {{ divider.config.seccionName | translate }}
+  </span>
+  
+  <span class="gs-divider-line" [style.background-color]="divider.config.dividerColor"></span>
+</section>

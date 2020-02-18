@@ -5,9 +5,8 @@
     [formGroup]="formGroup"
     (ngSubmit)="submit()">
     <div class="gs-form-body">
-      <ng-container  *ngFor="let field of formFields">
-        <div 
-          *ngIf="checkCondition(field)"
+      <ng-container *ngFor="let field of formFields">
+        <div *ngIf="checkCondition(field)"
           class="gs-form-field" 
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
@@ -15,6 +14,7 @@
             {{ field.config.label | translate }}
           </label>
 
+          <!-- widgets -->
           <ng-container [ngSwitch]="field.selector">
             <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
             <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
@@ -27,6 +27,7 @@
             <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
             <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
             <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
+            
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
@@ -42,6 +43,15 @@
           <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
             {{ getFieldError(field.config.model) | translate }}
           </span>
+        </div>
+
+        <!-- no widget field -->
+        <div *ngIf="field.notWidget"
+          class="gs-form-field"
+          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null">
+          <ng-container [ngSwitch]="field.selector">
+            <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
+          </ng-container>
         </div>
       </ng-container>
     </div>

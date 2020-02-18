@@ -68,7 +68,7 @@ export class GsFormsService {
     const formObject = new Object();
 
     for (const field of formField) {
-      if (field.config.model) {
+      if (field.config.model && !field.notWidget) {
         this.setDefaultFormObject(field, formObject, field.config.validators ? true : false);
       }
     }

@@ -6,7 +6,8 @@ import {
   GFieldCountryFormmatConfiguration,
   GFieldBooleanConfiguration,
   GFieldNumberConfiguration,
-  GFieldFileConfiguration
+  GFieldFileConfiguration,
+  GFieldDividerConfiguration
 } from './gs-forms.models';
 
 /**
@@ -127,10 +128,20 @@ export class GSeparatedByComma implements GField {
 }
 
 /**
- * Field File Generic widget
+ * Image/File field
  */
 export class GFieldFile implements GField {
   selector = GFieldSelector.FILE;
 
   constructor(public config: GFieldFileConfiguration) { }
+}
+
+/**
+ * Divider
+ */
+export class GDivider {
+  selector = GFieldSelector.DIVIDER;
+  notWidget = true;
+
+  constructor(public config: GFieldDividerConfiguration) {}
 }

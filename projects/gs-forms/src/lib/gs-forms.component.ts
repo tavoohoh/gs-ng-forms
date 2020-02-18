@@ -135,6 +135,10 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
   }
 
   public checkCondition(field: GField) {
+    if (field.notWidget) {
+      return false;
+    }
+
     if (!field.config.displayIf) {
       return true;
     }

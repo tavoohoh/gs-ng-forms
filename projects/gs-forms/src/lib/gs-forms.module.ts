@@ -20,6 +20,7 @@ import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.compone
 import { GsTaxTypeComponent } from './gs-fields/tax-type/tax-type.component';
 import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/separated-by-comma.component';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
+import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -40,6 +41,7 @@ import { GsFormsService } from './gs-forms.service';
     GsTaxTypeComponent,
     GsSeparatedByCommaComponent,
     GsFileInputComponent,
+    GsDividerComponent,
     GsFormsComponent
   ],
   imports: [
@@ -68,6 +70,7 @@ import { GsFormsService } from './gs-forms.service';
     GsTaxTypeComponent,
     GsSeparatedByCommaComponent,
     GsFileInputComponent,
+    GsDividerComponent,
     GsFormsComponent
   ],
   schemas: [

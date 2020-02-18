@@ -18,7 +18,8 @@ import {
   GFormOptions,
   GTaxDocumentTypeField,
   GFieldFile,
-  GSeparatedByComma
+  GSeparatedByComma,
+  GDivider
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
@@ -228,6 +229,16 @@ export class AppComponent implements OnInit {
           text: 'red'
         }
       ]
+    }),
+
+    // divider
+    new GDivider({
+      seccionName: 'Section',
+      hideLine: false,
+      padding: '1rem 0',
+      model: 'asd',
+      dividerColor: '#e3bec4',
+      gridColumn: '1 / 4'
     }),
 
     // Show/hide dropdown
