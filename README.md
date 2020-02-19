@@ -2,6 +2,8 @@
 
 You are welcome to collaborate!
 
+TODO: update documentation
+
 For library implementation please go to [gs-form readme](https://bitbucket.org/rappinc/rpp-ngforms-lib/src/master/README.md).
 
 ## Install:
