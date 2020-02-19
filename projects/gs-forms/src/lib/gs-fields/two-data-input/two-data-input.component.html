@@ -4,6 +4,7 @@
   <!-- left input -->
   <input
     class="left-input"
+    [placeholder]="leftFieldPlaceholder || ''"
     [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
     [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null"
@@ -23,6 +24,7 @@
   <!-- right input -->
   <input
     class="right-input"
+    [placeholder]="rightFieldPlaceholder || ''"
     [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
     [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null"

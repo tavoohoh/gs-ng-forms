@@ -139,11 +139,7 @@ export class AppComponent implements OnInit {
     new GTwoDataInput({
       model: 'twoDataInput',
       label: 'Two data input',
-      divider: '(!MMMa',
-      value: {
-        left: 9001901299,
-        right: 1
-      },
+      divider: '-',
       grid: [
         'auto',
         '24px'
@@ -153,14 +149,16 @@ export class AppComponent implements OnInit {
           type: GFieldValueType.STRING,
           validators: {
             [GFieldValidatorType.REQUIRED]: true
-          }
+          },
+          placeholder: 'left value'
         },
         right: {
           type: GFieldValueType.NUMBER,
           validators: {
             [GFieldValidatorType.REQUIRED]: true,
             [GFieldValidatorType.MAX]: 9
-          }
+          },
+          placeholder: '0'
         }
       }
     }),
@@ -351,11 +349,7 @@ export class AppComponent implements OnInit {
     const toPatchValues = {
       email: 'email@patched.com',
       age: 40,
-      datepicker: '1992-09-30',
-      twoDataInput: {
-        left: 190000,
-        right: 2
-      }
+      datepicker: '1992-09-30'
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }

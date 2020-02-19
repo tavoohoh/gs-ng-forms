@@ -225,6 +225,7 @@ interface GInputStyle {
 | GDatePickerField          | Any date value                                               |
 | GSeparatedByComma         | Separated by comma string values                             |
 | GFieldFile                | File field with upload logic using multipart form            |
+| GTwoDataInput             | Creates a two inputs field                                   |
 | GDivider                  | This is not a field, just a divider                          |
 
 More fields are yet to come, for fields properties please go to
@@ -374,6 +375,57 @@ interface GFieldOptions {
    * Only for `GDivider`
    */
   hideLine?: boolean;
+  /**
+   * Two data inputs divider content
+   * 
+   * Only for `GTwoDataInput`
+   */
+  divider?: string;
+  /**
+   * Two data inputs options
+   * 
+   * Only for `GTwoDataInput`
+   */
+  options?: {
+    /**
+     * lef/right input
+     */
+    left|right?: {
+      /**
+       * left/right input type:
+       * 
+       * string | number
+       */
+      type?: GFieldValueType;
+      /**
+       * left/right input validators
+       *
+       * If null it will try to use the `config.validators`
+       */
+      validators?: GFieldValidators;
+      /**
+       * left/right input placeholder
+       */
+      placeholder?: string;
+    };
+  };
+  /**
+   * Two data input Grid column size for each input
+   * 
+   * Only for `GTwoDataInput`
+   */
+  grid?: [string, string];
+  /**
+   * Two data input default value for each input
+   * 
+   * Only for `GTwoDataInput`
+   */
+  value?: {
+    /**
+     * left/right input value
+     */
+    left|right: string | number;
+  };
 };
 ```
 

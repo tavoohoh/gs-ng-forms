@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { GTwoDataInput } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldValueType } from '../../gs-forms.enums';
 
+// TODO: add error validators
 enum TwoDataInputErrors {
   RIGHT_MIN,
   LEFT_MIN,
@@ -22,16 +23,27 @@ export class GsTwoDataInputComponent implements OnChanges {
   public rightFieldValue: any;
   public leftFieldType: any;
   public rightFieldType: any;
+  public leftFieldPlaceholder: string;
+  public rightFieldPlaceholder: string;
   public valueType = GFieldValueType;
   public fieldValidatorType = GFieldValidatorType;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue) {
       this.field = changes.field.currentValue;
-      this.leftFieldValue = this.field.config.value.left || null;
-      this.rightFieldValue = this.field.config.value.right || null;
-      this.leftFieldType = this.field.config.options.left.type || null;
-      this.rightFieldType = this.field.config.options.right.type || null;
+
+      if (this.field.config.value) {
+        this.leftFieldValue = this.field.config.value.left || null;
+        this.rightFieldValue = this.field.config.value.right || null;
+      }
+
+      if (this.field.config.options) {
+        this.leftFieldType = this.field.config.options.left ? this.field.config.options.left.type || null : null;
+        this.rightFieldType = this.field.config.options.right ? this.field.config.options.right.type || null : null;
+
+        this.leftFieldPlaceholder = this.field.config.options.left ? this.field.config.options.left.placeholder || null : null;
+        this.rightFieldPlaceholder = this.field.config.options.right ? this.field.config.options.right.placeholder || null : null;
+      }
     }
   }
 
@@ -58,11 +70,14 @@ export class GsTwoDataInputComponent implements OnChanges {
   }
 
   public checkMinMaxValidator(input: string, validator: string) {
-    if (this.field.config.options[input].type === this.valueType.NUMBER) {
-      if (this.field.config.options[input].validators && this.field.config.options[input].validators[this.fieldValidatorType[validator]]) {
-        return this.field.config.options[input].validators[this.fieldValidatorType[validator]];
-      } else if (this.field.config.validators && this.field.config.validators[this.fieldValidatorType[validator]]) {
-        return this.field.config.validators[this.fieldValidatorType[validator]];
+    if (this.field.config.options && this.field.config.options[input] && this.field.config.options[input].type) {
+      if (this.field.config.options[input].type === this.valueType.NUMBER) {
+        if (this.field.config.options[input].validators
+          && this.field.config.options[input].validators[this.fieldValidatorType[validator]]) {
+          return this.field.config.options[input].validators[this.fieldValidatorType[validator]];
+        } else if (this.field.config.validators && this.field.config.validators[this.fieldValidatorType[validator]]) {
+          return this.field.config.validators[this.fieldValidatorType[validator]];
+        }
       }
     }
 

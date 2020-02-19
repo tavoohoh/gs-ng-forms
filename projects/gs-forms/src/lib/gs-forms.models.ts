@@ -16,6 +16,10 @@ export interface GFieldTwoDataInputOptions {
    * If null it will try to use the `config.validators`
    */
   validators?: GFieldValidators;
+  /**
+   * Placeholder
+   */
+  placeholder?: string;
 }
 
 /**
