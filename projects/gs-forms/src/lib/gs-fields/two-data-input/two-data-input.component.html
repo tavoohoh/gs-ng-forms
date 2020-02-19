@@ -7,10 +7,13 @@
     [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
     [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null"
-    [decimal]="leftFieldType === valueType.NUMBER ? true : false"
+    [decimal]="false"
     [gsDigitOnly]="leftFieldType === valueType.NUMBER"
     [autocomplete]="field.config.autocomplete || 'off'"
-    [(ngModel)]="leftFieldValue">
+    [(ngModel)]="leftFieldValue"
+    [min]="checkMinMaxValidator('left', 'MIN')"
+    [max]="checkMinMaxValidator('left', 'MAX')"
+    (keyup)="onUpdateValue()">
 
   <!-- divider -->
   <span class="input-divider">
@@ -23,8 +26,11 @@
     [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
     [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null"
-    [decimal]="rightFieldType === valueType.NUMBER ? true : false"
+    [decimal]="false"
     [gsDigitOnly]="rightFieldType === valueType.NUMBER"
     [autocomplete]="field.config.autocomplete || 'off'"
-    [(ngModel)]="rightFieldValue">
+    [min]="checkMinMaxValidator('right', 'MIN')"
+    [max]="checkMinMaxValidator('right', 'MAX')"
+    [(ngModel)]="rightFieldValue"
+    (keyup)="onUpdateValue()">
 </div>

@@ -3,6 +3,12 @@ import { FormGroup } from '@angular/forms';
 import { GTwoDataInput } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldValueType } from '../../gs-forms.enums';
 
+enum TwoDataInputErrors {
+  RIGHT_MIN,
+  LEFT_MIN,
+  REQUIRED
+}
+
 @Component({
   selector: 'gs-two-data-input',
   templateUrl: './two-data-input.component.html',
@@ -36,5 +42,30 @@ export class GsTwoDataInputComponent implements OnChanges {
 
     const grid = this.field.config.grid[0] + ' max-content ' + this.field.config.grid[1];
     return { 'grid-template-columns': grid };
+  }
+
+  public onUpdateValue() {
+    const updatedValue = {
+      left: this.leftFieldValue,
+      right: this.rightFieldValue
+    };
+
+    this.formGroup.controls[this.field.config.model].patchValue(updatedValue);
+    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+
+    // TODO: add error validators
+    // this.formGroup.controls[this.field.config.model].setErrors({invalid: true});
+  }
+
+  public checkMinMaxValidator(input: string, validator: string) {
+    if (this.field.config.options[input].type === this.valueType.NUMBER) {
+      if (this.field.config.options[input].validators && this.field.config.options[input].validators[this.fieldValidatorType[validator]]) {
+        return this.field.config.options[input].validators[this.fieldValidatorType[validator]];
+      } else if (this.field.config.validators && this.field.config.validators[this.fieldValidatorType[validator]]) {
+        return this.field.config.validators[this.fieldValidatorType[validator]];
+      }
+    }
+
+    return null;
   }
 }

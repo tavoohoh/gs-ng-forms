@@ -370,7 +370,8 @@ export class AppComponent implements OnInit {
   }
 
   public onSubmit(form: any) {
-    console.log('form', form.value);
+    console.log('form', form);
+    console.warn('form values', form.value);
   }
 
   public onFormChange(form: FormGroup) {
