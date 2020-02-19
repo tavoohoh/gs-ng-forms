@@ -19,7 +19,9 @@ import {
   GTaxDocumentTypeField,
   GFieldFile,
   GSeparatedByComma,
-  GDivider
+  GDivider,
+  GTwoDataInput,
+  GFieldValueType
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
@@ -130,6 +132,36 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.MIN]: 18,
         [GFieldValidatorType.MAX]: 50
+      }
+    }),
+
+    // two data input
+    new GTwoDataInput({
+      model: 'twoDataInput',
+      label: 'Two data input',
+      divider: '(!MMMa',
+      value: {
+        left: 9001901299,
+        right: 1
+      },
+      grid: [
+        'auto',
+        '24px'
+      ],
+      options: {
+        left: {
+          type: GFieldValueType.STRING,
+          validators: {
+            [GFieldValidatorType.REQUIRED]: true
+          }
+        },
+        right: {
+          type: GFieldValueType.NUMBER,
+          validators: {
+            [GFieldValidatorType.REQUIRED]: true,
+            [GFieldValidatorType.MAX]: 9
+          }
+        }
       }
     }),
 

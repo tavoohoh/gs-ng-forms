@@ -1,0 +1,30 @@
+<div
+  class="input gs-form-field_two_data_input"
+  [ngStyle]="setGrid()">
+  <!-- left input -->
+  <input
+    class="left-input"
+    [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
+    [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
+    [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null"
+    [decimal]="leftFieldType === valueType.NUMBER ? true : false"
+    [gsDigitOnly]="leftFieldType === valueType.NUMBER"
+    [autocomplete]="field.config.autocomplete || 'off'"
+    [(ngModel)]="leftFieldValue">
+
+  <!-- divider -->
+  <span class="input-divider">
+    {{ field.config.divider || '-' }}
+  </span>
+
+  <!-- right input -->
+  <input
+    class="right-input"
+    [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
+    [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
+    [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null"
+    [decimal]="rightFieldType === valueType.NUMBER ? true : false"
+    [gsDigitOnly]="rightFieldType === valueType.NUMBER"
+    [autocomplete]="field.config.autocomplete || 'off'"
+    [(ngModel)]="rightFieldValue">
+</div>

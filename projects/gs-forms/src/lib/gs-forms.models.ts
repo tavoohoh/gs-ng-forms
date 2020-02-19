@@ -1,9 +1,22 @@
-import { GFieldCountryCode, GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
+import { GFieldCountryCode, GFieldSelector, GFieldValidatorType, GFieldValueType } from './gs-forms.enums';
 
 export type GFieldOptionValues = Array<{
   value: string | number | boolean;
   text: string;
 }>;
+
+export interface GFieldTwoDataInputOptions {
+  /**
+   * Value type
+   */
+  type?: GFieldValueType;
+  /**
+   * Input validator
+   *
+   * If null it will try to use the `config.validators`
+   */
+  validators?: GFieldValidators;
+}
 
 /**
  * Form options
@@ -104,7 +117,7 @@ export class GFieldConfiguration {
   /**
    * Field default value
    */
-  value?: string | number | boolean;
+  value?: string | number | boolean | object;
   /**
    * Set the `autocomplete` attribute of an `input`
    */
@@ -225,7 +238,44 @@ export class GFieldFileConfiguration extends GFieldConfiguration {
   accept?: string;
 }
 
-export interface GFieldDividerConfiguration extends GFieldConfiguration {
+/**
+ * Field configuration for `GTwoDataInput`
+ */
+export class GFieldTwoDataConfiguration extends GFieldConfiguration {
+  /**
+   * If has value it will show it in the middle of the to inputs
+   */
+  divider?: string;
+  /**
+   * Options for each input
+   */
+  options?: {
+    left?: GFieldTwoDataInputOptions;
+    right?: GFieldTwoDataInputOptions;
+  };
+  /**
+   * Grid column size for each input
+   */
+  grid?: [string, string];
+  /**
+   * Set the default value for each input
+   */
+  value?: {
+    /**
+     * left input value
+     */
+    left: string | number;
+    /**
+     * right input value
+     */
+    right: string | number;
+  };
+}
+
+/**
+ * Field configuration for `GDivider`
+ */
+export class GFieldDividerConfiguration extends GFieldConfiguration {
   /**
    * Use the divider as a section headline with a title
    */

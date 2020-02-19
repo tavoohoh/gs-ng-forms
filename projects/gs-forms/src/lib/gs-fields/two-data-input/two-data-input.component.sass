@@ -1,0 +1,30 @@
+@import ../../gs-forms.styles
+
+input
+  background: none
+  border: none
+  outline: none
+  margin: 0
+  
+input[type="number"] 
+  -moz-appearance: textfield
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+.gs-form-field_two_data_input
+  display: grid
+  grid-template-columns: auto max-content auto
+
+  .left-input
+    padding-right: .5rem
+
+  .right-input
+    padding-left: .5rem
+  
+  .input-divider
+    background-color: rgba(0, 0, 0, .1)
+    text-align: center
+    padding: 0 .5rem

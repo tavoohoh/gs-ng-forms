@@ -97,10 +97,21 @@ export enum GFieldSelector {
   FILE = 'file',
 
   /**
+   * Two data input
+   * Creates a two inputs field
+   */
+  TWO_DATA = 'two_data',
+
+  /**
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */
   DIVIDER = 'divider'
+}
+
+export enum GFieldValueType {
+  STRING = 'string',
+  NUMBER = 'number'
 }
 
 export enum GFieldValidatorType {

@@ -21,6 +21,7 @@ import { GsTaxTypeComponent } from './gs-fields/tax-type/tax-type.component';
 import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/separated-by-comma.component';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
+import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -42,6 +43,7 @@ import { GsFormsService } from './gs-forms.service';
     GsSeparatedByCommaComponent,
     GsFileInputComponent,
     GsDividerComponent,
+    GsTwoDataInputComponent,
     GsFormsComponent
   ],
   imports: [
@@ -71,6 +73,7 @@ import { GsFormsService } from './gs-forms.service';
     GsSeparatedByCommaComponent,
     GsFileInputComponent,
     GsDividerComponent,
+    GsTwoDataInputComponent,
     GsFormsComponent
   ],
   schemas: [

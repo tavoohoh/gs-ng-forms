@@ -27,7 +27,8 @@
             <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
             <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
             <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
-            
+            <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
+
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
@@ -46,7 +47,7 @@
         </div>
 
         <!-- no widget field -->
-        <div *ngIf="field.notWidget"
+        <div *ngIf="checkCondition(field) && field.notWidget"
           class="gs-form-field"
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null">
           <ng-container [ngSwitch]="field.selector">

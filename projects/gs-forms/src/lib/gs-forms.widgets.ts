@@ -7,7 +7,8 @@ import {
   GFieldBooleanConfiguration,
   GFieldNumberConfiguration,
   GFieldFileConfiguration,
-  GFieldDividerConfiguration
+  GFieldDividerConfiguration,
+  GFieldTwoDataConfiguration
 } from './gs-forms.models';
 
 /**
@@ -134,6 +135,15 @@ export class GFieldFile implements GField {
   selector = GFieldSelector.FILE;
 
   constructor(public config: GFieldFileConfiguration) { }
+}
+
+/**
+ * Two data input
+ */
+export class GTwoDataInput implements GField {
+  selector = GFieldSelector.TWO_DATA;
+
+  constructor(public config: GFieldTwoDataConfiguration) {}
 }
 
 /**
