@@ -10,7 +10,7 @@ import {
   ChangeDetectorRef,
   AfterViewChecked
 } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -122,7 +122,7 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
     this.formValue.emit(this.formGroup.value);
   }
 
-  public validateField(field: any) {
+  public validateField(field: any): ValidationErrors {
     return this.formGroup.controls[field].dirty && this.formGroup.controls[field].errors;
   }
 
@@ -135,10 +135,6 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
   }
 
   public checkCondition(field: GField) {
-    if (field.notWidget) {
-      return false;
-    }
-
     if (!field.config.displayIf) {
       return true;
     }
@@ -153,13 +149,19 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
         }
       }
 
-      this.formGroup.controls[field.config.model].setValidators(Validators.compose(validators));
-      this.formGroup.controls[field.config.model].updateValueAndValidity();
+      if (this.formGroup.controls[field.config.model]) {
+        this.formGroup.controls[field.config.model].setValidators(Validators.compose(validators));
+        this.formGroup.controls[field.config.model].updateValueAndValidity();
+      }
+
       return true;
     }
 
-    this.formGroup.controls[field.config.model].clearValidators();
-    this.formGroup.controls[field.config.model].updateValueAndValidity();
+    if (this.formGroup.controls[field.config.model]) {
+      this.formGroup.controls[field.config.model].clearValidators();
+      this.formGroup.controls[field.config.model].updateValueAndValidity();
+    }
+
     return false;
   }
 

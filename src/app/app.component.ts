@@ -73,6 +73,16 @@ export class AppComponent implements OnInit {
   };
 
   public formFields: GFormFields = [
+    // divider
+    new GDivider({
+      seccionName: 'Section',
+      hideLine: false,
+      padding: '1rem 0',
+      model: null,
+      dividerColor: '#e3bec4',
+      gridColumn: '1 / 4'
+    }),
+
     // text input
     new GTextField({
       model: 'text',
@@ -261,16 +271,6 @@ export class AppComponent implements OnInit {
       ]
     }),
 
-    // divider
-    new GDivider({
-      seccionName: 'Section',
-      hideLine: false,
-      padding: '1rem 0',
-      model: 'asd',
-      dividerColor: '#e3bec4',
-      gridColumn: '1 / 4'
-    }),
-
     // Show/hide dropdown
     new GDropdownField({
       model: 'showHideDropdown',
@@ -286,6 +286,20 @@ export class AppComponent implements OnInit {
           text: 'Hide dynamic input'
         }
       ]
+    }),
+
+    // divider
+    new GDivider({
+      seccionName: 'Select one option',
+      hideLine: false,
+      padding: '1rem 0',
+      model: null,
+      dividerColor: '#e3bec4',
+      gridColumn: '1 / 4',
+      displayIf: {
+        model: 'showHideDropdown',
+        hasValue: 'show'
+      },
     }),
 
     // dynamic input
