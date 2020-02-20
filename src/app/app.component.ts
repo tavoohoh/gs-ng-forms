@@ -107,8 +107,7 @@ export class AppComponent implements OnInit {
     new GTextareaField({
       model: 'textarea',
       label: 'Textarea',
-      placeholder: 'Textarea input',
-      gridColumn: '1 / 4'
+      placeholder: 'Textarea input'
     }),
 
     // password input
@@ -250,7 +249,6 @@ export class AppComponent implements OnInit {
         fileParamName: 'file'
       },
       accept: '.jpg, .jpeg, .png',
-      gridColumn: '1'
     }),
 
     // dropdown input
