@@ -1,0 +1,24 @@
+<div class="multiselect noselect" [formGroup]="formGroup">
+  <!-- selected options -->
+  <div class="input gs-form-field_multiselect-selected_options" (click)="toggleMultiselectOptions()">
+    <ng-container *ngFor="let option of options">
+      <span *ngIf="option.exists" class="selected-option">
+        {{ option.text }}
+        <button type="button" (click)="toggleOption(option)">&times;</button>
+      </span>
+    </ng-container>
+    <span *ngIf="noSelection" class="placeholder">
+      {{ field.config.placeholder || field.config.label || field.config.model | translate }}
+    </span>
+    <span class="height-holder">&nbsp;</span>
+  </div>
+
+  <!-- options -->
+  <div class="gs-form-field_multiselect-options" *ngIf="this.showMultiselectOptions">
+    <span *ngFor="let option of options" (click)="toggleOption(option)">
+      <span [class.selected]="option.exists">
+        {{ option.text }}
+      </span>
+    </span>
+  </div>
+</div>

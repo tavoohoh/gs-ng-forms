@@ -21,7 +21,8 @@ import {
   GSeparatedByComma,
   GDivider,
   GTwoDataInput,
-  GFieldValueType
+  GFieldValueType,
+  GMultiselectField
 } from 'projects/gs-forms/src/public-api';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
@@ -194,6 +195,50 @@ export class AppComponent implements OnInit {
       },
     }),
 
+    // multiselect field
+    new GMultiselectField({
+      model: 'multiselect',
+      label: 'Multiselect',
+      placeholder: 'Multiselect placeholder',
+      value: [
+        {
+          value: 'bogota',
+          text: 'Bogotá'
+        },
+        {
+          value: 'santa_marta',
+          text: 'Santa Marta'
+        },
+      ],
+      externalOptions: true,
+      optionValues: [
+        {
+          value: 'bogota',
+          text: 'Bogotá'
+        },
+        {
+          value: 'cali',
+          text: 'Calí'
+        },
+        {
+          value: 'cartagena',
+          text: 'Cartagena'
+        },
+        {
+          value: 'barranquilla',
+          text: 'Barranquilla'
+        },
+        {
+          value: 'santa_marta',
+          text: 'Santa Marta'
+        },
+        {
+          value: 'bucaramanga',
+          text: 'Bucaramanga'
+        }
+      ]
+    }),
+
     // checkbox input
     new GCheckboxField({
       model: 'checkbox',
@@ -358,10 +403,33 @@ export class AppComponent implements OnInit {
 
     // map an array of values to a valid form field option values
     const mappedValues = this.gsFormService.mapFieldOptionValues(this.toMapOptions, 'value', 'key');
+
+    // update fields values
+    this.formOptions.fieldValues = {
+      ...this.formOptions.fieldValues,
+      dropdown: [
+        {
+          value: 'hola',
+          text: 'hola'
+        },
+        {
+          value: 'chao',
+          text: 'chao'
+        }
+      ]
+    };
+
+    // patch values
     const toPatchValues = {
       email: 'email@patched.com',
       age: 40,
-      datepicker: '1992-09-30'
+      datepicker: '1992-09-30',
+      multiselect: [
+        {
+          value: 'bogota',
+          text: 'Bogotá'
+        }
+      ]
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }

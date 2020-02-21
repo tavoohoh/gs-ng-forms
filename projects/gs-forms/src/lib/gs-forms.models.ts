@@ -1,9 +1,16 @@
 import { GFieldCountryCode, GFieldSelector, GFieldValidatorType, GFieldValueType } from './gs-forms.enums';
 
-export type GFieldOptionValues = Array<{
+export interface GFieldOptionValue {
   value: string | number | boolean;
   text: string;
-}>;
+}
+
+export interface GFieldOptionValueExists extends GFieldOptionValue {
+  exists?: boolean;
+}
+
+export type GFieldOptionValues = Array<GFieldOptionValue>;
+export type GFieldExistsOptionValues = Array<GFieldOptionValueExists>;
 
 export interface GFieldTwoDataInputOptions {
   /**

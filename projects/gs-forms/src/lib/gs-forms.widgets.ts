@@ -111,7 +111,7 @@ export class GPhoneField implements GField {
 }
 
 /**
- * Datepicker
+ * Datepicker widget
  */
 export class GDatePickerField implements GField {
   selector = GFieldSelector.DATE;
@@ -120,7 +120,7 @@ export class GDatePickerField implements GField {
 }
 
 /**
- * Separated by Comma field
+ * Separated by Comma field widget
  */
 export class GSeparatedByComma implements GField {
   selector = GFieldSelector.COMMA;
@@ -129,7 +129,7 @@ export class GSeparatedByComma implements GField {
 }
 
 /**
- * Image/File field
+ * Image/File field widget
  */
 export class GFieldFile implements GField {
   selector = GFieldSelector.FILE;
@@ -138,7 +138,7 @@ export class GFieldFile implements GField {
 }
 
 /**
- * Two data input
+ * Two data input widget
  */
 export class GTwoDataInput implements GField {
   selector = GFieldSelector.TWO_DATA;
@@ -147,7 +147,17 @@ export class GTwoDataInput implements GField {
 }
 
 /**
- * Divider
+ * Multiselect widget
+ */
+export class GMultiselectField implements GField {
+  selector = GFieldSelector.MULTISELECT;
+
+  constructor(public config: GFieldOptionValuesConfiguration) { }
+}
+
+
+/**
+ * Divider widget
  */
 export class GDivider {
   selector = GFieldSelector.DIVIDER;

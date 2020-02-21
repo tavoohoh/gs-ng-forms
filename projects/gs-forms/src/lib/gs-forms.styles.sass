@@ -92,7 +92,6 @@ textarea
 
 .button
   @include transition()
-  
   cursor: pointer
   border: none
   text-align: center
@@ -147,12 +146,9 @@ textarea
 .relative
   position: relative
 
-// Spinner Style
-
 .spinner
   width: 70px
   text-align: center
-
   div
     width: 18px
     height: 18px
@@ -161,10 +157,8 @@ textarea
     display: inline-block
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both
     animation: sk-bouncedelay 1.4s infinite ease-in-out both
-
   .bounce1
     animation-delay: -0.32s
-
   .bounce2
     animation-delay: -0.16s
 
@@ -174,3 +168,11 @@ textarea
 
   40%
     transform: scale(1)
+
+.noselect 
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none

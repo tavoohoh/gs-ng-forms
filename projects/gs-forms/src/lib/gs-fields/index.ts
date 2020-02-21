@@ -12,5 +12,6 @@ export { GsToggleComponent } from './toggle/toggle.component';
 export { GsTaxTypeComponent } from './tax-type/tax-type.component';
 export { GsSeparatedByCommaComponent } from './separated-by-comma/separated-by-comma.component';
 export { GsFileInputComponent } from './file-input/file-input.component';
-export { GsDividerComponent } from './divider/divider.component';
 export { GsTwoDataInputComponent } from './two-data-input/two-data-input.component';
+export { GsMultiselectComponent } from './multiselect/multiselect.component';
+export { GsDividerComponent } from './divider/divider.component';

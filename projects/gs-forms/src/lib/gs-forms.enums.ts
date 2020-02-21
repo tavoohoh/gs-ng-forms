@@ -103,6 +103,11 @@ export enum GFieldSelector {
   TWO_DATA = 'two_data',
 
   /**
+   * Multiselect field
+   */
+  MULTISELECT = 'multiselect',
+
+  /**
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */

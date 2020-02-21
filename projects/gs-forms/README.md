@@ -2,8 +2,6 @@
 
 Simple angular 8 forms library.
 
-##### Current version: Beta
-
 # Table of contents:
 * [Installation](#installation)
 * [Getting Started](#getting-started)
@@ -226,6 +224,7 @@ interface GInputStyle {
 | GSeparatedByComma         | Separated by comma string values                             |
 | GFieldFile                | File field with upload logic using multipart form            |
 | GTwoDataInput             | Creates a two inputs field                                   |
+| GMultiselectField         | Multiple selection field                                     |
 | GDivider                  | This is not a field, just a divider                          |
 
 More fields are yet to come, for fields properties please go to

@@ -39,6 +39,9 @@
             <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
             </gs-dropdown>
+            <gs-multiselect *ngSwitchCase="fieldSelector.MULTISELECT" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-multiselect>
           </ng-container>
           
           <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">

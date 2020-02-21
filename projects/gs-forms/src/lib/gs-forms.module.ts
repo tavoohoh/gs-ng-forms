@@ -22,6 +22,7 @@ import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/sepa
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
+import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -44,6 +45,7 @@ import { GsFormsService } from './gs-forms.service';
     GsFileInputComponent,
     GsDividerComponent,
     GsTwoDataInputComponent,
+    GsMultiselectComponent,
     GsFormsComponent
   ],
   imports: [
@@ -74,6 +76,7 @@ import { GsFormsService } from './gs-forms.service';
     GsFileInputComponent,
     GsDividerComponent,
     GsTwoDataInputComponent,
+    GsMultiselectComponent,
     GsFormsComponent
   ],
   schemas: [
