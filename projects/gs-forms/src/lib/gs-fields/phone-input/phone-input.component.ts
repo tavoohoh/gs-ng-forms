@@ -95,7 +95,10 @@ export class GsPhoneInputComponent implements OnChanges {
     this.value = newString.join('');
 
     const controlValue = inputVal;
-    this.formGroup.controls[this.field.config.model].patchValue(controlValue);
+    this.formGroup.controls[this.field.config.model].patchValue({
+      country: this.country,
+      phone: controlValue.replace(/\s/g, '')
+    });
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
   }
 
