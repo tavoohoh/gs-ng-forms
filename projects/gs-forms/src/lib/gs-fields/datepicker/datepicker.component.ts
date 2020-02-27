@@ -214,7 +214,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.formGroup.controls[this.field.config.model].patchValue(this.dateValue);
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
     this.getDaysInCalendar();
-    this.showDatePickerSelector = false;
+    this.toggleDatePickerSelector(false);
   }
 
   public selectMonth(month: number) {
@@ -237,8 +237,12 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.showSelector = selector;
   }
 
-  public toggleDatePickerSelector() {
-    this.showDatePickerSelector = !this.showDatePickerSelector;
+  public toggleDatePickerSelector(value = !this.showDatePickerSelector) {
+    this.showDatePickerSelector = value;
+  }
+
+  public disableKeys() {
+    return false;
   }
 
   private formatDate(date: Date) {

@@ -1,4 +1,4 @@
-<div class="multiselect noselect" [formGroup]="formGroup">
+<div class="multiselect noselect" [formGroup]="formGroup" gsClickOutside (gsClickOutside)="toggleMultiselectOptions(false)">
   <!-- selected options -->
   <div class="input gs-form-field_multiselect-selected_options" (click)="toggleMultiselectOptions()">
     <ng-container *ngFor="let option of options">

@@ -58,8 +58,8 @@ export class GsMultiselectComponent implements OnChanges {
     }
   }
 
-  public toggleMultiselectOptions() {
-    this.showMultiselectOptions = !this.showMultiselectOptions;
+  public toggleMultiselectOptions(value = !this.showMultiselectOptions) {
+    this.showMultiselectOptions = value;
   }
 
 }

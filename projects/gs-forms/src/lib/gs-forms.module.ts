@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { GStyles } from './gs-forms.models';
 import { DigitOnlyDirective } from './gs-directives/digit-only/digit-only.directive';
+import { ClickOutsideDirective } from './gs-directives/click-outside/click-outside.directive';
 import { GsTextInputComponent } from './gs-fields/text-input/text-input.component';
 import { GsTextareaComponent } from './gs-fields/textarea/textarea.component';
 import { GsPasswordInputComponent } from './gs-fields/password-input/password-input.component';
@@ -29,6 +30,7 @@ import { GsFormsService } from './gs-forms.service';
 @NgModule({
   declarations: [
     DigitOnlyDirective,
+    ClickOutsideDirective,
     GsTextInputComponent,
     GsTextareaComponent,
     GsPasswordInputComponent,
@@ -60,6 +62,7 @@ import { GsFormsService } from './gs-forms.service';
   ],
   exports: [
     DigitOnlyDirective,
+    ClickOutsideDirective,
     GsTextInputComponent,
     GsTextareaComponent,
     GsPasswordInputComponent,

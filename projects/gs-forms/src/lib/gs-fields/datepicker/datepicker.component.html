@@ -1,12 +1,16 @@
-<div class="date-input">
+<div class="date-input" gsClickOutside (gsClickOutside)="toggleDatePickerSelector(false)">
   <input
     #inputElement
-    class="input gs-form-field_phone-input"
+    class="input gs-form-field_date-input"
     type="text"
     [id]="field.config.model"
     [placeholder]="'YYYY-MM-DD'"
     [(ngModel)]="dateValue"
-    (click)="toggleDatePickerSelector()"/>
+    (click)="toggleDatePickerSelector()"
+    (keydown)="disableKeys()"
+    (keyup)="disableKeys()"
+    (keypress)="disableKeys()"
+  />
 
   <div class="datepicker-container">
     <div class="datepicker" *ngIf="showDatePickerSelector">
