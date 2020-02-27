@@ -86,7 +86,7 @@ export class GsFormsService {
       return this.getValidationMessage('ERR_MAX', error[GFieldValidatorType.MAX].max);
 
     } else if (error[GFieldValidatorType.REQUIRED]) {
-      return this.getValidationMessage('ERR_REQUERID');
+      return this.getValidationMessage('ERR_REQUIRED');
 
     } else if (error[GFieldValidatorType.EMAIL]) {
       return this.getValidationMessage('ERR_EMAIL');
@@ -105,7 +105,7 @@ export class GsFormsService {
     }
   }
 
-  private getValidationMessage(key: string, param?: string) {
+  public getValidationMessage(key: string, param?: string) {
     let lang = this.translateService.currentLang;
 
     if (!lang) {

@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GDropdownField } from './../../gs-forms.widgets';
 import { GFieldOptionValues, GFieldExistsOptionValues, GFieldOptionValueExists, GFieldOptionValue } from '../../gs-forms.models';
+import { GsFormsService } from '../../gs-forms.service';
 
 @Component({
   selector: 'gs-multiselect',
@@ -15,7 +16,10 @@ export class GsMultiselectComponent implements OnChanges {
 
   public options: GFieldExistsOptionValues = [];
   public noSelection = true;
+  public touched = false;
   public showMultiselectOptions = false;
+
+  constructor(private gsService: GsFormsService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.fieldOption && changes.fieldOption.currentValue) {
@@ -29,14 +33,15 @@ export class GsMultiselectComponent implements OnChanges {
     if (changes.field && changes.field.currentValue.config.value) {
       const currentValues = changes.field.currentValue.config.value;
       currentValues.forEach((option: GFieldOptionValue) => {
-        this.toggleOption(option);
+        this.toggleOption(option, false);
       });
     }
   }
 
-  public toggleOption(option: GFieldOptionValueExists) {
+  public toggleOption(option: GFieldOptionValueExists, touched = true) {
     const selectedOptions: GFieldOptionValues = [];
     this.noSelection = true;
+    this.touched = touched;
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.options.length; i++) {
@@ -60,6 +65,10 @@ export class GsMultiselectComponent implements OnChanges {
 
   public toggleMultiselectOptions(value = !this.showMultiselectOptions) {
     this.showMultiselectOptions = value;
+  }
+
+  public requiredText() {
+    return this.gsService.getValidationMessage('ERR_REQUIRED');
   }
 
 }

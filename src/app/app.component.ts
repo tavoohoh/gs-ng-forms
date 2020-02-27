@@ -200,16 +200,19 @@ export class AppComponent implements OnInit {
       model: 'multiselect',
       label: 'Multiselect',
       placeholder: 'Multiselect placeholder',
-      value: [
-        {
-          value: 'bogota',
-          text: 'Bogotá'
-        },
-        {
-          value: 'santa_marta',
-          text: 'Santa Marta'
-        },
-      ],
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      // value: [
+      //   {
+      //     value: 'bogota',
+      //     text: 'Bogotá'
+      //   },
+      //   {
+      //     value: 'santa_marta',
+      //     text: 'Santa Marta'
+      //   },
+      // ],
       externalOptions: true,
       optionValues: [
         {
@@ -429,12 +432,12 @@ export class AppComponent implements OnInit {
       email: 'email@patched.com',
       age: 40,
       datepicker: '1992-09-30',
-      multiselect: [
-        {
-          value: 'bogota',
-          text: 'Bogotá'
-        }
-      ]
+      // multiselect: [
+      //   {
+      //     value: 'bogota',
+      //     text: 'Bogotá'
+      //   }
+      // ]
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }
