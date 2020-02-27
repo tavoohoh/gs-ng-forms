@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { GPhoneField } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldCountryCode } from '../../gs-forms.enums';
 import { LOCATION } from '../../gs-forms.constants';
+import { GsFormsService } from '../../gs-forms.service';
 
 @Component({
   selector: 'gs-phone-input',
@@ -23,8 +24,11 @@ export class GsPhoneInputComponent implements OnChanges {
   public phoneMask: string;
   public editCountry: boolean;
   public value = '';
+  public touched = false;
 
   public fieldValidatorType = GFieldValidatorType;
+
+  constructor(private gsService: GsFormsService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     let location = null;
@@ -64,10 +68,11 @@ export class GsPhoneInputComponent implements OnChanges {
     this.editCountry = changes.field.currentValue.config.editCountry;
     this.countryCodeOptions = this.setCountryCodeOptions();
 
-    this.formatPhone(false);
+    this.formatPhone(false, false);
   }
 
-  public formatPhone(keyup: boolean) {
+  public formatPhone(keyup: boolean, touched = true) {
+    this.touched = touched;
     const inputVal = this.value || '';
 
     if (inputVal === '') { return; }
@@ -147,6 +152,10 @@ export class GsPhoneInputComponent implements OnChanges {
 
   public toggleCountryOptions(close?: boolean) {
     this.showCountryOptions = close ? false : !this.showCountryOptions;
+  }
+
+  public errorText(error: string) {
+    return this.gsService.getValidationMessage(error);
   }
 
   public returnBuildingError() {

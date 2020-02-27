@@ -13,10 +13,6 @@
     <span class="height-holder">&nbsp;</span>
   </div>
 
-  <span class="gs-form-field_error_message" *ngIf="touched && noSelection && field.config.validators.required">
-    {{ requiredText() | translate }}
-  </span>
-
   <!-- options -->
   <div class="gs-form-field_multiselect-options" *ngIf="this.showMultiselectOptions">
     <span *ngFor="let option of options" (click)="toggleOption(option)">
@@ -25,4 +21,8 @@
       </span>
     </span>
   </div>
+
+  <span class="gs-form-field_error_message" *ngIf="touched && noSelection && field.config.validators.required">
+    {{ requiredText() }}
+  </span>
 </div>

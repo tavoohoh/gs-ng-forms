@@ -380,13 +380,11 @@ export class AppComponent implements OnInit {
       model: 'phone',
       label: 'Phone',
       placeholder: 'Phone',
-      country: GFieldCountryCode.UY,
-      editCountry: true,
-      value: {
-        alpha2Code: 'co',
-        code: '57',
-        phone: '1002993929'
-      }
+      country: GFieldCountryCode.CO,
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      editCountry: true
     }),
 
     // tax type

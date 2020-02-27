@@ -1,5 +1,5 @@
 <ng-container>
-  <div class="input phone-input">
+  <div class="input phone-input" gsClickOutside (gsClickOutside)="toggleCountryOptions(true)">
     <button 
       class="country-code_select"
       [class.disabled]="!editCountry"
@@ -30,4 +30,12 @@
       [(ngModel)]="value"
       (keyup)="formatPhone(true)"/>
   </div>
+
+  <span class="gs-form-field_error_message" *ngIf="touched && field.config.validators.required && value.length === 0">
+    {{ errorText('ERR_REQUIRED') }}
+  </span>
+
+  <span class="gs-form-field_error_message" *ngIf="touched && value.length < phoneMask.length">
+    {{ errorText('ERR_PATTERN') }}
+  </span>
 </ng-container>
