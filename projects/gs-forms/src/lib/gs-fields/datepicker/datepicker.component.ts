@@ -134,6 +134,10 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.currentMonth = this.date.getMonth();
     this.currentYear = this.date.getFullYear();
     this.setCalendar();
+
+    setTimeout(() => {
+      this.showDatePickerSelector = true;
+    });
   }
 
   public navigateSelectors(next: boolean) {
@@ -223,18 +227,29 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.getDaysInCalendar();
 
     this.showSelector = ShowSelector.DAY;
+
+    setTimeout(() => {
+      this.showDatePickerSelector = true;
+    });
   }
 
   public selectYear(year: number) {
     this.date.setFullYear(year);
     this.currentYear = this.date.getFullYear();
     this.getDaysInCalendar();
-
     this.showSelector = ShowSelector.MONTH;
+
+    setTimeout(() => {
+      this.showDatePickerSelector = true;
+    });
   }
 
   public toggleSelector(selector: ShowSelector) {
     this.showSelector = selector;
+
+    setTimeout(() => {
+      this.showDatePickerSelector = true;
+    });
   }
 
   public toggleDatePickerSelector(value = !this.showDatePickerSelector) {

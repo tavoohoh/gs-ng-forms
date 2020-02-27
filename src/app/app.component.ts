@@ -138,10 +138,10 @@ export class AppComponent implements OnInit {
       model: 'age',
       label: 'Age',
       placeholder: 'What is your age?',
-      value: 22,
       validators: {
-        [GFieldValidatorType.MIN]: 18,
-        [GFieldValidatorType.MAX]: 50
+        [GFieldValidatorType.REQUIRED]: true,
+        [GFieldValidatorType.MAX]: 100,
+        [GFieldValidatorType.MIN]: 0
       }
     }),
 
