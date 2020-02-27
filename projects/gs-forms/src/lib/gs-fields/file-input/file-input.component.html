@@ -2,7 +2,7 @@
 
   <div class="button file-input" (click)="file.click()">
     <!-- input UI -->
-    <ng-container *ngIf="selectedFile">
+    <ng-container *ngIf="selectedFile && !loading">
       <span class="file-image inner-padding" [style.background-image]="'url(' + selectedFile.path + ')'">
         <span class="file-path">
           <span class="file-name">
@@ -15,7 +15,16 @@
       </span>
     </ng-container>
 
-    <ng-container *ngIf="!selectedFile">
+    <div class="inner-padding" *ngIf="loading">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+
+    </div>
+
+    <ng-container *ngIf="!selectedFile && !loading">
       <span class="inner-margin">
         {{ field.config.placeholder || field.config.label || field.config.model | translate }}
       </span>
@@ -30,13 +39,7 @@
     {{ supportedFilesText }}: {{ field.config.accept }}
   </span>
 
-  <input
-    #file
-    class="hiddenInput"
-    type="file"
-    [id]="field.config.model"
-    [accept]="field.config.accept || null"
-    (change)="onFileChange($event)"
-  />
+  <input #file class="hiddenInput" type="file" [id]="field.config.model" [accept]="field.config.accept || null"
+    (change)="onFileChange($event)" />
 
 </ng-container>

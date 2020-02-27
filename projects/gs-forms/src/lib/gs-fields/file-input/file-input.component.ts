@@ -61,6 +61,7 @@ export class GsFileInputComponent implements OnInit {
 
     if (!this.validFileType(file)) {
       isValidType = false;
+      this.loading = false;
     }
 
     if (file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
@@ -97,9 +98,11 @@ export class GsFileInputComponent implements OnInit {
       this.formsServices.uploadFileServices(url, method, file, paramName)
         .subscribe(
           response => {
+            this.loading = false;
             this.formGroup.controls[this.field.config.model].patchValue(response);
             this.formGroup.controls[this.field.config.model].updateValueAndValidity();
           }, error => {
+            this.loading = false;
             console.error('Unable to upload the image. Error:', error);
             this.errorText = this.errorTranslates[this.gsFromsService.getLang() || 'en'];
           });
