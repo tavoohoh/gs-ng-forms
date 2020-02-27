@@ -378,7 +378,12 @@ export class AppComponent implements OnInit {
       label: 'Phone',
       placeholder: 'Phone',
       country: GFieldCountryCode.UY,
-      editCountry: true
+      editCountry: true,
+      value: {
+        alpha2Code: 'co',
+        code: '57',
+        phone: '1002993929'
+      }
     }),
 
     // tax type

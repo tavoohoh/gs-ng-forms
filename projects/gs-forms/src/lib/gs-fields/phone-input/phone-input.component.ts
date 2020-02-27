@@ -42,11 +42,25 @@ export class GsPhoneInputComponent implements OnChanges {
     this.phoneMask = location.phoneFormat.mask;
 
     if (changes.field.currentValue.config.value) {
-      this.value = changes.field.currentValue.config.value.toString();
+      const phoneValue = changes.field.currentValue.config.value;
+
+      if (phoneValue.phone) {
+        this.value = phoneValue.phone.toString();
+        this.country = phoneValue.code || location.phoneFormat.code;
+        this.countryCode = phoneValue.alpha2Code.toLowerCase() || location.country.alpha2Code.toLowerCase();
+      } else {
+        this.value = phoneValue.toString();
+        this.country = location.phoneFormat.code;
+        this.countryCode = location.country.alpha2Code.toLowerCase();
+      }
+
+      this.updatePhoneMask(this.countryCode);
+    } else {
+      this.country = location.phoneFormat.code;
+      this.countryCode = location.country.alpha2Code.toLowerCase();
+      this.updatePhoneMask(this.countryCode);
     }
 
-    this.countryCode = location.country.alpha2Code.toLowerCase();
-    this.country = location.phoneFormat.code;
     this.editCountry = changes.field.currentValue.config.editCountry;
     this.countryCodeOptions = this.setCountryCodeOptions();
 
@@ -96,7 +110,8 @@ export class GsPhoneInputComponent implements OnChanges {
 
     const controlValue = inputVal;
     this.formGroup.controls[this.field.config.model].patchValue({
-      country: this.country,
+      code: this.country,
+      alpha2Code: this.countryCode,
       phone: controlValue.replace(/\s/g, '')
     });
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
