@@ -91,6 +91,7 @@ export class GsFileInputComponent implements OnInit {
     const url = this.field.config.api.url;
     const method = this.field.config.api.method;
     const paramName = this.field.config.api.fileParamName;
+    this.errorText = null;
 
     reader.addEventListener('load', () => {
       this.formsServices.uploadFileServices(url, method, file, paramName)

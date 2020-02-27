@@ -22,7 +22,7 @@
     </ng-container>
   </div>
 
-  <span class="file-error">
+  <span class="file-error" *ngIf="errorText">
     {{ errorText }}
   </span>
 
