@@ -1,18 +1,16 @@
-<div
-  class="input gs-form-field_two_data_input"
-  [ngStyle]="setGrid()">
+<div class="input gs-form-field_two_data_input" [ngStyle]="setGrid()">
   <!-- left input -->
-  <input
-    class="left-input"
+  <input 
+    class="left-input" 
     [placeholder]="leftFieldPlaceholder || '' | translate"
     [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
-    [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null"
+    [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null" 
     [decimal]="false"
-    [gsDigitOnly]="leftFieldType === valueType.NUMBER"
+    [gsDigitOnly]="leftFieldType === valueType.NUMBER" 
     [autocomplete]="field.config.autocomplete || 'off'"
-    [(ngModel)]="leftFieldValue"
-    [min]="checkMinMaxValidator('left', 'MIN')"
+    [(ngModel)]="leftFieldValue" 
+    [min]="checkMinMaxValidator('left', 'MIN')" 
     [max]="checkMinMaxValidator('left', 'MAX')"
     (keyup)="onUpdateValue()">
 
@@ -22,17 +20,23 @@
   </span>
 
   <!-- right input -->
-  <input
-    class="right-input"
+  <input 
+    class="right-input" 
     [placeholder]="rightFieldPlaceholder || '' | translate"
     [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
     [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
-    [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null"
+    [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null" 
     [decimal]="false"
-    [gsDigitOnly]="rightFieldType === valueType.NUMBER"
+    [gsDigitOnly]="rightFieldType === valueType.NUMBER" 
     [autocomplete]="field.config.autocomplete || 'off'"
-    [min]="checkMinMaxValidator('right', 'MIN')"
+    [min]="checkMinMaxValidator('right', 'MIN')" 
     [max]="checkMinMaxValidator('right', 'MAX')"
     [(ngModel)]="rightFieldValue"
     (keyup)="onUpdateValue()">
 </div>
+<span class="gs-form-field_error_message" *ngIf="touchedRightField && noSelectionFieldRight && rightFieldValidators.required">
+  {{ requiredText('right') }}
+</span>
+<span class="gs-form-field_error_message" *ngIf="touchedLeftField && noSelectionFieldLeft && leftFieldValidators.required">
+  {{ requiredText('left') }}
+</span>

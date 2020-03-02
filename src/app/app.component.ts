@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
     }
   ];
 
+
   public formOptions: GFormOptions = {
     onErrorDisableSubmit: false,
     country: GFieldCountryCode.BO,
@@ -396,7 +397,6 @@ export class AppComponent implements OnInit {
     }),
 
   ];
-
 
   constructor(
     private translate: TranslateService,
