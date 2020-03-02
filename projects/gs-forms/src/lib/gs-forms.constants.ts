@@ -327,7 +327,9 @@ export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } =
     ERR_MIN_LENGTH: 'The value must be at least ${param} characters',
     ERR_MAX_LENGTH: 'The value must have a maximum of ${param} characters',
     ERR_PATTERN: 'The value format is not correct',
-    DEFAULT: 'This field has an unknown error'
+    DEFAULT: 'This field has an unknown error',
+    ERR_REQUIRED_TWO_DATA_RIGHT: 'The right field is required',
+    ERR_REQUIRED_TWO_DATA_LEFT: 'The left field is required'
   },
   es: {
     ERR_MIN: 'El valor debe ser mayor o igual que ${param}',
@@ -337,6 +339,8 @@ export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } =
     ERR_MIN_LENGTH: 'El valor debe tener al menos ${param} caracteres',
     ERR_MAX_LENGTH: 'El valor debe tener un máximo de ${param} caracteres',
     ERR_PATTERN: 'El formato del valor no es correcto.',
-    DEFAULT: 'Este campo tiene un error desconocido'
+    DEFAULT: 'Este campo tiene un error desconocido',
+    ERR_REQUIRED_TWO_DATA_RIGHT: 'El campo de la derecha es requerido',
+    ERR_REQUIRED_TWO_DATA_LEFT: 'El campo de la izquierda es requerido'
   }
 };
