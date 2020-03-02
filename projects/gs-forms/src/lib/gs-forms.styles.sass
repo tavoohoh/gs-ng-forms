@@ -4,39 +4,41 @@ $shadowStrong: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12)
 $opacity: .8
 
 // colors
-$red: #da6464
-$color-font: inherit
-$color-primary: #4588fd
-$color-secondary: #7a9e9f
-$color-neutral: #4f6367
-$color-white: #ffffff
+$gs-red: #da6464
+$gs-color-font: inherit
+$gs-color-primary: #4588fd
+$gs-color-secondary: #7a9e9f
+$gs-color-neutral: #4f6367
+$gs-color-border: #eeeeee
+$gs-color-white: #ffffff
 
 // font
-$ui-font-size: .9rem
+$gs-font-size: .9rem
+$gs-padding: .5rem
 
 // input
-$ui-input-color: inherit
-$ui-input-padding: .6rem
-$ui-input-background: #ffffff
+$gs-input-color: inherit
+$gs-input-padding: .6rem
+$gs-input-background: #ffffff
 
-$ui-input-border-size: 1px
-$ui-input-border-style: solid
-$ui-input-border-color: #cccccc
-$ui-input-border-radius: 0px
+$gs-input-border-size: 1px
+$gs-input-border-style: solid
+$gs-input-border-color: #cccccc
+$gs-input-border-radius: 0px
 
 // primary button
-$ui-primary-button-padding: .5rem
-$ui-primary-button-color: #ffffff
-$ui-primary-button-background: #4588fd
-$ui-primary-button-border-color: #4588fd
-$ui-primary-button-border-radius: 6px
+$gs-primary-button-padding: .5rem
+$gs-primary-button-color: #ffffff
+$gs-primary-button-background: #4588fd
+$gs-primary-button-border-color: #4588fd
+$gs-primary-button-border-radius: 6px
 
 // secondary button
-$ui-secondary-button-padding: $ui-primary-button-padding
-$ui-secondary-button-color: #ffffff
-$ui-secondary-button-background: #555555
-$ui-secondary-button-border-color: #555555
-$ui-secondary-button-border-radius: $ui-primary-button-border-radius
+$gs-secondary-button-padding: $gs-primary-button-padding
+$gs-secondary-button-color: #ffffff
+$gs-secondary-button-background: #555555
+$gs-secondary-button-border-color: #555555
+$gs-secondary-button-border-radius: $gs-primary-button-border-radius
 
 // layout
 $layout-columns-quantity: repeat(auto-fit, minmax(200px, 1fr))
@@ -55,7 +57,7 @@ $layout-padding: 1rem 1rem 0
 // styles
 *
   font-family: Arial, Helvetica, sans-serif
-  color: var(--color-font, $color-font)
+  color: var(--gs-color-font, $gs-color-font)
   outline: none
   box-sizing: border-box
   line-height: 1.4
@@ -70,18 +72,18 @@ textarea
   display: block
   box-shadow: none
   box-sizing: border-box
-  color: var(--color-font, $color-font)
+  color: var(--gs-color-font, $gs-color-font)
 
   &::-webkit-input-placeholder
-    color: var(--color-neutral, $color-neutral)
+    color: var(--gs-color-neutral, $gs-color-neutral)
     opacity: 1
 
   &:-ms-input-placeholder 
-    color: var(--color-neutral, $color-neutral)
+    color: var(--gs-color-neutral, $gs-color-neutral)
     opacity: 1
 
   &::placeholder
-    color: var(--color-neutral, $color-neutral)
+    color: var(--gs-color-neutral, $gs-color-neutral)
     opacity: 1
 
 .input[type="file"]
@@ -98,49 +100,49 @@ textarea
   font-weight: bold
   outline: none
 
-  padding: var(--ui-primary-button-padding, $ui-primary-button-padding)
-  color: var(--ui-primary-button-color, $color-white)
-  background-color: var(--ui-primary-button-background, $color-neutral)
-  border: 1px solid var(--ui-primary-button-border-color, $color-neutral)
-  border-radius: var(--ui-primary-button-border-radius, $ui-primary-button-border-radius)
+  padding: var(--gs-primary-button-padding, $gs-primary-button-padding)
+  color: var(--gs-primary-button-color, $gs-color-white)
+  background-color: var(--gs-primary-button-background, $gs-color-neutral)
+  border: 1px solid var(--gs-primary-button-border-color, $gs-color-neutral)
+  border-radius: var(--gs-primary-button-border-radius, $gs-primary-button-border-radius)
 
   &:hover
     opacity: $opacity
 
 .button.button-primary
-  padding: var(--ui-primary-button-padding, $ui-primary-button-padding)
-  color: var(--ui-primary-button-color, $ui-primary-button-color)
-  background-color: var(--ui-primary-button-background, $ui-primary-button-background)
-  border: 1px solid var(--ui-primary-button-border-color, $ui-primary-button-border-color)
-  border-radius: var(--ui-primary-button-border-radius, $ui-primary-button-border-radius)
+  padding: var(--gs-primary-button-padding, $gs-primary-button-padding)
+  color: var(--gs-primary-button-color, $gs-primary-button-color)
+  background-color: var(--gs-primary-button-background, $gs-primary-button-background)
+  border: 1px solid var(--gs-primary-button-border-color, $gs-primary-button-border-color)
+  border-radius: var(--gs-primary-button-border-radius, $gs-primary-button-border-radius)
 
 .button.button-secondary
-  padding: var(--ui-secondary-button-padding, $ui-secondary-button-padding)
-  color: var(--ui-secondary-button-color, $ui-secondary-button-color)
-  background-color: var(--ui-secondary-button-background, $ui-secondary-button-background)
-  border: 1px solid var(--ui-secondary-button-border-color, $ui-secondary-button-border-color)
-  border-radius: var(--ui-secondary-button-border-radius, $ui-secondary-button-border-radius)
+  padding: var(--gs-secondary-button-padding, $gs-secondary-button-padding)
+  color: var(--gs-secondary-button-color, $gs-secondary-button-color)
+  background-color: var(--gs-secondary-button-background, $gs-secondary-button-background)
+  border: 1px solid var(--gs-secondary-button-border-color, $gs-secondary-button-border-color)
+  border-radius: var(--gs-secondary-button-border-radius, $gs-secondary-button-border-radius)
 
 .input
   border: none
   width: 100%
 
-  padding: var(--ui-input-padding, $ui-input-padding)
-  color: var(--ui-input-color, $ui-input-color)
-  background-color: var(--ui-input-background, $ui-input-background)
+  padding: var(--gs-input-padding, $gs-input-padding)
+  color: var(--gs-input-color, $gs-input-color)
+  background-color: var(--gs-input-background, $gs-input-background)
 
-  border: var(--ui-input-border-size, $ui-input-border-size) var(--ui-input-border-style, $ui-input-border-style) var(--ui-input-border-color, $ui-input-border-color)
-  border-radius: var(--ui-input-border-radius, $ui-input-border-radius)
-  border-top-width: var(--ui-input-border-top, var(--ui-input-border-size, $ui-input-border-size))
-  border-right-width: var(--ui-input-border-right, var(--ui-input-border-size, $ui-input-border-size))
-  border-bottom-width: var(--ui-input-border-bottom, var(--ui-input-border-size, $ui-input-border-size))
-  border-left-width: var(--ui-input-border-left, var(--ui-input-border-size, $ui-input-border-size))
+  border: var(--gs-input-border-size, $gs-input-border-size) var(--gs-input-border-style, $gs-input-border-style) var(--gs-input-border-color, $gs-input-border-color)
+  border-radius: var(--gs-input-border-radius, $gs-input-border-radius)
+  border-top-width: var(--gs-input-border-top, var(--gs-input-border-size, $gs-input-border-size))
+  border-right-width: var(--gs-input-border-right, var(--gs-input-border-size, $gs-input-border-size))
+  border-bottom-width: var(--gs-input-border-bottom, var(--gs-input-border-size, $gs-input-border-size))
+  border-left-width: var(--gs-input-border-left, var(--gs-input-border-size, $gs-input-border-size))
 
 *,
 .defult-font,
 .defult-font *,
 .input, select, textarea
-  font-size: var(--ui-font-size, $ui-font-size)
+  font-size: var(--gs-font-size, $gs-font-size)
   font-family: inherit
 
 .relative
@@ -152,7 +154,7 @@ textarea
   div
     width: 18px
     height: 18px
-    background-color: var(--ui-primary-button-color, $ui-primary-button-color)
+    background-color: var(--gs-primary-button-color, $gs-primary-button-color)
     border-radius: 100%
     display: inline-block
     animation: sk-bouncedelay 1.4s infinite ease-in-out both
@@ -179,5 +181,5 @@ textarea
 .gs-form-field_error_message
   display: block
   margin-top: 4px
-  color: $red
+  color: $gs-red
   font-size: 80%

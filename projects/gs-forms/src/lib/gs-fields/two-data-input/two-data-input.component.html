@@ -34,9 +34,11 @@
     [(ngModel)]="rightFieldValue"
     (keyup)="onUpdateValue()">
 </div>
-<span class="gs-form-field_error_message" *ngIf="touchedRightField && noSelectionFieldRight && rightFieldValidators.required">
+<span class="gs-form-field_error_message"
+  *ngIf="touchedRightField && noSelectionFieldRight && rightFieldValidators.required">
   {{ requiredText('right') }}
 </span>
-<span class="gs-form-field_error_message" *ngIf="touchedLeftField && noSelectionFieldLeft && leftFieldValidators.required">
+<span class="gs-form-field_error_message"
+  *ngIf="touchedLeftField && noSelectionFieldLeft && leftFieldValidators.required">
   {{ requiredText('left') }}
 </span>

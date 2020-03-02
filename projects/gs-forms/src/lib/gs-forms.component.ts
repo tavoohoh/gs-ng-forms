@@ -176,23 +176,27 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
       // colors
       if (this.customStyles.color) {
         if (this.customStyles.color.font) {
-          variables = variables + `--color-font: ${this.customStyles.color.font}!important;`;
+          variables = variables + `--gs-color-font: ${this.customStyles.color.font}!important;`;
         }
 
         if (this.customStyles.color.primary) {
-          variables = variables + `--color-primary: ${this.customStyles.color.primary}!important;`;
+          variables = variables + `--gs-color-primary: ${this.customStyles.color.primary}!important;`;
         }
 
         if (this.customStyles.color.secondary) {
-          variables = variables + `--color-secondary: ${this.customStyles.color.secondary}!important;`;
+          variables = variables + `--gs-color-secondary: ${this.customStyles.color.secondary}!important;`;
         }
 
         if (this.customStyles.color.neutral) {
-          variables = variables + `--color-neutral: ${this.customStyles.color.neutral}!important;`;
+          variables = variables + `--gs-color-neutral: ${this.customStyles.color.neutral}!important;`;
+        }
+
+        if (this.customStyles.color.border) {
+          variables = variables + `--gs-color-border: ${this.customStyles.color.border}!important;`;
         }
 
         if (this.customStyles.color.white) {
-          variables = variables + `--color-white: ${this.customStyles.color.white}!important;`;
+          variables = variables + `--gs-color-white: ${this.customStyles.color.white}!important;`;
         }
       }
 
@@ -200,99 +204,104 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
       if (this.customStyles.ui) {
         // font
         if (this.customStyles.ui.fontSize) {
-          variables = variables + `--ui-font-size: ${this.customStyles.ui.fontSize}!important;`;
+          variables = variables + `--gs-font-size: ${this.customStyles.ui.fontSize}!important;`;
+        }
+
+        // padding
+        if (this.customStyles.ui.padding) {
+          variables = variables + `--gs-padding: ${this.customStyles.ui.padding}!important;`;
         }
 
         // ui input
         if (this.customStyles.ui.input) {
           if (this.customStyles.ui.input.padding) {
-            variables = variables + `--ui-input-padding: ${this.customStyles.ui.input.padding}!important;`;
+            variables = variables + `--gs-input-padding: ${this.customStyles.ui.input.padding}!important;`;
           }
 
           if (this.customStyles.ui.input.color) {
-            variables = variables + `--ui-input-color: ${this.customStyles.ui.input.color}!important;`;
+            variables = variables + `--gs-input-color: ${this.customStyles.ui.input.color}!important;`;
           }
 
           if (this.customStyles.ui.input.background) {
-            variables = variables + `--ui-input-background: ${this.customStyles.ui.input.background}!important;`;
+            variables = variables + `--gs-input-background: ${this.customStyles.ui.input.background}!important;`;
           }
 
           if (this.customStyles.ui.input.borderSize) {
-            variables = variables + `--ui-input-border-size: ${this.customStyles.ui.input.borderSize}!important;`;
+            variables = variables + `--gs-input-border-size: ${this.customStyles.ui.input.borderSize}!important;`;
           }
 
           if (this.customStyles.ui.input.borderStyle) {
-            variables = variables + `--ui-input-border-style: ${this.customStyles.ui.input.borderStyle}!important;`;
+            variables = variables + `--gs-input-border-style: ${this.customStyles.ui.input.borderStyle}!important;`;
           }
 
           if (this.customStyles.ui.input.borderColor) {
-            variables = variables + `--ui-input-border-color: ${this.customStyles.ui.input.borderColor}!important;`;
+            variables = variables + `--gs-input-border-color: ${this.customStyles.ui.input.borderColor}!important;`;
           }
 
           if (this.customStyles.ui.input.borderRadius) {
-            variables = variables + `--ui-input-border-radius: ${this.customStyles.ui.input.borderRadius}!important;`;
+            variables = variables + `--gs-input-border-radius: ${this.customStyles.ui.input.borderRadius}!important;`;
           }
 
           if (this.customStyles.ui.input.borderTop) {
-            variables = variables + `--ui-input-border-top: ${this.customStyles.ui.input.borderTop}!important;`;
+            variables = variables + `--gs-input-border-top: ${this.customStyles.ui.input.borderTop}!important;`;
           }
 
           if (this.customStyles.ui.input.borderRight) {
-            variables = variables + `--ui-input-border-right: ${this.customStyles.ui.input.borderRight}!important;`;
+            variables = variables + `--gs-input-border-right: ${this.customStyles.ui.input.borderRight}!important;`;
           }
 
           if (this.customStyles.ui.input.borderBottom) {
-            variables = variables + `--ui-input-border-bottom: ${this.customStyles.ui.input.borderRadius}!important;`;
+            variables = variables + `--gs-input-border-bottom: ${this.customStyles.ui.input.borderRadius}!important;`;
           }
 
           if (this.customStyles.ui.input.borderLeft) {
-            variables = variables + `--ui-input-border-left: ${this.customStyles.ui.input.borderLeft}!important;`;
+            variables = variables + `--gs-input-border-left: ${this.customStyles.ui.input.borderLeft}!important;`;
           }
         }
 
         // ui primary button
         if (this.customStyles.ui.primaryButton) {
           if (this.customStyles.ui.primaryButton.padding) {
-            variables = variables + `--ui-primary-button-padding: ${this.customStyles.ui.primaryButton.padding}!important;`;
+            variables = variables + `--gs-primary-button-padding: ${this.customStyles.ui.primaryButton.padding}!important;`;
           }
 
           if (this.customStyles.ui.primaryButton.color) {
-            variables = variables + `--ui-primary-button-color: ${this.customStyles.ui.primaryButton.color}!important;`;
+            variables = variables + `--gs-primary-button-color: ${this.customStyles.ui.primaryButton.color}!important;`;
           }
 
           if (this.customStyles.ui.primaryButton.background) {
-            variables = variables + `--ui-primary-button-background: ${this.customStyles.ui.primaryButton.background}!important;`;
+            variables = variables + `--gs-primary-button-background: ${this.customStyles.ui.primaryButton.background}!important;`;
           }
 
           if (this.customStyles.ui.primaryButton.borderColor) {
-            variables = variables + `--ui-primary-button-border-color: ${this.customStyles.ui.primaryButton.borderColor}!important;`;
+            variables = variables + `--gs-primary-button-border-color: ${this.customStyles.ui.primaryButton.borderColor}!important;`;
           }
 
           if (this.customStyles.ui.primaryButton.borderRadius) {
-            variables = variables + `--ui-primary-button-border-radius: ${this.customStyles.ui.primaryButton.borderRadius}!important;`;
+            variables = variables + `--gs-primary-button-border-radius: ${this.customStyles.ui.primaryButton.borderRadius}!important;`;
           }
         }
 
         // ui secondary button
         if (this.customStyles.ui.secondaryButton) {
           if (this.customStyles.ui.secondaryButton.padding) {
-            variables = variables + `--ui-secondary-button-padding: ${this.customStyles.ui.secondaryButton.padding}!important;`;
+            variables = variables + `--gs-secondary-button-padding: ${this.customStyles.ui.secondaryButton.padding}!important;`;
           }
 
           if (this.customStyles.ui.secondaryButton.color) {
-            variables = variables + `--ui-secondary-button-color: ${this.customStyles.ui.secondaryButton.color}!important;`;
+            variables = variables + `--gs-secondary-button-color: ${this.customStyles.ui.secondaryButton.color}!important;`;
           }
 
           if (this.customStyles.ui.secondaryButton.background) {
-            variables = variables + `--ui-secondary-button-background: ${this.customStyles.ui.secondaryButton.background}!important;`;
+            variables = variables + `--gs-secondary-button-background: ${this.customStyles.ui.secondaryButton.background}!important;`;
           }
 
           if (this.customStyles.ui.secondaryButton.borderColor) {
-            variables = variables + `--ui-secondary-button-border-color: ${this.customStyles.ui.secondaryButton.borderColor}!important;`;
+            variables = variables + `--gs-secondary-button-border-color: ${this.customStyles.ui.secondaryButton.borderColor}!important;`;
           }
 
           if (this.customStyles.ui.secondaryButton.borderRadius) {
-            variables = variables + `--ui-secondary-button-border-radius: ${this.customStyles.ui.secondaryButton.borderRadius}!important;`;
+            variables = variables + `--gs-secondary-button-border-radius: ${this.customStyles.ui.secondaryButton.borderRadius}!important;`;
           }
         }
       }
@@ -303,15 +312,15 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
         if (this.formOptions.layout.columns) {
           if (typeof this.formOptions.layout.columns === 'number') {
             // if typeof number
-            variables = variables + `--layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
+            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
           } else {
             // if typeof string
-            variables = variables + `--layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
+            variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
           }
         }
 
         if (this.formOptions.layout.innerPadding) {
-          variables = variables + `--layout-padding: ${this.formOptions.layout.innerPadding}!important;`;
+          variables = variables + `--gs-layout-padding: ${this.formOptions.layout.innerPadding}!important;`;
         }
       }
 

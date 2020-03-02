@@ -404,6 +404,12 @@ export interface GStyles {
     neutral?: string;
 
     /**
+     * Border color
+     * default: "#eeeeee"
+     */
+    border?: string;
+
+    /**
      * White color, all white colors used in UI elements
      * default: "#ffffff"
      */
@@ -415,6 +421,11 @@ export interface GStyles {
      * default: ".9rem"
      */
     fontSize?: string;
+
+    /**
+     * Inner padding
+     */
+    padding?: string;
 
     /**
      * Input and button style

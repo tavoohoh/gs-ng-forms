@@ -6,7 +6,7 @@ $radioSize: 24px
 /* Do not modify the following variables! */
 $size: $radioSize
 $containerPadding: calc(#{$radioSize} + .5rem)
-$labelPadding: calc((#{$radioSize} - #{var(--ui-font-size, $ui-font-size)}) / 2)
+$labelPadding: calc((#{$radioSize} - #{var(--gs-font-size, $gs-font-size)}) / 2)
 $checkmarkWidth: $radioSize / 5
 $checkmarkHeight: $radioSize / 2
 $checkmarkBorder: $radioSize / 3
@@ -44,7 +44,7 @@ $checkmarkBorder: $radioSize / 3
     left: 0
     height: $size
     width: $size
-    background-color: var(--color-neutral, $color-neutral)
+    background-color: var(--gs-color-neutral, $gs-color-neutral)
     border-radius: 50%
 
     *
@@ -58,14 +58,14 @@ $checkmarkBorder: $radioSize / 3
       height: $checkmarkHeight
       margin: auto
       border-radius: 50%
-      background: var(--color-white, $color-white)
+      background: var(--gs-color-white, $gs-color-white)
 
 
 .radio:hover input ~ .checkmark
   opacity: $opacity
 
 .radio input:checked ~ .checkmark
-  background-color: var(--color-primary, $color-primary)
+  background-color: var(--gs-color-primary, $gs-color-primary)
 
 .radio input:checked ~ .checkmark:after
   display: block

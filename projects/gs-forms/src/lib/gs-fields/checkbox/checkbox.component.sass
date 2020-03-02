@@ -6,7 +6,7 @@ $checkboxSize: 24px
 /* Do not modify the following variables! */
 $size: $checkboxSize
 $containerPadding: calc(#{$checkboxSize} + .5rem)
-$labelPadding: calc((#{$checkboxSize} - #{var(--ui-font-size, $ui-font-size)}) / 2)
+$labelPadding: calc((#{$checkboxSize} - #{var(--gs-font-size, $gs-font-size)}) / 2)
 $checkmarkWidth: $checkboxSize / 5
 $checkmarkHeight: $checkboxSize / 2
 $checkmarkBorder: $checkboxSize / 8
@@ -44,7 +44,7 @@ $checkmarkBorder: $checkboxSize / 8
     left: 0
     height: $size
     width: $size
-    background-color: var(--color-neutral, $color-neutral)
+    background-color: var(--gs-color-neutral, $gs-color-neutral)
 
     *
       align-self: center
@@ -57,7 +57,7 @@ $checkmarkBorder: $checkboxSize / 8
       height: $checkmarkHeight
       margin: auto
 
-      border: solid var(--color-white, $color-white)
+      border: solid var(--gs-color-white, $gs-color-white)
       border-width: 0 $checkmarkBorder $checkmarkBorder 0
       -webkit-transform: rotate(45deg)
       -ms-transform: rotate(45deg)
@@ -67,7 +67,7 @@ $checkmarkBorder: $checkboxSize / 8
   opacity: $opacity
 
 .checkbox input:checked ~ .checkmark
-  background-color: var(--color-primary, $color-primary)
+  background-color: var(--gs-color-primary, $gs-color-primary)
 
 .checkbox input:checked ~ .checkmark:after
   display: block

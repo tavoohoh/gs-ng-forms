@@ -25,10 +25,10 @@ $borderRadius: $toggleSize + 4
     height: 0
 
     &:checked + span
-      background-color: var(--color-primary, $color-primary)
+      background-color: var(--gs-color-primary, $gs-color-primary)
     
     &:focus + span
-      box-shadow: 0 0 1px var(--color-primary, $color-primary)
+      box-shadow: 0 0 1px var(--gs-color-primary, $gs-color-primary)
     
     &:checked + span:before
       -webkit-transform: translateX($translation)
@@ -44,7 +44,7 @@ $borderRadius: $toggleSize + 4
     left: 0
     right: 0
     bottom: 0
-    background-color: var(--color-neutral, $color-neutral)
+    background-color: var(--gs-color-neutral, $gs-color-neutral)
     border-radius: $borderRadius
   
     &:before
@@ -56,5 +56,5 @@ $borderRadius: $toggleSize + 4
       width: $sliderSize
       left: 4px
       bottom: 4px
-      background-color: var(--color-white, $color-white)
+      background-color: var(--gs-color-white, $gs-color-white)
       border-radius: 50%

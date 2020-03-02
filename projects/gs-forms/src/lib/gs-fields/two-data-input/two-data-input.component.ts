@@ -30,8 +30,6 @@ export class GsTwoDataInputComponent implements OnChanges {
   public rightFieldPlaceholder: string;
   public valueType = GFieldValueType;
   public fieldValidatorType = GFieldValidatorType;
-
-
   public noSelectionFieldRight = true;
   public noSelectionFieldLeft = true;
   public touchedRightField = false;
