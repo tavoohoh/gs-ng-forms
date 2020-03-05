@@ -24,16 +24,12 @@ export class GsTwoDataInputComponent implements OnChanges {
   public rightFieldValue: any;
   public leftFieldType: any;
   public rightFieldType: any;
-  public leftFieldValidators: any;
-  public rightFieldValidators: any;
   public leftFieldPlaceholder: string;
   public rightFieldPlaceholder: string;
   public valueType = GFieldValueType;
   public fieldValidatorType = GFieldValidatorType;
-  public noSelectionFieldRight = true;
-  public noSelectionFieldLeft = true;
-  public touchedRightField = false;
-  public touchedLeftField = false;
+  public rightFieldTouched = false;
+  public leftFieldTouched = false;
 
   constructor(private gsService: GsFormsService) { }
 
@@ -49,10 +45,6 @@ export class GsTwoDataInputComponent implements OnChanges {
       if (this.field.config.options) {
         this.leftFieldType = this.field.config.options.left ? this.field.config.options.left.type || null : null;
         this.rightFieldType = this.field.config.options.right ? this.field.config.options.right.type || null : null;
-
-        this.leftFieldValidators = this.field.config.options.left ? this.field.config.options.left.validators || null : null;
-        this.rightFieldValidators = this.field.config.options.right ? this.field.config.options.right.validators || null : null;
-
         this.leftFieldPlaceholder = this.field.config.options.left ? this.field.config.options.left.placeholder || null : null;
         this.rightFieldPlaceholder = this.field.config.options.right ? this.field.config.options.right.placeholder || null : null;
       }
@@ -68,19 +60,13 @@ export class GsTwoDataInputComponent implements OnChanges {
     return { 'grid-template-columns': grid };
   }
 
-  public onUpdateValue(touched = true) {
-    if (this.leftFieldValue) {
-      this.noSelectionFieldRight = false;
-      this.touchedRightField = touched;
-    } else {
-      this.noSelectionFieldRight = true;
+  public onUpdateValue(right: boolean) {
+    if (!this.rightFieldTouched && right) {
+      this.rightFieldTouched = true;
     }
 
-    if (this.rightFieldValue) {
-      this.noSelectionFieldLeft = false;
-      this.touchedLeftField = touched;
-    } else {
-      this.noSelectionFieldLeft = true;
+    if (!this.leftFieldTouched && !right) {
+      this.leftFieldTouched = true;
     }
 
     const updatedValue = {
@@ -90,8 +76,6 @@ export class GsTwoDataInputComponent implements OnChanges {
 
     this.formGroup.controls[this.field.config.model].patchValue(updatedValue);
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
-
-    // TODO: add error validators
     this.formGroup.controls[this.field.config.model].setErrors({ invalid: true });
   }
 
@@ -110,12 +94,21 @@ export class GsTwoDataInputComponent implements OnChanges {
     return null;
   }
 
-  public requiredText(input: string) {
-    if (input === 'right') {
+  public requiredText(right: boolean) {
+    if (right) {
       return this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_RIGHT');
     } else {
       return this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_LEFT');
     }
+  }
+
+  public validateRequired(right: boolean) {
+    const input = right ? 'right' : 'left';
+
+    return this.field.config.options[input].validators &&
+      this[`${input}FieldTouched`] &&
+      this.field.config.options[input].validators.required &&
+      !this[`${input}FieldValue`];
   }
 
 }

@@ -12,7 +12,7 @@
     [(ngModel)]="leftFieldValue" 
     [min]="checkMinMaxValidator('left', 'MIN')" 
     [max]="checkMinMaxValidator('left', 'MAX')"
-    (keyup)="onUpdateValue()">
+    (keyup)="onUpdateValue(false)"/>
 
   <!-- divider -->
   <span class="input-divider">
@@ -32,13 +32,15 @@
     [min]="checkMinMaxValidator('right', 'MIN')" 
     [max]="checkMinMaxValidator('right', 'MAX')"
     [(ngModel)]="rightFieldValue"
-    (keyup)="onUpdateValue()">
+    (keyup)="onUpdateValue(true)"/>
 </div>
+
+<!-- validations -->
 <span class="gs-form-field_error_message"
-  *ngIf="touchedRightField && noSelectionFieldRight && rightFieldValidators.required">
-  {{ requiredText('right') }}
+  *ngIf="validateRequired(false)">
+  {{ requiredText(false) }}
 </span>
 <span class="gs-form-field_error_message"
-  *ngIf="touchedLeftField && noSelectionFieldLeft && leftFieldValidators.required">
-  {{ requiredText('left') }}
+  *ngIf="validateRequired(true)">
+  {{ requiredText(true) }}
 </span>

@@ -188,6 +188,9 @@ export class GsFormsService {
     return formFields;
   }
 
+  /**
+   * Reset gs-form values
+   */
   public resetForm(reset = true) {
     return this.resetForm$.next(reset);
   }
