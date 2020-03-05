@@ -9,7 +9,8 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   AfterViewChecked,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import { FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -19,6 +20,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { GsFormsService } from './gs-forms.service';
 import { GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
 import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
+import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 
 @Component({
   selector: 'gs-form',
@@ -84,6 +86,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
    */
   @Output() private formChanges = new EventEmitter<FormGroup>();
 
+  @ViewChild(GsFileInputComponent, { static: false }) fileInputComponent: GsFileInputComponent;
+
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
   public fieldValidatorType = GFieldValidatorType;
@@ -106,6 +110,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
           return;
         }
         this.formGroup.reset();
+        this.fileInputComponent.resetField();
         this.formsService.resetForm(false);
       });
   }

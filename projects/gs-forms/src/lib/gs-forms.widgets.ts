@@ -155,7 +155,6 @@ export class GMultiselectField implements GField {
   constructor(public config: GFieldOptionValuesConfiguration) { }
 }
 
-
 /**
  * Divider widget
  */

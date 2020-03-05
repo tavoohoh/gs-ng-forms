@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { GFieldFile } from './../../gs-forms.widgets';
@@ -9,7 +9,7 @@ import { GsFormsService } from '../../gs-forms.service';
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.sass']
 })
-export class GsFileInputComponent implements OnInit {
+export class GsFileInputComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
   @Input() public formGroup: FormGroup;
 
@@ -48,6 +48,20 @@ export class GsFileInputComponent implements OnInit {
 
   ngOnInit() {
     this.supportedFilesText = this.supportedFilesTranslates[this.gsFromsService.getLang() || 'en'];
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.field.currentValue) {
+      if (this.field.config.value) {
+        this.selectedFile = {
+          isImage: this.field.config.value.isImage,
+          type: this.field.config.value.type,
+          isValidType: true,
+          name: this.field.config.value.name,
+          path: this.field.config.value.path || null
+        };
+      }
+    }
   }
 
   public onFileChange($event: any): void {
@@ -105,6 +119,9 @@ export class GsFileInputComponent implements OnInit {
             this.loading = false;
             console.error('Unable to upload the image. Error:', error);
             this.errorText = this.errorTranslates[this.gsFromsService.getLang() || 'en'];
+            this.formGroup.controls[this.field.config.model].patchValue('unableToUploadFile');
+            this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+            this.formGroup.controls[this.field.config.model].setErrors({ unableToUploadFile: true });
           });
     });
 
@@ -123,6 +140,10 @@ export class GsFileInputComponent implements OnInit {
 
   private validFileType(file: File): boolean {
     return this.field.config.accept.replace(/ /g, '').split(',').includes(`.${file.type.split('/')[1]}`);
+  }
+
+  public resetField() {
+    this.selectedFile = null;
   }
 
 }
