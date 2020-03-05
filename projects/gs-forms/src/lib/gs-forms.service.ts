@@ -6,12 +6,13 @@ import { GFormFields, GField, GFieldOptionValues } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
 import { TranslateService } from '@ngx-translate/core';
 import { VALIDATION_MESSAGES } from './gs-forms.constants';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GsFormsService {
+  public resetForm$ = new BehaviorSubject(false);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -176,7 +177,7 @@ export class GsFormsService {
    * @param formValues an object of values like `FormGroup` value.
    * The keys of `formValues` most match the model name of your `GFields`
    */
-  public patchFormValues(formFields: GFormFields, formValues: {[key: string]: any}): GFormFields {
+  public patchFormValues(formFields: GFormFields, formValues: { [key: string]: any }): GFormFields {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < formFields.length; i++) {
       if (formValues[formFields[i].config.model]) {
@@ -187,5 +188,12 @@ export class GsFormsService {
     return formFields;
   }
 
+  public resetForm(reset = true) {
+    return this.resetForm$.next(reset);
+  }
+
+  public getResetFormStatus() {
+    return this.resetForm$.asObservable();
+  }
 
 }

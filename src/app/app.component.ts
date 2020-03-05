@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
     }
   ];
 
-
   public formOptions: GFormOptions = {
     onErrorDisableSubmit: false,
     country: GFieldCountryCode.BO,
@@ -447,5 +446,9 @@ export class AppComponent implements OnInit {
 
   public onFormChange(form: FormGroup) {
     // console.log(form);
+  }
+
+  public resetForm() {
+    this.gsFormService.resetForm();
   }
 }

@@ -8,7 +8,8 @@ import {
   OnChanges,
   SimpleChanges,
   ChangeDetectorRef,
-  AfterViewChecked
+  AfterViewChecked,
+  OnInit
 } from '@angular/core';
 import { FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -24,7 +25,7 @@ import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
   templateUrl: './gs-forms.component.html',
   styleUrls: ['./gs-forms.component.sass']
 })
-export class GsFormsComponent implements OnChanges, AfterViewChecked  {
+export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   /**
    * Input: formOptions: GFormOptions
    *
@@ -96,6 +97,17 @@ export class GsFormsComponent implements OnChanges, AfterViewChecked  {
     @Inject('customStyles') customStyles
   ) {
     this.customStyles = customStyles;
+  }
+
+  ngOnInit() {
+    this.formsService.getResetFormStatus()
+      .subscribe(reset => {
+        if (!reset) {
+          return;
+        }
+        this.formGroup.reset();
+        this.formsService.resetForm(false);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
