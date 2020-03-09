@@ -13,6 +13,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class GsFormsService {
   public resetForm$ = new BehaviorSubject(false);
+  public submitForm$ = new BehaviorSubject(false);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -197,6 +198,17 @@ export class GsFormsService {
 
   public getResetFormStatus() {
     return this.resetForm$.asObservable();
+  }
+
+  /**
+   * Submit gs-form values
+   */
+  public submitForm(submit = true) {
+    return this.submitForm$.next(submit);
+  }
+
+  public getSubmitFormStatus() {
+    return this.submitForm$.asObservable();
   }
 
 }

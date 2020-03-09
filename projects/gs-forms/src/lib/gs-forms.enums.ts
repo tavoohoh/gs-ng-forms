@@ -111,7 +111,13 @@ export enum GFieldSelector {
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */
-  DIVIDER = 'divider'
+  DIVIDER = 'divider',
+
+  /**
+   * Button
+   * This is not a field, it is a normal button to save, reset or anything else
+   */
+  BUTTON = 'button'
 }
 
 export enum GFieldValueType {
@@ -143,4 +149,9 @@ export enum GFieldCountryCode {
   US = 'us',
   UY = 'uy',
   VE = 've'
+}
+
+export enum GFieldValueButtonType {
+  SAVE = 'save',
+  RESET = 'reset'
 }

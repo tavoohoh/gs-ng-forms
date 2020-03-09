@@ -8,7 +8,8 @@ import {
   GFieldNumberConfiguration,
   GFieldFileConfiguration,
   GFieldDividerConfiguration,
-  GFieldTwoDataConfiguration
+  GFieldTwoDataConfiguration,
+  GFieldButtonConfiguration
 } from './gs-forms.models';
 
 /**
@@ -164,3 +165,15 @@ export class GDivider {
 
   constructor(public config: GFieldDividerConfiguration) {}
 }
+
+
+/**
+ * Button widget
+ */
+export class GButton {
+  selector = GFieldSelector.BUTTON;
+  notWidget = true;
+
+  constructor(public config: GFieldButtonConfiguration) {}
+}
+
