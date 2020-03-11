@@ -109,12 +109,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
         if (!reset) {
           return;
         }
-
-        if (this.fileInputComponent !== undefined) {
-          this.fileInputComponent.resetField();
-        }
-
         this.formGroup.reset();
+        this.fileInputComponent.resetField();
         this.formsService.resetForm(false);
       });
 
