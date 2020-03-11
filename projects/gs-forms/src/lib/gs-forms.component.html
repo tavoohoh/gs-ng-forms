@@ -28,7 +28,7 @@
             <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
             <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
             <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
-            
+
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
@@ -48,7 +48,6 @@
             {{ getFieldError(field.config.model) | translate }}
           </span>
         </div>
-    
 
         <!-- no widget field -->
         <div *ngIf="field.notWidget && checkCondition(field)"
@@ -56,7 +55,6 @@
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null">
           <ng-container [ngSwitch]="field.selector">
             <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
-            <gs-button  *ngSwitchCase="fieldSelector.BUTTON" [button]="field"></gs-button>
           </ng-container>
         </div>
       </ng-container>

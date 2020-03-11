@@ -113,14 +113,6 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
         this.fileInputComponent.resetField();
         this.formsService.resetForm(false);
       });
-
-    this.formsService.getSubmitFormStatus()
-      .subscribe(submit => {
-        if (!submit) {
-          return;
-        }
-        this.submit();
-      });
   }
 
   ngOnChanges(changes: SimpleChanges) {

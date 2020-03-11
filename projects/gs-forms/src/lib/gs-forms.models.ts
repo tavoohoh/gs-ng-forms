@@ -327,16 +327,6 @@ export class GFieldDividerConfiguration extends GFieldConfiguration {
 }
 
 /**
- * Field configuration for `GButton`
- */
-export class GFieldButtonConfiguration extends GFieldConfiguration {
-  /**
-   * action button
-   */
-  action?: string;
-}
-
-/**
  * Field interface
  */
 export interface GField {
