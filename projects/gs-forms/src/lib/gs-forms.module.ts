@@ -1,4 +1,3 @@
-import { GsButtonComponent } from './gs-fields/button/button.component';
 import { NgModule, ModuleWithProviders, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -49,8 +48,7 @@ import { GsFormsService } from './gs-forms.service';
     GsDividerComponent,
     GsTwoDataInputComponent,
     GsMultiselectComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    GsFormsComponent
   ],
   imports: [
     CommonModule,
@@ -82,8 +80,7 @@ import { GsFormsService } from './gs-forms.service';
     GsDividerComponent,
     GsTwoDataInputComponent,
     GsMultiselectComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    GsFormsComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA

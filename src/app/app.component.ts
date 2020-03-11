@@ -1,4 +1,3 @@
-import { GButton } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit } from '@angular/core';
 
 import {
@@ -75,7 +74,6 @@ export class AppComponent implements OnInit {
   };
 
   public formFields: GFormFields = [
-
     // divider
     new GDivider({
       seccionName: 'Section',
@@ -84,20 +82,6 @@ export class AppComponent implements OnInit {
       model: null,
       dividerColor: '#e3bec4',
       gridColumn: '1 / 4'
-    }),
-
-    // button save
-    new GButton({
-      model: null,
-      placeholder: 'Save button',
-      action: 'save'
-    }),
-
-    // button reset
-    new GButton({
-      model: null,
-      placeholder: 'Reset button',
-      action: 'reset'
     }),
 
     // text input
