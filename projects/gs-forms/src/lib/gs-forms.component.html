@@ -31,7 +31,7 @@
             
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
-            [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
             </gs-radio-button>
             <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
