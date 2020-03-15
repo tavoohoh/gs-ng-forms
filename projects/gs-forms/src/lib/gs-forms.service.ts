@@ -178,37 +178,22 @@ export class GsFormsService {
    * @param formValues an object of values like `FormGroup` value.
    * The keys of `formValues` most match the model name of your `GFields`
    */
-  public patchFormValues(formFields: GFormFields, formValues: { [key: string]: any }): GFormFields {
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < formFields.length; i++) {
-      if (formValues[formFields[i].config.model]) {
-        formFields[i].config.value = formValues[formFields[i].config.model];
+  public patchFormValues(formFields: GFormFields, formValues: { [key: string]: any }, resetForm?: boolean): GFormFields {
+    if (resetForm) {
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < formFields.length; i++) {
+        formFields[i].config.value = null;
+      }
+    } else {
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < formFields.length; i++) {
+        if (formValues[formFields[i].config.model]) {
+          formFields[i].config.value = formValues[formFields[i].config.model];
+        }
       }
     }
 
     return formFields;
-  }
-
-  /**
-   * Reset gs-form values
-   */
-  public resetForm(reset = true) {
-    return this.resetForm$.next(reset);
-  }
-
-  public getResetFormStatus() {
-    return this.resetForm$.asObservable();
-  }
-
-  /**
-   * Submit gs-form values
-   */
-  public submitForm(submit = true) {
-    return this.submitForm$.next(submit);
-  }
-
-  public getSubmitFormStatus() {
-    return this.submitForm$.asObservable();
   }
 
 }

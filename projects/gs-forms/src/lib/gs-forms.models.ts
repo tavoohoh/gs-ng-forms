@@ -1,4 +1,4 @@
-import { GFieldCountryCode, GFieldSelector, GFieldValidatorType, GFieldValueType } from './gs-forms.enums';
+import { GFieldCountryCode, GFieldSelector, GFieldValidatorType, GFieldValueType, GFieldValueButtonType } from './gs-forms.enums';
 
 export interface GFieldOptionValue {
   value: string | number | boolean;
@@ -333,7 +333,7 @@ export class GFieldButtonConfiguration extends GFieldConfiguration {
   /**
    * action button
    */
-  action?: string;
+  action: GFieldValueButtonType;
 }
 
 /**

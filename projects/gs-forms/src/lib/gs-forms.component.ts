@@ -18,9 +18,10 @@ import { takeUntil } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { GsFormsService } from './gs-forms.service';
-import { GFieldSelector, GFieldValidatorType } from './gs-forms.enums';
+import { GFieldSelector, GFieldValidatorType, GFieldValueButtonType } from './gs-forms.enums';
 import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
+import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
 
 @Component({
   selector: 'gs-form',
@@ -87,6 +88,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   @Output() private formChanges = new EventEmitter<FormGroup>();
 
   @ViewChild(GsFileInputComponent, { static: false }) fileInputComponent: GsFileInputComponent;
+  @ViewChild(GsDatePickerComponent, { static: false }) datePickerComponent: GsDatePickerComponent;
 
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
@@ -104,27 +106,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.formsService.getResetFormStatus()
-      .subscribe(reset => {
-        if (!reset) {
-          return;
-        }
 
-        if (this.fileInputComponent !== undefined) {
-          this.fileInputComponent.resetField();
-        }
-
-        this.formGroup.reset();
-        this.formsService.resetForm(false);
-      });
-
-    this.formsService.getSubmitFormStatus()
-      .subscribe(submit => {
-        if (!submit) {
-          return;
-        }
-        this.submit();
-      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -356,6 +338,25 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
       return this.sanitizer.bypassSecurityTrustStyle(
         variables
       );
+    }
+  }
+
+  public formActions(action: string) {
+    switch (action) {
+      case GFieldValueButtonType.SUBMIT:
+        this.submit();
+        break;
+      case GFieldValueButtonType.RESET:
+        if (this.fileInputComponent !== undefined) {
+          this.fileInputComponent.resetField();
+        }
+
+        if (this.datePickerComponent !== undefined) {
+          this.datePickerComponent.resetField();
+        }
+
+        this.formGroup.reset();
+        break;
     }
   }
 

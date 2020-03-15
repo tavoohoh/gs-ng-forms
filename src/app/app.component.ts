@@ -1,5 +1,5 @@
 import { GButton } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
   GFormFields,
@@ -23,11 +23,13 @@ import {
   GDivider,
   GTwoDataInput,
   GFieldValueType,
-  GMultiselectField
+  GMultiselectField,
+  GFieldValueButtonType
 } from 'projects/gs-forms/src/public-api';
+import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
-import { FormGroup } from '@angular/forms';
+import { GsFormsComponent } from 'projects/gs-forms/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +37,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild(GsFormsComponent, { static: false }) formComponent: GsFormsComponent;
 
   private toMapOptions = [
     {
@@ -90,14 +93,14 @@ export class AppComponent implements OnInit {
     new GButton({
       model: null,
       placeholder: 'Save button',
-      action: 'save'
+      action: GFieldValueButtonType.SUBMIT
     }),
 
     // button reset
     new GButton({
       model: null,
       placeholder: 'Reset button',
-      action: 'reset'
+      action: GFieldValueButtonType.RESET
     }),
 
     // text input
@@ -465,6 +468,10 @@ export class AppComponent implements OnInit {
   }
 
   public resetForm() {
-    this.gsFormService.resetForm();
+    this.formComponent.formActions('reset');
+  }
+
+  public submitForm() {
+    this.formComponent.formActions('submit');
   }
 }
