@@ -196,8 +196,7 @@ export class AppComponent implements OnInit {
     new GDatePickerField({
       model: 'datepicker',
       label: 'Date Picker',
-      placeholder: 'datepicker',
-      value: '1992-09-15'
+      placeholder: 'datepicker'
     }),
 
     // toggle input
@@ -447,7 +446,6 @@ export class AppComponent implements OnInit {
     const toPatchValues = {
       email: 'email@patched.com',
       age: 40,
-      datepicker: '1992-09-30',
       // multiselect: [
       //   {
       //     value: 'bogota',

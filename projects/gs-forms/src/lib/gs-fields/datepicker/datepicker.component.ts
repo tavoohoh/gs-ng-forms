@@ -119,7 +119,6 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
       this.date = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]));
       this.setCalendar();
     } else {
-      this.date = null;
       this.setCalendar();
     }
   }
