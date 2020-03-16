@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { GFieldValueButtonType } from './../../gs-forms.enums';
 import { GButton } from './../../gs-forms.widgets';
-import { GsFormsService } from './../../gs-forms.service';
+import { GFieldValueButtonType } from '../../gs-forms.enums';
 
 @Component({
   selector: 'gs-button',
@@ -10,18 +9,11 @@ import { GsFormsService } from './../../gs-forms.service';
 })
 export class GsButtonComponent {
   @Input() public button: GButton;
+  @Output() hdlAction = new EventEmitter(null);
 
-  constructor(private gsFormService: GsFormsService) { }
+  public fieldValueButtonType = GFieldValueButtonType;
 
   public action(action: string) {
-    switch (action) {
-      case GFieldValueButtonType.SAVE:
-        this.gsFormService.submitForm();
-        break;
-      case GFieldValueButtonType.RESET:
-        this.gsFormService.resetForm();
-        break;
-    }
-
+    this.hdlAction.emit(action);
   }
 }

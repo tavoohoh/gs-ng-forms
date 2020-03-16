@@ -152,6 +152,6 @@ export enum GFieldCountryCode {
 }
 
 export enum GFieldValueButtonType {
-  SAVE = 'save',
+  SUBMIT = 'submit',
   RESET = 'reset'
 }

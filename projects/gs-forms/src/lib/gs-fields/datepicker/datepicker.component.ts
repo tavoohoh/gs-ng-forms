@@ -108,14 +108,6 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.lang = this.gsFormService.getLang() || 'en';
     this.months = MONTHS[this.lang];
     this.weekdays = WEEKDAYS[this.lang];
-
-    this.gsFormService.getResetFormStatus()
-      .subscribe(reset => {
-        if (!reset) {
-          return;
-        }
-        this.resetField();
-      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -285,7 +277,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     return [year, month, day].join('-');
   }
 
-  private resetField() {
+  public resetField() {
     this.dateValue = null;
   }
 }
