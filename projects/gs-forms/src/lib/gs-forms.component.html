@@ -52,7 +52,7 @@
 
         <!-- no widget field -->
         <div *ngIf="field.notWidget && checkCondition(field)"
-          class="gs-form-field"
+          class="gs-form-field no-widget"
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null">
           <ng-container [ngSwitch]="field.selector">
             <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
