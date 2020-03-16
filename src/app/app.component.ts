@@ -86,20 +86,6 @@ export class AppComponent implements OnInit {
       gridColumn: '1 / 4'
     }),
 
-    // button save
-    new GButton({
-      model: null,
-      placeholder: 'Save button',
-      action: 'save'
-    }),
-
-    // button reset
-    new GButton({
-      model: null,
-      placeholder: 'Reset button',
-      action: 'reset'
-    }),
-
     // text input
     new GTextField({
       model: 'text',
@@ -118,6 +104,20 @@ export class AppComponent implements OnInit {
       label: 'Separated by comma',
       placeholder: 'separated by comma placeholder',
       value: 'red, blue'
+    }),
+
+    // button save
+    new GButton({
+      model: null,
+      placeholder: 'Save button',
+      action: 'save'
+    }),
+
+    // button reset
+    new GButton({
+      model: null,
+      placeholder: 'Reset button',
+      action: 'reset'
     }),
 
     // textarea input
