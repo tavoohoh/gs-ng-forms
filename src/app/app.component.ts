@@ -115,6 +115,8 @@ export class AppComponent implements OnInit {
       },
     }),
 
+    /*
+
     // separated by comma
     new GSeparatedByComma({
       model: 'comma',
@@ -192,9 +194,25 @@ export class AppComponent implements OnInit {
       }
     }),
 
+    */
+
     // datepicker input
     new GDatePickerField({
-      model: 'datepicker',
+      model: 'from',
+      label: 'Date Picker',
+      placeholder: 'datepicker'
+    }),
+
+    // datepicker input
+    new GDatePickerField({
+      model: 'to',
+      label: 'Date Picker',
+      placeholder: 'datepicker'
+    }),
+
+    // datepicker input
+    new GDatePickerField({
+      model: 'date',
       label: 'Date Picker',
       placeholder: 'datepicker'
     }),
