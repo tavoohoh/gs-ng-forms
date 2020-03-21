@@ -1,4 +1,4 @@
-import { GButton } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
+import { GButton, GColorPickerField } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
@@ -113,6 +113,14 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.MIN_LENGTH]: 2,
         [GFieldValidatorType.MAX_LENGTH]: 30
       },
+    }),
+
+    // text input
+    new GColorPickerField({
+      model: 'color',
+      label: 'Color',
+      placeholder: 'Color picker',
+      value: '#4588fd'
     }),
 
     /*

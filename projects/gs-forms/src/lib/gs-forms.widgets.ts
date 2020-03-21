@@ -157,6 +157,15 @@ export class GMultiselectField implements GField {
 }
 
 /**
+ * Color picker widget
+ */
+export class GColorPickerField implements GField {
+  selector = GFieldSelector.COLOR;
+
+  constructor(public config: GFieldConfiguration) {}
+}
+
+/**
  * Divider widget
  */
 export class GDivider {
@@ -165,7 +174,6 @@ export class GDivider {
 
   constructor(public config: GFieldDividerConfiguration) {}
 }
-
 
 /**
  * Button widget

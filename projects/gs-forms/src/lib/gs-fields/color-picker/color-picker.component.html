@@ -1,0 +1,18 @@
+<ng-container [formGroup]="formGroup">
+  <div class="input gs-form-color-picker">
+    <input
+      class="text-value"
+      type="text"
+      (keyup)="setColorValue()"
+      [formControlName]="field.config.model"
+      [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+      [maxlength]="7"
+      [value]="field.config.value || null">
+    <input
+      class="color-value"
+      type="color"
+      (change)="setColorValue()"
+      [formControlName]="field.config.model"
+      [value]="field.config.value || null">
+  </div>
+</ng-container>
