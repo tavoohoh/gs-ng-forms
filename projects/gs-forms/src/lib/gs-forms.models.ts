@@ -225,9 +225,13 @@ export class GFieldCountryFormmatConfiguration extends GFieldConfiguration {
  */
 export class GFieldFileConfiguration extends GFieldConfiguration {
   /**
-   * Set `GFieldFile` configurations
+   * If true it will return the file as binary instead of trying to upload it
    */
-  api: {
+  returnFile?: boolean;
+  /**
+   * Upload url configuration
+   */
+  api?: {
     /**
      * Url to make the http request
      */

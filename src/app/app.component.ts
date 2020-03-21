@@ -335,6 +335,7 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
+      returnFile: false,
       api: {
         url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
         method: 'post',
