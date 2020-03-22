@@ -473,6 +473,13 @@ export class AppComponent implements OnInit {
     const toPatchValues = {
       email: 'email@patched.com',
       age: 40,
+      file: {
+        isImage: true,
+        type: '',
+        name: '',
+        // tslint:disable-next-line: max-line-length
+        path: 'https://firebasestorage.googleapis.com/v0/b/gianfaraoneweb.appspot.com/o/horizonte-singapur_53876-33588.jpg?alt=media&token=9d1e33be-11f1-45e2-be8f-ebc2fc8aa463'
+      }
       // multiselect: [
       //   {
       //     value: 'bogota',

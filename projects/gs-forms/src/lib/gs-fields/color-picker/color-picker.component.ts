@@ -15,7 +15,6 @@ export class GsColorPickerComponent {
   public fieldValidatorType = GFieldValidatorType;
 
   public setColorValue() {
-    console.log(this.formGroup.value[this.field.config.model]);
     this.formGroup.controls[this.field.config.model].patchValue(
       this.formGroup.value[this.field.config.model]
     );

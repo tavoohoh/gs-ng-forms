@@ -1,6 +1,6 @@
 {
   "name": "gs-form-core",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "lib:build": "ng-packagr -p projects/gs-forms/ng-package.json",
     "lib:init-repo": "cd ./dist/gs-forms/ && git init && git remote add origin git@bitbucket.org:rappinc/rpp-ngforms-lib.git",
-    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m 'v1.7.4'",
+    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m 'v1.7.6'",
     "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin master",
     "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:commit && npm run lib:push"
   },
