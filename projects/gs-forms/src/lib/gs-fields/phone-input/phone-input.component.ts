@@ -28,7 +28,7 @@ export class GsPhoneInputComponent implements OnChanges {
 
   public fieldValidatorType = GFieldValidatorType;
 
-  constructor(private gsService: GsFormsService) {}
+  constructor(private gsService: GsFormsService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     let location = null;
@@ -75,7 +75,10 @@ export class GsPhoneInputComponent implements OnChanges {
     this.touched = touched;
     const inputVal = this.value || '';
 
-    if (inputVal === '') { return; }
+    if (inputVal === '' || inputVal.length < this.phoneMask.length) {
+      this.formGroup.controls[this.field.config.model].patchValue(null);
+      return;
+    }
 
     // mark input as dirty
     if (keyup) {
