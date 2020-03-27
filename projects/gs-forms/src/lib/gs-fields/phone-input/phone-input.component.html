@@ -28,12 +28,8 @@
       [id]="field.config.model"
       [placeholder]="phoneMask"
       [(ngModel)]="value"
-      (keyup)="formatPhone(true)"/>
+      (input)="formatPhone(true)"/>
   </div>
-
-  <span class="gs-form-field_error_message" *ngIf="touched && field.config.validators.required && value.length === 0">
-    {{ errorText('ERR_REQUIRED') }}
-  </span>
 
   <span class="gs-form-field_error_message" *ngIf="touched && value.length < phoneMask.length">
     {{ errorText('ERR_PATTERN') }}
