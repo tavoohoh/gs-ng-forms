@@ -25,6 +25,7 @@ export class GsPhoneInputComponent implements OnChanges {
   public editCountry: boolean;
   public value = '';
   public touched = false;
+  public invalid = false;
 
   public fieldValidatorType = GFieldValidatorType;
 
@@ -75,11 +76,6 @@ export class GsPhoneInputComponent implements OnChanges {
     this.touched = touched;
     const inputVal = this.value || '';
 
-    if (inputVal === '' || inputVal.length < this.phoneMask.length) {
-      this.formGroup.controls[this.field.config.model].patchValue(null);
-      return;
-    }
-
     // mark input as dirty
     if (keyup) {
       this.formGroup.controls[this.field.config.model].markAsDirty();
@@ -116,13 +112,20 @@ export class GsPhoneInputComponent implements OnChanges {
 
     this.value = newString.join('');
 
-    const controlValue = inputVal;
-    this.formGroup.controls[this.field.config.model].patchValue({
-      code: this.country,
-      alpha2Code: this.countryCode,
-      phone: controlValue.replace(/\s/g, '')
-    });
-    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    this.invalid = inputVal.length < this.phoneMask.length || inputVal.length > this.phoneMask.length ? true : false;
+
+    if (inputVal === '' || this.invalid) {
+      this.formGroup.controls[this.field.config.model].patchValue(null);
+      return;
+    } else {
+      const controlValue = inputVal;
+      this.formGroup.controls[this.field.config.model].patchValue({
+        code: this.country,
+        alpha2Code: this.countryCode,
+        phone: controlValue.replace(/\s/g, '')
+      });
+      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    }
   }
 
   public updatePhoneMask(country: string) {
