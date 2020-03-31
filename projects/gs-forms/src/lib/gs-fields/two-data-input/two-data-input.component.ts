@@ -74,9 +74,12 @@ export class GsTwoDataInputComponent implements OnChanges {
       right: this.rightFieldValue
     };
 
-    this.formGroup.controls[this.field.config.model].patchValue(updatedValue);
-    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
-    this.formGroup.controls[this.field.config.model].setErrors({ invalid: true });
+    if (updatedValue.left && updatedValue.right) {
+      this.formGroup.controls[this.field.config.model].patchValue(updatedValue);
+      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    } else {
+      this.formGroup.controls[this.field.config.model].patchValue(null);
+    }
   }
 
   public checkMinMaxValidator(input: string, validator: string) {
@@ -95,11 +98,9 @@ export class GsTwoDataInputComponent implements OnChanges {
   }
 
   public requiredText(right: boolean) {
-    if (right) {
-      return this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_RIGHT');
-    } else {
-      return this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_LEFT');
-    }
+    return right
+      ? this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_RIGHT')
+      : this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_LEFT');
   }
 
   public validateRequired(right: boolean) {
