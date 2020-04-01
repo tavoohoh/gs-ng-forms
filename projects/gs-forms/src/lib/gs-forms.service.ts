@@ -62,7 +62,9 @@ export class GsFormsService {
       }
     }
 
-    formObject[field.config.model].push(Validators.compose(validators));
+    if (hasValidators) {
+      formObject[field.config.model].push(Validators.compose(validators));
+    }
     return formObject;
   }
 
