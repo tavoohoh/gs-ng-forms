@@ -25,6 +25,7 @@ import { GsFileInputComponent } from './gs-fields/file-input/file-input.componen
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
+import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
@@ -49,6 +50,7 @@ import { GsFormsService } from './gs-forms.service';
     GsDividerComponent,
     GsTwoDataInputComponent,
     GsMultiselectComponent,
+    GsColorPickerComponent,
     GsFormsComponent,
     GsButtonComponent
   ],
@@ -82,6 +84,7 @@ import { GsFormsService } from './gs-forms.service';
     GsDividerComponent,
     GsTwoDataInputComponent,
     GsMultiselectComponent,
+    GsColorPickerComponent,
     GsFormsComponent,
     GsButtonComponent
   ],

@@ -108,6 +108,13 @@ export enum GFieldSelector {
   MULTISELECT = 'multiselect',
 
   /**
+   * Any string value:
+   * For example: color string.
+   * <input type="color"/>
+   */
+  COLOR = 'color',
+
+  /**
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */

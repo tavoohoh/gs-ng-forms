@@ -27,6 +27,8 @@ export class GsFileInputComponent implements OnInit, OnChanges {
     path?: string | any;
   };
 
+  private returnFile: boolean;
+
   private supportedFilesTranslates = {
     es: 'Archivos soportados',
     en: 'Supported files',
@@ -60,6 +62,12 @@ export class GsFileInputComponent implements OnInit, OnChanges {
           name: this.field.config.value.name,
           path: this.field.config.value.path || null
         };
+      }
+
+      if (this.field.config.returnFile) {
+        this.returnFile = true;
+      } else {
+        this.returnFile = false;
       }
     }
   }
@@ -98,7 +106,13 @@ export class GsFileInputComponent implements OnInit, OnChanges {
       };
     }
 
-    this.processFile(file);
+    if (this.returnFile) {
+      this.formGroup.controls[this.field.config.model].patchValue(file);
+      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+      this.loading = false;
+    } else {
+      this.processFile(file);
+    }
   }
 
   private processFile(file: any): void {

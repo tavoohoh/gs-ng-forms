@@ -1,4 +1,4 @@
-import { GButton } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
+import { GButton, GColorPickerField } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
@@ -115,6 +115,16 @@ export class AppComponent implements OnInit {
       },
     }),
 
+    // text input
+    new GColorPickerField({
+      model: 'color',
+      label: 'Color',
+      placeholder: 'Color picker',
+      value: '#4588fd'
+    }),
+
+    /*
+
     // separated by comma
     new GSeparatedByComma({
       model: 'comma',
@@ -195,9 +205,25 @@ export class AppComponent implements OnInit {
       }
     }),
 
+    */
+
     // datepicker input
     new GDatePickerField({
-      model: 'datepicker',
+      model: 'from',
+      label: 'Date Picker',
+      placeholder: 'datepicker'
+    }),
+
+    // datepicker input
+    new GDatePickerField({
+      model: 'to',
+      label: 'Date Picker',
+      placeholder: 'datepicker'
+    }),
+
+    // datepicker input
+    new GDatePickerField({
+      model: 'date',
       label: 'Date Picker',
       placeholder: 'datepicker'
     }),
@@ -302,6 +328,7 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
+      returnFile: false,
       api: {
         url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
         method: 'post',
@@ -439,6 +466,13 @@ export class AppComponent implements OnInit {
     const toPatchValues = {
       email: 'email@patched.com',
       age: 40,
+      file: {
+        isImage: true,
+        type: '',
+        name: '',
+        // tslint:disable-next-line: max-line-length
+        path: 'https://firebasestorage.googleapis.com/v0/b/gianfaraoneweb.appspot.com/o/horizonte-singapur_53876-33588.jpg?alt=media&token=9d1e33be-11f1-45e2-be8f-ebc2fc8aa463'
+      }
       // multiselect: [
       //   {
       //     value: 'bogota',

@@ -9,8 +9,9 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   AfterViewChecked,
-  ViewChild,
-  OnInit
+  OnInit,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 import { FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -87,8 +88,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
    */
   @Output() private formChanges = new EventEmitter<FormGroup>();
 
-  @ViewChild(GsFileInputComponent, { static: false }) fileInputComponent: GsFileInputComponent;
-  @ViewChild(GsDatePickerComponent, { static: false }) datePickerComponent: GsDatePickerComponent;
+  @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
+  @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
 
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
@@ -357,11 +358,11 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
         break;
       case GFieldValueButtonType.RESET:
         if (this.fileInputComponent !== undefined) {
-          this.fileInputComponent.resetField();
+          this.fileInputComponent.forEach(el => el.resetField());
         }
 
         if (this.datePickerComponent !== undefined) {
-          this.datePickerComponent.resetField();
+          this.datePickerComponent.forEach(el => el.resetField());
         }
 
         this.formGroup.reset();

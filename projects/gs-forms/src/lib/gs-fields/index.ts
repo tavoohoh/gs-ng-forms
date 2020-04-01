@@ -14,5 +14,6 @@ export { GsSeparatedByCommaComponent } from './separated-by-comma/separated-by-c
 export { GsFileInputComponent } from './file-input/file-input.component';
 export { GsTwoDataInputComponent } from './two-data-input/two-data-input.component';
 export { GsMultiselectComponent } from './multiselect/multiselect.component';
+export { GsColorPickerComponent } from './color-picker/color-picker.component';
 export { GsDividerComponent } from './divider/divider.component';
 export { GsButtonComponent } from './button/button.component';

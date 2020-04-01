@@ -28,7 +28,8 @@
             <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
             <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
             <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
-            
+            <gs-color-picker *ngSwitchCase="fieldSelector.COLOR" [field]="field" [formGroup]="formGroup"></gs-color-picker>
+
             <!-- fields with externalOptions @input() -->
             <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
