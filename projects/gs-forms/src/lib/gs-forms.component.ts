@@ -105,6 +105,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   ) {
     this.customStyles = customStyles;
   }
+
   ngOnInit() {
     const fieldWithDisplay = this.formFields.find((field: GField) => {
       if (field.config.displayIf && !field.notWidget) {
@@ -112,11 +113,14 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
       }
     });
 
-    this.formGroup.controls[fieldWithDisplay.config.displayIf.model].valueChanges.subscribe(change => {
-      if (this.formGroup.controls[fieldWithDisplay.config.model].value) {
-        this.formGroup.controls[fieldWithDisplay.config.model].setValue('');
-      }
-    });
+    if (fieldWithDisplay) {
+      this.formGroup.controls[fieldWithDisplay.config.displayIf.model].valueChanges
+        .subscribe(() => {
+          if (this.formGroup.controls[fieldWithDisplay.config.model].value) {
+            this.formGroup.controls[fieldWithDisplay.config.model].setValue('');
+          }
+        });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
