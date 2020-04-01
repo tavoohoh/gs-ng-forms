@@ -9,8 +9,8 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   AfterViewChecked,
-  OnInit,
-  ViewChild
+  ViewChild,
+  OnInit
 } from '@angular/core';
 import { FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -104,9 +104,18 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   ) {
     this.customStyles = customStyles;
   }
-
   ngOnInit() {
+    const fieldWithDisplay = this.formFields.find((field: GField) => {
+      if (field.config.displayIf && !field.notWidget) {
+        return field;
+      }
+    });
 
+    this.formGroup.controls[fieldWithDisplay.config.displayIf.model].valueChanges.subscribe(change => {
+      if (this.formGroup.controls[fieldWithDisplay.config.model].value) {
+        this.formGroup.controls[fieldWithDisplay.config.model].setValue('');
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -169,7 +178,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
     }
 
     if (this.formGroup.controls[field.config.model]) {
-      this.formGroup.controls[field.config.model].clearValidators();
+      this.formGroup.controls[field.config.model].clearAsyncValidators();
       this.formGroup.controls[field.config.model].updateValueAndValidity();
     }
 

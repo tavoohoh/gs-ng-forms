@@ -31,7 +31,7 @@
       (input)="formatPhone(true)"/>
   </div>
 
-  <span class="gs-form-field_error_message" *ngIf="touched && value.length < phoneMask.length">
+  <span class="gs-form-field_error_message" *ngIf="touched && invalid">
     {{ errorText('ERR_PATTERN') }}
   </span>
 </ng-container>

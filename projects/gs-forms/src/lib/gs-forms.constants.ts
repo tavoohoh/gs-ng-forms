@@ -40,7 +40,7 @@ export const LOCATION: { [key: string]: GLocation } = {
     },
     phoneFormat: {
       code: '591',
-      mask: '000 - 0000000'
+      mask: '000 0000000'
     },
     currencyFormat: {
       code: 'BOB',
