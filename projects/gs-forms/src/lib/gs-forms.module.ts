@@ -26,33 +26,43 @@ import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
+import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
 
+const directive = [
+  DigitOnlyDirective,
+  ClickOutsideDirective,
+];
+
+const widgets = [
+  GsTextInputComponent,
+  GsTextareaComponent,
+  GsPasswordInputComponent,
+  GsNumberInputComponent,
+  GsToggleComponent,
+  GsCheckboxComponent,
+  GsRadioButtonComponent,
+  GsDropdownComponent,
+  GsCurrencyInputComponent,
+  GsPhoneInputComponent,
+  GsDatePickerComponent,
+  GsTaxTypeComponent,
+  GsSeparatedByCommaComponent,
+  GsFileInputComponent,
+  GsDividerComponent,
+  GsTwoDataInputComponent,
+  GsMultiselectComponent,
+  GsColorPickerComponent,
+  GsButtonComponent,
+  GsShowDataComponent,
+  GsFormsComponent
+];
+
 @NgModule({
   declarations: [
-    DigitOnlyDirective,
-    ClickOutsideDirective,
-    GsTextInputComponent,
-    GsTextareaComponent,
-    GsPasswordInputComponent,
-    GsNumberInputComponent,
-    GsToggleComponent,
-    GsCheckboxComponent,
-    GsRadioButtonComponent,
-    GsDropdownComponent,
-    GsCurrencyInputComponent,
-    GsPhoneInputComponent,
-    GsDatePickerComponent,
-    GsTaxTypeComponent,
-    GsSeparatedByCommaComponent,
-    GsFileInputComponent,
-    GsDividerComponent,
-    GsTwoDataInputComponent,
-    GsMultiselectComponent,
-    GsColorPickerComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    ...directive,
+    ...widgets
   ],
   imports: [
     CommonModule,
@@ -65,28 +75,8 @@ import { GsFormsService } from './gs-forms.service';
     GsFormsService
   ],
   exports: [
-    DigitOnlyDirective,
-    ClickOutsideDirective,
-    GsTextInputComponent,
-    GsTextareaComponent,
-    GsPasswordInputComponent,
-    GsNumberInputComponent,
-    GsToggleComponent,
-    GsCheckboxComponent,
-    GsRadioButtonComponent,
-    GsDropdownComponent,
-    GsCurrencyInputComponent,
-    GsPhoneInputComponent,
-    GsDatePickerComponent,
-    GsTaxTypeComponent,
-    GsSeparatedByCommaComponent,
-    GsFileInputComponent,
-    GsDividerComponent,
-    GsTwoDataInputComponent,
-    GsMultiselectComponent,
-    GsColorPickerComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    ...directive,
+    ...widgets
   ],
   schemas: [
     NO_ERRORS_SCHEMA

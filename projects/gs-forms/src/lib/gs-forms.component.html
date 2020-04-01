@@ -58,7 +58,8 @@
           <ng-container [ngSwitch]="field.selector">
             <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
             <gs-button  *ngSwitchCase="fieldSelector.BUTTON" [button]="field" (hdlAction)="formActions($event)"></gs-button>
-          </ng-container>
+            <gs-show-data *ngSwitchCase="fieldSelector.SHOW_DATA" [data]="field"></gs-show-data>
+           </ng-container>
         </div>
       </ng-container>
     </div>

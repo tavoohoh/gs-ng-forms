@@ -185,3 +185,14 @@ export class GButton {
   constructor(public config: GFieldButtonConfiguration) {}
 }
 
+/**
+ * Show-data widget
+ */
+export class GShowData {
+  selector = GFieldSelector.SHOW_DATA;
+  notWidget = true;
+
+  constructor(public config: GFieldConfiguration) {}
+}
+
+

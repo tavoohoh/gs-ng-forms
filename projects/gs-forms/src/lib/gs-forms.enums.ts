@@ -124,7 +124,14 @@ export enum GFieldSelector {
    * Button
    * This is not a field, it is a normal button to save, reset or anything else
    */
-  BUTTON = 'button'
+  BUTTON = 'button',
+
+  /**
+   * Show data
+   * This looks like a text field but is not.
+   * This is really useful to display a field like it was disabled but without the issue of having your input tag edited in the dom.
+   */
+  SHOW_DATA = 'show_data'
 }
 
 export enum GFieldValueType {

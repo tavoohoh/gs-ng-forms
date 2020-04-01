@@ -1,4 +1,4 @@
-import { GButton, GColorPickerField } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
+import { GButton, GColorPickerField, GShowData } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
@@ -81,12 +81,31 @@ export class AppComponent implements OnInit {
 
     // divider
     new GDivider({
+      model: null,
       seccionName: 'Section',
       hideLine: false,
       padding: '1rem 0',
-      model: null,
       dividerColor: '#e3bec4',
       gridColumn: '1 / 4'
+    }),
+
+    // text input disabled
+    new GShowData({
+      model: null,
+      label: 'TEXT',
+      value: 'Hello text input disabled'
+    }),
+
+    // text input
+    new GTextField({
+      model: 'text',
+      label: 'TEXT',
+      placeholder: 'TEXT_INPUT',
+      value: 'Hello text input',
+      validators: {
+        [GFieldValidatorType.MIN_LENGTH]: 2,
+        [GFieldValidatorType.MAX_LENGTH]: 30
+      },
     }),
 
     // button save
@@ -101,18 +120,6 @@ export class AppComponent implements OnInit {
       model: null,
       placeholder: 'Reset button',
       action: GFieldValueButtonType.RESET
-    }),
-
-    // text input
-    new GTextField({
-      model: 'text',
-      label: 'TEXT',
-      placeholder: 'TEXT_INPUT',
-      value: 'Hello text input',
-      validators: {
-        [GFieldValidatorType.MIN_LENGTH]: 2,
-        [GFieldValidatorType.MAX_LENGTH]: 30
-      },
     }),
 
     // text input
