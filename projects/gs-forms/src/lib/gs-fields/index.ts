@@ -17,3 +17,4 @@ export { GsMultiselectComponent } from './multiselect/multiselect.component';
 export { GsColorPickerComponent } from './color-picker/color-picker.component';
 export { GsDividerComponent } from './divider/divider.component';
 export { GsButtonComponent } from './button/button.component';
+export { GsShowDataComponent } from './show-data/show-data.component';

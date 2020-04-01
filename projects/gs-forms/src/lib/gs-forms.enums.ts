@@ -124,7 +124,13 @@ export enum GFieldSelector {
    * Button
    * This is not a field, it is a normal button to save, reset or anything else
    */
-  BUTTON = 'button'
+  BUTTON = 'button',
+
+  /**
+   * Show data
+   * This is not a field, it is a normal field to show data, no more
+   */
+  SHOW_DATA = 'show_data'
 }
 
 export enum GFieldValueType {

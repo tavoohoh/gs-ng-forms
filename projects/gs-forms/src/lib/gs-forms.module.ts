@@ -28,31 +28,42 @@ import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.comp
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
+import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
+
+
+const directive = [
+  DigitOnlyDirective,
+  ClickOutsideDirective,
+];
+
+const widgets = [
+  GsTextInputComponent,
+  GsTextareaComponent,
+  GsPasswordInputComponent,
+  GsNumberInputComponent,
+  GsToggleComponent,
+  GsCheckboxComponent,
+  GsRadioButtonComponent,
+  GsDropdownComponent,
+  GsCurrencyInputComponent,
+  GsPhoneInputComponent,
+  GsDatePickerComponent,
+  GsTaxTypeComponent,
+  GsSeparatedByCommaComponent,
+  GsFileInputComponent,
+  GsDividerComponent,
+  GsTwoDataInputComponent,
+  GsMultiselectComponent,
+  GsColorPickerComponent,
+  GsFormsComponent,
+  GsButtonComponent,
+  GsShowDataComponent
+]
 
 @NgModule({
   declarations: [
-    DigitOnlyDirective,
-    ClickOutsideDirective,
-    GsTextInputComponent,
-    GsTextareaComponent,
-    GsPasswordInputComponent,
-    GsNumberInputComponent,
-    GsToggleComponent,
-    GsCheckboxComponent,
-    GsRadioButtonComponent,
-    GsDropdownComponent,
-    GsCurrencyInputComponent,
-    GsPhoneInputComponent,
-    GsDatePickerComponent,
-    GsTaxTypeComponent,
-    GsSeparatedByCommaComponent,
-    GsFileInputComponent,
-    GsDividerComponent,
-    GsTwoDataInputComponent,
-    GsMultiselectComponent,
-    GsColorPickerComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    ...directive,
+    ...widgets
   ],
   imports: [
     CommonModule,
@@ -65,28 +76,8 @@ import { GsFormsService } from './gs-forms.service';
     GsFormsService
   ],
   exports: [
-    DigitOnlyDirective,
-    ClickOutsideDirective,
-    GsTextInputComponent,
-    GsTextareaComponent,
-    GsPasswordInputComponent,
-    GsNumberInputComponent,
-    GsToggleComponent,
-    GsCheckboxComponent,
-    GsRadioButtonComponent,
-    GsDropdownComponent,
-    GsCurrencyInputComponent,
-    GsPhoneInputComponent,
-    GsDatePickerComponent,
-    GsTaxTypeComponent,
-    GsSeparatedByCommaComponent,
-    GsFileInputComponent,
-    GsDividerComponent,
-    GsTwoDataInputComponent,
-    GsMultiselectComponent,
-    GsColorPickerComponent,
-    GsFormsComponent,
-    GsButtonComponent
+    ...directive,
+    ...widgets
   ],
   schemas: [
     NO_ERRORS_SCHEMA
