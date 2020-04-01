@@ -9,7 +9,6 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   AfterViewChecked,
-  OnInit,
   ViewChildren,
   QueryList
 } from '@angular/core';
@@ -29,7 +28,7 @@ import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.compone
   templateUrl: './gs-forms.component.html',
   styleUrls: ['./gs-forms.component.sass']
 })
-export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
+export class GsFormsComponent implements AfterViewChecked, OnChanges {
   /**
    * Input: formOptions: GFormOptions
    *
@@ -106,23 +105,6 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
     this.customStyles = customStyles;
   }
 
-  ngOnInit() {
-    const fieldWithDisplay = this.formFields.find((field: GField) => {
-      if (field.config.displayIf && !field.notWidget) {
-        return field;
-      }
-    });
-
-    if (fieldWithDisplay) {
-      this.formGroup.controls[fieldWithDisplay.config.displayIf.model].valueChanges
-        .subscribe(() => {
-          if (this.formGroup.controls[fieldWithDisplay.config.model].value) {
-            this.formGroup.controls[fieldWithDisplay.config.model].setValue('');
-          }
-        });
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.formFields && changes.formFields.currentValue) {
       this.formGroup = this.formsService.buildForm(changes.formFields.currentValue);
@@ -136,9 +118,25 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
   }
 
   private onFormChanges(): void {
-    this.formGroup.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(val => {
-      this.formChanges.emit(this.formGroup);
+    this.formGroup.valueChanges.pipe(takeUntil(this.destroyed$))
+      .subscribe(() => {
+        this.formChanges.emit(this.formGroup);
+      });
+
+    const fieldWithDisplay = this.formFields.find((field: GField) => {
+      if (field.config.displayIf && !field.notWidget) {
+        return field;
+      }
     });
+
+    if (fieldWithDisplay) {
+      this.formGroup.controls[fieldWithDisplay.config.displayIf.model].valueChanges
+        .subscribe(() => {
+          this.formGroup.controls[fieldWithDisplay.config.model].patchValue('');
+          this.formGroup.controls[fieldWithDisplay.config.model].clearValidators();
+          this.formGroup.controls[fieldWithDisplay.config.model].updateValueAndValidity();
+        });
+    }
   }
 
   public submit(): void {
@@ -180,10 +178,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges, OnInit {
       }
 
       return true;
-    }
-
-    if (this.formGroup.controls[field.config.model]) {
-      this.formGroup.controls[field.config.model].clearAsyncValidators();
+    } else if (this.formGroup.controls[field.config.model]) {
+      this.formGroup.controls[field.config.model].clearValidators();
       this.formGroup.controls[field.config.model].updateValueAndValidity();
     }
 
