@@ -128,7 +128,8 @@ export enum GFieldSelector {
 
   /**
    * Show data
-   * This is not a field, it is a normal field to show data, no more
+   * This looks like a text field but is not.
+   * This is really useful to display a field like it was disabled but without the issue of having your input tag edited in the dom.
    */
   SHOW_DATA = 'show_data'
 }

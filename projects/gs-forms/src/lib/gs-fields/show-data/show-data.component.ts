@@ -7,6 +7,5 @@ import { GShowData } from './../../gs-forms.widgets';
   styleUrls: ['./show-data.component.sass']
 })
 export class GsShowDataComponent {
-
   @Input() public data: GShowData;
 }

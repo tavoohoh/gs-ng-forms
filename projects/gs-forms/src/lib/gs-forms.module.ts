@@ -26,10 +26,9 @@ import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
+import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
-import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
-
 
 const directive = [
   DigitOnlyDirective,
@@ -55,10 +54,10 @@ const widgets = [
   GsTwoDataInputComponent,
   GsMultiselectComponent,
   GsColorPickerComponent,
-  GsFormsComponent,
   GsButtonComponent,
-  GsShowDataComponent
-]
+  GsShowDataComponent,
+  GsFormsComponent
+];
 
 @NgModule({
   declarations: [
