@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   ];
 
   public formOptions: GFormOptions = {
-    onErrorDisableSubmit: false,
+    onErrorDisableSubmit: true,
     country: GFieldCountryCode.BO,
     fieldValues: {
       dropdown: [
@@ -158,7 +158,7 @@ export class AppComponent implements OnInit {
       label: 'Age',
       placeholder: 'What is your age?',
       validators: {
-        [GFieldValidatorType.REQUIRED]: true,
+        [GFieldValidatorType.REQUIRED]: false,
         [GFieldValidatorType.MAX]: 100,
         [GFieldValidatorType.MIN]: 0
       }
@@ -173,11 +173,14 @@ export class AppComponent implements OnInit {
         'auto',
         '24px'
       ],
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
       options: {
         left: {
           type: GFieldValueType.STRING,
           validators: {
-            [GFieldValidatorType.REQUIRED]: true
+            [GFieldValidatorType.REQUIRED]: false
           },
           placeholder: 'left value'
         },
@@ -209,7 +212,7 @@ export class AppComponent implements OnInit {
         hasValue: 'show'
       },
       validators: {
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.REQUIRED]: false
       },
     }),
 
@@ -219,18 +222,8 @@ export class AppComponent implements OnInit {
       label: 'Multiselect',
       placeholder: 'Multiselect placeholder',
       validators: {
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.REQUIRED]: false
       },
-      // value: [
-      //   {
-      //     value: 'bogota',
-      //     text: 'Bogotá'
-      //   },
-      //   {
-      //     value: 'santa_marta',
-      //     text: 'Santa Marta'
-      //   },
-      // ],
       externalOptions: true,
       optionValues: [
         {
@@ -375,7 +368,7 @@ export class AppComponent implements OnInit {
         hasValue: 'show'
       },
       validators: {
-        [GFieldValidatorType.REQUIRED]: true,
+        [GFieldValidatorType.REQUIRED]: false,
         [GFieldValidatorType.MIN_LENGTH]: 3
       }
     }),
@@ -400,7 +393,7 @@ export class AppComponent implements OnInit {
       placeholder: 'Phone',
       country: GFieldCountryCode.CO,
       validators: {
-        [GFieldValidatorType.REQUIRED]: true
+        [GFieldValidatorType.REQUIRED]: false
       },
       editCountry: true
     }),
