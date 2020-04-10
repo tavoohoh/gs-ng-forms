@@ -112,15 +112,16 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue.config && changes.field.currentValue.config.value) {
-      this.dateValue = changes.field.currentValue.config.value;
+      this.dateValue = changes.field.currentValue.config.value.toString();
 
-      const date = this.dateValue.split('-');
-      this.selectedDate = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]));
-      this.date = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]));
-      this.setCalendar();
-    } else {
-      this.setCalendar();
+      if (this.dateValue.split('-')) {
+        const date = this.dateValue.split('-');
+        this.selectedDate = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]));
+        this.date = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]));
+      }
     }
+
+    this.setCalendar();
   }
 
   private setCalendar() {
