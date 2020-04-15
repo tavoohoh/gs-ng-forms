@@ -8,10 +8,10 @@ import { GShowData } from './../../gs-forms.widgets';
 })
 export class GsShowDataComponent implements OnInit {
   @Input() public data: GShowData;
-  public fieldValue: string;
+  public fieldValue = '';
 
   ngOnInit() {
-    this.fieldValue = this.data.config.value.toString() ||
+    this.fieldValue = this.data.config && this.data.config.value ? this.data.config.value.toString() :
       this.data.config.placeholder ||
       this.data.config.label ||
       this.data.config.model;
