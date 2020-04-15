@@ -367,15 +367,17 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         this.submit();
         break;
       case GFieldValueButtonType.RESET:
-        if (this.fileInputComponent !== undefined) {
-          this.fileInputComponent.forEach(el => el.resetField());
-        }
+        if (this.formGroup) {
+          this.formGroup.reset();
 
-        if (this.datePickerComponent !== undefined) {
-          this.datePickerComponent.forEach(el => el.resetField());
-        }
+          if (this.fileInputComponent !== undefined) {
+            this.fileInputComponent.forEach(el => el.resetField());
+          }
 
-        this.formGroup.reset();
+          if (this.datePickerComponent !== undefined) {
+            this.datePickerComponent.forEach(el => el.resetField());
+          }
+        }
         break;
     }
   }

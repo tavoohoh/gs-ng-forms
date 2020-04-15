@@ -355,6 +355,11 @@ export interface GField {
 export type GFormFields = Array<GField>;
 
 /**
+ * Form fields type as readonly type
+ */
+export type GFormFieldsReadOnly = ReadonlyArray<GField>;
+
+/**
  * Location interface and its dependencies
  */
 export interface GLocation {
