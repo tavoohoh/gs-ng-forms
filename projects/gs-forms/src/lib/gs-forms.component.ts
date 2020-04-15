@@ -107,6 +107,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.formFields && changes.formFields.currentValue) {
+      this.formGroup.reset();
+      this.formFields = changes.formFields.currentValue;
       this.formGroup = this.formsService.buildForm(changes.formFields.currentValue);
       this.formGroup.updateValueAndValidity();
     }
