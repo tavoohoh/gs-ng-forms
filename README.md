@@ -16,7 +16,17 @@ npm install
 ng serve
 ```
 
+## Release:
+```sh
+# You will only need to do this once 
+npm login --registry=http://repo.ops.rappi.com/repository/npm-hosted/
+npm config set @rappipay:registry http://repo.ops.rappi.com/repository/npm-hosted/
+
+# Publish the new package version to Nexus
+npm publish
+```
+
 And navigate to [http://localhost:4200/](http://localhost:4200/)
 
 ## Questions and issues:
-gustavo.santamaria@rappi.com
+gustavo.santamaria@rappi.com or jhon.castillo@rappi.com
