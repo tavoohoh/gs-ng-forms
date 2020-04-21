@@ -155,6 +155,19 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
     this.formValue.emit(this.formGroup.value);
   }
 
+  public canSubmit($event): void {
+    if (this.formOptions.onErrorDisableSubmit && this.formGroup.invalid) {
+      $event.preventDefault();
+      return;
+    } else {
+      this.submit();
+    }
+  }
+
+  public isRequired(field: any): boolean {
+    return field.config.validators ? field.config.validators[this.fieldValidatorType.REQUIRED] : false;
+  }
+
   public validateField(field: any): ValidationErrors {
     return this.formGroup.controls[field].dirty && this.formGroup.controls[field].errors;
   }

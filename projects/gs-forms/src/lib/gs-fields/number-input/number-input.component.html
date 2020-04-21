@@ -4,7 +4,7 @@
     type="number"
     inputmode="numeric"
     autocomplete="off"
-    decimal="true"
+    [decimal]="field.config.decimal"
     [autocomplete]="field.config.autocomplete || 'off'"
     [id]="field.config.model"
     [min]="field.config.validators ? field.config.validators[fieldValidatorType.MIN] : null"
@@ -12,5 +12,6 @@
     [formControlName]="field.config.model"
     [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
     [value]="field.config.value || null"
+    (input)="setPresicion($event.target)"
     gsDigitOnly>
 </ng-container>
