@@ -91,36 +91,36 @@ export class AppComponent implements OnInit {
       decimal: true,
       precision: 5
     }),
-        // two data input
-        new GTwoDataInput({
-          model: 'twoDataInput',
-          label: 'Two data input',
-          divider: '-',
-          grid: [
-            'auto',
-            '24px'
-          ],
+    // two data input
+    new GTwoDataInput({
+      model: 'twoDataInput',
+      label: 'Two data input',
+      divider: '-',
+      grid: [
+        'auto',
+        '24px'
+      ],
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      options: {
+        left: {
+          type: GFieldValueType.STRING,
           validators: {
-            [GFieldValidatorType.REQUIRED]: true
+            [GFieldValidatorType.REQUIRED]: false
           },
-          options: {
-            left: {
-              type: GFieldValueType.STRING,
-              validators: {
-                [GFieldValidatorType.REQUIRED]: false
-              },
-              placeholder: 'left value'
-            },
-            right: {
-              type: GFieldValueType.NUMBER,
-              validators: {
-                [GFieldValidatorType.REQUIRED]: true,
-                [GFieldValidatorType.MAX]: 9
-              },
-              placeholder: '0'
-            }
-          }
-        }),
+          placeholder: 'left value'
+        },
+        right: {
+          type: GFieldValueType.NUMBER,
+          validators: {
+            [GFieldValidatorType.REQUIRED]: true,
+            [GFieldValidatorType.MAX]: 9
+          },
+          placeholder: '0'
+        }
+      }
+    }),
     // divider
     new GDivider({
       model: null,
