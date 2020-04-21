@@ -1,6 +1,6 @@
 {
   "name": "gs-form-core",
-  "version": "1.7.12",
+  "version": "1.7.13",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -28,7 +28,7 @@
     "@angular/router": "~8.2.14",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@rappipay/gs-forms": "^1.7.12",
+    "@rappipay/gs-forms": "file:dist/gs-forms",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
