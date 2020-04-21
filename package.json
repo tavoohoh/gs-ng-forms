@@ -12,7 +12,9 @@
     "lib:init-repo": "cd ./dist/gs-forms/ && git init && git remote add origin git@bitbucket.org:rappinc/rpp-ngforms-lib.git",
     "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m 'v1.7.11'",
     "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin master",
-    "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:commit && npm run lib:push"
+    "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:commit && npm run lib:push",
+    "nexus:login": "npm login --registry http://repo.ops.rappi.com/repository/npm-hosted/",
+    "nexus:publish": "npm run lib:build && cd ./dist/gs-forms && npm publish --registry http://repo.ops.rappi.com/repository/npm-hosted/"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +28,7 @@
     "@angular/router": "~8.2.14",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "gs-forms": "file:dist/gs-forms",
+    "gs-forms": "^1.7.11",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
