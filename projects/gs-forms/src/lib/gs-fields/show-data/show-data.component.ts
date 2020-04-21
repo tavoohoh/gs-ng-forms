@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GShowData } from './../../gs-forms.widgets';
 
 @Component({
@@ -6,6 +6,14 @@ import { GShowData } from './../../gs-forms.widgets';
   templateUrl: './show-data.component.html',
   styleUrls: ['./show-data.component.sass']
 })
-export class GsShowDataComponent {
+export class GsShowDataComponent implements OnInit {
   @Input() public data: GShowData;
+  public fieldValue = '';
+
+  ngOnInit() {
+    this.fieldValue = this.data.config && this.data.config.value ? this.data.config.value.toString() :
+      this.data.config.placeholder ||
+      this.data.config.label ||
+      this.data.config.model;
+  }
 }

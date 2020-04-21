@@ -107,10 +107,20 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.formFields && changes.formFields.currentValue) {
-      this.formGroup = this.formsService.buildForm(changes.formFields.currentValue);
+      if (this.formGroup) {
+        this.formGroup.reset();
+      }
+
+      const form = this.formsService.buildForm(changes.formFields.currentValue);
+
+      this.formFields = changes.formFields.currentValue;
+      this.formGroup = form;
       this.formGroup.updateValueAndValidity();
     }
-    this.onFormChanges();
+
+    if (this.formGroup) {
+      this.onFormChanges();
+    }
   }
 
   ngAfterViewChecked() {
@@ -357,15 +367,17 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         this.submit();
         break;
       case GFieldValueButtonType.RESET:
-        if (this.fileInputComponent !== undefined) {
-          this.fileInputComponent.forEach(el => el.resetField());
-        }
+        if (this.formGroup) {
+          this.formGroup.reset();
 
-        if (this.datePickerComponent !== undefined) {
-          this.datePickerComponent.forEach(el => el.resetField());
-        }
+          if (this.fileInputComponent !== undefined) {
+            this.fileInputComponent.forEach(el => el.resetField());
+          }
 
-        this.formGroup.reset();
+          if (this.datePickerComponent !== undefined) {
+            this.datePickerComponent.forEach(el => el.resetField());
+          }
+        }
         break;
     }
   }

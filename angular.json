@@ -190,6 +190,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "gsFormCore"
 }
