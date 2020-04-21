@@ -160,6 +160,10 @@ export class GFieldConfiguration {
    * For example: '1 / 3' | '2'
    */
   gridRow?: string;
+  /**
+   * Show symbol in this field if it's necessary
+   */
+  symbol?: string;
 }
 
 /**
@@ -180,6 +184,14 @@ export class GFieldNumberConfiguration extends GFieldConfiguration {
    * Field default value
    */
   value?: number;
+  /**
+   * set input decimal
+   */
+  decimal?: boolean;
+  /**
+   * set precision decimal
+   */
+  precision?: number;
 }
 
 /**

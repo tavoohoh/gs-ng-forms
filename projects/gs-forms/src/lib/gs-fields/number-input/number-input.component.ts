@@ -13,4 +13,17 @@ export class GsNumberInputComponent {
   @Input() public formGroup: FormGroup;
 
   public fieldValidatorType = GFieldValidatorType;
+
+  public setPresicion(input: { value: string }): void {
+    const value = input.value;
+    const pointIndex = value.indexOf('.');
+    if (pointIndex >= 0) {
+      const precision = this.field.config.precision || 3;
+      const valueLeft = value.substr(0, pointIndex);
+      const valueRight = value.substr(pointIndex, precision);
+      input.value = valueLeft + valueRight;
+    } else {
+      input.value = value;
+    }
+  }
 }

@@ -75,6 +75,7 @@ export class GsPhoneInputComponent implements OnChanges {
   public formatPhone(keyup: boolean, touched = true) {
     this.touched = touched;
     const inputVal = this.value || '';
+    this.invalid = false;
 
     // mark input as dirty
     if (keyup) {
@@ -96,7 +97,6 @@ export class GsPhoneInputComponent implements OnChanges {
     }
 
     for (let i = 0; i < pattern.length; i++) {
-
       if (j === cleanString.length) {
         break;
       }
@@ -107,17 +107,14 @@ export class GsPhoneInputComponent implements OnChanges {
       } else if (pattern[i] === sign2) {
         newString[i] = sign2;
       }
-
     }
 
     this.value = newString.join('');
-
-    this.invalid = inputVal.length < this.phoneMask.length || inputVal.length > this.phoneMask.length ? true : false;
-
-    if (inputVal === '' || this.invalid) {
+    if (inputVal === '') {
       this.formGroup.controls[this.field.config.model].patchValue(null);
       return;
     } else {
+      this.invalid = inputVal.length < this.phoneMask.length || inputVal.length > this.phoneMask.length ? true : false;
       const controlValue = inputVal;
       this.formGroup.controls[this.field.config.model].patchValue({
         code: this.country,

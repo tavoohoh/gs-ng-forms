@@ -3,7 +3,8 @@
     class="gs-form"
     [autocomplete]="formOptions.autocomplete || 'off'"
     [formGroup]="formGroup"
-    (ngSubmit)="submit()">
+    (keydown.enter)="canSubmit($event)"
+    (ngSubmit)="submit($event)">
     <div class="gs-form-body">
       <ng-container *ngFor="let field of formFields">
         <div *ngIf="!field.notWidget && checkCondition(field)"
@@ -12,6 +13,7 @@
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
           <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
             {{ field.config.label | translate }}
+            <span *ngIf="isRequired(field)">*</span>
           </label>
 
           <!-- widgets -->
@@ -42,9 +44,15 @@
             </gs-dropdown>
             <gs-multiselect *ngSwitchCase="fieldSelector.MULTISELECT" [field]="field" [formGroup]="formGroup"
               [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
-            </gs-multiselect>
+            </gs-multiselect>              
           </ng-container>
-          
+
+          <!-- symbol -->
+          <div class="gs-form-field_symbol" *ngIf="field.config.symbol">
+            {{field.config.symbol}}
+          </div>
+
+          <!-- error message -->
           <span class="gs-form-field_error_message" *ngIf="validateField(field.config.model)">
             {{ getFieldError(field.config.model) | translate }}
           </span>
