@@ -14,13 +14,16 @@ Simple angular 8 forms library.
   * [gs-form service](#gs-form-service)
 
 ## Installation
-- [set up your SSH key](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html#SetupanSSHkey-ssh1)
-so `npm` can clone the `rpp-ngforms-lib` repo.
-If you already have your SSH key configured for Bitbucket go to the next step.
+- You will need Rappi PROD VPN connected. If you do not have this VPN configured, request one at https://rappidev.atlassian.net/servicedesk/customer/portal/26/group/84
+
+- Configure the rappipay registry:
+```sh
+npm config set @rappipay:registry http://repo.ops.rappi.com/repository/npm-hosted/
+```
 
 - Install the library via NPM
 ```sh
-npm install git+ssh://git@bitbucket.org/rappinc/rpp-ngforms-lib.git --save
+npm install @rappipay/gs-forms --save
 ```
 
 ## Getting Started
