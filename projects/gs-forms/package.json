@@ -1,6 +1,6 @@
 {
-  "name": "gs-forms",
-  "version": "1.7.11",
+  "name": "@rappipay/gs-forms",
+  "version": "1.7.12",
   "description": "Simple and easy to use Angular 8 dynamic forms",
   "keywords": [
     "angular",
@@ -8,10 +8,9 @@
   ],
   "author": {
     "name": "Gustavo Santamaria",
-    "email": "tavo_bajares@live.com",
-    "url": "https://github.com/tavoohoh"
+    "email": "gustavo.santamaria@rappi.com"
   },
-  "license": "MIT",
+  "license": "ISC",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
