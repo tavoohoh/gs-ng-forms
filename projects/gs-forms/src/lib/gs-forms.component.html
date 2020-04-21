@@ -4,7 +4,7 @@
     [autocomplete]="formOptions.autocomplete || 'off'"
     [formGroup]="formGroup"
     (keydown.enter)="canSubmit($event)"
-    (ngSubmit)="submit($event)">
+    (ngSubmit)="submit()">
     <div class="gs-form-body">
       <ng-container *ngFor="let field of formFields">
         <div *ngIf="!field.notWidget && checkCondition(field)"
