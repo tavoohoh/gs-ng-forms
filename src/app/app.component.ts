@@ -78,7 +78,47 @@ export class AppComponent implements OnInit {
   };
 
   public formFields: GFormFields = [
-
+    // numberic input
+    new GNumberField({
+      model: 'age',
+      label: 'Age',
+      placeholder: 'What is your age?',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false,
+        [GFieldValidatorType.MAX]: 100,
+        [GFieldValidatorType.MIN]: 0
+      }
+    }),
+        // two data input
+        new GTwoDataInput({
+          model: 'twoDataInput',
+          label: 'Two data input',
+          divider: '-',
+          grid: [
+            'auto',
+            '24px'
+          ],
+          validators: {
+            [GFieldValidatorType.REQUIRED]: true
+          },
+          options: {
+            left: {
+              type: GFieldValueType.STRING,
+              validators: {
+                [GFieldValidatorType.REQUIRED]: false
+              },
+              placeholder: 'left value'
+            },
+            right: {
+              type: GFieldValueType.NUMBER,
+              validators: {
+                [GFieldValidatorType.REQUIRED]: true,
+                [GFieldValidatorType.MAX]: 9
+              },
+              placeholder: '0'
+            }
+          }
+        }),
     // divider
     new GDivider({
       model: null,
