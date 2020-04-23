@@ -177,6 +177,16 @@ export class GFieldStringConfiguration extends GFieldConfiguration {
 }
 
 /**
+ * Field configuration for only string fields
+ */
+export class GFieldMapConfiguration extends GFieldConfiguration {
+  /**
+   * If true will display Google Map modal
+   */
+  showMap?: boolean;
+}
+
+/**
  * Field configuration for only number fields
  */
 export class GFieldNumberConfiguration extends GFieldConfiguration {

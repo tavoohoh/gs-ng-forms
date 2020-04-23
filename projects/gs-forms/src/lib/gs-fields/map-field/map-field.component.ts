@@ -20,6 +20,7 @@ export class GsMapFieldComponent implements OnChanges {
   @ViewChild('search', { static: false }) search: ElementRef;
 
   public showMap = false;
+  public showMapModal = false;
   private latlng = LOCATION.co.lanLng;
   private map: any;
   private marker: any;
@@ -32,6 +33,7 @@ export class GsMapFieldComponent implements OnChanges {
     if (changes.field.currentValue && changes.field.currentValue.config.value) {
       const value = changes.field.currentValue.config.value;
       this.addressInput = value.address;
+      this.showMapModal = changes.field.currentValue.config.showMap;
       if (value.lat && value.lng) {
         this.latlng = {
           lat: value.lat,
@@ -55,8 +57,14 @@ export class GsMapFieldComponent implements OnChanges {
   }
 
   public loadMap(): void {
+    if (!this.showMapModal) {
+      this.getSearchAddress();
+      return;
+    }
+
     this.toggleMap();
-    if (!this.mapElement.nativeElement.hasChildNodes()) {
+
+    if (!this.mapElement.nativeElement.hasChildNodes() && this.showMapModal) {
       this.map = new WINDOW.google.maps.Map(this.mapElement.nativeElement, {
         center: this.latlng,
         zoom: 15,
@@ -74,6 +82,8 @@ export class GsMapFieldComponent implements OnChanges {
 
         this.addMarker();
       });
+    } else {
+      this.getSearchAddress();
     }
   }
 
@@ -101,9 +111,10 @@ export class GsMapFieldComponent implements OnChanges {
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();
 
-      if (places.length === 0) {
+      if (!this.showMapModal || places.length === 0) {
         return;
       }
+
       const bounds = new WINDOW.google.maps.LatLngBounds();
 
       places.forEach((place) => {
@@ -129,7 +140,7 @@ export class GsMapFieldComponent implements OnChanges {
   }
 
   public selectAddress(address: string): void {
-    this.addressInput = address.split(', ')[0];
+    this.addressInput = address;
 
     const addressValue = {
       fullAddress: address,
