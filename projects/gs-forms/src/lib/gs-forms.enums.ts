@@ -115,6 +115,12 @@ export enum GFieldSelector {
   COLOR = 'color',
 
   /**
+   * Map input
+   * Get latitude and longitude using Google Maps
+   */
+  MAP = 'map',
+
+  /**
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */

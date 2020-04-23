@@ -95,14 +95,17 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   public fieldValidatorType = GFieldValidatorType;
   private customStyles: GStyles;
   private destroyed$ = new Subject();
+  public googleMapApiKey: string;
 
   constructor(
     private formsService: GsFormsService,
     private sanitizer: DomSanitizer,
     private cdRef: ChangeDetectorRef,
-    @Inject('customStyles') customStyles
+    @Inject('customStyles') customStyles,
+    @Inject('googleMapApiKey') apikey
   ) {
     this.customStyles = customStyles;
+    this.googleMapApiKey = apikey;
   }
 
   ngOnChanges(changes: SimpleChanges) {

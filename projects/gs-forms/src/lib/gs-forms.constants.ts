@@ -149,6 +149,10 @@ export const LOCATION: { [key: string]: GLocation } = {
       thousands: '.',
       decimal: ',',
       precision: 0
+    },
+    lanLng: {
+      lat: 4.6565365,
+      lng: -74.1248367
     }
   },
   cr: {
@@ -344,3 +348,13 @@ export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } =
     ERR_REQUIRED_TWO_DATA_LEFT: 'El campo de la izquierda es requerido'
   }
 };
+
+export const MESSAGES: { [key: string]: { [key: string]: string } } = {
+  en: {
+    SELECT_ADDRESS: 'Select address'
+  },
+  es: {
+    SELECT_ADDRESS: 'Selecciones una dirección'
+  }
+};
+

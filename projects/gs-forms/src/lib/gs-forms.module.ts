@@ -25,6 +25,7 @@ import { GsFileInputComponent } from './gs-fields/file-input/file-input.componen
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
+import { GsMapFieldComponent } from './gs-fields/map-field/map-field.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsFormsComponent } from './gs-forms.component';
@@ -54,6 +55,7 @@ const widgets = [
   GsTwoDataInputComponent,
   GsMultiselectComponent,
   GsColorPickerComponent,
+  GsMapFieldComponent,
   GsButtonComponent,
   GsShowDataComponent,
   GsFormsComponent
@@ -83,13 +85,27 @@ const widgets = [
   ]
 })
 export class GsFormsModule {
-  public static forRoot(styles?: GStyles): ModuleWithProviders {
+  public static forRoot(styles?: GStyles, googleMapApiKey?: string): ModuleWithProviders {
+    if (googleMapApiKey && !document.getElementById('google-map-script')) {
+      const googleScript = document.createElement('script');
+      googleScript.defer = true;
+      googleScript.async = true;
+      googleScript.id = 'google-map-script';
+      googleScript.type = 'text/javascript';
+      googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&libraries=places`;
+      document.body.appendChild(googleScript);
+    }
+
     return {
       ngModule: GsFormsModule,
       providers: [
         {
           provide: 'customStyles',
           useValue: styles
+        },
+        {
+          provide: 'googleMapApiKey',
+          useValue: googleMapApiKey
         }
       ]
     };

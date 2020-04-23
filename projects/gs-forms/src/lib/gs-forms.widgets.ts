@@ -166,6 +166,15 @@ export class GColorPickerField implements GField {
 }
 
 /**
+ * Map widget
+ */
+export class GMapField {
+  selector = GFieldSelector.MAP;
+
+  constructor(public config: GFieldConfiguration) {}
+}
+
+/**
  * Divider widget
  */
 export class GDivider {

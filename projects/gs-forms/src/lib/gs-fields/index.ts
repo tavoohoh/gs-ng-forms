@@ -15,6 +15,7 @@ export { GsFileInputComponent } from './file-input/file-input.component';
 export { GsTwoDataInputComponent } from './two-data-input/two-data-input.component';
 export { GsMultiselectComponent } from './multiselect/multiselect.component';
 export { GsColorPickerComponent } from './color-picker/color-picker.component';
+export { GsMapFieldComponent } from './map-field/map-field.component';
 export { GsDividerComponent } from './divider/divider.component';
 export { GsButtonComponent } from './button/button.component';
 export { GsShowDataComponent } from './show-data/show-data.component';

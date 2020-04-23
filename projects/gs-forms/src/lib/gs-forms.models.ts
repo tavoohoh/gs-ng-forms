@@ -394,6 +394,10 @@ export interface GLocation {
     decimal: string;
     precision: number;
   };
+  lanLng?: {
+    lat: number,
+    lng: number
+  };
   disabled?: boolean;
 }
 
