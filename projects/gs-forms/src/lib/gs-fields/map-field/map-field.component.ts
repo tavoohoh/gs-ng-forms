@@ -29,7 +29,7 @@ export class GsMapFieldComponent implements OnChanges {
   constructor(private gsServices: GsFormsService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.field.currentValue) {
+    if (changes.field.currentValue && changes.field.currentValue.config.value) {
       const value = changes.field.currentValue.config.value;
       this.addressInput = value.address;
       if (value.lat && value.lng) {
