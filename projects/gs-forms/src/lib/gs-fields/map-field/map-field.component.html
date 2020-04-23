@@ -4,7 +4,7 @@
       #search 
       class="input gs-form-field_text_input" 
       type="text" 
-      [placeholder]="field.config.placeholder" 
+      [placeholder]="field.config.placeholder || field.config.label || field.config.model" 
       [formControlName]="field.config.model"
       [value]="addressInput"
       >
