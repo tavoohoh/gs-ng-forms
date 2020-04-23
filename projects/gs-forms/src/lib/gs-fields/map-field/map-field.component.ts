@@ -12,16 +12,14 @@ const WINDOW: any = window;
   styleUrls: ['./map-field.component.sass']
 })
 export class GsMapFieldComponent implements OnChanges {
-
   @Input() public field: GMapField;
   @Input() public formGroup: FormGroup;
-  @Input() public googleMapApiKey: string;
+  @Input() private googleMapApiKey: string;
 
   @ViewChild('mapRef', { static: false }) mapElement: ElementRef;
   @ViewChild('search', { static: false }) search: ElementRef;
-  public showMap = false;
 
-  // Default bogotá lat and lng
+  public showMap = false;
   private latlng = LOCATION.co.lanLng;
   private map: any;
   private marker: any;
@@ -44,6 +42,7 @@ export class GsMapFieldComponent implements OnChanges {
       this.setLanLngGeolocation();
     }
   }
+
   private setLanLngGeolocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

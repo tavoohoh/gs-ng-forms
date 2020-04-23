@@ -228,6 +228,8 @@ interface GInputStyle {
 | GFieldFile                | File field with upload logic using multipart form            |
 | GTwoDataInput             | Creates a two inputs field                                   |
 | GMultiselectField         | Multiple selection field                                     |
+| GColorPickerField         | Color picker field                                           |
+| GMapField                 | Address field with Google Map auto complete and pick         |
 | GDivider                  | This is not a field, just a divider                          |
 
 More fields are yet to come, for fields properties please go to
