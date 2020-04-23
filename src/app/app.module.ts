@@ -53,6 +53,8 @@ const formStyles: GStyles = {
   }
 };
 
+const apikey = 'AIzaSyCwAXnKQC-MQvISYKDmk1sX5Sr6WwEl89k';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -67,7 +69,7 @@ const formStyles: GStyles = {
         deps: [HttpClient]
       }
     }),
-    GsFormsModule.forRoot(formStyles),
+    GsFormsModule.forRoot(formStyles, apikey),
   ],
   providers: [],
   bootstrap: [AppComponent]

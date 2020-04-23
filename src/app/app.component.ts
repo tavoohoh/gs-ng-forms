@@ -1,4 +1,4 @@
-import { GButton, GColorPickerField, GShowData } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
+import { GButton, GColorPickerField, GShowData, GMap } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
@@ -74,10 +74,20 @@ export class AppComponent implements OnInit {
         text: 'Save',
         show: true
       }
-    }
+    },
   };
 
+
   public formFields: GFormFields = [
+    // map input
+    new GMap({
+      model: 'map',
+      label: 'test map',
+      placeholder: 'Im a Map',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+    }),
     // numberic input
     new GNumberField({
       model: 'age',

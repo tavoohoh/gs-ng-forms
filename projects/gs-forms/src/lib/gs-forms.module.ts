@@ -25,6 +25,7 @@ import { GsFileInputComponent } from './gs-fields/file-input/file-input.componen
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
 import { GsTwoDataInputComponent } from './gs-fields/two-data-input/two-data-input.component';
 import { GsMultiselectComponent } from './gs-fields/multiselect/multiselect.component';
+import { GsMapComponent } from './gs-fields/map/map.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsFormsComponent } from './gs-forms.component';
@@ -54,6 +55,7 @@ const widgets = [
   GsTwoDataInputComponent,
   GsMultiselectComponent,
   GsColorPickerComponent,
+  GsMapComponent,
   GsButtonComponent,
   GsShowDataComponent,
   GsFormsComponent
@@ -83,13 +85,17 @@ const widgets = [
   ]
 })
 export class GsFormsModule {
-  public static forRoot(styles?: GStyles): ModuleWithProviders {
+  public static forRoot(styles?: GStyles, apikey?: string): ModuleWithProviders {
     return {
       ngModule: GsFormsModule,
       providers: [
         {
           provide: 'customStyles',
           useValue: styles
+        },
+        {
+          provide: 'apikey',
+          useValue: apikey
         }
       ]
     };

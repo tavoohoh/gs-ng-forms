@@ -203,4 +203,7 @@ export class GsFormsService {
     return formFields as GFormFields;
   }
 
+  public getAddress(lan, lng, apikey): Observable<any> {
+    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lan},${lng}&result_type=street_address&key=${apikey}`);
+  }
 }
