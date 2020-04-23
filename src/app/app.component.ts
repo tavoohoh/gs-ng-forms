@@ -1,4 +1,4 @@
-import { GButton, GColorPickerField, GShowData, GMap } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
+import { GButton, GColorPickerField, GShowData, GMapField } from './../../projects/gs-forms/src/lib/gs-forms.widgets';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   ];
 
   public formOptions: GFormOptions = {
-    onErrorDisableSubmit: true,
+    // onErrorDisableSubmit: true,
     country: GFieldCountryCode.BO,
     fieldValues: {
       dropdown: [
@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
 
   public formFields: GFormFields = [
     // map input
-    new GMap({
+    new GMapField({
       model: 'map',
       label: 'test map',
       placeholder: 'Im a Map',
@@ -531,13 +531,18 @@ export class AppComponent implements OnInit {
         name: '',
         // tslint:disable-next-line: max-line-length
         path: 'https://firebasestorage.googleapis.com/v0/b/gianfaraoneweb.appspot.com/o/horizonte-singapur_53876-33588.jpg?alt=media&token=9d1e33be-11f1-45e2-be8f-ebc2fc8aa463'
-      }
+      },
       // multiselect: [
       //   {
       //     value: 'bogota',
       //     text: 'Bogotá'
       //   }
       // ]
+      map: {
+        address: 'cra 38 bis # 1 -19',
+        lat: 4.6046313,
+        lng: -74.1126673
+      }
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }

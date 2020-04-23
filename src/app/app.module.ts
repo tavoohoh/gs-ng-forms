@@ -53,7 +53,8 @@ const formStyles: GStyles = {
   }
 };
 
-const apikey = 'AIzaSyCwAXnKQC-MQvISYKDmk1sX5Sr6WwEl89k';
+// const googleMapApiKey  = 'AIzaSyCwAXnKQC-MQvISYKDmk1sX5Sr6WwEl89k'; // Test APi Key
+const googleMapApiKey  = 'AIzaSyCiRKFR26H1puMRdI5jgKD7w9Igh75Yy1k';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ const apikey = 'AIzaSyCwAXnKQC-MQvISYKDmk1sX5Sr6WwEl89k';
         deps: [HttpClient]
       }
     }),
-    GsFormsModule.forRoot(formStyles, apikey),
+    GsFormsModule.forRoot(formStyles, googleMapApiKey),
   ],
   providers: [],
   bootstrap: [AppComponent]

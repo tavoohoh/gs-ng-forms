@@ -116,7 +116,7 @@ export enum GFieldSelector {
 
   /**
    * Map input
-   * Get latitude and longitude of some place
+   * Get latitude and longitude using Google Maps
    */
   MAP = 'map',
 

@@ -1,46 +1,49 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, HostListener, Inject } from '@angular/core';
-import { GMap } from '../../gs-forms.widgets';
+import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { GMapField } from '../../gs-forms.widgets';
 import { FormGroup } from '@angular/forms';
 import { GsFormsService } from '../../gs-forms.service';
-import { map } from 'rxjs/operators';
+import { LOCATION } from '../../gs-forms.constants';
 
-const w: any = window;
+const WINDOW: any = window;
 
 @Component({
-  selector: 'gs-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.sass']
+  selector: 'gs-map-field',
+  templateUrl: './map-field.component.html',
+  styleUrls: ['./map-field.component.sass']
 })
-export class GsMapComponent implements OnInit {
+export class GsMapFieldComponent implements OnChanges {
 
-  @Input() public field: GMap;
+  @Input() public field: GMapField;
   @Input() public formGroup: FormGroup;
+  @Input() public googleMapApiKey: string;
 
   @ViewChild('mapRef', { static: false }) mapElement: ElementRef;
   @ViewChild('search', { static: false }) search: ElementRef;
   public showMap = false;
 
   // Default bogotá lat and lng
-  private latlng = {
-    lat: 4.6565365,
-    lng: -74.1248367
-  };
-  private map;
-  private marker;
-  private apikey;
-  public address;
+  private latlng = LOCATION.co.lanLng;
+  private map: any;
+  private marker: any;
+  public address: any;
+  public addressInput = '';
 
-  private touched = false;
-  private noSelection = false;
+  constructor(private gsServices: GsFormsService) { }
 
-  constructor(private gsServices: GsFormsService, @Inject('apikey') apikey) {
-    this.apikey = apikey;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.field.currentValue) {
+      const value = changes.field.currentValue.config.value;
+      this.addressInput = value.address;
+      if (value.lat && value.lng) {
+        this.latlng = {
+          lat: value.lat,
+          lng: value.lng
+        };
+      }
+    } else {
+      this.setLanLngGeolocation();
+    }
   }
-
-  ngOnInit() {
-    this.setLanLngGeolocation();
-  }
-
   private setLanLngGeolocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -53,10 +56,9 @@ export class GsMapComponent implements OnInit {
   }
 
   public loadMap(): void {
-    this.touched = true;
     this.toggleMap();
     if (!this.mapElement.nativeElement.hasChildNodes()) {
-      this.map = new w.google.maps.Map(this.mapElement.nativeElement, {
+      this.map = new WINDOW.google.maps.Map(this.mapElement.nativeElement, {
         center: this.latlng,
         zoom: 15,
         disableDefaultUI: true,
@@ -77,9 +79,7 @@ export class GsMapComponent implements OnInit {
   }
 
   public toggleMap(): void {
-    this.noSelection = !this.formGroup.controls[this.field.config.model].value ? true : false;
     this.address = null;
-    this.touched = false;
     this.showMap = !this.showMap;
   }
 
@@ -87,17 +87,17 @@ export class GsMapComponent implements OnInit {
     if (this.marker) {
       this.marker.setMap(null);
     }
-    this.marker = new w.google.maps.Marker({ position: this.latlng, map: this.map });
+    this.marker = new WINDOW.google.maps.Marker({ position: this.latlng, map: this.map });
     this.getAddress();
   }
 
   private getAddress(): void {
-    this.gsServices.getAddress(this.latlng.lat, this.latlng.lng, this.apikey)
+    this.gsServices.getAddress(this.latlng.lat, this.latlng.lng, this.googleMapApiKey)
       .subscribe(address => this.address = address.results);
   }
 
   private getSearchAddress(): void {
-    const searchBox = new w.google.maps.places.SearchBox(this.search.nativeElement);
+    const searchBox = new WINDOW.google.maps.places.SearchBox(this.search.nativeElement);
 
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();
@@ -105,7 +105,7 @@ export class GsMapComponent implements OnInit {
       if (places.length === 0) {
         return;
       }
-      const bounds = new w.google.maps.LatLngBounds();
+      const bounds = new WINDOW.google.maps.LatLngBounds();
 
       places.forEach((place) => {
         if (!place.geometry) {
@@ -130,23 +130,23 @@ export class GsMapComponent implements OnInit {
   }
 
   public selectAddress(address: string): void {
-    this.formGroup.controls[this.field.config.model].patchValue(address);
+    this.addressInput = address.split(', ')[0];
+
+    const addressValue = {
+      fullAddress: address,
+      address: address.split(', ')[0],
+      city: address.split(', ')[1],
+      country: address.split(', ')[2],
+      lat: this.latlng.lat,
+      log: this.latlng.lng
+    };
+
+    this.formGroup.controls[this.field.config.model].patchValue(addressValue);
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
     this.toggleMap();
   }
 
-
-  public validateRequired() {
-    return this.field.config.validators && !this.showMap && this.noSelection;
+  public selectAddressText(): string {
+    return this.gsServices.getMessage('SELECT_ADDRESS');
   }
-
-  public requiredText() {
-    return this.gsServices.getValidationMessage('ERR_REQUIRED');
-  }
-
-
-
-
-
-
 }

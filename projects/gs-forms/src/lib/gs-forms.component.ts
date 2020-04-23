@@ -23,8 +23,6 @@ import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
 
-const w: any = window;
-
 @Component({
   selector: 'gs-form',
   templateUrl: './gs-forms.component.html',
@@ -97,31 +95,17 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   public fieldValidatorType = GFieldValidatorType;
   private customStyles: GStyles;
   private destroyed$ = new Subject();
+  public googleMapApiKey: string;
 
   constructor(
     private formsService: GsFormsService,
     private sanitizer: DomSanitizer,
     private cdRef: ChangeDetectorRef,
     @Inject('customStyles') customStyles,
-    @Inject('apikey') apikey
+    @Inject('googleMapApiKey') apikey
   ) {
     this.customStyles = customStyles;
-    this.chargeApiGoogle(apikey);
-  }
-
-  private chargeApiGoogle(apiKey): void {
-    if (!apiKey) {
-      return;
-    }
-    if (!w.document.getElementById('google-map-script')) {
-      const s = w.document.createElement('script');
-      s.defer = true;
-      s.async = true;
-      s.id = 'google-map-script';
-      s.type = 'text/javascript';
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-      w.document.body.appendChild(s);
-    }
+    this.googleMapApiKey = apikey;
   }
 
   ngOnChanges(changes: SimpleChanges) {

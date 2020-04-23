@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GFormFields, GField, GFieldOptionValues, GFormFieldsReadOnly } from './gs-forms.models';
 import { GFieldValidatorType } from './gs-forms.enums';
 import { TranslateService } from '@ngx-translate/core';
-import { VALIDATION_MESSAGES } from './gs-forms.constants';
+import { VALIDATION_MESSAGES, MESSAGES } from './gs-forms.constants';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -131,6 +131,15 @@ export class GsFormsService {
       message = message.replace('${param}', param);
     }
 
+    return message;
+  }
+
+  public getMessage(key: string, param?: string) {
+    const messageLang = !this.translateService.currentLang ? MESSAGES.en : MESSAGES[this.translateService.currentLang];
+    let message = messageLang[key];
+    if (param) {
+      message = message.replace('${param}', param);
+    }
     return message;
   }
 

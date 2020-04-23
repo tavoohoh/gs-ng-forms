@@ -9,7 +9,7 @@ import {
   GFieldFileConfiguration,
   GFieldDividerConfiguration,
   GFieldTwoDataConfiguration,
-  GFieldButtonConfiguration,
+  GFieldButtonConfiguration
 } from './gs-forms.models';
 
 /**
@@ -168,7 +168,7 @@ export class GColorPickerField implements GField {
 /**
  * Map widget
  */
-export class GMap {
+export class GMapField {
   selector = GFieldSelector.MAP;
 
   constructor(public config: GFieldConfiguration) {}
