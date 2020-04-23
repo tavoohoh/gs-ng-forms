@@ -4,7 +4,7 @@
       #search 
       class="input gs-form-field_text_input" 
       type="text" 
-      [placeholder]="field.config.placeholder || field.config.label || field.config.model" 
+      [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate" 
       [formControlName]="field.config.model"
       [value]="addressInput"
       >
