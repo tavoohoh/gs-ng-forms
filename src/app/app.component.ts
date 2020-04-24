@@ -84,7 +84,6 @@ export class AppComponent implements OnInit {
       model: 'map',
       label: 'test map',
       placeholder: 'Im a Map',
-      showMap: true,
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },

@@ -31,7 +31,7 @@ npm install @rappipay/gs-forms --save
 Add `GsFormsModule` into the imports array of the module that will use `gs-forms`
 
 ```ts
-import { GsFormsModule} from 'gs-forms';
+import { GsFormsModule} from '@rappipay/gs-forms';
 
 @NgModule({
   imports: [
@@ -44,7 +44,7 @@ export class AppModule { }
 
 If you would like to use custom styles for the form fields you can pass a `GStyles` object to the module:
 ```ts
-import { GsFormsModule} from 'gs-forms';
+import { GsFormsModule} from '@rappipay/gs-forms';
 
 @NgModule({
   imports: [
