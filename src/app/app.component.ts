@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
       placeholder: 'Im a Map',
       validators: {
         [GFieldValidatorType.REQUIRED]: true
-      },
+      }
     }),
     // numberic input
     new GNumberField({
@@ -541,7 +541,9 @@ export class AppComponent implements OnInit {
       map: {
         address: 'cra 38 bis # 1 -19',
         lat: 4.6046313,
-        lng: -74.1126673
+        lng: -74.1126673,
+        city:  'Bogotá',
+        country: 'Colombia'
       }
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
