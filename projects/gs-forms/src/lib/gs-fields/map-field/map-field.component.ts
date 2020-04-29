@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { GMapField } from '../../gs-forms.widgets';
 import { FormGroup } from '@angular/forms';
 import { GsFormsService } from '../../gs-forms.service';
@@ -11,7 +11,7 @@ const WINDOW: any = window;
   templateUrl: './map-field.component.html',
   styleUrls: ['./map-field.component.sass']
 })
-export class GsMapFieldComponent implements OnChanges {
+export class GsMapFieldComponent implements OnInit, OnChanges {
   @Input() public field: GMapField;
   @Input() public formGroup: FormGroup;
   @Input() private googleMapApiKey: string;
@@ -29,11 +29,14 @@ export class GsMapFieldComponent implements OnChanges {
 
   constructor(private gsServices: GsFormsService) { }
 
+  ngOnInit(): void {
+    this.showMapModal = this.field.config.showMap;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue && changes.field.currentValue.config.value) {
       const value = changes.field.currentValue.config.value;
       this.addressInput = value.address;
-      this.showMapModal = changes.field.currentValue.config.showMap;
       if (value.lat && value.lng) {
         this.latlng = {
           lat: value.lat,
@@ -109,10 +112,15 @@ export class GsMapFieldComponent implements OnChanges {
     const searchBox = new WINDOW.google.maps.places.SearchBox(this.search.nativeElement);
 
     searchBox.addListener('places_changed', () => {
+
       const places = searchBox.getPlaces();
 
-      if (!this.showMapModal || places.length === 0) {
+      if (!this.showMapModal && places.length === 0) {
         return;
+      }
+
+      if (!this.showMapModal) {
+        this.selectAddress(places[0].formatted_address);
       }
 
       const bounds = new WINDOW.google.maps.LatLngBounds();
