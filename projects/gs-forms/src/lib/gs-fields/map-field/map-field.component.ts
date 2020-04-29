@@ -24,7 +24,7 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   private latlng = LOCATION.co.lanLng;
   private map: any;
   private marker: any;
-  public address: any;
+  public address: any = [];
   public addressInput = '';
 
   constructor(private gsServices: GsFormsService) { }
@@ -36,7 +36,15 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue && changes.field.currentValue.config.value) {
       const value = changes.field.currentValue.config.value;
-      this.addressInput = value.address;
+
+      if (value.city && value.country) {
+        this.addressInput = `${value.address}, ${value.city}, ${value.country}`;
+      } else {
+        this.addressInput = value.address;
+      }
+
+      this.selectAddress(this.addressInput, true);
+
       if (value.lat && value.lng) {
         this.latlng = {
           lat: value.lat,
@@ -46,6 +54,8 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
     } else {
       this.setLanLngGeolocation();
     }
+
+    this.valid(false);
   }
 
   private setLanLngGeolocation(): void {
@@ -56,6 +66,21 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
           lng: position.coords.longitude
         };
       });
+    }
+  }
+
+  public valid(keyup, valueGoogleSearch?): void {
+    // mark input as dirty
+    if (keyup) {
+      this.formGroup.controls[this.field.config.model].markAsDirty();
+    }
+
+    if (this.addressInput === '') {
+      this.formGroup.controls[this.field.config.model].patchValue(null);
+    } else if (valueGoogleSearch) {
+      this.selectAddress(valueGoogleSearch, false);
+    } else {
+      this.selectAddress(this.addressInput, false);
     }
   }
 
@@ -75,6 +100,10 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
         mapTypeId: 'roadmap'
       });
 
+      if (this.latlng) {
+        this.marker = new WINDOW.google.maps.Marker({ position: this.latlng, map: this.map });
+      }
+
       this.getSearchAddress();
 
       this.map.addListener('click', (mapsMouseEvent) => {
@@ -85,42 +114,27 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
 
         this.addMarker();
       });
-    } else {
-      this.getSearchAddress();
     }
   }
 
   public toggleMap(): void {
-    this.address = null;
+    this.address = [];
     this.showMap = !this.showMap;
-  }
-
-  private addMarker(): void {
-    if (this.marker) {
-      this.marker.setMap(null);
-    }
-    this.marker = new WINDOW.google.maps.Marker({ position: this.latlng, map: this.map });
-    this.getAddress();
-  }
-
-  private getAddress(): void {
-    this.gsServices.getAddress(this.latlng.lat, this.latlng.lng, this.googleMapApiKey)
-      .subscribe(address => this.address = address.results);
   }
 
   private getSearchAddress(): void {
     const searchBox = new WINDOW.google.maps.places.SearchBox(this.search.nativeElement);
 
     searchBox.addListener('places_changed', () => {
-
       const places = searchBox.getPlaces();
 
-      if (!this.showMapModal && places.length === 0) {
+      if (places.length === 0) {
         return;
       }
 
       if (!this.showMapModal) {
-        this.selectAddress(places[0].formatted_address);
+        this.valid(false, places[0].formatted_address);
+        return;
       }
 
       const bounds = new WINDOW.google.maps.LatLngBounds();
@@ -147,21 +161,38 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
     });
   }
 
-  public selectAddress(address: string): void {
-    this.addressInput = address;
+  private addMarker(): void {
+    if (this.marker) {
+      this.marker.setMap(null);
+    }
+    this.marker = new WINDOW.google.maps.Marker({ position: this.latlng, map: this.map });
+    this.getAddress();
+  }
 
+  private getAddress(): void {
+    this.gsServices.getAddress(this.latlng.lat, this.latlng.lng, this.googleMapApiKey)
+      .subscribe(address => this.address = address.results);
+  }
+
+  public selectAddress(address: string, patch: boolean): void {
+    this.addressInput = address;
     const addressValue = {
       fullAddress: address,
-      address: address.split(', ')[0],
-      city: address.split(', ')[1],
-      country: address.split(', ')[2],
-      lat: this.latlng.lat,
-      log: this.latlng.lng
+      address: address.split(', ')[0] || address,
+      city: address.split(', ')[1] || '',
+      country: address.split(', ')[2] || '',
+      lat: this.latlng.lat || '',
+      log: this.latlng.lng || ''
     };
 
-    this.formGroup.controls[this.field.config.model].patchValue(addressValue);
-    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
-    this.toggleMap();
+    setTimeout(() => {
+      this.formGroup.controls[this.field.config.model].patchValue(addressValue);
+      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    }, 500);
+
+    if (!patch) {
+      this.toggleMap();
+    }
   }
 
   public selectAddressText(): string {
