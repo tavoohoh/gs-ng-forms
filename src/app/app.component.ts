@@ -174,6 +174,22 @@ export class AppComponent implements OnInit {
       action: GFieldValueButtonType.RESET
     }),
 
+    // button save
+    new GButton({
+      model: null,
+      placeholder: 'Open alert',
+      action: GFieldValueButtonType.CUSTOM,
+      id: 'open-alert'
+    }),
+
+    // button save
+    new GButton({
+      model: null,
+      placeholder: 'Refresh',
+      action: GFieldValueButtonType.CUSTOM,
+      id: 'refresh'
+    }),
+
     // text input
     new GColorPickerField({
       model: 'color',
@@ -542,7 +558,7 @@ export class AppComponent implements OnInit {
         address: 'cra 38 bis # 1 -19',
         lat: 4.6046313,
         lng: -74.1126673,
-        city:  'Bogotá',
+        city: 'Bogotá',
         country: 'Colombia'
       }
     };
@@ -564,5 +580,17 @@ export class AppComponent implements OnInit {
 
   public submitForm() {
     this.formComponent.formActions('submit');
+  }
+
+  actions(action) {
+    switch (action) {
+      case 'open-alert':
+        alert("hey, i'm an alert!!");
+        break;
+      case 'refresh':
+        // tslint:disable-next-line: deprecation
+        window.location.reload(true);
+        break;
+    }
   }
 }

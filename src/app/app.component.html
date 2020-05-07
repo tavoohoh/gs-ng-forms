@@ -6,6 +6,7 @@
       [formFields]="formFields"
       [formOptions]="formOptions"
       (formChanges)="onFormChange($event)"
-      (form)="onSubmit($event)">
+      (form)="onSubmit($event)"
+      (emitButtonEvent)="actions($event)">
     </gs-form>
   </div>
