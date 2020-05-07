@@ -86,6 +86,10 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
    * Get form group changes. formGroup: FormGroup `form`
    */
   @Output() private formChanges = new EventEmitter<FormGroup>();
+  /**
+   * Get button event selected
+   */
+  @Output() private emitButtonEvent = new EventEmitter<string>();
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
@@ -377,7 +381,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
     }
   }
 
-  public formActions(action: string) {
+  public formActions(action: string, id?: string) {
     switch (action) {
       case GFieldValueButtonType.SUBMIT:
         this.submit();
@@ -395,7 +399,9 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
           }
         }
         break;
+      case GFieldValueButtonType.CUSTOM:
+        this.emitButtonEvent.emit(id);
+        break;
     }
   }
-
 }
