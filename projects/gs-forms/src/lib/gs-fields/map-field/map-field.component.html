@@ -18,7 +18,7 @@
       <div [class.map]="showMap" #mapRef></div>
       <div class="address" *ngIf="address.length>0">
         <strong>{{selectAddressText()}}</strong>
-        <div class="address-item" *ngFor="let item of address" (click)="selectAddress(item.formatted_address)">
+        <div class="address-item" *ngFor="let item of address" (click)="selectAddress(item.formatted_address, false)">
           {{item.formatted_address}}
         </div >
       </div>

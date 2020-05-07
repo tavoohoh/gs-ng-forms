@@ -182,7 +182,7 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
       city: address.split(', ')[1] || '',
       country: address.split(', ')[2] || '',
       lat: this.latlng.lat || '',
-      log: this.latlng.lng || ''
+      lng: this.latlng.lng || ''
     };
 
     setTimeout(() => {
