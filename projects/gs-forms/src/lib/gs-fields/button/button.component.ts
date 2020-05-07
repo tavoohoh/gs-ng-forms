@@ -14,6 +14,9 @@ export class GsButtonComponent {
   public fieldValueButtonType = GFieldValueButtonType;
 
   public action(action: string) {
-    this.hdlAction.emit(action);
+    this.hdlAction.emit({
+      action,
+      id: this.button.config.id
+    });
   }
 }

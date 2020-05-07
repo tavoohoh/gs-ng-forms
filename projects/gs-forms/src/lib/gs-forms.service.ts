@@ -12,8 +12,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class GsFormsService {
-  public resetForm$ = new BehaviorSubject(false);
-  public submitForm$ = new BehaviorSubject(false);
 
   constructor(
     private formBuilder: FormBuilder,

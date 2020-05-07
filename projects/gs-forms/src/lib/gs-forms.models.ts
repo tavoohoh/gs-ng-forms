@@ -360,6 +360,10 @@ export class GFieldButtonConfiguration extends GFieldConfiguration {
    * action button
    */
   action: GFieldValueButtonType;
+  /**
+   * identifier button
+   */
+  id?: string;
 }
 
 /**
