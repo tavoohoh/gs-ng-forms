@@ -585,7 +585,7 @@ export class AppComponent implements OnInit {
   actions(action) {
     switch (action) {
       case 'open-alert':
-        alert("hey, i'm an alert!!");
+        alert('hey, i\'m an alert!!');
         break;
       case 'refresh':
         // tslint:disable-next-line: deprecation

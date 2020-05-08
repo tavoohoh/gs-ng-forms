@@ -89,7 +89,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   /**
    * Get button event selected
    */
-  @Output() private emitButtonEvent = new EventEmitter<string>();
+  @Output() private customButtonClick = new EventEmitter<string>();
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
@@ -400,7 +400,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         }
         break;
       case GFieldValueButtonType.CUSTOM:
-        this.emitButtonEvent.emit(id);
+        this.customButtonClick.emit(id);
         break;
     }
   }
