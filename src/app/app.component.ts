@@ -358,7 +358,7 @@ export class AppComponent implements OnInit {
     new GCheckboxField({
       model: 'checkbox',
       label: 'Checkbox',
-      value: true
+      value: false
     }),
 
     // radio input

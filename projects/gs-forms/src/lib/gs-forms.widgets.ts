@@ -64,7 +64,7 @@ export class GToggleField implements GField {
 export class GCheckboxField implements GField {
   selector = GFieldSelector.CHECKBOX;
 
-  constructor(public config: GFieldOptionValuesConfiguration) { }
+  constructor(public config: GFieldBooleanConfiguration) { }
 }
 
 /**

@@ -12,15 +12,12 @@ import { GFieldOptionValues } from '../../gs-forms.models';
 export class GsCheckboxComponent implements OnChanges {
   @Input() public field: GCheckboxField;
   @Input() public formGroup: FormGroup;
-  @Input() public fieldOption: GFieldOptionValues;
 
   public fieldValidatorType = GFieldValidatorType;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes && changes.fieldOption && changes.fieldOption.currentValue) {
-      this.fieldOption = changes.fieldOption.currentValue;
-    } else {
-      this.fieldOption = this.field.config.optionValues;
+    if (changes && changes.field && changes.field.currentValue) {
+      this.field = changes.field.currentValue;
     }
   }
 }
