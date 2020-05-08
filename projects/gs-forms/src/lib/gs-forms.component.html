@@ -11,7 +11,9 @@
           class="gs-form-field" 
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
-          <label class="gs-form-field_label" *ngIf="!formOptions.layout.hideFormLabels && field.config.label" [for]="field.config.label">
+          <label class="gs-form-field_label" 
+            *ngIf="!formOptions.layout.hideFormLabels && field.config.label && field.selector !== fieldSelector.CHECKBOX"
+            [for]="field.config.label">
             {{ field.config.label | translate }}
             <span *ngIf="isRequired(field)">*</span>
           </label>

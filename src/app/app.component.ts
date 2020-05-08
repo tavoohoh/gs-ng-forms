@@ -358,20 +358,7 @@ export class AppComponent implements OnInit {
     new GCheckboxField({
       model: 'checkbox',
       label: 'Checkbox',
-      optionValues: [
-        {
-          value: 'blue',
-          text: 'blue'
-        },
-        {
-          value: 'yellow',
-          text: 'yellow'
-        },
-        {
-          value: 'red',
-          text: 'red'
-        }
-      ]
+      value: true
     }),
 
     // radio input

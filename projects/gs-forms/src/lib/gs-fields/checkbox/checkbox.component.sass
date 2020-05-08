@@ -12,11 +12,12 @@ $checkmarkHeight: $checkboxSize / 2
 $checkmarkBorder: $checkboxSize / 8
 
 /* The container */
-.checkbox
+.gs-checkbox
   @include transition()
-  display: block
+  display: grid
+  grid-template-columns: $size 1fr
+  gap: 0.5rem
   position: relative
-  padding-left: $containerPadding
   align-self: center
   margin: 6px 
   cursor: pointer
@@ -36,38 +37,32 @@ $checkmarkBorder: $checkboxSize / 8
     cursor: pointer
     height: 0
     width: 0
+    padding: 0
+    margin: 0
+    pointer-events: none
 
-  .checkmark
+  .gs-checkmark
     display: grid
-    position: absolute
-    top: 0
-    left: 0
     height: $size
     width: $size
-    background-color: var(--gs-color-neutral, $gs-color-neutral)
+    padding: 0
+    outline: none
+    border: none
+    padding: 0
 
-    *
-      align-self: center
+    background-color: $gs-input-border-color
 
-    &:after
-      content: ""
+    svg
+      position: relative
       display: none
-
-      width: $checkmarkWidth
+      align-self: center
       height: $checkmarkHeight
-      margin: auto
+      width: $checkmarkHeight
+      margin: 0 auto
+      fill: var(--gs-white-color, $gs-color-white)
 
-      border: solid var(--gs-color-white, $gs-color-white)
-      border-width: 0 $checkmarkBorder $checkmarkBorder 0
-      -webkit-transform: rotate(45deg)
-      -ms-transform: rotate(45deg)
-      transform: rotate(45deg)
+    &.gs-checked
+      background: var(--gs-primary-button-background, $gs-color-neutral)
 
-.checkbox:hover input ~ .checkmark
-  opacity: $opacity
-
-.checkbox input:checked ~ .checkmark
-  background-color: var(--gs-color-primary, $gs-color-primary)
-
-.checkbox input:checked ~ .checkmark:after
-  display: block
+      svg
+        display: block
