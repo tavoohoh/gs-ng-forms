@@ -78,13 +78,13 @@ export class GsTimePickerComponent implements OnChanges {
     }
   }
 
-  public getErrorText(index: number, isRequiredError: boolean = false) {
+  public getErrorText(index: number, isRequiredError?: boolean) {
     return isRequiredError ?
       this.gsService.getValidationMessage(this.requiredTextArray[index]) :
       this.gsService.getValidationMessage(this.patternTextArray[index]);
   }
 
-  public validateRequired(isMinuteInput: boolean) {
+  public validateRequired(isMinuteInput?: boolean) {
     const input = isMinuteInput ? 'Minutes' : 'Hours';
     this[`validateRequired${input}`] = this[`fieldTouched${input}`] &&
       (this[`fieldValue${input}`] === undefined || this[`fieldValue${input}`] === '');
