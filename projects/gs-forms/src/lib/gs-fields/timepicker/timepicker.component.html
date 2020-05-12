@@ -1,0 +1,49 @@
+<div class="input gs-form-field_timepicker">
+  <!-- hour input -->
+  <input 
+    type="text"
+    class="input-hour" 
+    placeholder="HH"
+    [decimal]="false"
+    [gsDigitOnly]="true" 
+    [autocomplete]="field.config.autocomplete || 'off'"
+    [(ngModel)]="fieldValueHours" 
+    maxlength="2"
+    (keyup)="onUpdateValue(false)"/>
+  <!-- : divider -->
+  <span class="input-divider">:</span>
+  <!-- min input -->
+  <input 
+    type="text"
+    class="input-min" 
+    placeholder="mm"
+    [decimal]="false"
+    [gsDigitOnly]="true" 
+    [autocomplete]="field.config.autocomplete || 'off'"
+    maxlength="2"
+    [(ngModel)]="fieldValueMinutes"
+    (keyup)="onUpdateValue(true)"/>
+</div>
+
+<span class="gs-form-field_error_message">
+  <!-- show one error at a time --->
+  <ng-container *ngIf="validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes">
+    {{ getErrorText(0,true) }}
+  </ng-container>
+  <ng-container *ngIf="validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes">
+    {{ getErrorText(1,true) }}
+  </ng-container>
+  <ng-container *ngIf="validateRequiredHours && validateRequiredMinutes">
+    {{ getErrorText(2,true) }}
+  </ng-container>
+  <ng-container *ngIf="validateFormatMinutes && !validateFormatHours">
+    {{ getErrorText(0) }}
+  </ng-container>
+  <ng-container *ngIf="validateFormatHours && !validateFormatMinutes">
+    {{ getErrorText(1) }}
+  </ng-container>
+  <ng-container *ngIf="validateFormatHours && validateFormatMinutes">
+    {{ getErrorText(2) }}
+  </ng-container>
+</span>
+

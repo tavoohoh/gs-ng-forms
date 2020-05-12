@@ -1,0 +1,34 @@
+@import ../../gs-forms.styles
+
+input
+  background: none
+  border: none
+  outline: none
+  margin: 0
+  width: 100%
+
+.gs-form-field_timepicker
+  display: flex
+  justify-content: center
+  border: none  
+
+  .input-hour, .input-min
+    width: 20%
+    border: 1px solid #ccc
+    text-align: center
+    &:hover, &:focus
+      border-color: $gs-red
+
+  .input-hour
+    border-radius: 1rem 0 0 1rem
+
+  .input-min
+    border-radius: 0 1rem 1rem 0
+  
+  .input-divider
+    background-color: rgba(0, 0, 0, .1)
+    text-align: center
+    padding: 0 .5rem
+    border: 1px solid #ccc
+    border-right: 0
+    border-left: 0

@@ -30,6 +30,7 @@ import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.co
 import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsFormsComponent } from './gs-forms.component';
 import { GsFormsService } from './gs-forms.service';
+import { GsTimePickerComponent } from './gs-fields';
 
 const directive = [
   DigitOnlyDirective,
@@ -56,6 +57,7 @@ const widgets = [
   GsMultiselectComponent,
   GsColorPickerComponent,
   GsMapFieldComponent,
+  GsTimePickerComponent,
   GsButtonComponent,
   GsShowDataComponent,
   GsFormsComponent

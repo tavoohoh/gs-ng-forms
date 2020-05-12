@@ -121,6 +121,12 @@ export enum GFieldSelector {
   MAP = 'map',
 
   /**
+   * TimePicker Input
+   * Any time value
+   */
+  TIME = 'time',
+
+  /**
    * Divider
    * This is not a field, it is a component to divide your form in sections
    */

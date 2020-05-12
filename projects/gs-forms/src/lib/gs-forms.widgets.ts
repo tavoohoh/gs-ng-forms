@@ -176,6 +176,15 @@ export class GMapField {
 }
 
 /**
+ * Time field in 24 hour format
+ */
+export class GTimeField {
+  selector = GFieldSelector.TIME;
+
+  constructor(public config: GFieldConfiguration) {}
+}
+
+/**
  * Divider widget
  */
 export class GDivider {

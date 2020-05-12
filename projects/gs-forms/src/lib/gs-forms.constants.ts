@@ -333,7 +333,13 @@ export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } =
     ERR_PATTERN: 'The value format is not correct',
     DEFAULT: 'This field has an unknown error',
     ERR_REQUIRED_TWO_DATA_RIGHT: 'The right field is required',
-    ERR_REQUIRED_TWO_DATA_LEFT: 'The left field is required'
+    ERR_REQUIRED_TWO_DATA_LEFT: 'The left field is required',
+    ERR_REQUIRED_MIN: 'Minutes are required',
+    ERR_REQUIRED_HOUR: 'Hours are required',
+    ERR_REQUIRED_FULLTIME: 'Hours and minutes are required',
+    ERR_PATTERN_MIN: 'Minutes format is invalid',
+    ERR_PATTERN_HOUR: 'Hours format is invalid',
+    ERR_PATTERN_FULLTIME: 'Hours and minutes format are invalid'
   },
   es: {
     ERR_MIN: 'El valor debe ser mayor o igual que ${param}',
@@ -345,7 +351,13 @@ export const VALIDATION_MESSAGES: { [key: string]: { [key: string]: string } } =
     ERR_PATTERN: 'El formato del valor no es correcto.',
     DEFAULT: 'Este campo tiene un error desconocido',
     ERR_REQUIRED_TWO_DATA_RIGHT: 'El campo de la derecha es requerido',
-    ERR_REQUIRED_TWO_DATA_LEFT: 'El campo de la izquierda es requerido'
+    ERR_REQUIRED_TWO_DATA_LEFT: 'El campo de la izquierda es requerido',
+    ERR_REQUIRED_MIN: 'Los minutos son requeridos',
+    ERR_REQUIRED_HOUR: 'Las horas son requeridas',
+    ERR_REQUIRED_FULLTIME: 'Las horas y los minutos son requeridos',
+    ERR_PATTERN_MIN: 'El formato de los minutos es incorrecto',
+    ERR_PATTERN_HOUR: 'El formato de las horas es incorrecto',
+    ERR_PATTERN_FULLTIME: 'El formato de horas y minutos es incorrecto'
   }
 };
 
