@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GTimeField } from '../../gs-forms.widgets';
 import { GsFormsService } from '../../gs-forms.service';
@@ -8,7 +8,7 @@ import { GsFormsService } from '../../gs-forms.service';
   templateUrl: './timepicker.component.html',
   styleUrls: ['./timepicker.component.sass']
 })
-export class GsTimePickerComponent implements OnChanges {
+export class GsTimePickerComponent implements OnChanges, OnInit {
   @Input() public field: GTimeField;
   @Input() public formGroup: FormGroup;
 
@@ -21,19 +21,20 @@ export class GsTimePickerComponent implements OnChanges {
   public validateRequiredHours = false;
   public validateRequiredMinutes = false;
 
-  public requiredTextArray = [
-    'ERR_REQUIRED_MIN',
-    'ERR_REQUIRED_HOUR',
-    'ERR_REQUIRED_FULLTIME'
-  ];
-
-  public patternTextArray = [
-    'ERR_PATTERN_MIN',
-    'ERR_PATTERN_HOUR',
-    'ERR_PATTERN_FULLTIME'
-  ];
+  public ErrorsTextArray;
 
   constructor(private gsService: GsFormsService) { }
+
+  ngOnInit(): void {
+    this.ErrorsTextArray = {
+      requiredMinutes: this.gsService.getValidationMessage('ERR_REQUIRED_MIN'),
+      requiredHours: this.gsService.getValidationMessage('ERR_REQUIRED_HOUR'),
+      requiredFulltime: this.gsService.getValidationMessage('ERR_REQUIRED_FULLTIME'),
+      patternMinutes: this.gsService.getValidationMessage('ERR_PATTERN_MIN'),
+      patternHours: this.gsService.getValidationMessage('ERR_PATTERN_HOUR'),
+      patternFulltime: this.gsService.getValidationMessage('ERR_PATTERN_FULLTIME')
+    };
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue) {
@@ -76,12 +77,6 @@ export class GsTimePickerComponent implements OnChanges {
     } else {
       this.formGroup.controls[this.field.config.model].patchValue(null);
     }
-  }
-
-  public getErrorText(index: number, isRequiredError: boolean = false) {
-    return isRequiredError ?
-      this.gsService.getValidationMessage(this.requiredTextArray[index]) :
-      this.gsService.getValidationMessage(this.patternTextArray[index]);
   }
 
   public validateRequired(isMinuteInput: boolean) {

@@ -28,22 +28,22 @@
 <span class="gs-form-field_error_message">
   <!-- show one error at a time --->
   <ng-container *ngIf="validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes">
-    {{ getErrorText(0,true) }}
+    {{errorsTextArray.requiredMinutes}}
   </ng-container>
   <ng-container *ngIf="validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes">
-    {{ getErrorText(1,true) }}
+    {{errorsTextArray.requiredHours}}
   </ng-container>
   <ng-container *ngIf="validateRequiredHours && validateRequiredMinutes">
-    {{ getErrorText(2,true) }}
+    {{errorsTextArray.requiredFulltime}}
   </ng-container>
   <ng-container *ngIf="validateFormatMinutes && !validateFormatHours">
-    {{ getErrorText(0) }}
+    {{errorsTextArray.patternMinutes}}
   </ng-container>
   <ng-container *ngIf="validateFormatHours && !validateFormatMinutes">
-    {{ getErrorText(1) }}
+    {{errorsTextArray.patternHours}}
   </ng-container>
   <ng-container *ngIf="validateFormatHours && validateFormatMinutes">
-    {{ getErrorText(2) }}
+    {{errorsTextArray.patternFulltime}}
   </ng-container>
 </span>
 
