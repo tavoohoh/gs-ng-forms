@@ -21,12 +21,19 @@ export class GsTimePickerComponent implements OnChanges, OnInit {
   public validateRequiredHours = false;
   public validateRequiredMinutes = false;
 
-  public ErrorsTextArray;
+  public errorsTextArray: {
+    requiredMinutes: string;
+    requiredHours: string;
+    requiredFulltime: string;
+    patternMinutes: string;
+    patternHours: string;
+    patternFulltime: string;
+  }
 
   constructor(private gsService: GsFormsService) { }
 
   ngOnInit(): void {
-    this.ErrorsTextArray = {
+    this.errorsTextArray = {
       requiredMinutes: this.gsService.getValidationMessage('ERR_REQUIRED_MIN'),
       requiredHours: this.gsService.getValidationMessage('ERR_REQUIRED_HOUR'),
       requiredFulltime: this.gsService.getValidationMessage('ERR_REQUIRED_FULLTIME'),
@@ -79,7 +86,7 @@ export class GsTimePickerComponent implements OnChanges, OnInit {
     }
   }
 
-  public validateRequired(isMinuteInput: boolean) {
+  public validateRequired(isMinuteInput?: boolean) {
     const input = isMinuteInput ? 'Minutes' : 'Hours';
     this[`validateRequired${input}`] = this[`fieldTouched${input}`] &&
       (this[`fieldValue${input}`] === undefined || this[`fieldValue${input}`] === '');
