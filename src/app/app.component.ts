@@ -24,7 +24,8 @@ import {
   GTwoDataInput,
   GFieldValueType,
   GMultiselectField,
-  GFieldValueButtonType
+  GFieldValueButtonType,
+  GTimeField
 } from 'projects/gs-forms/src/public-api';
 import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -79,6 +80,15 @@ export class AppComponent implements OnInit {
 
 
   public formFields: GFormFields = [
+    // time input
+    new GTimeField({
+      model: 'time',
+      label: 'hiiii time!',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+    }),
+
     // map input
     new GMapField({
       model: 'map',
@@ -527,6 +537,7 @@ export class AppComponent implements OnInit {
     // patch values
     const toPatchValues = {
       email: 'email@patched.com',
+      // time: '11:40',
       age: 40,
       file: {
         isImage: true,

@@ -19,3 +19,4 @@ export { GsMapFieldComponent } from './map-field/map-field.component';
 export { GsDividerComponent } from './divider/divider.component';
 export { GsButtonComponent } from './button/button.component';
 export { GsShowDataComponent } from './show-data/show-data.component';
+export { GsTimePickerComponent } from './timepicker/timepicker.component';
