@@ -498,6 +498,12 @@ export interface GStyles {
     padding?: string;
 
     /**
+     * Input opacity when it's disabled
+     * default: ".7"
+     */
+    disabledOpacity?: string;
+
+    /**
      * Input and button style
      * Go to `GInputStyle` for detail
      */

@@ -23,6 +23,7 @@ const formStyles: GStyles = {
   },
   ui: {
     fontSize: '15px',
+    disabledOpacity: '.2',
     input: {
       padding: '.8rem 1rem',
       color: null,

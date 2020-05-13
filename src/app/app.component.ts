@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   ];
 
   public formOptions: GFormOptions = {
-    // onErrorDisableSubmit: true,
+    onErrorDisableSubmit: true,
     country: GFieldCountryCode.BO,
     fieldValues: {
       dropdown: [

@@ -2,6 +2,7 @@ $smallScreen: 576px
 $shadowSoft: 0 8px 14px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.10)
 $shadowStrong: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12)
 $opacity: .8
+$opacity-disabled: .7
 
 // colors
 $gs-red: #da6464
@@ -50,7 +51,7 @@ $layout-padding: 1rem 1rem 0
   transition: $time ease-in-out
 
 @mixin disabled()
-  opacity: .7
+  opacity: var(--gs-disabled-opacity, $opacity-disabled)
   cursor: default
   pointer-events: none
 
