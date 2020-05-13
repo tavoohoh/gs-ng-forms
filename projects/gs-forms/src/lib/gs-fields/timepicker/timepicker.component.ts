@@ -28,7 +28,7 @@ export class GsTimePickerComponent implements OnChanges, OnInit {
     patternMinutes: string;
     patternHours: string;
     patternFulltime: string;
-  }
+  };
 
   constructor(private gsService: GsFormsService) { }
 
