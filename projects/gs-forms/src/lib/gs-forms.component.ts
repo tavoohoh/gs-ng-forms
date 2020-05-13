@@ -263,6 +263,11 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
           variables = variables + `--gs-padding: ${this.customStyles.ui.padding}!important;`;
         }
 
+        // opacity
+        if (this.customStyles.ui.disabledOpacity) {
+          variables = variables + `--gs-disabled-opacity: ${this.customStyles.ui.disabledOpacity}!important;`;
+        }
+
         // ui input
         if (this.customStyles.ui.input) {
           if (this.customStyles.ui.input.padding) {
