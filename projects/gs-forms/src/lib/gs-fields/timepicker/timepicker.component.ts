@@ -68,7 +68,7 @@ export class GsTimePickerComponent implements OnChanges, OnInit {
       this.validateFormatHours = true;
     }
 
-    if (this.fieldValueMinutes && !(this.fieldValueMinutes > 0 && this.fieldValueMinutes <= 60) && this.fieldTouchedMinutes) {
+    if (this.fieldValueMinutes && !(this.fieldValueMinutes >= 0 && this.fieldValueMinutes < 60) && this.fieldTouchedMinutes) {
       this.validateFormatMinutes = true;
     }
 

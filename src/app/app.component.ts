@@ -208,8 +208,6 @@ export class AppComponent implements OnInit {
       value: '#4588fd'
     }),
 
-    /*
-
     // separated by comma
     new GSeparatedByComma({
       model: 'comma',
@@ -217,6 +215,10 @@ export class AppComponent implements OnInit {
       placeholder: 'separated by comma placeholder',
       value: 'red, blue'
     }),
+
+    /*
+
+
 
     // textarea input
     new GTextareaField({
