@@ -125,15 +125,15 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
   }
 
   private setCalendar() {
-    this.currentMonth = this.date.getMonth();
-    this.currentYear = this.date.getFullYear();
+    this.currentMonth = this.date.getUTCMonth();
+    this.currentYear = this.date.getUTCFullYear();
     this.getDaysInCalendar();
   }
 
   public changeMonth(next: boolean) {
-    this.date.setMonth(next ? this.date.getMonth() + 1 : this.date.getMonth() - 1);
-    this.currentMonth = this.date.getMonth();
-    this.currentYear = this.date.getFullYear();
+    this.date.setMonth(next ? this.date.getUTCMonth() + 1 : this.date.getUTCMonth() - 1);
+    this.currentMonth = this.date.getUTCMonth();
+    this.currentYear = this.date.getUTCFullYear();
     this.setCalendar();
 
     setTimeout(() => {
@@ -157,14 +157,14 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     // days in current month
     const daysOfCurrentMonth = new Date(
       this.currentYear, this.currentMonth + 1, 0
-    ).getDate();
+    ).getUTCDate();
     const currentMonthDays = [];
 
     for (let i = 0; i < daysOfCurrentMonth; i++) {
       if (
-        this.selectedDate.getFullYear() === this.date.getFullYear() &&
-        this.selectedDate.getMonth() === this.date.getMonth() &&
-        i + 1 === this.selectedDate.getDate()
+        this.selectedDate.getUTCFullYear() === this.date.getUTCFullYear() &&
+        this.selectedDate.getUTCMonth() === this.date.getUTCMonth() &&
+        i + 1 === this.selectedDate.getUTCDate()
       ) {
         currentMonthDays.push({
           day: i + 1,
@@ -181,20 +181,21 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
     this.daysInCurrentMonth = currentMonthDays;
 
     // dasy in previous month week
-    this.daysInPreviousMonthWeek = this.getPreviousMonth(daysOfCurrentMonth);
+    this.daysInPreviousMonthWeek = this.getPreviousMonth();
 
     // days in next month week
     this.daysInNextMonthWeek = this.getNextMonth();
   }
 
-  private getPreviousMonth(daysOfCurrentMonth): Array<number> {
+  private getPreviousMonth(): Array<number> {
+    const daysOfBeforeMonth = new Date(this.currentYear, this.currentMonth, 0).getUTCDate();
     const firstDayOfCurrentMonth = new Date(
       this.currentYear, this.currentMonth, 0
     ).getDay();
     const previousWeekDays = [];
 
     for (let i = 0; i < firstDayOfCurrentMonth; i++) {
-      previousWeekDays.push(daysOfCurrentMonth - i);
+      previousWeekDays.push(daysOfBeforeMonth - i);
     }
 
     return previousWeekDays.reverse();
@@ -202,7 +203,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
 
   private getNextMonth(): Array<number> {
     const lastDayOfMonth = new Date(
-      this.currentYear, this.currentMonth + 1, 0
+      this.currentYear, this.currentMonth + 2, 0
     ).getDay();
     const nextWeekDays = [];
 
@@ -224,7 +225,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
 
   public selectMonth(month: number) {
     this.date.setMonth(month);
-    this.currentMonth = this.date.getMonth();
+    this.currentMonth = this.date.getUTCMonth();
     this.getDaysInCalendar();
 
     this.showSelector = ShowSelector.DAY;
@@ -236,7 +237,7 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
 
   public selectYear(year: number) {
     this.date.setFullYear(year);
-    this.currentYear = this.date.getFullYear();
+    this.currentYear = this.date.getUTCFullYear();
     this.getDaysInCalendar();
     this.showSelector = ShowSelector.MONTH;
 
@@ -262,10 +263,10 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
   }
 
   private formatDate(date: Date) {
-    const year = date.getFullYear();
+    const year = date.getUTCFullYear();
 
-    let month = (date.getMonth() + 1).toString();
-    let day = date.getDate().toString();
+    let month = (date.getUTCMonth() + 1).toString();
+    let day = date.getUTCDate().toString();
 
     if (month.length < 2) {
       month = `0${month}`;

@@ -20,7 +20,7 @@
         (keydown.enter)="disableEnter($event)"
         (keydown)="removeLastValue($event)"
         (keyup)="addValue($event)"/>
-        <button type="button" (click)="removeAll()">&times;</button>
+        <button *ngIf="fieldOption.length > 0" type="button" (click)="removeAll()">&times;</button>
     </div>
   </div>
 </ng-container>
