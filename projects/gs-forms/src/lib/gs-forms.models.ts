@@ -80,6 +80,7 @@ export interface GFormOptions {
       show?: boolean;
     }
   };
+  rppStyles?: boolean;
 }
 
 /**
@@ -373,6 +374,9 @@ export interface GField {
   selector: GFieldSelector;
   config: GFieldConfiguration | GFieldOptionValuesConfiguration | GFieldCountryFormmatConfiguration | GFieldDividerConfiguration;
   notWidget?: boolean;
+  rappyStyle?: {
+    displayInput?: boolean;
+  };
 }
 
 /**
