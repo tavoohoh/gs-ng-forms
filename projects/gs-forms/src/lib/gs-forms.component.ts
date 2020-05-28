@@ -122,6 +122,21 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
 
       this.formFields = changes.formFields.currentValue;
       this.formGroup = form;
+
+      if (this.formOptions.rppStyles) {
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.formFields.length; i++) {
+          if (this.formFields[i].config.value && !this.formFields[i].notWidget) {
+            this.formFields[i] = {
+              ... this.formFields[i],
+              rappyStyle: {
+                displayInput: true
+              }
+            };
+          }
+        }
+      }
+
       this.formGroup.updateValueAndValidity();
     }
 
@@ -221,6 +236,31 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
    */
   @HostBinding('attr.style')
   public get valueAsStyle(): any {
+    if (this.formOptions.rppStyles) {
+      let variables = '';
+      variables = variables + `--gs-input-padding: #332927!important;`;
+      variables = variables + `--gs-input-color: ${0}!important;`;
+      variables = variables + `--gs-input-border-size: none !important;`;
+      variables = variables + `--gs-input-border-style: none !important;`;
+      variables = variables + `--gs-input-border-color: none !important;`;
+
+      if (this.formOptions && this.formOptions.layout) {
+
+        if (this.formOptions.layout.columns) {
+          if (typeof this.formOptions.layout.columns === 'number') {
+            // if typeof number
+            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
+          } else {
+            // if typeof string
+            variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
+          }
+        }
+      }
+      return this.sanitizer.bypassSecurityTrustStyle(
+        variables
+      );
+    }
+
     if (this.customStyles) {
       let variables = '';
 
@@ -384,6 +424,25 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         variables
       );
     }
+  }
+
+  public focusInput(index: number) {
+    if (!this.formOptions.rppStyles ||
+      (this.formFields[index] && this.formFields[index].rappyStyle && this.formFields[index].rappyStyle.displayInput)) {
+      return;
+    }
+
+    this.formFields[index] = {
+      ... this.formFields[index],
+      rappyStyle: {
+        displayInput: true
+      }
+    };
+
+    setTimeout(() => {
+      document.getElementById(`label${index}`).click();
+    }, 500);
+
   }
 
   public formActions(action: string, id?: string) {

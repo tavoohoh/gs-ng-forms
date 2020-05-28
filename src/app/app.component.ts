@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
         show: true
       }
     },
+    rppStyles: true
   };
 
 

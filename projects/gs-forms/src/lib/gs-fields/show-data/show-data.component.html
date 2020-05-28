@@ -1,6 +1,8 @@
-<label class="gs-form-field_label" *ngIf="data.config.label" [for]="data.config.label">
-  {{ data.config.label | translate }}
-</label>
-<div class="input gs-form-field_text_input">  
-  {{ fieldValue | translate }}
+<div [class.rpp-styles]="rppStyles" [class.rpp-styles_active]="rppStyles">
+  <label class="gs-form-field_label" *ngIf="data.config.label" [for]="data.config.label">
+    {{ data.config.label | translate }}
+  </label>
+  <div class="input gs-form-field_text_input">  
+    {{ fieldValue | translate }}
+  </div>
 </div>
