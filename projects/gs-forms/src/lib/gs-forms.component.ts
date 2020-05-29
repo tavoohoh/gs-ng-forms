@@ -126,7 +126,8 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       if (this.formOptions.rppStyles) {
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.formFields.length; i++) {
-          if (this.formFields[i].config.value && !this.formFields[i].notWidget) {
+          if (this.formFields[i].config.value && !this.formFields[i].notWidget
+            || this.getNameObject(this.formFields[i]) !== 'GTextField') {
             this.formFields[i] = {
               ... this.formFields[i],
               rappyStyle: {
@@ -186,6 +187,10 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
     }
   }
 
+  private getNameObject(field: any) {
+    return field.__proto__.constructor.name;
+  }
+
   public isRequired(field: any): boolean {
     return field.config.validators ? field.config.validators[this.fieldValidatorType.REQUIRED] : false;
   }
@@ -238,11 +243,22 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   public get valueAsStyle(): any {
     if (this.formOptions.rppStyles) {
       let variables = '';
-      variables = variables + `--gs-input-padding: #332927!important;`;
-      variables = variables + `--gs-input-color: ${0}!important;`;
+      variables = variables + `--gs-input-padding: none !important;`;
+      variables = variables + `--gs-input-color: #332927 !important;`;
+      variables = variables + `--gs-input-font-weight: 600 !important;`;
       variables = variables + `--gs-input-border-size: none !important;`;
       variables = variables + `--gs-input-border-style: none !important;`;
       variables = variables + `--gs-input-border-color: none !important;`;
+      variables = variables + `--gs-input-margin-bottom: 2px !important;`;
+
+      variables = variables + `--gs-color-neutral: #332927 !important;`;
+      variables = variables + `--gs-color-primary: #332927!important;`;
+
+      variables = variables + `--gs-primary-button-background: #706967 !important;`;
+      variables = variables + `--gs-primary-button-border-color: none !important;`;
+
+      variables = variables + `--gs-layout-padding: 1rem 0 !important;`;
+
 
       if (this.formOptions && this.formOptions.layout) {
 

@@ -11,6 +11,7 @@ import { GFieldValidatorType } from '../../gs-forms.enums';
 export class GsToggleComponent {
   @Input() public field: GToggleField;
   @Input() public formGroup: FormGroup;
+  @Input() public rppStyles: boolean;
 
   public fieldValidatorType = GFieldValidatorType;
 }

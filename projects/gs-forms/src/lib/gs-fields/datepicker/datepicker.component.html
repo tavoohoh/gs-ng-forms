@@ -1,4 +1,8 @@
-<div class="date-input" gsClickOutside (gsClickOutside)="toggleDatePickerSelector(false)">
+<div 
+  class="date-input" 
+  gsClickOutside 
+  (gsClickOutside)="toggleDatePickerSelector(false)" 
+  [class.rpp-datepicker]="rppStyles">
   <input
     #inputElement
     class="input gs-form-field_date-input"

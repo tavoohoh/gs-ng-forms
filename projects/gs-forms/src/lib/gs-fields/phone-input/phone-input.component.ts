@@ -14,6 +14,7 @@ export class GsPhoneInputComponent implements OnChanges {
   @Input() public field: GPhoneField;
   @Input() public formGroup: FormGroup;
   @Input() private countryGlobal: GFieldCountryCode;
+  @Input() public rppStyles: boolean;
 
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
