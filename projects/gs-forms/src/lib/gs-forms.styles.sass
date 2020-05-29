@@ -22,6 +22,8 @@ $gs-padding: .5rem
 $gs-input-color: inherit
 $gs-input-padding: .6rem
 $gs-input-background: #ffffff
+$gs-input-font-weigth: normal
+$gs-input-margin-bottom: 0px
 
 $gs-input-border-size: 1px
 $gs-input-border-style: solid
@@ -132,7 +134,9 @@ textarea
   padding: var(--gs-input-padding, $gs-input-padding)
   color: var(--gs-input-color, $gs-input-color)
   background-color: var(--gs-input-background, $gs-input-background)
-
+  font-weight: var(--gs-input-font-weight, $gs-input-font-weigth)
+  margin-bottom: var(--gs-input-margin-bottom, $gs-input-margin-bottom)
+  
   border: var(--gs-input-border-size, $gs-input-border-size) var(--gs-input-border-style, $gs-input-border-style) var(--gs-input-border-color, $gs-input-border-color)
   border-radius: var(--gs-input-border-radius, $gs-input-border-radius)
   border-top-width: var(--gs-input-border-top, var(--gs-input-border-size, $gs-input-border-size))

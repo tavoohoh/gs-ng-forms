@@ -58,3 +58,25 @@ $borderRadius: $toggleSize + 4
       bottom: 4px
       background-color: var(--gs-color-white, $gs-color-white)
       border-radius: 50%
+
+.rpp-styles-toogle
+  margin: 0
+  margin-bottom: -8px
+  margin-top: 2px
+  input    
+    &:focus + span
+      box-shadow: none
+    
+    &:checked + span:before
+      -webkit-transform: translateX($toggleSize - 8)
+      -ms-transform: translateX($toggleSize - 8)
+      transform: translateX($toggleSize - 8)
+  span
+    background-color: white
+    border: 1px solid #efece9
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .1)
+    top: -2px
+    &:before
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .1)
+      border: 1px solid #efece9
+      bottom: 3px

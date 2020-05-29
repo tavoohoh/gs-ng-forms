@@ -75,6 +75,7 @@ enum ShowSelector {
 export class GsDatePickerComponent implements OnInit, OnChanges {
   @Input() public field: GDatePickerField;
   @Input() public formGroup: FormGroup;
+  @Input() public rppStyles: boolean;
 
   public fieldValidatorType = GFieldValidatorType;
   public dateValue: string;

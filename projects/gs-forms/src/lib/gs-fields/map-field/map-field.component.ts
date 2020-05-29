@@ -15,6 +15,7 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   @Input() public field: GMapField;
   @Input() public formGroup: FormGroup;
   @Input() private googleMapApiKey: string;
+  @Input() public rppStyles: boolean;
 
   @ViewChild('mapRef', { static: false }) mapElement: ElementRef;
   @ViewChild('search', { static: false }) search: ElementRef;
