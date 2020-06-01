@@ -127,7 +127,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.formFields.length; i++) {
           if (this.formFields[i].config.value && !this.formFields[i].notWidget
-            || this.getNameObject(this.formFields[i]) !== 'GTextField') {
+            || (this.getNameObject(this.formFields[i]) !== 'GTextField' && this.getNameObject(this.formFields[i]) !== 'GNumberField')) {
             this.formFields[i] = {
               ... this.formFields[i],
               rappyStyle: {
@@ -252,7 +252,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       variables = variables + `--gs-input-margin-bottom: 2px !important;`;
 
       variables = variables + `--gs-color-neutral: #332927 !important;`;
-      variables = variables + `--gs-color-primary: #332927!important;`;
+      variables = variables + `--gs-color-primary: #332927 !important;`;
 
       variables = variables + `--gs-primary-button-background: #706967 !important;`;
       variables = variables + `--gs-primary-button-border-color: none !important;`;

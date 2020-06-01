@@ -20,20 +20,25 @@ export class GsDropdownComponent implements OnChanges {
   // rpp-variables
   displayOptions: boolean;
   inputValue = '';
-  placeholder = '';
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
     if (changes.field && changes.field.currentValue.config && !changes.field.currentValue.config.value) {
       this.field.config.value = '';
 
       if (this.rppStyles) {
-        this.inputValue = this.field.config.value;
-        this.placeholder = this.field.config.placeholder || this.field.config.label || this.field.config.model;
+        this.inputValue = this.field.config.placeholder || this.field.config.label || this.field.config.model;
       }
-
-      this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
-      this.formGroup.controls[this.field.config.model].updateValueAndValidity();
+    } else if (changes.field.currentValue.config.value) { // if changes has a value
+      this.field.config.value = changes.field.currentValue.config.value;
+      if (this.rppStyles) {
+        this.inputValue = `${this.field.config.value}` ||
+          this.field.config.placeholder || this.field.config.label || this.field.config.model;
+      }
     }
+
+    this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
+    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
 
     if (changes.fieldOption && changes.fieldOption.currentValue) {
       this.fieldOption = changes.fieldOption.currentValue;
