@@ -81,6 +81,41 @@ export class AppComponent implements OnInit {
 
 
   public formFields: GFormFields = [
+    new GDropdownField({
+      model: 'franchiseType',
+      label: 'FRANCHISE_TYPE.LABEL',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      value: 'FRANCHISE_ADMIN_STORE',
+      optionValues: [
+        {
+          value: 'FRANCHISE_ADMIN_STORE',
+          text: 'FRANCHISE_TYPE.FRANCHISE_ADMIN_STORE'
+        }
+        // {
+        //   value: 'FRANCHISE_ADMIN_STORE_DISPERSION_EMPLOYEE',
+        //   text: 'FRANCHISE_TYPE.FRANCHISE_ADMIN_STORE_DISPERSION_EMPLOYEE'
+        // }
+      ]
+    }),
+    // dropdown input
+    new GDropdownField({
+      model: 'dropdown',
+      label: 'Dropdown',
+      placeholder: 'Dropdown placeholder',
+      externalOptions: true,
+      optionValues: [
+        {
+          value: 'yellow',
+          text: 'yellow'
+        },
+        {
+          value: 'red',
+          text: 'red'
+        }
+      ]
+    }),
     // time input
     new GTimeField({
       model: 'time',
@@ -527,11 +562,11 @@ export class AppComponent implements OnInit {
       ...this.formOptions.fieldValues,
       dropdown: [
         {
-          value: 'hola',
+          value: 'HOLA_KEY',
           text: 'hola'
         },
         {
-          value: 'chao',
+          value: 'CHAO_KEY',
           text: 'chao'
         }
       ]
@@ -561,7 +596,9 @@ export class AppComponent implements OnInit {
         lng: -74.1126673,
         city: 'Bogotá',
         country: 'Colombia'
-      }
+      },
+      dropdown: 'CHAO_KEY',
+      franchiseType: 'FRANCHISE_ADMIN_STORE'
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }

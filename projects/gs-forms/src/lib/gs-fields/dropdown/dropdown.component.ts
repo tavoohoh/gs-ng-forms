@@ -22,19 +22,11 @@ export class GsDropdownComponent implements OnChanges {
   inputValue = '';
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
     if (changes.field && changes.field.currentValue.config && !changes.field.currentValue.config.value) {
       this.field.config.value = '';
-
-      if (this.rppStyles) {
-        this.inputValue = this.field.config.placeholder || this.field.config.label || this.field.config.model;
-      }
-    } else if (changes.field.currentValue.config.value) { // if changes has a value
+    } else if (changes.field && changes.field.currentValue.config && changes.field.currentValue.config.value) { // if changes has a value
       this.field.config.value = changes.field.currentValue.config.value;
-      if (this.rppStyles) {
-        this.inputValue = `${this.field.config.value}` ||
-          this.field.config.placeholder || this.field.config.label || this.field.config.model;
-      }
+      this.updateInputRpp();
     }
 
     this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
@@ -42,6 +34,7 @@ export class GsDropdownComponent implements OnChanges {
 
     if (changes.fieldOption && changes.fieldOption.currentValue) {
       this.fieldOption = changes.fieldOption.currentValue;
+      this.updateInputRpp();
     } else {
       this.fieldOption = this.field.config.optionValues;
     }
@@ -51,11 +44,19 @@ export class GsDropdownComponent implements OnChanges {
     this.displayOptions = toggleValue;
   }
 
-  public changeValue(value: string) {
-    this.inputValue = value.toString();
-    this.field.config.value = this.inputValue;
+  public changeValue(text: string, value: string) {
+    this.inputValue = text;
+    this.field.config.value = value;
     this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
     this.deploySelect(false);
+  }
+
+  private updateInputRpp() {
+    if (this.rppStyles) {
+      const option = this.fieldOption.find(elem => elem.value === this.field.config.value);
+      this.inputValue = option && option.text ? option.text :
+        this.field.config.placeholder || this.field.config.label || this.field.config.model;
+    }
   }
 }
