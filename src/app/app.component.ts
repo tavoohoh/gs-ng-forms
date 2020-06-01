@@ -81,6 +81,24 @@ export class AppComponent implements OnInit {
 
 
   public formFields: GFormFields = [
+    new GDropdownField({
+      model: 'franchiseType',
+      label: 'FRANCHISE_TYPE.LABEL',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      value: 'FRANCHISE_ADMIN_STORE',
+      optionValues: [
+        {
+          value: 'FRANCHISE_ADMIN_STORE',
+          text: 'FRANCHISE_TYPE.FRANCHISE_ADMIN_STORE'
+        }
+        // {
+        //   value: 'FRANCHISE_ADMIN_STORE_DISPERSION_EMPLOYEE',
+        //   text: 'FRANCHISE_TYPE.FRANCHISE_ADMIN_STORE_DISPERSION_EMPLOYEE'
+        // }
+      ]
+    }),
     // dropdown input
     new GDropdownField({
       model: 'dropdown',
@@ -579,7 +597,8 @@ export class AppComponent implements OnInit {
         city: 'Bogotá',
         country: 'Colombia'
       },
-      dropdown: 'CHAO_KEY'
+      dropdown: 'CHAO_KEY',
+      franchiseType: 'FRANCHISE_ADMIN_STORE'
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }

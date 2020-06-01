@@ -10,11 +10,11 @@
         <div *ngIf="!field.notWidget && checkCondition(field)" class="gs-form-field"
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null"
-          [class.rpp-form-field]="formOptions.rppStyles">
+          [style.height]="field.selector === 'dropdown' ? '55px': 'initial'">
           <div 
             [class.rpp-styles]="formOptions.rppStyles" 
             [class.rpp-styles_active]="field.rappyStyle?.displayInput" 
-            [class.rpp-styles_error]="formOptions.rppStyles && validateField(field.config.model)" 
+            [class.rpp-styles_error]="formOptions.rppStyles && validateField(field.config.model)"             
             (click)="focusInput(i)">
             <label 
               [id]="'label'+i" 
@@ -36,7 +36,7 @@
               <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="formOptions.rppStyles"></gs-phone-input>
               <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup" [rppStyles]="formOptions.rppStyles"></gs-datepicker>
               <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
-              <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup"></gs-file-input>
+              <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup" [rppStyles]="formOptions.rppStyles"></gs-file-input>
               <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
               <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
               <gs-color-picker *ngSwitchCase="fieldSelector.COLOR" [field]="field" [formGroup]="formGroup"></gs-color-picker>

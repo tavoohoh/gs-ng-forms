@@ -1,6 +1,6 @@
 <ng-container [formGroup]="formGroup">
 
-  <div class="button file-input" (click)="file.click()">
+  <div class="button file-input" (click)="file.click()" [class.rpp-styles-file]="rppStyles">
     <!-- input UI -->
     <ng-container *ngIf="selectedFile && !loading">
       <span class="file-image inner-padding" [style.background-image]="'url(' + selectedFile.path + ')'">

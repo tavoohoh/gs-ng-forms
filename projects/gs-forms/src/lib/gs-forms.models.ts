@@ -194,7 +194,7 @@ export class GFieldNumberConfiguration extends GFieldConfiguration {
   /**
    * Field default value
    */
-  value?: number;
+  value?: number | string;
   /**
    * set input decimal
    */
