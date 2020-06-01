@@ -17,7 +17,7 @@
 
   <div class="rpp-dropdown" gsClickOutside (gsClickOutside)="deploySelect(false)"> 
     <div class="rpp-input" [class.rpp-input-active]="displayOptions" (click)="deploySelect(true)">
-      {{ inputValue || placeholder | translate }}
+      {{ inputValue | translate }}
     </div>
     <ng-container *ngIf="displayOptions">
       <div class="rpp-option" (click)="changeValue(option.value)"
