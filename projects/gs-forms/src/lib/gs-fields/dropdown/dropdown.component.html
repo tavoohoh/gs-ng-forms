@@ -20,7 +20,7 @@
       {{ inputValue | translate }}
     </div>
     <ng-container *ngIf="displayOptions">
-      <div class="rpp-option" (click)="changeValue(option.value)"
+      <div class="rpp-option" (click)="changeValue(option.text, option.value)"
         *ngFor="let option of fieldOption">
         {{ option.text | translate }}
       </div>

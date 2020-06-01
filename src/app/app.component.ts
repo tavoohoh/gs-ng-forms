@@ -81,6 +81,23 @@ export class AppComponent implements OnInit {
 
 
   public formFields: GFormFields = [
+    // dropdown input
+    new GDropdownField({
+      model: 'dropdown',
+      label: 'Dropdown',
+      placeholder: 'Dropdown placeholder',
+      externalOptions: true,
+      optionValues: [
+        {
+          value: 'yellow',
+          text: 'yellow'
+        },
+        {
+          value: 'red',
+          text: 'red'
+        }
+      ]
+    }),
     // time input
     new GTimeField({
       model: 'time',
@@ -527,11 +544,11 @@ export class AppComponent implements OnInit {
       ...this.formOptions.fieldValues,
       dropdown: [
         {
-          value: 'hola',
+          value: 'HOLA_KEY',
           text: 'hola'
         },
         {
-          value: 'chao',
+          value: 'CHAO_KEY',
           text: 'chao'
         }
       ]
@@ -561,7 +578,8 @@ export class AppComponent implements OnInit {
         lng: -74.1126673,
         city: 'Bogotá',
         country: 'Colombia'
-      }
+      },
+      dropdown: 'CHAO_KEY'
     };
     this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }
