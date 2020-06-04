@@ -75,8 +75,7 @@ export class AppComponent implements OnInit {
         text: 'Save',
         show: true
       }
-    },
-    rppStyles: true
+    }
   };
 
 

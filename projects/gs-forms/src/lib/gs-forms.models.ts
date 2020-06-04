@@ -80,7 +80,6 @@ export interface GFormOptions {
       show?: boolean;
     }
   };
-  rppStyles?: boolean;
 }
 
 /**

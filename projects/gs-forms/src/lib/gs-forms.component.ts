@@ -100,16 +100,19 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   private customStyles: GStyles;
   private destroyed$ = new Subject();
   public googleMapApiKey: string;
+  public rppStyles: boolean;
 
   constructor(
     private formsService: GsFormsService,
     private sanitizer: DomSanitizer,
     private cdRef: ChangeDetectorRef,
     @Inject('customStyles') customStyles,
-    @Inject('googleMapApiKey') apikey
+    @Inject('googleMapApiKey') apikey,
+    @Inject('rppStyles') rppStyles
   ) {
     this.customStyles = customStyles;
     this.googleMapApiKey = apikey;
+    this.rppStyles = rppStyles;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -123,7 +126,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       this.formFields = changes.formFields.currentValue;
       this.formGroup = form;
 
-      if (this.formOptions.rppStyles) {
+      if (this.rppStyles) {
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.formFields.length; i++) {
           if (this.formFields[i].config.value && !this.formFields[i].notWidget
@@ -241,7 +244,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
    */
   @HostBinding('attr.style')
   public get valueAsStyle(): any {
-    if (this.formOptions.rppStyles) {
+    if (this.rppStyles) {
       let variables = '';
       variables = variables + `--gs-input-padding: none !important;`;
       variables = variables + `--gs-input-color: #332927 !important;`;
@@ -443,7 +446,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   }
 
   public focusInput(index: number) {
-    if (!this.formOptions.rppStyles ||
+    if (!this.rppStyles ||
       (this.formFields[index] && this.formFields[index].rappyStyle && this.formFields[index].rappyStyle.displayInput)) {
       return;
     }
