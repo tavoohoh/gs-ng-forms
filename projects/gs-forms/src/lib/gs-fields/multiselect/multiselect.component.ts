@@ -13,6 +13,7 @@ export class GsMultiselectComponent implements OnChanges {
   @Input() public field: GDropdownField;
   @Input() public formGroup: FormGroup;
   @Input() public fieldOption: GFieldOptionValues;
+  @Input() public rppStyles: boolean;
 
   public options: GFieldExistsOptionValues = [];
   public noSelection = true;

@@ -31,12 +31,12 @@
               <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
               <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
               <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-toggle>
-              <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-currency-input>
+              <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="rppStyles"></gs-currency-input>
               <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="rppStyles"></gs-phone-input>
               <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-datepicker>
-              <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null"></gs-tax-type>
+              <gs-tax-type *ngSwitchCase="fieldSelector.TAX_TYPE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="rppStyles"></gs-tax-type>
               <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-file-input>
-              <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup"></gs-separated-by-comma>
+              <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-separated-by-comma>
               <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
               <gs-color-picker *ngSwitchCase="fieldSelector.COLOR" [field]="field" [formGroup]="formGroup"></gs-color-picker>
               <gs-map-field *ngSwitchCase="fieldSelector.MAP" [field]="field" [formGroup]="formGroup" [googleMapApiKey]="googleMapApiKey" [rppStyles]="rppStyles"></gs-map-field>
@@ -50,7 +50,7 @@
                 [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
               </gs-dropdown>
               <gs-multiselect *ngSwitchCase="fieldSelector.MULTISELECT" [field]="field" [formGroup]="formGroup"
-                [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+                [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null" [rppStyles]="rppStyles">
               </gs-multiselect>
             </div>
           </div>

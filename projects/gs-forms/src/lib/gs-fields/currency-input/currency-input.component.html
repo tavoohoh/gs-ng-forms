@@ -1,5 +1,5 @@
 <ng-container>
-  <div class="input currency-input" (click)="focusInput()">
+  <div class="input currency-input" (click)="focusInput()" [class.rpp-styles-currency]="rppStyles">
     <span class="symbol">{{ prefix }}</span>
     <input
       #inputElement

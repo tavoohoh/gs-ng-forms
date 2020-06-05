@@ -1,5 +1,6 @@
-<div class="select" [formGroup]="formGroup">
+<div class="select" [formGroup]="formGroup" [class.rpp-styles-dropdown]="rppStyles">
   <select
+    *ngIf="!rppStyles"
     class="input gs-form-field_dropdown"
     [name]="field.config.model"
     [formControlName]="field.config.model">
@@ -13,6 +14,18 @@
       {{ option.name }}
     </option>
   </select>
+
+  <div class="rpp-dropdown" gsClickOutside (gsClickOutside)="deploySelect(false)"> 
+    <div class="rpp-input" [class.rpp-input-active]="displayOptions" (click)="deploySelect(true)">
+      {{ inputValue | translate }}
+    </div>
+    <div class="rpp-options" *ngIf="displayOptions">
+      <div class="rpp-option" (click)="changeValue(option.name, option.value)"
+        *ngFor="let option of taxTypeOptions">
+        {{ option.name | translate }}
+      </div>
+    </div>    
+  </div>
 
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path d="M12 21l-12-18h24z"/>

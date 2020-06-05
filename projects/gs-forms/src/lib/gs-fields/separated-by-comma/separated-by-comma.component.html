@@ -1,5 +1,5 @@
 <ng-container>
-  <div class="input separated-by-commas-input" (click)="focusInput()">
+  <div class="input separated-by-commas-input" (click)="focusInput()" [class.rpp-styles-separated]="rppStyles">
     <!-- field values -->
     <ul *ngIf="fieldOption">
       <li *ngFor="let item of fieldOption; let i = index;">

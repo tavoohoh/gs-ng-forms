@@ -11,6 +11,7 @@ import { GFieldValidatorType } from '../../gs-forms.enums';
 export class GsSeparatedByCommaComponent implements OnChanges {
   @Input() public field: GSeparatedByComma;
   @Input() public formGroup: FormGroup;
+  @Input() public rppStyles: boolean;
   public fieldOption: Array<string> = [];
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
