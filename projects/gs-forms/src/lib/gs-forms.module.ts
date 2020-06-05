@@ -87,7 +87,7 @@ const widgets = [
   ]
 })
 export class GsFormsModule {
-  public static forRoot(styles?: GStyles, googleMapApiKey?: string): ModuleWithProviders {
+  public static forRoot(styles?: GStyles, googleMapApiKey?: string, rppStyles = false): ModuleWithProviders {
     if (googleMapApiKey && !document.getElementById('google-map-script')) {
       const googleScript = document.createElement('script');
       googleScript.defer = true;
@@ -108,6 +108,10 @@ export class GsFormsModule {
         {
           provide: 'googleMapApiKey',
           useValue: googleMapApiKey
+        },
+        {
+          provide: 'rppStyles',
+          useValue: true
         }
       ]
     };

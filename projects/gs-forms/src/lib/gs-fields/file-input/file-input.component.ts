@@ -12,6 +12,7 @@ import { GsFormsService } from '../../gs-forms.service';
 export class GsFileInputComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
   @Input() public formGroup: FormGroup;
+  @Input() public rppStyles: boolean;
 
   public name: string;
   public size: string;

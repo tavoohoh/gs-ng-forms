@@ -22,8 +22,16 @@ export class GsDropdownComponent implements OnChanges {
   inputValue = '';
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes.fieldOption && changes.fieldOption.currentValue) {
+      this.fieldOption = changes.fieldOption.currentValue;
+      this.updateInputRpp();
+    } else {
+      this.fieldOption = this.field.config.optionValues;
+    }
+
     if (changes.field && changes.field.currentValue.config && !changes.field.currentValue.config.value) {
       this.field.config.value = '';
+      this.inputValue = this.field.config.placeholder || this.field.config.label || this.field.config.model;
     } else if (changes.field && changes.field.currentValue.config && changes.field.currentValue.config.value) { // if changes has a value
       this.field.config.value = changes.field.currentValue.config.value;
       this.updateInputRpp();
@@ -31,13 +39,6 @@ export class GsDropdownComponent implements OnChanges {
 
     this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
     this.formGroup.controls[this.field.config.model].updateValueAndValidity();
-
-    if (changes.fieldOption && changes.fieldOption.currentValue) {
-      this.fieldOption = changes.fieldOption.currentValue;
-      this.updateInputRpp();
-    } else {
-      this.fieldOption = this.field.config.optionValues;
-    }
   }
 
   public deploySelect(toggleValue: boolean) {

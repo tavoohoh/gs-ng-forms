@@ -1,6 +1,6 @@
 <div class="select" [formGroup]="formGroup" [class.rpp-styles-dropdown]="rppStyles">
   <select
-  *ngIf="!rppStyles"
+    *ngIf="!rppStyles"
     class="input gs-form-field_dropdown"
     [name]="field.config.model"
     [formControlName]="field.config.model">
@@ -19,12 +19,12 @@
     <div class="rpp-input" [class.rpp-input-active]="displayOptions" (click)="deploySelect(true)">
       {{ inputValue | translate }}
     </div>
-    <ng-container *ngIf="displayOptions">
+    <div class="rpp-options" *ngIf="displayOptions">
       <div class="rpp-option" (click)="changeValue(option.text, option.value)"
         *ngFor="let option of fieldOption">
         {{ option.text | translate }}
       </div>
-    </ng-container>    
+    </div>    
   </div>
   
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
