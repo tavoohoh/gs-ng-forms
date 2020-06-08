@@ -238,17 +238,19 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       variables = variables + `--gs-input-border-style: none !important;`;
       variables = variables + `--gs-input-border-color: none !important;`;
       variables = variables + `--gs-input-margin-bottom: 2px !important;`;
-
       variables = variables + `--gs-color-neutral: #332927 !important;`;
       variables = variables + `--gs-color-primary: #332927 !important;`;
-
-      variables = variables + `--gs-primary-button-background: #706967 !important;`;
-      variables = variables + `--gs-primary-button-border-color: none !important;`;
-
       variables = variables + `--gs-layout-padding: 1rem 0 !important;`;
+      variables = variables + `--gs-font-size: 1rem !important;`;
+
+      // buttons
+      variables = variables + `--gs-primary-button-padding: 1rem 3rem!important;`;
+      variables = variables + `--gs-primary-button-color: #ffffff!important;`;
+      variables = variables + `--gs-primary-button-background-image: linear-gradient(to right, #ff9259, #ff2426)!important;`;
+      variables = variables + `--gs-primary-button-border-color: none!important;`;
+      variables = variables + `--gs-primary-button-border-radius: 1rem!important;`;
 
       if (this.formOptions && this.formOptions.layout) {
-
         if (this.formOptions.layout.columns) {
           if (typeof this.formOptions.layout.columns === 'number') {
             // if typeof number
@@ -262,9 +264,7 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       return this.sanitizer.bypassSecurityTrustStyle(
         variables
       );
-    }
-
-    if (this.customStyles) {
+    } else if (this.customStyles) {
       let variables = '';
 
       // colors

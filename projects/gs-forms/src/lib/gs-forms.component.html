@@ -68,7 +68,9 @@
           *ngIf="field.notWidget && checkCondition(field)"
           class="gs-form-field no-widget"
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
-          [class.rpp-styles]="rppStyles && field.selector === fieldSelector.SHOW_DATA">
+          [class.rpp-styles]="rppStyles && field.selector === fieldSelector.SHOW_DATA"
+          [class.rpp-styles-divider]="rppStyles && field.selector === fieldSelector.DIVIDER"
+          [class.rpp-styles-button]="rppStyles && field.selector === fieldSelector.BUTTON">
           <div class="rpp-form-field" [ngSwitch]="field.selector">
             <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
             <gs-button *ngSwitchCase="fieldSelector.BUTTON" [button]="field" [rppStyles]="rppStyles"

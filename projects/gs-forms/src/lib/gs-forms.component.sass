@@ -49,18 +49,22 @@
       gap: .8rem
 
 /** rappi styles **/
-.rpp-styles
-  $rpp-color-white: #ffffff
-  $rpp-color-black: #332927
-  $rpp-color-primary: #ff2426
-  $rpp-color-gray-light: #e5e5e4
-  $rpp-color-text: #706967
-  $rpp-padding-xsmall: 0.6rem
-  $rpp-padding-small: 1rem
-  $rpp-font-size-input: 1rem
-  $rpp-font-size-small: 0.8rem
-  $rpp-font-size-xsmall: 0.7rem
+$rpp-color-white: #ffffff
+$rpp-color-black: #332927
+$rpp-color-primary: #ff2426
+$rpp-color-primary-light: #ff9259
+$rpp-color-gray-light: #e5e5e4
+$rpp-color-text: #706967
+$rpp-padding-xsmall: 0.6rem
+$rpp-padding-small: 1rem
+$rpp-font-size-input: 1rem
+$rpp-font-size-small: 0.8rem
+$rpp-font-size-xsmall: 0.7rem
 
+.rpp-styles-divider .rpp-form-field ::ng-deep gs-divider .gs-divider .gs-divider-line
+  background-color: $rpp-color-gray-light!important
+
+.rpp-styles
   line-height: 1
 
   .rpp-form-field
@@ -69,7 +73,7 @@
     background-color: $rpp-color-white
     padding: $rpp-padding-xsmall $rpp-padding-small
     border-radius: $rpp-padding-small
-    min-height: 50px
+    min-height: 55px
 
     .gs-form-field_label, 
     ::ng-deep gs-show-data .gs-form-field_label
@@ -95,6 +99,8 @@
 
         .select svg
           right: 0
+          top: -35%
+          transform: none
 
         .rpp-styles-map svg
           top: 1.15rem
@@ -115,6 +121,9 @@
             opacity: 1
             font-weight: 400
         
+        .rpp-input
+          padding: 0.2rem 0 0
+        
         .input,
         input, 
         select,
@@ -122,12 +131,17 @@
         .rpp-input
           margin: 0!important
           line-height: 1!important
+          font-weight: 600!important
+          font-size: $rpp-font-size-input!important
 
         .left-input
           padding: 0 $rpp-padding-xsmall 0 0!important
 
         .right-input
           padding: 0 0 0 $rpp-padding-xsmall!important
+
+        .input-divider
+          line-height: 1.5
 
   .gs-form-field_symbol
     right: 1.6rem 
