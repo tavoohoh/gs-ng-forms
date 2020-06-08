@@ -126,21 +126,6 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       this.formFields = changes.formFields.currentValue;
       this.formGroup = form;
 
-      if (this.rppStyles) {
-        // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.formFields.length; i++) {
-          if (this.formFields[i].config.value && !this.formFields[i].notWidget
-            || (this.getNameObject(this.formFields[i]) !== 'GTextField' && this.getNameObject(this.formFields[i]) !== 'GNumberField')) {
-            this.formFields[i] = {
-              ... this.formFields[i],
-              rappyStyle: {
-                displayInput: true
-              }
-            };
-          }
-        }
-      }
-
       this.formGroup.updateValueAndValidity();
     }
 
@@ -261,7 +246,6 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
       variables = variables + `--gs-primary-button-border-color: none !important;`;
 
       variables = variables + `--gs-layout-padding: 1rem 0 !important;`;
-
 
       if (this.formOptions && this.formOptions.layout) {
 
@@ -443,25 +427,6 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
         variables
       );
     }
-  }
-
-  public focusInput(index: number) {
-    if (!this.rppStyles ||
-      (this.formFields[index] && this.formFields[index].rappyStyle && this.formFields[index].rappyStyle.displayInput)) {
-      return;
-    }
-
-    this.formFields[index] = {
-      ... this.formFields[index],
-      rappyStyle: {
-        displayInput: true
-      }
-    };
-
-    setTimeout(() => {
-      document.getElementById(`label${index}`).click();
-    }, 500);
-
   }
 
   public formActions(action: string, id?: string) {

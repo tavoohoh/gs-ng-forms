@@ -8,7 +8,6 @@ import { GShowData } from './../../gs-forms.widgets';
 })
 export class GsShowDataComponent implements OnInit {
   @Input() public data: GShowData;
-  @Input() public rppStyles: boolean;
   public fieldValue = '';
 
   ngOnInit() {

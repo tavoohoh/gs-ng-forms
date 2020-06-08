@@ -111,7 +111,7 @@ export class GsFormsModule {
         },
         {
           provide: 'rppStyles',
-          useValue: true
+          useValue: rppStyles
         }
       ]
     };

@@ -1,22 +1,19 @@
 <ng-container *ngIf="formGroup">
   <form 
-    class="gs-form" 
+    class="gs-form"
     [autocomplete]="formOptions.autocomplete || 'off'" 
     [formGroup]="formGroup"
     (keydown.enter)="canSubmit($event)" 
     (ngSubmit)="submit()">
     <div class="gs-form-body">
-      <ng-container *ngFor="let field of formFields; let i = index;">
-        <div *ngIf="!field.notWidget && checkCondition(field)" class="gs-form-field"
+      <ng-container *ngFor="let field of formFields">
+        <div 
+          *ngIf="!field.notWidget && checkCondition(field)" class="gs-form-field"
+          [class.rpp-styles]="rppStyles"
           [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
-          <div 
-            [class.rpp-styles]="rppStyles" 
-            [class.rpp-styles_active]="field.rappyStyle?.displayInput" 
-            [class.rpp-styles_error]="rppStyles && validateField(field.config.model)"             
-            (click)="focusInput(i)">
-            <label 
-              [id]="'label'+i" 
+          <div class="rpp-form-field" [class.rpp-styles_error]="rppStyles && validateField(field.config.model)">
+            <label
               class="gs-form-field_label"
               *ngIf="!formOptions.layout.hideFormLabels && field.config.label && field.selector !== fieldSelector.CHECKBOX"
               [for]="field.config.model">
@@ -25,7 +22,7 @@
             </label>
 
             <!-- widgets -->
-            <div class="rpp-field" [class.gs-form-field-input]="field.rappyStyle?.displayInput" [ngSwitch]="field.selector">
+            <div class="rpp-field gs-form-field-input" [ngSwitch]="field.selector">
               <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
               <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
               <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
@@ -57,7 +54,7 @@
 
           <!-- symbol -->
           <div class="gs-form-field_symbol" *ngIf="field.config.symbol">
-            {{field.config.symbol}}
+            {{ field.config.symbol }}
           </div>
 
           <!-- error message -->
@@ -66,16 +63,18 @@
           </span>
         </div>
 
-
         <!-- no widget field -->
-        <div *ngIf="field.notWidget && checkCondition(field)" class="gs-form-field no-widget"
-          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null">
-          <ng-container [ngSwitch]="field.selector">
+        <div 
+          *ngIf="field.notWidget && checkCondition(field)"
+          class="gs-form-field no-widget"
+          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
+          [class.rpp-styles]="rppStyles && field.selector === fieldSelector.SHOW_DATA">
+          <div class="rpp-form-field" [ngSwitch]="field.selector">
             <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
             <gs-button *ngSwitchCase="fieldSelector.BUTTON" [button]="field" [rppStyles]="rppStyles"
               (hdlAction)="formActions($event.action, $event.id)"></gs-button>
-            <gs-show-data *ngSwitchCase="fieldSelector.SHOW_DATA" [data]="field" [rppStyles]="rppStyles"></gs-show-data>
-          </ng-container>
+            <gs-show-data *ngSwitchCase="fieldSelector.SHOW_DATA" [data]="field"></gs-show-data>
+          </div>
         </div>
       </ng-container>
     </div>

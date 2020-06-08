@@ -373,9 +373,7 @@ export interface GField {
   selector: GFieldSelector;
   config: GFieldConfiguration | GFieldOptionValuesConfiguration | GFieldCountryFormmatConfiguration | GFieldDividerConfiguration;
   notWidget?: boolean;
-  rappyStyle?: {
-    displayInput?: boolean;
-  };
+  rappyStyle?: {};
 }
 
 /**

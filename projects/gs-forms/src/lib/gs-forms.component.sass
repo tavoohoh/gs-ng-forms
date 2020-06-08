@@ -48,55 +48,97 @@
       padding: .8rem
       gap: .8rem
 
-// rappi styles
-
-.rpp-form-field
-  height: 70px
+/** rappi styles **/
 .rpp-styles
-  border: 1px solid #efece9
-  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .1)
-  border-radius: 15px
-  padding: 1.1rem
-  display: grid
+  $rpp-color-white: #ffffff
+  $rpp-color-black: #332927
+  $rpp-color-primary: #ff2426
+  $rpp-color-gray-light: #e5e5e4
+  $rpp-color-text: #706967
+  $rpp-padding-xsmall: 0.6rem
+  $rpp-padding-small: 1rem
+  $rpp-font-size-input: 1rem
+  $rpp-font-size-small: 0.8rem
+  $rpp-font-size-xsmall: 0.7rem
 
-  .gs-form-field_label
-    margin-bottom: 0 !important
-    color: #706967
-    font-size: 16px !important
-    font-weight: normal
-    width: 100%
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
-  .rpp-field
-    height: 0
-    opacity: 0
+  line-height: 1
 
-.rpp-styles_active
-  padding: 0.6rem 1.1rem
-  .gs-form-field_label
-    font-size: 10px !important
-    font-weight: 600
-    letter-spacing: 1.2px 
-    text-transform: uppercase !important
-    margin-top: 2px
-    span 
-      font-size: 10px !important
+  .rpp-form-field
+    border: 2px solid $rpp-color-gray-light
+    display: block
+    background-color: $rpp-color-white
+    padding: $rpp-padding-xsmall $rpp-padding-small
+    border-radius: $rpp-padding-small
+    min-height: 50px
 
-  .gs-form-field-input
-    height: initial
-    opacity: 1
-.gs-form-field_symbol
-  right: 1.6rem 
-  transform: translate(0, -40px) 
+    .gs-form-field_label, 
+    ::ng-deep gs-show-data .gs-form-field_label
+      display: block
+      font-size: $rpp-font-size-xsmall!important
+      color: $rpp-color-text
+      font-weight: 600
+      letter-spacing: 0.1em
+      text-transform: uppercase !important
+      margin: 0!important
+      line-height: 1
 
-.rpp-styles_error
-  border-color: #ff441f
-  box-shadow: 0px 1px 3px 1px rgba(255, 68, 31, .3)
+      span
+        font-size: $rpp-font-size-xsmall!important
+        color: $rpp-color-text
 
-.gs-form-field_error_message
-  color: #ff441f
-  padding: 0 1.1rem
-  font-size: 12px
-  line-height: 1.33
-  margin-top: 10px
+    .gs-form-field-input
+      padding: 0.1rem 0 0
+
+      ::ng-deep
+        .phone-input
+          gap: 0.5rem
+
+        .select svg
+          right: 0
+
+        .rpp-styles-map svg
+          top: 1.15rem
+          right: $rpp-padding-small
+          transform: unset
+
+        .map_input input
+          padding-right: 1.5rem
+
+        input
+          font-weight: 600
+          font-size: $rpp-font-size-input
+          line-height: 1
+          color: $rpp-color-black
+
+          &::placeholder
+            color: $rpp-color-black
+            opacity: 1
+            font-weight: 400
+        
+        .input,
+        input, 
+        select,
+        textarea,
+        .rpp-input
+          margin: 0!important
+          line-height: 1!important
+
+        .left-input
+          padding: 0 $rpp-padding-xsmall 0 0!important
+
+        .right-input
+          padding: 0 0 0 $rpp-padding-xsmall!important
+
+  .gs-form-field_symbol
+    right: 1.6rem 
+    transform: translate(0, -40px) 
+
+  .rpp-styles_error
+    border-color: $rpp-color-primary
+
+  .gs-form-field_error_message
+    font-size: $rpp-font-size-small
+    padding: $rpp-padding-xsmall $rpp-padding-small
+    display: inline-block
+    margin-right: $rpp-padding-small
+    color: $rpp-color-primary
