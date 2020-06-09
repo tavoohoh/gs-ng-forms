@@ -14,8 +14,8 @@
           [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
           <div class="rpp-form-field" [class.rpp-styles_error]="rppStyles && validateField(field.config.model)">
             <label
-              class="gs-form-field_label"
               *ngIf="!formOptions.layout.hideFormLabels && field.config.label && field.selector !== fieldSelector.CHECKBOX"
+              class="gs-form-field_label"
               [for]="field.config.model">
               {{ field.config.label | translate }}
               <span *ngIf="isRequired(field)">*</span>

@@ -100,19 +100,17 @@ export class GsFormsComponent implements AfterViewChecked, OnChanges {
   private customStyles: GStyles;
   private destroyed$ = new Subject();
   public googleMapApiKey: string;
-  public rppStyles: boolean;
+  public rppStyles = true;
 
   constructor(
     private formsService: GsFormsService,
     private sanitizer: DomSanitizer,
     private cdRef: ChangeDetectorRef,
     @Inject('customStyles') customStyles,
-    @Inject('googleMapApiKey') apikey,
-    @Inject('rppStyles') rppStyles
+    @Inject('googleMapApiKey') apikey
   ) {
     this.customStyles = customStyles;
     this.googleMapApiKey = apikey;
-    this.rppStyles = rppStyles;
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -74,6 +74,8 @@ $rpp-font-size-xsmall: 0.7rem
     padding: $rpp-padding-xsmall $rpp-padding-small
     border-radius: $rpp-padding-small
     min-height: 55px
+    display: grid
+    grid-template-rows: auto 1fr
 
     .gs-form-field_label, 
     ::ng-deep gs-show-data .gs-form-field_label
@@ -91,7 +93,9 @@ $rpp-font-size-xsmall: 0.7rem
         color: $rpp-color-text
 
     .gs-form-field-input
-      padding: 0.1rem 0 0
+      align-self: center
+      min-height: 15px
+      padding: 0
 
       ::ng-deep
         .phone-input
@@ -133,6 +137,8 @@ $rpp-font-size-xsmall: 0.7rem
           line-height: 1!important
           font-weight: 600!important
           font-size: $rpp-font-size-input!important
+          padding: 0!important
+          border: none!important
 
         .left-input
           padding: 0 $rpp-padding-xsmall 0 0!important
