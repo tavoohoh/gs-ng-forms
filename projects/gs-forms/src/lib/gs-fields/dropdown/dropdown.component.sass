@@ -1,61 +1,71 @@
 @import ../../gs-forms.styles
 
-.select
-  position: relative
+.rpp-input-select-box
+  @include rpp-mixin-no-selectable
+  cursor: pointer
 
-  select
-    -webkit-appearance: none
-    -moz-appearance: none
-    text-indent: 0px
-    text-overflow: ''
+  .rpp-input-select
+    position: relative
 
-  svg
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
-    right: 12px
-    width: 9px
-
-
-.rpp-styles-dropdown
-  margin-bottom: -1rem
-
-  svg
-    fill: #332927
-
-  .rpp-dropdown
-    .rpp-input
-      padding: 0 0 1rem 0
-      cursor: pointer
-      font-weight: 600
-    
-    .rpp-input-active
-      padding: 1rem
-      padding-top: 0 
-      margin: 0 -1rem
-      border-bottom: 1px solid #e5e5e4
-
-    .rpp-options
+    .rpp-input-select-options
+      @include rpp-mixin-border-style
+      @include rpp-mixin-shadow-soft
+      display: none
       position: absolute
-      width: calc(100% + 36px)
-      top: 22px
-      left: -1.13rem
-      background: white
-      border-radius: 0 0 15px 15px
-      border: 1px solid #efece9
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1)
+      background: $rpp-color-white
+      border-radius: $rpp-border-radius-normal
+      top: 32px
+      left: calc(-#{$rpp-padding-small} - 2px)
+      width: calc(100% + (2 * #{$rpp-padding-small}) + 24px) // 24 is because 20 = icon width, 4 = border * 2  
+      overflow-x: hidden
+      overflow-y: auto
+      max-height: 180px
+      z-index: 100
 
-      .rpp-option
-        padding: 1rem
-        border-bottom: 1px solid #e5e5e4
-        background: white
-        z-index: 100
-        position: relative
+      &::before
+        content: ""
+        cursor: default
+        opacity: 0
+        background-color: transparent
+        height: 100vh
+        width: 100vw
+        display: block
+        position: fixed
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        z-index: 900
+        pointer-events: auto
+
+      .rpp-input-select-option
         cursor: pointer
+        position: relative
+        display: flex
+        height: $rpp-input-height
+        padding: $rpp-padding-xsmall $rpp-padding-small
+        align-items: center
+        border-bottom: 1px solid $rpp-color-gray-light
+        z-index: 901
 
-        &:hover
-          background:#efefef
-            
-        &:last-child
-          border-radius: 0 0 15px 15px
+        &:hover,
+        &.rpp-input-select-option-active
+          background-color: $rpp-color-gray-light
 
+    .rpp-input-select-checkbox
+      display: none
+
+      &:checked ~ .rpp-input-select-options
+        display: block
+
+    .rpp-input-select-value
+      display: block
+      font-weight: 600
+      font-size: $rpp-font-size-input
+      line-height: 1
+      padding: 0.1rem 0 0
+
+      &::placeholder
+        color: $rpp-color-black
+        opacity: 1
+        font-weight: 400

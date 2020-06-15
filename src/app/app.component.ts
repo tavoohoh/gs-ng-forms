@@ -174,7 +174,7 @@ export class AppComponent implements OnInit {
       model: 'dropdown',
       label: 'Dropdown widget',
       placeholder: 'Dropdown widget',
-      externalOptions: true,
+      externalOptions: false,
       optionValues: [
         {
           value: 'yellow',
@@ -187,6 +187,30 @@ export class AppComponent implements OnInit {
         {
           value: 'blue',
           text: 'Blue'
+        },
+        {
+          value: 'pink',
+          text: 'Pink'
+        },
+        {
+          value: 'gray',
+          text: 'Gray'
+        },
+        {
+          value: 'orange',
+          text: 'Orange'
+        },
+        {
+          value: 'purple',
+          text: 'Purple'
+        },
+        {
+          value: 'black',
+          text: 'Black'
+        },
+        {
+          value: 'white',
+          text: 'White'
         }
       ]
     }),
@@ -348,17 +372,14 @@ export class AppComponent implements OnInit {
     new GDropdownField({
       model: 'dropdownToggle',
       label: 'Toggle fields display',
-      value: {
-        value: true,
-        text: 'Show fields'
-      },
+      value: 'true',
       optionValues: [
         {
-          value: true,
+          value: 'true',
           text: 'Show fields'
         },
         {
-          value: false,
+          value: 'false',
           text: 'Hide fields'
         }
       ]
@@ -369,7 +390,7 @@ export class AppComponent implements OnInit {
       label: 'Dinamic input',
       displayIf: {
         model: 'dropdownToggle',
-        hasValue: true
+        hasValue: 'true'
       }
     }),
     // Custom button
@@ -438,10 +459,9 @@ export class AppComponent implements OnInit {
         city: 'Bogotá',
         country: 'Colombia'
       },
-      dropdown: 'CHAO_KEY',
       franchiseType: 'FRANCHISE_ADMIN_STORE'
     };
-    this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
+    // this.formFields = this.gsFormService.patchFormValues(this.formFields, toPatchValues);
   }
 
   public onSubmit(form: any) {

@@ -1,33 +1,42 @@
-<div class="select" [formGroup]="formGroup" [class.rpp-styles-dropdown]="rppStyles">
-  <select
-    *ngIf="!rppStyles"
-    class="input gs-form-field_dropdown"
-    [name]="field.config.model"
-    [formControlName]="field.config.model">
-    <option disabled selected value="">
-      {{ field.config.placeholder || field.config.label || field.config.model | translate }}
-    </option>
-    <option 
-      *ngFor="let option of fieldOption"
-      [selected]="field.config.value === option.value ? true : false"
-      [ngValue]="option.value">
-      {{ option.text | translate }}
-    </option>
-  </select>
-
-  <div class="rpp-dropdown" gsClickOutside (gsClickOutside)="deploySelect(false)"> 
-    <div class="rpp-input" [class.rpp-input-active]="displayOptions" (click)="deploySelect(true)">
-      {{ inputValue | translate }}
-    </div>
-    <div class="rpp-options" *ngIf="displayOptions">
-      <div class="rpp-option" (click)="changeValue(option.text, option.value)"
-        *ngFor="let option of fieldOption">
-        {{ option.text | translate }}
-      </div>
-    </div>    
-  </div>
+<ng-container [formGroup]="formGroup">
+  <div
+    class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box rpp-input-select-box rpp-field-box-icon"
+      [class.rpp-form-field-box-full]="field.config.label"
+      [formGroup]="formGroup">
   
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M12 21l-12-18h24z"/>
-  </svg>
-</div>
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+
+      <div class="rpp-input-select">
+        <div class="rpp-input-select-value" data-value={selectValue.value}>
+          {{ dropdownTextValue | translate }}
+        </div>
+        <input class="rpp-input-select-checkbox" type="checkbox" />
+        <div class="rpp-input-select-options">
+          <div
+            *ngFor="let option of fieldOption"
+            class="rpp-input-select-option"
+            [class.rpp-input-select-option-active]="option.value === formGroup.controls[field.config.model].value"
+            (click)="changeValue(option.text, option.value)">
+            {{ option.text | translate }}
+          </div>
+        </div>
+      </div>
+
+      <svg class="rpp-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z" />
+      </svg>
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+  </div>
+</ng-container>
