@@ -1,11 +1,32 @@
 <ng-container [formGroup]="formGroup">
-  <textarea
-    class="input gs-form-field_textarea_input"
-    type="text"
-    [id]="field.config.model"
-    [minlength]="field.config.validators ? field.config.validators[fieldValidatorType.MIN_LENGTH] : null"
-    [maxlength]="field.config.validators ? field.config.validators[fieldValidatorType.MAX_LENGTH] : null"
-    [formControlName]="field.config.model"
-    [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-    [value]="field.config.value || null"></textarea>
+  <div
+    class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box"
+      [class.rpp-form-field-box-full]="field.config.label"
+      [formGroup]="formGroup">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+
+      <textarea
+        class="rpp-field-input"
+        type="text"
+        [id]="field.config.model"
+        [minlength]="field.config.validators ? field.config.validators[fieldValidatorType.MIN_LENGTH] : null"
+        [maxlength]="field.config.validators ? field.config.validators[fieldValidatorType.MAX_LENGTH] : null"
+        [formControlName]="field.config.model"
+        [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+        [value]="field.config.value || null"></textarea>
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+  </div>
 </ng-container>

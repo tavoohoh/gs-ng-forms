@@ -1,16 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GTextareaField } from '../../gs-forms.widgets';
-import { GFieldValidatorType } from '../../gs-forms.enums';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.sass']
 })
-export class GsTextareaComponent {
+export class GsTextareaComponent  extends RppGenericFieldComponent {
   @Input() public field: GTextareaField;
-  @Input() public formGroup: FormGroup;
-
-  public fieldValidatorType = GFieldValidatorType;
 }

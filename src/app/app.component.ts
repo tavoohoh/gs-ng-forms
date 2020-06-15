@@ -106,7 +106,10 @@ export class AppComponent implements OnInit {
     new GTextareaField({
       model: 'textarea',
       label: 'Textarea widget',
-      placeholder: 'Textarea widget'
+      placeholder: 'Textarea widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      }
     }),
     // Password widget
     new GPasswordField({
