@@ -17,7 +17,6 @@ import {
   GCheckboxField,
   GDatePickerField,
   GFormOptions,
-  GTaxDocumentTypeField,
   GFieldFile,
   GSeparatedByComma,
   GDivider,
@@ -102,15 +101,6 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.REQUIRED]: true
       },
     }),
-    // Textarea widget
-    new GTextareaField({
-      model: 'textarea',
-      label: 'Textarea widget',
-      placeholder: 'Textarea widget',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      }
-    }),
     // Password widget
     new GPasswordField({
       model: 'Password',
@@ -151,24 +141,24 @@ export class AppComponent implements OnInit {
       value: false
     }),
     // Radio widget
-    new GRadioField({
-      model: 'radio',
-      label: 'Radio widget',
-      optionValues: [
-        {
-          value: 'blue',
-          text: 'blue'
-        },
-        {
-          value: 'yellow',
-          text: 'yellow'
-        },
-        {
-          value: 'red',
-          text: 'red'
-        }
-      ]
-    }),
+    // new GRadioField({
+    //   model: 'radio',
+    //   label: 'Radio widget',
+    //   optionValues: [
+    //     {
+    //       value: 'blue',
+    //       text: 'blue'
+    //     },
+    //     {
+    //       value: 'yellow',
+    //       text: 'yellow'
+    //     },
+    //     {
+    //       value: 'red',
+    //       text: 'red'
+    //     }
+    //   ]
+    // }),
     // Dropdown widget
     new GDropdownField({
       model: 'dropdown',
@@ -349,6 +339,15 @@ export class AppComponent implements OnInit {
       model: 'map',
       label: 'Map widget',
       placeholder: 'Map widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      }
+    }),
+    // Textarea widget
+    new GTextareaField({
+      model: 'textarea',
+      label: 'Textarea widget',
+      placeholder: 'Textarea widget',
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       }

@@ -1,28 +1,21 @@
 @import ../../gs-forms.styles
 
-.date-input
+.rpp-field-box
   position: relative
 
-.datepicker-container
+.rpp-datepicker
+  @include rpp-mixin-border-style
+  @include rpp-mixin-shadow-soft
   position: absolute
+  color: $rpp-color-text
+  background: $rpp-color-white
+  border-radius: $rpp-border-radius-normal
+  top: $rpp-input-height + 2px
+  width: 100%
+  overflow: hidden
   z-index: 100
-  background:#fff
-  top: 0
-  margin-top: 4rem
-  width: unset
-  min-width: 100%
-
-  right: 50%
-  transform: translateX(50%)
-
-.datepicker
-  min-width: 100%
-  color: var(--gs-input-color, $gs-input-color)
-  background-color: var(--gs-input-background, $gs-input-background)
-  border: 1px solid var(--gs-input-border-color, $gs-input-border-color)
-  border-radius: var(--gs-input-border-radius, $gs-input-border-radius)
   
-  .header
+  .rpp-datepicker-header
     display: grid
     grid-template-columns: 24px auto 24px
     gap: 6px
@@ -31,33 +24,33 @@
       align-self: center
 
     padding: 8px
-    background-color: var(--gs-primary-button-background, $gs-primary-button-background)
+    background-color: $rpp-color-black
     
-    .arrow-left,
-    .arrow-right,
-    .selector
+    .rpp-datepicker-arrow-left,
+    .rpp-datepicker-arrow-right,
+    .rpp-datepicker-selector
       text-align: center
       align-self: center
       cursor: pointer
       
-    .selector
+    .rpp-datepicker-selector
       button
         text-transform: capitalize
         cursor: pointer
         padding: 10px 0
         line-height: 1
-        width: 200px
+        width: 100%
         margin: 0 auto
         background-color: transparent
         border: none
         outline: none
-        color: var(--gs-primary-button-color, $gs-color-white)
+        color: $rpp-color-white
 
         &:hover
           opacity: $opacity
       
-    .arrow-left,
-    .arrow-right
+    .rpp-datepicker-arrow-left,
+    .rpp-datepicker-arrow-right
       border: none
       background: none
       outline: none
@@ -65,22 +58,22 @@
       line-height: 1
 
       svg
-        fill: var(--gs-primary-button-color, $gs-color-white)
+        fill: $rpp-color-white
         width: 16px
 
       &:hover
         opacity: $opacity
   
-  .month-selector,
-  .year-selector,
-  .day-selector
+  .rpp-datepicker-month-selector,
+  .rpp-datepicker-year-selector,
+  .rpp-datepicker-day-selector
     display: grid
     min-height: 230px
 
-  .day-selector
+  .rpp-datepicker-day-selector
     padding: 1rem
 
-    .weekdays
+    .rpp-datepicker-weekdays
       display: grid
       grid-template-columns: repeat(7, 1fr)
       height: 24px
@@ -91,38 +84,38 @@
         font-weight: bold
         text-transform: uppercase
     
-    .days
+    .rpp-datepicker-days
       display: grid
       grid-template-columns: repeat(7, 1fr)
       
-      .previous-days,
-      .current-days,
-      .next-days
+      .rpp-datepicker-previous-days,
+      .rpp-datepicker-current-days,
+      .rpp-datepicker-next-days
         padding: 4px
         text-align: center
         align-self: center
         font-size: .8rem
         border: 1px solid transparent
       
-      .previous-days,
-      .next-days
+      .rpp-datepicker-previous-days,
+      .rpp-datepicker-next-days
         opacity: .4
       
-      .current-days
+      .rpp-datepicker-current-days
         cursor: pointer
 
         &:hover
-          color: var(--gs-primary-button-color, $gs-color-white)
-          background-color: var(--gs-primary-button-background, $gs-color-neutral)
+          color: $rpp-color-white
+          background-color: $rpp-color-primary
           opacity: $opacity
         
-      .selected-day
-        color: var(--gs-primary-button-color, $gs-primary-button-color)
-        background-color: var(--gs-primary-button-background, $gs-primary-button-background)
-        border: 1px solid var(--gs-primary-button-border-color, $gs-primary-button-border-color)
+      .rpp-datepicker-selected-day
+        color: $rpp-color-white
+        background-color: $rpp-color-primary
+        border: 1px solid $rpp-color-primary
 
-  .month-selector,
-  .year-selector
+  .rpp-datepicker-month-selector,
+  .rpp-datepicker-year-selector
     grid-template-columns: repeat(4, 1fr)
     
     span
@@ -133,18 +126,6 @@
       text-align: center
       
       &:hover
-        color: var(--gs-primary-button-color, $gs-color-white)
-        background-color: var(--gs-primary-button-background, $gs-color-neutral)
+        color: $rpp-color-white
+        background-color: $rpp-color-primary
         opacity: $opacity
-
-.rpp-datepicker
-  .datepicker-container
-    margin-top: 2.5rem
-  .datepicker
-    border: 1px solid #efece9
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .1)
-    border-radius: 15px
-    color: #706967
-    .header
-      border-radius: 15px 15px 0 0
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .1)

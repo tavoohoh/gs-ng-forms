@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { GDatePickerField } from '../../gs-forms.widgets';
 import { GFieldValidatorType } from '../../gs-forms.enums';
 import { GsFormsService } from '../../gs-forms.service';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 const MONTHS = {
   en: [
@@ -72,12 +73,8 @@ enum ShowSelector {
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.sass']
 })
-export class GsDatePickerComponent implements OnInit, OnChanges {
+export class GsDatePickerComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GDatePickerField;
-  @Input() public formGroup: FormGroup;
-  @Input() public rppStyles: boolean;
-
-  public fieldValidatorType = GFieldValidatorType;
   public dateValue: string;
   public lang: string;
   public months: Array<string>;
@@ -101,12 +98,8 @@ export class GsDatePickerComponent implements OnInit, OnChanges {
   public yearMultiplier = 0;
   public showDatePickerSelector = false;
 
-  constructor(
-    private gsFormService: GsFormsService
-  ) { }
-
   ngOnInit() {
-    this.lang = this.gsFormService.getLang() || 'en';
+    this.lang = this.formsService.getLang() || 'en';
     this.months = MONTHS[this.lang];
     this.weekdays = WEEKDAYS[this.lang];
   }
