@@ -3,19 +3,16 @@ import { FormGroup } from '@angular/forms';
 import { GCurrencyField } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldCountryCode } from '../../gs-forms.enums';
 import { LOCATION } from '../../gs-forms.constants';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-currency-input',
   templateUrl: './currency-input.component.html',
   styleUrls: ['./currency-input.component.sass']
 })
-export class GsCurrencyInputComponent implements OnChanges {
+export class GsCurrencyInputComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GCurrencyField;
-  @Input() public formGroup: FormGroup;
   @Input() private countryGlobal: GFieldCountryCode;
-  @Input() public rppStyles: boolean;
-
-  @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
   public pattern: string | RegExp;
   public prefix: string;
@@ -110,10 +107,6 @@ export class GsCurrencyInputComponent implements OnChanges {
       this.formGroup.controls[this.field.config.model].patchValue(Number(controlValue));
       this.formGroup.controls[this.field.config.model].updateValueAndValidity();
     });
-  }
-
-  public focusInput() {
-    this.inputElement.nativeElement.focus();
   }
 
   public returnBuildingError() {

@@ -1,15 +1,35 @@
 <ng-container>
-  <div class="input currency-input" (click)="focusInput()" [class.rpp-styles-currency]="rppStyles">
-    <span class="symbol">{{ prefix }}</span>
-    <input
-      #inputElement
-      class="input gs-form-field_currency-input"
-      type="text"
-      [autocomplete]="field.config.autocomplete || 'off'"
-      [id]="field.config.model"
-      [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-      [(ngModel)]="value"
-      (keyup)="formatCurrency(true)"/>
-    <span class="code">{{ suffix }}</span>
+  <div
+    class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box"
+      [class.rpp-form-field-box-full]="field.config.label">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+  
+      <div class="rpp-field-currency">
+        <span class="rpp-field-currency-symbol">{{ prefix }}</span>
+        <input
+          #inputElement
+          class="rpp-field-input rpp-field-currency-input"
+          type="text"
+          [autocomplete]="field.config.autocomplete || 'off'"
+          [id]="field.config.model"
+          [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+          [(ngModel)]="value"
+          (keyup)="formatCurrency(true)" />
+        <span class="rpp-field-currency-code">{{ suffix }}</span>
+      </div>
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
   </div>
 </ng-container>

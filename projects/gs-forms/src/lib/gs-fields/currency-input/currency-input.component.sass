@@ -1,22 +1,18 @@
 @import ../../gs-forms.styles
 
-.currency-input
+.rpp-field-currency
   display: grid
   grid-template-columns: min-content auto min-content
-  padding-top: 0
-  padding-bottom: 0
   
-  input
+  .rpp-field-currency-input
     background: none
     border: none
     outline: none
     text-align: right
-  
-  .symbol,
-  .code
-    align-self: center
-
-.rpp-styles-currency
-  .input
-    margin-bottom: 0
     padding-right: .5rem
+    grid-row: unset
+    grid-column: unset
+  
+  .rpp-field-currency-symbol,
+  .rpp-field-currency-code
+    align-self: center
