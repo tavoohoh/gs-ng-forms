@@ -1,11 +1,32 @@
 <ng-container [formGroup]="formGroup">
-  <label class="toggle" [class.rpp-styles-toogle]="rppStyles">
-    <input
-      class="input gs-form-field_toggle"
-      type="checkbox"
-      [id]="field.config.model"
-      [formControlName]="field.config.model"
-      [value]="field.config.value || null">
-    <span class="slider"></span>
-  </label>
+  <div
+    class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box rpp-input-switch-box"
+      [class.rpp-form-field-box-full]="field.config.label"
+      [formGroup]="formGroup">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+
+      <div class="rpp-input-switch">
+        <input 
+          class="rpp-input-switch-checkbox"
+          type="checkbox" 
+          [id]="field.config.model"
+          [formControlName]="field.config.model"
+          [value]="field.config.value || null"/>
+        <div class="rpp-input-switch-slider"></div>
+      </div>
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+  </div>
 </ng-container>

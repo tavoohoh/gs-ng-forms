@@ -1,17 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GToggleField } from '../../gs-forms.widgets';
-import { GFieldValidatorType } from '../../gs-forms.enums';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-toggle',
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.sass']
 })
-export class GsToggleComponent {
+export class GsToggleComponent extends RppGenericFieldComponent {
   @Input() public field: GToggleField;
-  @Input() public formGroup: FormGroup;
-  @Input() public rppStyles: boolean;
-
-  public fieldValidatorType = GFieldValidatorType;
 }
