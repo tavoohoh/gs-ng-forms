@@ -1,19 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GCheckboxField } from '../../gs-forms.widgets';
-import { GFieldValidatorType } from '../../gs-forms.enums';
-import { GFieldOptionValues } from '../../gs-forms.models';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.sass']
 })
-export class GsCheckboxComponent implements OnChanges {
+export class GsCheckboxComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GCheckboxField;
-  @Input() public formGroup: FormGroup;
-
-  public fieldValidatorType = GFieldValidatorType;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.field && changes.field.currentValue) {

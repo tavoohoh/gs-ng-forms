@@ -1,18 +1,14 @@
 @import ../../gs-forms.styles
 
 /* change the toggle size by changing the following variable */
-$checkboxSize: 24px
+$checkboxSize: 20px
 
 /* Do not modify the following variables! */
 $size: $checkboxSize
-$containerPadding: calc(#{$checkboxSize} + .5rem)
-$labelPadding: calc((#{$checkboxSize} - #{var(--gs-font-size, $gs-font-size)}) / 2)
-$checkmarkWidth: $checkboxSize / 5
-$checkmarkHeight: $checkboxSize / 2
-$checkmarkBorder: $checkboxSize / 8
+$checkmarkHeight: $checkboxSize / 1.6
 
 /* The container */
-.gs-checkbox
+.rpp-input-check-box
   @include transition()
   display: grid
   grid-template-columns: $size 1fr
@@ -26,12 +22,10 @@ $checkmarkBorder: $checkboxSize / 8
   -ms-user-select: none
   user-select: none
 
-  .checkbox_label
-    display: block
-    padding: $labelPadding 0
-    line-height: 1
+  .rpp-input-check
+    height: $checkboxSize
 
-  input
+  .rpp-input-check-checkbox
     position: absolute
     opacity: 0
     cursor: pointer
@@ -41,7 +35,7 @@ $checkmarkBorder: $checkboxSize / 8
     margin: 0
     pointer-events: none
 
-  .gs-checkmark
+  .rpp-input-check-checkmark
     display: grid
     height: $size
     width: $size
@@ -49,8 +43,7 @@ $checkmarkBorder: $checkboxSize / 8
     outline: none
     border: none
     padding: 0
-
-    background-color: $gs-input-border-color
+    background-color: $rpp-color-disabled
 
     svg
       position: relative
@@ -59,10 +52,10 @@ $checkmarkBorder: $checkboxSize / 8
       height: $checkmarkHeight
       width: $checkmarkHeight
       margin: 0 auto
-      fill: var(--gs-white-color, $gs-color-white)
+      fill: $rpp-color-white
 
-    &.gs-checked
-      background: var(--gs-primary-button-background, $gs-color-neutral)
+    &.rpp-input-check-checked
+      background: $rpp-color-black
 
       svg
         display: block
