@@ -230,7 +230,6 @@ $rpp-padding-xsmall: 0.6rem
 $rpp-border-radius-normal: 1rem
 $rpp-border-radius-small: 0.4rem
 
-
 /** rpp-mixin **/
 @mixin rpp-mixin-clean-button
   outline: none
@@ -312,23 +311,37 @@ $rpp-border-radius-small: 0.4rem
 
   .rpp-field-label
     @include rpp-mixin-subtitle
-    display: block
+    grid-column: 1
+    grid-row: 1
 
   .rpp-field-input
     @include rpp-mixin-clean-input
-    display: block
     font-weight: 600
     font-size: $rpp-font-size-input
     line-height: 1
     padding: 0
+    grid-column: 1
+    grid-row: 2
 
     &::placeholder
       color: $rpp-color-black
       opacity: 1
       font-weight: 400
 
-.rpp-field-box.rpp-form-field-box-full .rpp-field-input
+.rpp-field-box.rpp-field-box-full .rpp-field-input
   padding: 0.1rem 0 0
+
+.rpp-field-box.rpp-field-box-icon
+  display: grid
+  grid-template-columns: 1fr 20px
+
+  .rpp-field-icon
+    cursor: pointer
+    width: 20px
+    fill: $rpp-color-text
+    grid-column: 2
+    grid-row: 1 / 3
+    align-self: center
 
 /** field hint and error **/
 .rpp-field-hint,
