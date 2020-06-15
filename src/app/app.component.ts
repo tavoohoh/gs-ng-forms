@@ -88,7 +88,8 @@ export class AppComponent implements OnInit {
       placeholder: 'Text widget',
       validators: {
         [GFieldValidatorType.MIN_LENGTH]: 2,
-        [GFieldValidatorType.MAX_LENGTH]: 30
+        [GFieldValidatorType.MAX_LENGTH]: 30,
+        [GFieldValidatorType.REQUIRED]: true
       },
     }),
     // Email input (text widget)
@@ -97,7 +98,8 @@ export class AppComponent implements OnInit {
       label: 'Email widget',
       placeholder: 'Is a text widget',
       validators: {
-        [GFieldValidatorType.EMAIL]: true
+        [GFieldValidatorType.EMAIL]: true,
+        [GFieldValidatorType.REQUIRED]: true
       },
     }),
     // Textarea widget
@@ -449,11 +451,11 @@ export class AppComponent implements OnInit {
   }
 
   public resetForm() {
-    this.formComponent.formActions('reset');
+    this.rppFormComponent.formActions('reset');
   }
 
   public submitForm() {
-    this.formComponent.formActions('submit');
+    this.rppFormComponent.formActions('submit');
   }
 
   actions(action) {
