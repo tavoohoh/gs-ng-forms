@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GStyles } from './gs-forms.models';
+import { RppGenericFieldComponent } from './gs-fields/_generic-field/_generic-field.component';
 import { DigitOnlyDirective } from './gs-directives/digit-only/digit-only.directive';
 import { ClickOutsideDirective } from './gs-directives/click-outside/click-outside.directive';
 import { GsTextInputComponent } from './gs-fields/text-input/text-input.component';
@@ -39,6 +40,7 @@ const directive = [
 ];
 
 const widgets = [
+  RppGenericFieldComponent,
   GsTextInputComponent,
   GsTextareaComponent,
   GsPasswordInputComponent,
