@@ -1,37 +1,57 @@
-<ng-container>
-  <div class="input phone-input" gsClickOutside (gsClickOutside)="toggleCountryOptions(true)" [class.rpp-styles-phone]="rppStyles">
-    <button 
-      class="country-code_select"
-      [class.disabled]="!editCountry"
-      (click)="toggleCountryOptions()"
-      type="button">
-      <span class="country-code_select_grid"> 
-        <span [class]="'flag ' + countryCode"></span>
-        <span>+{{ country }}</span>
-      </span>
-    </button>
+<div class="rpp-field" 
+  [class.rpp-field-has-error]="validateField() || touched && invalid">
+  
+  <label
+    gsClickOutside
+    (gsClickOutside)="toggleCountryOptions(true)"
+    class="rpp-field-box"
+    [class.rpp-form-field-box-full]="field.config.label">
 
-    <div class="country-code_select-options" *ngIf="showCountryOptions">
-      <div class="country-code_select-option"
-        *ngFor="let option of countryCodeOptions"
-        (click)="updatePhoneMask(option.country)">
-        <span [class]="'flag ' + option.country"></span>
-        <span>+{{ option.code }}</span>
+    <span
+      class="rpp-field-label"
+      *ngIf="field.config.label">
+      {{ field.config.label | translate }}
+    </span>
+
+    <div class="rpp-field-phone">
+
+      <button 
+        class="rpp-field-phone-country-select"
+        [class.rpp-field-phone-disabled]="!editCountry"
+        (click)="toggleCountryOptions()"
+        type="button">
+        <span class="rpp-field-phone-country-select-grid"> 
+          <span [class]="'rpp-field-phone-flag ' + countryCode"></span>
+          <span>+{{ country }}</span>
+        </span>
+      </button>
+  
+      <div class="rpp-field-phone-country-select-options" *ngIf="showCountryOptions">
+        <div class="rpp-field-phone-country-select-option"
+          *ngFor="let option of countryCodeOptions"
+          (click)="updatePhoneMask(option.country)">
+          <span [class]="'rpp-field-phone-flag ' + option.country"></span>
+          <span>+{{ option.code }}</span>
+        </div>
       </div>
+  
+      <input
+        #inputElement
+        class="rpp-field-input rpp-field-phone-input"
+        type="text"
+        [autocomplete]="field.config.autocomplete || 'off'"
+        [id]="field.config.model"
+        [placeholder]="phoneMask"
+        [(ngModel)]="value"
+        (input)="formatPhone(true)"/>
     </div>
+  </label>
 
-    <input
-      #inputElement
-      class="input gs-form-field_phone-input"
-      type="text"
-      [autocomplete]="field.config.autocomplete || 'off'"
-      [id]="field.config.model"
-      [placeholder]="phoneMask"
-      [(ngModel)]="value"
-      (input)="formatPhone(true)"/>
-  </div>
-
-  <span class="gs-form-field_error_message" *ngIf="touched && invalid">
+  <span class="rpp-field-error" *ngIf="touched && invalid">
     {{ errorText('ERR_PATTERN') }}
   </span>
-</ng-container>
+
+  <span class="rpp-field-error" *ngIf="validateField()">
+    {{ getFieldError(field.config.model) | translate }}
+  </span>
+</div>

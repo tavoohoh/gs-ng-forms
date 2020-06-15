@@ -4,17 +4,16 @@ import { GPhoneField } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldCountryCode } from '../../gs-forms.enums';
 import { LOCATION } from '../../gs-forms.constants';
 import { GsFormsService } from '../../gs-forms.service';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-phone-input',
   templateUrl: './phone-input.component.html',
   styleUrls: ['./phone-input.component.sass']
 })
-export class GsPhoneInputComponent implements OnChanges {
+export class GsPhoneInputComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GPhoneField;
-  @Input() public formGroup: FormGroup;
   @Input() private countryGlobal: GFieldCountryCode;
-  @Input() public rppStyles: boolean;
 
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
@@ -29,8 +28,6 @@ export class GsPhoneInputComponent implements OnChanges {
   public invalid = false;
 
   public fieldValidatorType = GFieldValidatorType;
-
-  constructor(private gsService: GsFormsService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     let location = null;
@@ -134,7 +131,7 @@ export class GsPhoneInputComponent implements OnChanges {
     this.country = location.phoneFormat.code;
 
     this.formatPhone(false);
-    this.toggleCountryOptions(true);
+    this.showCountryOptions = false;
   }
 
   private setCountryCodeOptions() {
@@ -159,7 +156,7 @@ export class GsPhoneInputComponent implements OnChanges {
   }
 
   public errorText(error: string) {
-    return this.gsService.getValidationMessage(error);
+    return this.formsService.getValidationMessage(error);
   }
 
   public returnBuildingError() {
