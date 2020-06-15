@@ -1,0 +1,76 @@
+<ng-container *ngIf="formGroup">
+  <form 
+    class="rpp-form"
+    [autocomplete]="formOptions.autocomplete || 'off'" 
+    [formGroup]="formGroup"
+    (keydown.enter)="canSubmit($event)" 
+    (ngSubmit)="submit()">
+
+    <div class="rpp-form-body">
+      <ng-container *ngFor="let field of formFields">
+        <!-- form fields -->
+        <div class="rpp-form-field"
+          *ngIf="!field.notWidget && checkCondition(field)"
+          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
+          [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
+
+          <ng-container [ngSwitch]="field.selector">
+            <gs-text-input *ngSwitchCase="fieldSelector.TEXT" [field]="field" [formGroup]="formGroup"></gs-text-input>
+            <gs-textarea *ngSwitchCase="fieldSelector.TEXTAREA" [field]="field" [formGroup]="formGroup"></gs-textarea>
+            <gs-password-input *ngSwitchCase="fieldSelector.PASSWORD" [field]="field" [formGroup]="formGroup"></gs-password-input>
+            <gs-number-input *ngSwitchCase="fieldSelector.NUMBER" [field]="field" [formGroup]="formGroup"></gs-number-input>
+            <gs-toggle *ngSwitchCase="fieldSelector.TOGGLE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-toggle>
+            <gs-currency-input *ngSwitchCase="fieldSelector.CURRENCY" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="rppStyles"></gs-currency-input>
+            <gs-phone-input *ngSwitchCase="fieldSelector.PHONE" [field]="field" [formGroup]="formGroup" [countryGlobal]="formOptions.country || null" [rppStyles]="rppStyles"></gs-phone-input>
+            <gs-datepicker *ngSwitchCase="fieldSelector.DATE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-datepicker>
+            <gs-file-input *ngSwitchCase="fieldSelector.FILE" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-file-input>
+            <gs-separated-by-comma *ngSwitchCase="fieldSelector.COMMA" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"></gs-separated-by-comma>
+            <gs-two-data-input *ngSwitchCase="fieldSelector.TWO_DATA" [field]="field" [formGroup]="formGroup"></gs-two-data-input>
+            <gs-color-picker *ngSwitchCase="fieldSelector.COLOR" [field]="field" [formGroup]="formGroup"></gs-color-picker>
+            <gs-map-field *ngSwitchCase="fieldSelector.MAP" [field]="field" [formGroup]="formGroup" [googleMapApiKey]="googleMapApiKey" [rppStyles]="rppStyles"></gs-map-field>
+            <gs-checkbox *ngSwitchCase="fieldSelector.CHECKBOX" [field]="field" [formGroup]="formGroup"></gs-checkbox>
+            <gs-timepicker *ngSwitchCase="fieldSelector.TIME" [field]="field" [formGroup]="formGroup"></gs-timepicker>
+            <!-- fields with externalOptions @input() -->
+            <gs-radio-button *ngSwitchCase="fieldSelector.RADIO" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-radio-button>
+            <gs-dropdown *ngSwitchCase="fieldSelector.DROPDOWN" [field]="field" [formGroup]="formGroup" [rppStyles]="rppStyles"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null">
+            </gs-dropdown>
+            <gs-multiselect *ngSwitchCase="fieldSelector.MULTISELECT" [field]="field" [formGroup]="formGroup"
+              [fieldOption]="field.config['externalOptions'] ? formOptions.fieldValues[field.config.model] : null" [rppStyles]="rppStyles">
+            </gs-multiselect>
+          </ng-container>
+        </div>
+
+        <!-- Additional fields -->
+        <div class="rpp-form-field rpp-no-widget"
+          *ngIf="field.notWidget && checkCondition(field)"
+          [style.grid-column]="field.config.gridColumn ? sanitizeStyle(field.config.gridColumn) : null"
+          [style.grid-row]="field.config.gridRow ? sanitizeStyle(field.config.gridRow) : null">
+          <ng-container [ngSwitch]="field.selector">
+            <gs-divider *ngSwitchCase="fieldSelector.DIVIDER" [divider]="field"></gs-divider>
+            <gs-show-data *ngSwitchCase="fieldSelector.SHOW_DATA" [data]="field"></gs-show-data>
+            <gs-button *ngSwitchCase="fieldSelector.BUTTON" [button]="field" (hdlAction)="formActions($event.action, $event.id)"></gs-button>
+          </ng-container>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div class="rpp-form-footer">
+      <span *ngIf="formOptions.context.cancelButton && formOptions.context.cancelButton.show">
+        <button type="reset" class="button button-secondary" [class.rpp-button]="rppStyles">
+          {{ formOptions.context.cancelButton.text | translate  }}
+        </button>
+      </span>
+
+      <span *ngIf="formOptions.context.saveButton && formOptions.context.saveButton.show">
+        <button type="submit" class="button button-primary" [class.rpp-button]="rppStyles"
+          [class.disabled]="formOptions.onErrorDisableSubmit && formGroup.invalid">
+          {{ formOptions.context.saveButton.text | translate  }}
+        </button>
+      </span>
+    </div>
+  </form>
+</ng-container>

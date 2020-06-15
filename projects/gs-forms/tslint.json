@@ -5,17 +5,20 @@
       true,
       "attribute",
       "gs",
+      "rpp",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "gs",
+      "rpp",
       "kebab-case"
     ],
     "component-class-prefix": [
       true,
-      "gs"
+      "gs",
+      "rpp"
     ]
   }
 }

@@ -87,6 +87,7 @@ export class GDropdownField implements GField {
 
 /**
  * Tax document widget
+ * @deprecated
  */
 export class GTaxDocumentTypeField implements GField {
   selector = GFieldSelector.TAX_TYPE;
@@ -122,7 +123,7 @@ export class GDatePickerField implements GField {
 }
 
 /**
- * Separated by Comma field widget
+ * Separated by Comma widget
  */
 export class GSeparatedByComma implements GField {
   selector = GFieldSelector.COMMA;
@@ -131,7 +132,7 @@ export class GSeparatedByComma implements GField {
 }
 
 /**
- * Image/File field widget
+ * Image/File widget
  */
 export class GFieldFile implements GField {
   selector = GFieldSelector.FILE;
@@ -213,5 +214,3 @@ export class GShowData {
 
   constructor(public config: GFieldConfiguration) {}
 }
-
-

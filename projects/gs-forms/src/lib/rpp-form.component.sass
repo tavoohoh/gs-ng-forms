@@ -1,0 +1,51 @@
+@import ./gs-forms.styles
+
+.rpp-form
+
+  .rpp-form-body
+    display: grid
+    grid-template-columns: var(--gs-layout-columns-quantity, $layout-columns-quantity)
+    padding: var(--gs-layout-padding, $layout-padding)
+    margin-bottom: 1rem
+    gap: 1rem
+
+    @media screen and (max-width: $smallScreen)
+      grid-template-columns: 1fr
+      padding: .8rem
+      gap: .8rem
+
+      .rpp-form-field
+        grid-column: auto!important
+
+    .rpp-form-field
+      position: relative
+
+      .rpp-form-field_label
+        display: block
+        font-size: var(--gs-font-size, $gs-font-size)
+        margin-bottom: 6px
+
+    .rpp-no-widget
+      align-self: center
+
+  .rpp-form-footer
+    display: grid
+    grid-template-columns: auto
+    gap: 1rem
+
+    .button
+      width: 100%
+      &:first-child
+        margin-right: auto
+      
+      &:last-child
+        margin-left: auto
+      
+      @media screen and (max-width: $smallScreen)
+        width: 100%
+        margin: unset
+
+    @media screen and (max-width: $smallScreen)
+      grid-template-columns: 1fr
+      padding: .8rem
+      gap: .8rem

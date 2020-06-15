@@ -31,6 +31,7 @@ import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
 import { GsFormsComponent } from 'projects/gs-forms/src/public-api';
+import { RppFormComponent } from 'projects/gs-forms/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -39,6 +40,7 @@ import { GsFormsComponent } from 'projects/gs-forms/src/public-api';
 })
 export class AppComponent implements OnInit {
   @ViewChild(GsFormsComponent, { static: false }) formComponent: GsFormsComponent;
+  @ViewChild(RppFormComponent, { static: false }) rppFormComponent: RppFormComponent;
 
   private toMapOptions = [
     {
@@ -78,15 +80,80 @@ export class AppComponent implements OnInit {
     }
   };
 
-
   public formFields: GFormFields = [
-    // dropdown input
-    new GDropdownField({
-      model: 'dropdown',
-      label: 'Dropdown',
-      placeholder: 'Dropdown placeholder',
-      externalOptions: true,
+    // Text widget
+    new GTextField({
+      model: 'text',
+      label: 'Text widget',
+      placeholder: 'Text widget',
+      validators: {
+        [GFieldValidatorType.MIN_LENGTH]: 2,
+        [GFieldValidatorType.MAX_LENGTH]: 30
+      },
+    }),
+    // Email input (text widget)
+    new GTextField({
+      model: 'email',
+      label: 'Email widget',
+      placeholder: 'Is a text widget',
+      validators: {
+        [GFieldValidatorType.EMAIL]: true
+      },
+    }),
+    // Textarea widget
+    new GTextareaField({
+      model: 'textarea',
+      label: 'Textarea widget',
+      placeholder: 'Textarea widget'
+    }),
+    // Password widget
+    new GPasswordField({
+      model: 'Password',
+      label: 'Password widget',
+      placeholder: 'Password widget',
+      validators: {
+        [GFieldValidatorType.MIN_LENGTH]: 8,
+        [GFieldValidatorType.MAX_LENGTH]: 30,
+      },
+      autocomplete: 'false',
+    }),
+    // Number widget
+    new GNumberField({
+      model: 'number',
+      label: 'Number widget',
+      placeholder: 'Number widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false,
+        [GFieldValidatorType.MAX]: 100,
+        [GFieldValidatorType.MIN]: 0
+      },
+      decimal: true,
+      precision: 5
+    }),
+    // Toggle widget
+    new GToggleField({
+      model: 'toggle',
+      label: 'Toggle widget',
+      value: true,
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+    }),
+    // Checkbox widget
+    new GCheckboxField({
+      model: 'checkbox',
+      label: 'Checkbox widget',
+      value: false
+    }),
+    // Radio widget
+    new GRadioField({
+      model: 'radio',
+      label: 'Radio widget',
       optionValues: [
+        {
+          value: 'blue',
+          text: 'blue'
+        },
         {
           value: 'yellow',
           text: 'yellow'
@@ -97,260 +164,111 @@ export class AppComponent implements OnInit {
         }
       ]
     }),
-    // time input
-    new GTimeField({
-      model: 'time',
-      label: 'hiiii time!',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
-    }),
-
-    // map input
-    new GMapField({
-      model: 'map',
-      label: 'test map',
-      placeholder: 'Im a Map',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      }
-    }),
-    // numberic input
-    new GNumberField({
-      model: 'age',
-      label: 'Age',
-      placeholder: 'What is your age?',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false,
-        [GFieldValidatorType.MAX]: 100,
-        [GFieldValidatorType.MIN]: 0
-      },
-      decimal: true,
-      precision: 5
-    }),
-    // two data input
-    new GTwoDataInput({
-      model: 'twoDataInput',
-      label: 'Two data input',
-      divider: '-',
-      grid: [
-        'auto',
-        '24px'
-      ],
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
-      options: {
-        left: {
-          type: GFieldValueType.STRING,
-          validators: {
-            [GFieldValidatorType.REQUIRED]: false
-          },
-          placeholder: 'left value'
+    // Dropdown widget
+    new GDropdownField({
+      model: 'dropdown',
+      label: 'Dropdown widget',
+      placeholder: 'Dropdown widget',
+      externalOptions: true,
+      optionValues: [
+        {
+          value: 'yellow',
+          text: 'Yellow'
         },
-        right: {
-          type: GFieldValueType.NUMBER,
-          validators: {
-            [GFieldValidatorType.REQUIRED]: true,
-            [GFieldValidatorType.MAX]: 9
-          },
-          placeholder: '0'
-        }
-      }
-    }),
-    // divider
-    new GDivider({
-      model: null,
-      seccionName: 'Section',
-      hideLine: false,
-      padding: '1rem 0',
-      dividerColor: '#e3bec4',
-      gridColumn: '1 / 4'
-    }),
-
-    // text input disabled
-    new GShowData({
-      model: null,
-      label: 'TEXT',
-      value: 'Hello text input disabled'
-    }),
-
-    // text input
-    new GTextField({
-      model: 'text',
-      label: 'TEXT',
-      placeholder: 'TEXT_INPUT',
-      value: 'Hello text input',
-      validators: {
-        [GFieldValidatorType.MIN_LENGTH]: 2,
-        [GFieldValidatorType.MAX_LENGTH]: 30
-      },
-    }),
-
-    // button save
-    new GButton({
-      model: null,
-      placeholder: 'Save button',
-      action: GFieldValueButtonType.SUBMIT
-    }),
-
-    // button reset
-    new GButton({
-      model: null,
-      placeholder: 'Reset button',
-      action: GFieldValueButtonType.RESET
-    }),
-
-    // button save
-    new GButton({
-      model: null,
-      placeholder: 'Open alert',
-      action: GFieldValueButtonType.CUSTOM,
-      id: 'open-alert'
-    }),
-
-    // button save
-    new GButton({
-      model: null,
-      placeholder: 'Refresh',
-      action: GFieldValueButtonType.CUSTOM,
-      id: 'refresh'
-    }),
-
-    // text input
-    new GColorPickerField({
-      model: 'color',
-      label: 'Color',
-      placeholder: 'Color picker',
-      value: '#4588fd'
-    }),
-
-    // separated by comma
-    new GSeparatedByComma({
-      model: 'comma',
-      label: 'Separated by comma',
-      placeholder: 'separated by comma placeholder',
-      value: 'red, blue'
-    }),
-
-    /*
-
-
-
-    // textarea input
-    new GTextareaField({
-      model: 'textarea',
-      label: 'Textarea',
-      placeholder: 'Textarea input'
-    }),
-
-    // password input
-    new GPasswordField({
-      model: 'Password',
-      label: 'Password',
-      placeholder: 'Password input',
-      validators: {
-        [GFieldValidatorType.MIN_LENGTH]: 8,
-        [GFieldValidatorType.MAX_LENGTH]: 30,
-      },
-      autocomplete: 'false',
-    }),
-
-    // email input
-    new GTextField({
-      model: 'email',
-      label: 'Email Address',
-      placeholder: 'What is your email address?',
-      validators: {
-        [GFieldValidatorType.EMAIL]: true
-      },
-    }),
-
-    // numberic input
-    new GNumberField({
-      model: 'age',
-      label: 'Age',
-      placeholder: 'What is your age?',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false,
-        [GFieldValidatorType.MAX]: 100,
-        [GFieldValidatorType.MIN]: 0
-      }
-    }),
-
-    // two data input
-    new GTwoDataInput({
-      model: 'twoDataInput',
-      label: 'Two data input',
-      divider: '-',
-      grid: [
-        'auto',
-        '24px'
-      ],
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      },
-      options: {
-        left: {
-          type: GFieldValueType.STRING,
-          validators: {
-            [GFieldValidatorType.REQUIRED]: false
-          },
-          placeholder: 'left value'
+        {
+          value: 'red',
+          text: 'Red'
         },
-        right: {
-          type: GFieldValueType.NUMBER,
-          validators: {
-            [GFieldValidatorType.REQUIRED]: true,
-            [GFieldValidatorType.MAX]: 9
-          },
-          placeholder: '0'
+        {
+          value: 'blue',
+          text: 'Blue'
         }
+      ]
+    }),
+    // Currency widget
+    new GCurrencyField({
+      model: 'currency',
+      label: 'Currency widget',
+      placeholder: 'Currency widget',
+      validators: {
+        [GFieldValidatorType.MIN]: 100000,
+        [GFieldValidatorType.MAX]: 500000
       }
     }),
-
-    */
-
-    // datepicker input
-    new GDatePickerField({
-      model: 'from',
-      label: 'Date Picker',
-      placeholder: 'datepicker'
-    }),
-
-    // datepicker input
-    new GDatePickerField({
-      model: 'to',
-      label: 'Date Picker',
-      placeholder: 'datepicker'
-    }),
-
-    // datepicker input
-    new GDatePickerField({
-      model: 'date',
-      label: 'Date Picker',
-      placeholder: 'datepicker'
-    }),
-
-    // toggle input
-    new GToggleField({
-      model: 'toggle',
-      label: 'Toggle',
-      value: true,
-      displayIf: {
-        model: 'showHideDropdown',
-        hasValue: 'show'
-      },
+    // Phone widget
+    new GPhoneField({
+      model: 'phone',
+      label: 'Phone widget',
+      placeholder: 'Phone widget',
+      country: GFieldCountryCode.CO,
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
+      editCountry: true
     }),
-
-    // multiselect field
+    // Datepicker widget
+    new GDatePickerField({
+      model: 'date',
+      label: 'Date widget',
+      placeholder: 'date widget'
+    }),
+    // Separated by comma widget
+    new GSeparatedByComma({
+      model: 'comma',
+      label: 'Separated by comma widget',
+      placeholder: 'SBC widget'
+    }),
+    // File widget
+    new GFieldFile({
+      model: 'file',
+      label: 'File widget',
+      placeholder: 'File widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+      returnFile: false,
+      api: {
+        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
+        method: 'post',
+        fileParamName: 'file'
+      },
+      accept: '.jpg, .jpeg, .png',
+    }),
+    // Two data widget
+    new GTwoDataInput({
+      model: 'twoDataInput',
+      label: 'Two data widget',
+      divider: '-',
+      grid: [
+        'auto',
+        '24px'
+      ],
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      },
+      options: {
+        left: {
+          type: GFieldValueType.STRING,
+          validators: {
+            [GFieldValidatorType.REQUIRED]: false
+          },
+          placeholder: 'Left'
+        },
+        right: {
+          type: GFieldValueType.NUMBER,
+          validators: {
+            [GFieldValidatorType.REQUIRED]: true,
+            [GFieldValidatorType.MAX]: 9
+          },
+          placeholder: '0'
+        }
+      }
+    }),
+    // Multiselect widget
     new GMultiselectField({
       model: 'multiselect',
-      label: 'Multiselect',
-      placeholder: 'Multiselect placeholder',
+      label: 'Multiselect widget',
+      placeholder: 'Multiselect widget',
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
@@ -382,148 +300,85 @@ export class AppComponent implements OnInit {
         }
       ]
     }),
-
-    // checkbox input
-    new GCheckboxField({
-      model: 'checkbox',
-      label: 'Checkbox',
-      value: false
+    // Color widget
+    new GColorPickerField({
+      model: 'color',
+      label: 'Color widget',
+      placeholder: 'Color widget',
+      value: '#4588fd'
     }),
-
-    // radio input
-    new GRadioField({
-      model: 'radio',
-      label: 'Radio',
-      placeholder: 'Radio placeholder',
-      optionValues: [
-        {
-          value: 'blue',
-          text: 'blue'
-        },
-        {
-          value: 'yellow',
-          text: 'yellow'
-        },
-        {
-          value: 'red',
-          text: 'red'
-        }
-      ]
-    }),
-
-    // file input
-    new GFieldFile({
-      model: 'file',
-      label: 'File type',
-      placeholder: 'Click to upload file',
+    // Time widget
+    new GTimeField({
+      model: 'time',
+      label: 'Time widget',
       validators: {
-        [GFieldValidatorType.REQUIRED]: false
+        [GFieldValidatorType.REQUIRED]: true
       },
-      returnFile: false,
-      api: {
-        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
-        method: 'post',
-        fileParamName: 'file'
-      },
-      accept: '.jpg, .jpeg, .png',
     }),
-
-    // dropdown input
-    new GDropdownField({
-      model: 'dropdown',
-      label: 'Dropdown',
-      placeholder: 'Dropdown placeholder',
-      externalOptions: true,
-      optionValues: [
-        {
-          value: 'yellow',
-          text: 'yellow'
-        },
-        {
-          value: 'red',
-          text: 'red'
-        }
-      ]
+    // Map widget
+    new GMapField({
+      model: 'map',
+      label: 'Map widget',
+      placeholder: 'Map widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      }
     }),
-
-    // Show/hide dropdown
-    new GDropdownField({
-      model: 'showHideDropdown',
-      label: 'Show or hide the dynamic field',
-      placeholder: 'Dropdown placeholder',
-      optionValues: [
-        {
-          value: 'show',
-          text: 'Show dynamic input'
-        },
-        {
-          value: 'hide',
-          text: 'Hide dynamic input'
-        }
-      ]
-    }),
-
-    // divider
+    // Divider widget
     new GDivider({
-      seccionName: 'Select one option',
+      model: null,
+      seccionName: 'Divider widget',
       hideLine: false,
       padding: '1rem 0',
-      model: null,
       dividerColor: '#e3bec4',
-      gridColumn: '1 / 4',
-      displayIf: {
-        model: 'showHideDropdown',
-        hasValue: 'show'
-      },
+      gridColumn: '1 / 4'
     }),
-
+    // Show data widget
+    new GShowData({
+      model: null,
+      label: 'Show data widget',
+      value: 'Show data content'
+    }),
+    // Toggle field display
+    new GDropdownField({
+      model: 'dropdownToggle',
+      label: 'Toggle fields display',
+      value: {
+        value: true,
+        text: 'Show fields'
+      },
+      optionValues: [
+        {
+          value: true,
+          text: 'Show fields'
+        },
+        {
+          value: false,
+          text: 'Hide fields'
+        }
+      ]
+    }),
     // dynamic input
     new GTextField({
       model: 'dynamicInput',
       label: 'Dinamic input',
       displayIf: {
-        model: 'showHideDropdown',
-        hasValue: 'show'
-      },
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false,
-        [GFieldValidatorType.MIN_LENGTH]: 3
+        model: 'dropdownToggle',
+        hasValue: true
       }
     }),
-
-    // currency input
-    // TODO (Gustavo): when default value does not include decimal and de formatter requires it, add decimals automatic
-    new GCurrencyField({
-      model: 'currency',
-      label: 'Currency',
-      value: 30230000,
-      placeholder: 'Currency',
-      validators: {
-        [GFieldValidatorType.MIN]: 100000,
-        [GFieldValidatorType.MAX]: 500000
-      }
+    // Custom button
+    new GButton({
+      model: null,
+      placeholder: 'Custom buttom to submit',
+      action: GFieldValueButtonType.SUBMIT
     }),
-
-    // phone input
-    new GPhoneField({
-      model: 'phone',
-      label: 'Phone',
-      placeholder: 'Phone',
-      country: GFieldCountryCode.CO,
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false
-      },
-      editCountry: true
+    // Custom button
+    new GButton({
+      model: null,
+      placeholder: 'Custom button to reset',
+      action: GFieldValueButtonType.RESET
     }),
-
-    // tax type
-    new GTaxDocumentTypeField({
-      model: 'taxType',
-      label: 'Tax type',
-      placeholder: 'Tax type placeholder',
-      country: GFieldCountryCode.BR
-    }),
-
   ];
 
   constructor(

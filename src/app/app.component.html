@@ -2,11 +2,11 @@
   <h1>{{ 'FORMS' | translate }}</h1>
   <button type="button" (click)="resetForm()">Reset form</button>
 
-  <gs-form
+  <rpp-form
     [formFields]="formFields"
     [formOptions]="formOptions"
     (formChanges)="onFormChange($event)"
     (form)="onSubmit($event)"
     (customButtonClick)="actions($event)">
-  </gs-form>
+  </rpp-form>
 </div>
