@@ -1,17 +1,38 @@
 <ng-container [formGroup]="formGroup">
-  <input
-    class="input gs-form-field_number_input"
-    type="text"
-    inputmode="numeric"
-    autocomplete="off"
-    decimal="field.config.decimal"
-    [autocomplete]="field.config.autocomplete || 'off'"
-    [id]="field.config.model"
-    [min]="field.config.validators ? field.config.validators[fieldValidatorType.MIN] : null"
-    [max]="field.config.validators ? field.config.validators[fieldValidatorType.MAX] : null"
-    [formControlName]="field.config.model"
-    [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-    [value]="field.config.value || null"
-    (input)="setPresicion($event.target)"
-    gsDigitOnly>
+  <div
+    class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box"
+      [class.rpp-form-field-box-full]="field.config.label"
+      [formGroup]="formGroup">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+
+      <input
+        class="rpp-field-input"
+        type="text"
+        inputmode="numeric"
+        autocomplete="off"
+        [decimal]="field.config.decimal"
+        [autocomplete]="field.config.autocomplete || 'off'"
+        [id]="field.config.model"
+        [min]="field.config.validators ? field.config.validators[fieldValidatorType.MIN] : null"
+        [max]="field.config.validators ? field.config.validators[fieldValidatorType.MAX] : null"
+        [formControlName]="field.config.model"
+        [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+        [value]="field.config.value || null"
+        (input)="setPresicion($event.target)"
+        gsDigitOnly>
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+  </div>
 </ng-container>
