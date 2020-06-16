@@ -30,9 +30,8 @@ import { GsMapFieldComponent } from './gs-fields/map-field/map-field.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsTimePickerComponent } from './gs-fields';
-import { GsFormsComponent } from './gs-forms.component';
-import { GsFormsService } from './gs-forms.service';
 import { RppFormComponent } from './rpp-form.component';
+import { GsFormsService } from './gs-forms.service';
 
 const directive = [
   DigitOnlyDirective,
@@ -63,7 +62,6 @@ const widgets = [
   GsTimePickerComponent,
   GsButtonComponent,
   GsShowDataComponent,
-  GsFormsComponent,
   RppFormComponent
 ];
 

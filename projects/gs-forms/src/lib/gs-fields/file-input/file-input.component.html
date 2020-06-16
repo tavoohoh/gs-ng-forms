@@ -3,6 +3,7 @@
     [class.rpp-field-has-error]="validateField() || errorText">
     
     <label
+      (click)="file.click()"
       class="rpp-field-box rpp-field-box-icon rpp-field-file-box"
       [class.rpp-form-field-box-full]="field.config.label">
   
@@ -12,7 +13,7 @@
         {{ field.config.label | translate }}
       </span>
 
-      <div class="rpp-field-input rpp-field-file-input" (click)="file.click()">
+      <div class="rpp-field-input rpp-field-file-input">
         <ng-container *ngIf="selectedFile">
           {{ selectedFile.name }}{{ selectedFile.type }}
         </ng-container>

@@ -29,7 +29,6 @@ import {
 import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
-import { GsFormsComponent } from 'projects/gs-forms/src/public-api';
 import { RppFormComponent } from 'projects/gs-forms/src/public-api';
 
 @Component({
@@ -38,7 +37,6 @@ import { RppFormComponent } from 'projects/gs-forms/src/public-api';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(GsFormsComponent, { static: false }) formComponent: GsFormsComponent;
   @ViewChild(RppFormComponent, { static: false }) rppFormComponent: RppFormComponent;
 
   private toMapOptions = [

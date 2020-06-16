@@ -16,11 +16,11 @@ export class RppGenericFieldComponent {
     public formsService: GsFormsService
   ) { }
 
-  public validateField(): ValidationErrors {
+  public validateField($event?: any): ValidationErrors {
     return this.formGroup.controls[this.field.config.model].dirty && this.formGroup.controls[this.field.config.model].errors;
   }
 
-  public getFieldError(): string {
+  public getFieldError($event?: any): string {
     return this.formsService.fieldError(this.formGroup.controls[this.field.config.model]);
   }
 }

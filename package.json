@@ -1,6 +1,6 @@
 {
   "name": "gs-form-core",
-  "version": "1.9.5",
+  "version": "2.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,10 +9,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lib:build": "ng-packagr -p projects/gs-forms/ng-package.json",
-    "lib:init-repo": "cd ./dist/gs-forms/ && git init && git remote add origin git@bitbucket.org:rappinc/rpp-ngforms-lib.git",
-    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m 'v1.9.5'",
-    "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin master",
-    "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:commit && npm run lib:push",
+    "lib:init-repo": "cd ./dist/gs-forms/ && git init && git remote add origin git@bitbucket.org:rappinc/rpp-ngforms-core.git",
+    "lib:checkout": "cd ./dist/gs-forms/ && git checkout -b compiled",
+    "lib:commit": "cd ./dist/gs-forms/ && git add . && git commit -m 'v2.0.1'",
+    "lib:push": "cd ./dist/gs-forms/ && git push -f --set-upstream origin compiled",
+    "lib:publish": "npm run lib:build && npm run lib:init-repo && npm run lib:checkout && npm run lib:commit && npm run lib:push",
     "nexus:login": "npm login --registry http://repo.ops.rappi.com/repository/npm-hosted/",
     "nexus:publish": "npm run lib:build && cd ./dist/gs-forms && npm publish --registry http://repo.ops.rappi.com/repository/npm-hosted/"
   },
