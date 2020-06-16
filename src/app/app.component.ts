@@ -356,7 +356,6 @@ export class AppComponent implements OnInit {
       seccionName: 'Divider widget',
       hideLine: false,
       padding: '1rem 0',
-      dividerColor: '#e3bec4',
       gridColumn: '1 / 4'
     }),
     // Show data widget

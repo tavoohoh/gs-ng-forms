@@ -1,8 +1,99 @@
 $smallScreen: 576px
-$shadowSoft: 0 8px 14px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.10)
-$shadowStrong: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12)
 $opacity: .8
 $opacity-disabled: .7
+
+/** Base colors **/
+$rpp-color-white: #ffffff
+$rpp-color-black: #332927
+$rpp-color-primary: #ff2426
+$rpp-color-primary-light: #ff9259
+$rpp-color-confirm: #0cc665
+$rpp-color-confirm-light: #a4f474
+$rpp-color-cancel: #ff2525
+$rpp-color-cancel-light: #ff6e6e
+$rpp-color-disabled: #b8b4b4
+$rpp-color-text: #706967
+$rpp-color-gray-light: #e5e5e4
+$rpp-color-background: #f9f9f8
+
+/** rpp-variables **/
+$rpp-input-height: 51px
+
+$rpp-font-size-big: 1.6rem
+$rpp-font-size-normal: 1.1rem
+$rpp-font-size-input: 1rem
+$rpp-font-size-small: 0.8rem
+$rpp-font-size-xsmall: 0.7rem
+
+$rpp-padding-big: 3rem
+$rpp-padding-normal: 1.5rem
+$rpp-padding-small: 1rem
+$rpp-padding-xsmall: 0.6rem
+
+$rpp-border-radius-normal: 1rem
+$rpp-border-radius-small: 0.4rem
+
+/** rpp-mixin **/
+@mixin rpp-mixin-clean-button
+  outline: none
+  box-shadow: none
+  border: none
+  text-decoration: none
+  padding: 0
+  width: max-content
+  transition: ease-in-out
+  background-color: transparent
+  cursor: pointer
+
+  &:focus,
+  *:focus
+    outline: none
+
+@mixin rpp-mixin-clean-input
+  outline: none
+  border: none
+  width: 100%
+  margin: 0
+
+  &:focus,
+  *:focus
+    outline: none
+
+@mixin rpp-mixin-transition($time: 0.3s, $transition-type: ease-in-out)
+  transition: $time $transition-type
+
+@mixin rpp-mixin-gradient-primary
+  background-color: $rpp-color-primary
+  background-image: linear-gradient(to right, $rpp-color-primary-light, $rpp-color-primary)
+
+@mixin rpp-mixin-subtitle
+  color: $rpp-color-text
+  font-size: $rpp-font-size-xsmall
+  font-weight: 600
+  letter-spacing: 0.1em
+  line-height: 1
+  text-transform: uppercase
+
+@mixin rpp-mixin-no-selectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+@mixin rpp-mixin-border-style($color: $rpp-color-gray-light)
+  border: 2px solid $color
+
+@mixin rpp-mixin-svg-background($encoded-svg, $svg-size: auto)
+  // SVG image most be encoded: http://www.asiteaboutnothing.net/c_decode-url.html
+  background-image: url("data:image/svg+xml;utf8,"+$encoded-svg)
+  background-repeat: no-repeat
+  background-size: $svg-size
+  background-position: center
+
+@mixin rpp-mixin-shadow-soft
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.03), 0 5px 5px rgba(0, 0, 0, 0.01)
 
 // colors
 $gs-red: #da6464
@@ -102,7 +193,7 @@ textarea
   outline: none
 
   padding: var(--gs-primary-button-padding, $gs-primary-button-padding)
-  color: var(--gs-primary-button-color, $gs-color-white)
+  color: var(--gs-primary-button-color, $rpp-color-white)
   background: var(--gs-primary-button-background, $gs-color-neutral)
   background-image: var(--gs-primary-button-background-image)
   border: 1px solid var(--gs-primary-button-border-color, $gs-color-neutral)
@@ -198,99 +289,6 @@ textarea
 /************
   RPP Styles
  ************/
-
-/** Base colors **/
-$rpp-color-white: #ffffff
-$rpp-color-black: #332927
-$rpp-color-primary: #ff2426
-$rpp-color-primary-light: #ff9259
-$rpp-color-confirm: #0cc665
-$rpp-color-confirm-light: #a4f474
-$rpp-color-cancel: #ff2525
-$rpp-color-cancel-light: #ff6e6e
-$rpp-color-disabled: #b8b4b4
-$rpp-color-text: #706967
-$rpp-color-gray-light: #e5e5e4
-$rpp-color-background: #f9f9f8
-
-/** rpp-variables **/
-$rpp-input-height: 51px
-
-$rpp-font-size-big: 1.6rem
-$rpp-font-size-normal: 1.1rem
-$rpp-font-size-input: 1rem
-$rpp-font-size-small: 0.8rem
-$rpp-font-size-xsmall: 0.7rem
-
-$rpp-padding-big: 3rem
-$rpp-padding-normal: 1.5rem
-$rpp-padding-small: 1rem
-$rpp-padding-xsmall: 0.6rem
-
-$rpp-border-radius-normal: 1rem
-$rpp-border-radius-small: 0.4rem
-
-/** rpp-mixin **/
-@mixin rpp-mixin-clean-button
-  outline: none
-  box-shadow: none
-  border: none
-  text-decoration: none
-  padding: 0
-  width: max-content
-  transition: ease-in-out
-  background-color: transparent
-  cursor: pointer
-
-  &:focus,
-  *:focus
-    outline: none
-
-@mixin rpp-mixin-clean-input
-  outline: none
-  border: none
-  width: 100%
-  margin: 0
-
-  &:focus,
-  *:focus
-    outline: none
-
-@mixin rpp-mixin-transition($time: 0.3s, $transition-type: ease-in-out)
-  transition: $time $transition-type
-
-@mixin rpp-mixin-gradient-primary
-  background-color: $rpp-color-primary
-  background-image: linear-gradient(to right, $rpp-color-primary-light, $rpp-color-primary)
-
-@mixin rpp-mixin-subtitle
-  color: $rpp-color-text
-  font-size: $rpp-font-size-xsmall
-  font-weight: 600
-  letter-spacing: 0.1em
-  line-height: 1
-  text-transform: uppercase
-
-@mixin rpp-mixin-no-selectable
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -khtml-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
-
-@mixin rpp-mixin-border-style($color: $rpp-color-gray-light)
-  border: 2px solid $color
-
-@mixin rpp-mixin-svg-background($encoded-svg, $svg-size: auto)
-  // SVG image most be encoded: http://www.asiteaboutnothing.net/c_decode-url.html
-  background-image: url("data:image/svg+xml;utf8,"+$encoded-svg)
-  background-repeat: no-repeat
-  background-size: $svg-size
-  background-position: center
-
-@mixin rpp-mixin-shadow-soft
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.03), 0 5px 5px rgba(0, 0, 0, 0.01)
 
 /** rpp-classes **/
 .rpp-field
