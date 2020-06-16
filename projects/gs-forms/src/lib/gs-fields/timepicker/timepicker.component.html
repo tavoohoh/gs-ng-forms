@@ -1,49 +1,73 @@
-<div class="input gs-form-field_timepicker">
-  <!-- hour input -->
-  <input 
-    type="text"
-    class="input-hour" 
-    placeholder="HH"
-    [decimal]="false"
-    [gsDigitOnly]="true" 
-    [autocomplete]="field.config.autocomplete || 'off'"
-    [(ngModel)]="fieldValueHours" 
-    maxlength="2"
-    (keyup)="onUpdateValue(false)"/>
-  <!-- : divider -->
-  <span class="input-divider">:</span>
-  <!-- min input -->
-  <input 
-    type="text"
-    class="input-min" 
-    placeholder="mm"
-    [decimal]="false"
-    [gsDigitOnly]="true" 
-    [autocomplete]="field.config.autocomplete || 'off'"
-    maxlength="2"
-    [(ngModel)]="fieldValueMinutes"
-    (keyup)="onUpdateValue(true)"/>
+<div class="rpp-field" [class.rpp-field-has-error]="
+  validateField() ||
+  validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes ||
+  validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes ||
+  validateRequiredHours && validateRequiredMinutes ||
+  validateFormatMinutes && !validateFormatHours ||
+  validateFormatHours && !validateFormatMinutes ||
+  validateFormatHours && validateFormatMinutes
+">
+  
+  <label
+    class="rpp-field-box"
+    [class.rpp-form-field-box-full]="field.config.label">
+
+    <span
+      class="rpp-field-label"
+      *ngIf="field.config.label">
+      {{ field.config.label | translate }}
+    </span>
+
+    <div class="rpp-field-input rpp-field-timepicker">
+      <!-- hour input -->
+      <input 
+        type="text"
+        class="rpp-field-input rpp-field-timepicker-input-hour" 
+        placeholder="HH"
+        [decimal]="false"
+        [gsDigitOnly]="true" 
+        [autocomplete]="field.config.autocomplete || 'off'"
+        [(ngModel)]="fieldValueHours" 
+        maxlength="2"
+        (keyup)="onUpdateValue(false)"/>
+      <!-- : divider -->
+      <span class="rpp-field-input rpp-field-timepicker-input-divider">:</span>
+      <!-- min input -->
+      <input 
+        type="text"
+        class="rpp-field-input rpp-field-timepicker-input-min" 
+        placeholder="mm"
+        [decimal]="false"
+        [gsDigitOnly]="true" 
+        [autocomplete]="field.config.autocomplete || 'off'"
+        maxlength="2"
+        [(ngModel)]="fieldValueMinutes"
+        (keyup)="onUpdateValue(true)"/>
+    </div>
+  </label>
+
+  <span class="rpp-field-error">
+    <!-- show one error at a time --->
+    <ng-container *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </ng-container>
+    <ng-container *ngIf="validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes">
+      {{errorsTextArray.requiredMinutes}}
+    </ng-container>
+    <ng-container *ngIf="validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes">
+      {{errorsTextArray.requiredHours}}
+    </ng-container>
+    <ng-container *ngIf="validateRequiredHours && validateRequiredMinutes">
+      {{errorsTextArray.requiredFulltime}}
+    </ng-container>
+    <ng-container *ngIf="validateFormatMinutes && !validateFormatHours">
+      {{errorsTextArray.patternMinutes}}
+    </ng-container>
+    <ng-container *ngIf="validateFormatHours && !validateFormatMinutes">
+      {{errorsTextArray.patternHours}}
+    </ng-container>
+    <ng-container *ngIf="validateFormatHours && validateFormatMinutes">
+      {{errorsTextArray.patternFulltime}}
+    </ng-container>
+  </span>
 </div>
-
-<span class="gs-form-field_error_message">
-  <!-- show one error at a time --->
-  <ng-container *ngIf="validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes">
-    {{errorsTextArray.requiredMinutes}}
-  </ng-container>
-  <ng-container *ngIf="validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes">
-    {{errorsTextArray.requiredHours}}
-  </ng-container>
-  <ng-container *ngIf="validateRequiredHours && validateRequiredMinutes">
-    {{errorsTextArray.requiredFulltime}}
-  </ng-container>
-  <ng-container *ngIf="validateFormatMinutes && !validateFormatHours">
-    {{errorsTextArray.patternMinutes}}
-  </ng-container>
-  <ng-container *ngIf="validateFormatHours && !validateFormatMinutes">
-    {{errorsTextArray.patternHours}}
-  </ng-container>
-  <ng-container *ngIf="validateFormatHours && validateFormatMinutes">
-    {{errorsTextArray.patternFulltime}}
-  </ng-container>
-</span>
-

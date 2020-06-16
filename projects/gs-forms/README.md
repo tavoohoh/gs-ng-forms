@@ -75,19 +75,17 @@ Add `gs-form` component to your HTML, import interfaces and define properties.
 ##### HTML ex. app.component.html
 ```html
 <h1>My form</h1>
-<gs-form
+<rpp-form
   [formFields]="yourFormFieldsArray"
   [formOptions]="yourFormOptions"
-  (formValue)="onSubmitValues($event)"
   (form)="onCheckForm($event)">
-</gs-form>
+</rpp-form>
 ```
 
 |                           |                                                              |
 |---------------------------|--------------------------------------------------------------|
 | formFields                | Send your form fields to gs-form to render your form         |
 | formOptions               | Send options so gs-form can customize your form as you like  |
-| formValue                 | Get form values when the users clic the submit/save button   |
 | form                      | Get the FormGroup when the users clic the submit/save button |
 
 ##### TS ex. app.component.ts

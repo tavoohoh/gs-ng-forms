@@ -2,7 +2,10 @@
 
 You are welcome to collaborate!
 
-TODO: update documentation
+TODO: 
+Update `radio`, `multiselect` and `separatedByComma` components to use new form styles. 
+Update global variables to work with new styles.
+Implement a variable to toggle between label/input in a bordered container to a non bordered container.
 
 For library implementation please go to [gs-form readme](https://bitbucket.org/rappinc/rpp-ngforms-lib/src/master/README.md).
 

@@ -7,28 +7,29 @@ input
   margin: 0
   width: 100%
 
-.gs-form-field_timepicker
-  display: flex
-  justify-content: center
-  border: none  
+.rpp-field-timepicker
+  display: grid
+  grid-template-columns: 1fr min-content 1fr
 
-  .input-hour, .input-min
-    width: 20%
-    border: 1px solid #ccc
+  .rpp-field-input.rpp-field-timepicker-input-hour,
+  .rpp-field-input.rpp-field-timepicker-input-min,
+  .rpp-field-input.rpp-field-timepicker-input-divider
+    grid-column: unset
+    grid-row: unset
+    align-self: center
+
+  .rpp-field-timepicker-input-hour,
+  .rpp-field-timepicker-input-min
     text-align: center
-    &:hover, &:focus
-      border-color: $gs-red
 
-  .input-hour
+  .rpp-field-timepicker-input-hour
     border-radius: 1rem 0 0 1rem
 
-  .input-min
+  .rpp-field-timepicker-input-min
     border-radius: 0 1rem 1rem 0
   
-  .input-divider
-    background-color: rgba(0, 0, 0, .1)
+  .rpp-field-timepicker-input-divider
+    line-height: 1
+    background-color: $rpp-color-gray-light
     text-align: center
-    padding: 0 .5rem
-    border: 1px solid #ccc
-    border-right: 0
-    border-left: 0
+    padding: 0.2rem $rpp-padding-xsmall

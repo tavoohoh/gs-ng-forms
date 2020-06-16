@@ -230,7 +230,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
       variables = variables + `--gs-font-size: 1rem !important;`;
 
       // buttons
-      variables = variables + `--gs-primary-button-padding: 1rem 3rem!important;`;
+      variables = variables + `--gs-primary-button-padding: 1rem!important;`;
       variables = variables + `--gs-primary-button-color: #ffffff!important;`;
       variables = variables + `--gs-primary-button-background-image: linear-gradient(to right, #ff9259, #ff2426)!important;`;
       variables = variables + `--gs-primary-button-border-color: none!important;`;

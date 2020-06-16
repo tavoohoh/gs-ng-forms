@@ -1,16 +1,16 @@
 import { Component, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GTimeField } from '../../gs-forms.widgets';
-import { GsFormsService } from '../../gs-forms.service';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+
 
 @Component({
   selector: 'gs-timepicker',
   templateUrl: './timepicker.component.html',
   styleUrls: ['./timepicker.component.sass']
 })
-export class GsTimePickerComponent implements OnChanges, OnInit {
+export class GsTimePickerComponent extends RppGenericFieldComponent implements OnChanges, OnInit {
   @Input() public field: GTimeField;
-  @Input() public formGroup: FormGroup;
 
   public fieldValueHours: any;
   public fieldValueMinutes: any;
@@ -30,16 +30,14 @@ export class GsTimePickerComponent implements OnChanges, OnInit {
     patternFulltime: string;
   };
 
-  constructor(private gsService: GsFormsService) { }
-
   ngOnInit(): void {
     this.errorsTextArray = {
-      requiredMinutes: this.gsService.getValidationMessage('ERR_REQUIRED_MIN'),
-      requiredHours: this.gsService.getValidationMessage('ERR_REQUIRED_HOUR'),
-      requiredFulltime: this.gsService.getValidationMessage('ERR_REQUIRED_FULLTIME'),
-      patternMinutes: this.gsService.getValidationMessage('ERR_PATTERN_MIN'),
-      patternHours: this.gsService.getValidationMessage('ERR_PATTERN_HOUR'),
-      patternFulltime: this.gsService.getValidationMessage('ERR_PATTERN_FULLTIME')
+      requiredMinutes: this.formsService.getValidationMessage('ERR_REQUIRED_MIN'),
+      requiredHours: this.formsService.getValidationMessage('ERR_REQUIRED_HOUR'),
+      requiredFulltime: this.formsService.getValidationMessage('ERR_REQUIRED_FULLTIME'),
+      patternMinutes: this.formsService.getValidationMessage('ERR_PATTERN_MIN'),
+      patternHours: this.formsService.getValidationMessage('ERR_PATTERN_HOUR'),
+      patternFulltime: this.formsService.getValidationMessage('ERR_PATTERN_FULLTIME')
     };
   }
 

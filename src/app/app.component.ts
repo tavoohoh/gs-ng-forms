@@ -244,22 +244,6 @@ export class AppComponent implements OnInit {
     //   label: 'Separated by comma widget',
     //   placeholder: 'SBC widget'
     // }),
-    // File widget
-    new GFieldFile({
-      model: 'file',
-      label: 'File widget',
-      placeholder: 'Select a file',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false
-      },
-      returnFile: false,
-      api: {
-        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
-        method: 'post',
-        fileParamName: 'file'
-      },
-      accept: '.jpg, .jpeg, .png',
-    }),
     // Two data widget
     new GTwoDataInput({
       model: 'twoDataInput',
@@ -291,41 +275,41 @@ export class AppComponent implements OnInit {
       }
     }),
     // Multiselect widget
-    new GMultiselectField({
-      model: 'multiselect',
-      label: 'Multiselect widget',
-      placeholder: 'Multiselect widget',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: false
-      },
-      externalOptions: true,
-      optionValues: [
-        {
-          value: 'bogota',
-          text: 'Bogotá'
-        },
-        {
-          value: 'cali',
-          text: 'Calí'
-        },
-        {
-          value: 'cartagena',
-          text: 'Cartagena'
-        },
-        {
-          value: 'barranquilla',
-          text: 'Barranquilla'
-        },
-        {
-          value: 'santa_marta',
-          text: 'Santa Marta'
-        },
-        {
-          value: 'bucaramanga',
-          text: 'Bucaramanga'
-        }
-      ]
-    }),
+    // new GMultiselectField({
+    //   model: 'multiselect',
+    //   label: 'Multiselect widget',
+    //   placeholder: 'Multiselect widget',
+    //   validators: {
+    //     [GFieldValidatorType.REQUIRED]: false
+    //   },
+    //   externalOptions: true,
+    //   optionValues: [
+    //     {
+    //       value: 'bogota',
+    //       text: 'Bogotá'
+    //     },
+    //     {
+    //       value: 'cali',
+    //       text: 'Calí'
+    //     },
+    //     {
+    //       value: 'cartagena',
+    //       text: 'Cartagena'
+    //     },
+    //     {
+    //       value: 'barranquilla',
+    //       text: 'Barranquilla'
+    //     },
+    //     {
+    //       value: 'santa_marta',
+    //       text: 'Santa Marta'
+    //     },
+    //     {
+    //       value: 'bucaramanga',
+    //       text: 'Bucaramanga'
+    //     }
+    //   ]
+    // }),
     // Color widget
     new GColorPickerField({
       model: 'color',
@@ -340,6 +324,22 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },
+    }),
+    // File widget
+    new GFieldFile({
+      model: 'file',
+      label: 'File widget',
+      placeholder: 'Select a file',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: false
+      },
+      returnFile: false,
+      api: {
+        url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
+        method: 'post',
+        fileParamName: 'file'
+      },
+      accept: '.jpg, .jpeg, .png',
     }),
     // Textarea widget
     new GTextareaField({
