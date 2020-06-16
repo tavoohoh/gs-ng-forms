@@ -1,8 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { GMapField } from '../../gs-forms.widgets';
-import { FormGroup } from '@angular/forms';
-import { GsFormsService } from '../../gs-forms.service';
 import { LOCATION } from '../../gs-forms.constants';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 const WINDOW: any = window;
 
@@ -11,11 +10,9 @@ const WINDOW: any = window;
   templateUrl: './map-field.component.html',
   styleUrls: ['./map-field.component.sass']
 })
-export class GsMapFieldComponent implements OnInit, OnChanges {
+export class GsMapFieldComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GMapField;
-  @Input() public formGroup: FormGroup;
   @Input() private googleMapApiKey: string;
-  @Input() public rppStyles: boolean;
 
   @ViewChild('mapRef', { static: false }) mapElement: ElementRef;
   @ViewChild('search', { static: false }) search: ElementRef;
@@ -27,8 +24,6 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   private marker: any;
   public address: any = [];
   public addressInput = '';
-
-  constructor(private gsServices: GsFormsService) { }
 
   ngOnInit(): void {
     this.showMapModal = this.field.config.showMap;
@@ -171,7 +166,7 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   }
 
   private getAddress(): void {
-    this.gsServices.getAddress(this.latlng.lat, this.latlng.lng, this.googleMapApiKey)
+    this.formsService.getAddress(this.latlng.lat, this.latlng.lng, this.googleMapApiKey)
       .subscribe(address => this.address = address.results);
   }
 
@@ -197,6 +192,6 @@ export class GsMapFieldComponent implements OnInit, OnChanges {
   }
 
   public selectAddressText(): string {
-    return this.gsServices.getMessage('SELECT_ADDRESS');
+    return this.formsService.getMessage('SELECT_ADDRESS');
   }
 }
