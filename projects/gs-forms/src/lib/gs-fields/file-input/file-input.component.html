@@ -1,45 +1,49 @@
 <ng-container [formGroup]="formGroup">
-
-  <div class="button file-input" (click)="file.click()" [class.rpp-styles-file]="rppStyles">
-    <!-- input UI -->
-    <ng-container *ngIf="selectedFile && !loading">
-      <span class="file-image inner-padding" [style.background-image]="'url(' + selectedFile.path + ')'">
-        <span class="file-path">
-          <span class="file-name">
-            {{ selectedFile.name }}
-          </span>
-          <span class="file-type">
-            {{ selectedFile.type }}
-          </span>
-        </span>
+  <div class="rpp-field" 
+    [class.rpp-field-has-error]="validateField() || errorText">
+    
+    <label
+      class="rpp-field-box rpp-field-box-icon rpp-field-file-box"
+      [class.rpp-form-field-box-full]="field.config.label">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
       </span>
-    </ng-container>
 
-    <div class="inner-padding" *ngIf="loading">
-      <div class="spinner">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
+      <div class="rpp-field-input rpp-field-file-input" (click)="file.click()">
+        <ng-container *ngIf="selectedFile">
+          {{ selectedFile.name }}{{ selectedFile.type }}
+        </ng-container>
+
+        <ng-container class="inner-margin" *ngIf="!selectedFile">
+          {{ field.config.placeholder || field.config.label || field.config.model | translate }}
+        </ng-container>
       </div>
 
-    </div>
+      <svg class="rpp-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+      </svg>
+    </label>
 
-    <ng-container *ngIf="!selectedFile && !loading">
-      <span class="inner-margin">
-        {{ field.config.placeholder || field.config.label || field.config.model | translate }}
-      </span>
-    </ng-container>
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+
+    <span class="rpp-field-error" *ngIf="errorText">
+      {{ errorText }}
+    </span>
+  
+    <span class="rpp-field-hint" *ngIf="field.config.accept">
+      {{ supportedFilesText }}: {{ field.config.accept }}
+    </span>
+
+    <input #file 
+      class="rpp-field-input-hidden" 
+      type="file" 
+      [id]="field.config.model" 
+      [accept]="field.config.accept || null"
+      (change)="onFileChange($event)" />
   </div>
-
-  <span class="file-error" *ngIf="errorText">
-    {{ errorText }}
-  </span>
-
-  <span class="file-accept" *ngIf="field.config.accept">
-    {{ supportedFilesText }}: {{ field.config.accept }}
-  </span>
-
-  <input #file class="hiddenInput" type="file" [id]="field.config.model" [accept]="field.config.accept || null"
-    (change)="onFileChange($event)" />
-
 </ng-container>

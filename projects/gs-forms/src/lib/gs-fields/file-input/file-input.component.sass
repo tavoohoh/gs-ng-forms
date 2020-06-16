@@ -1,70 +1,10 @@
 @import ../../gs-forms.styles
 
-.file-input
-  margin-bottom: .5rem
-  border-width: 2px
-  overflow: hidden
-  padding: 0
+.rpp-field-file-box
+  grid-template-columns: 1fr 10px!important
 
-  .file-image
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
+.rpp-field-icon
+  width: 10px!important
 
-    .file-path
-      display: grid
-      grid-template-columns: auto max-content
-      background-color: rgba(0, 0, 0, .3)
-      padding: 4px 1rem
-      border-radius: 12px
-
-      .file-name
-        max-width: 100%
-        text-overflow: ellipsis
-        overflow: hidden
-        white-space: nowrap
-        text-align: right
-
-  .inner-margin, .inner-padding
-    display: block
-    color: var(--gs-primary-button-color, $gs-color-white)
-    * 
-      color: var(--gs-primary-button-color, $gs-color-white)
-
-  .inner-margin
-    margin: 1rem
-  
-  .inner-padding
-    padding: .8rem
-
-.file-accept, .file-error
-  display: block
-  text-align: right
-
-.file-accept
-  font-size: 80%
-
-.file-error
-  font-size: 70%
-  margin-bottom: 4px
-  color: $gs-red
-
-.hiddenInput
+.rpp-field-input-hidden
   display: none
-
-.spinner
-  margin: auto
-  line-height: 1
-
-
-.rpp-styles-file 
-  border: 1px solid #4f6367
-  background: transparent
-  color: #4f6367
-  margin: .5rem 0
-  .inner-margin
-    margin: 0 0.5rem
-    padding: 4px 1rem
-    color: #4f6367
-  .inner-padding
-    padding: .5rem

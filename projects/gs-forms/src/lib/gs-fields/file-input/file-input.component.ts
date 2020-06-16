@@ -1,18 +1,14 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 import { GFieldFile } from './../../gs-forms.widgets';
-import { GsFormsService } from '../../gs-forms.service';
 
 @Component({
   selector: 'gs-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.sass']
 })
-export class GsFileInputComponent implements OnInit, OnChanges {
+export class GsFileInputComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
-  @Input() public formGroup: FormGroup;
-  @Input() public rppStyles: boolean;
 
   public name: string;
   public size: string;
@@ -44,13 +40,8 @@ export class GsFileInputComponent implements OnInit, OnChanges {
   };
   public errorText: string;
 
-  constructor(
-    private formsServices: GsFormsService,
-    private gsFromsService: GsFormsService
-  ) { }
-
   ngOnInit() {
-    this.supportedFilesText = this.supportedFilesTranslates[this.gsFromsService.getLang() || 'en'];
+    this.supportedFilesText = this.supportedFilesTranslates[this.formsService.getLang() || 'en'];
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -124,7 +115,7 @@ export class GsFileInputComponent implements OnInit, OnChanges {
     this.errorText = null;
 
     reader.addEventListener('load', () => {
-      this.formsServices.uploadFileServices(url, method, file, paramName)
+      this.formsService.uploadFileServices(url, method, file, paramName)
         .subscribe(
           response => {
             this.loading = false;
@@ -133,7 +124,7 @@ export class GsFileInputComponent implements OnInit, OnChanges {
           }, error => {
             this.loading = false;
             console.error('Unable to upload the image. Error:', error);
-            this.errorText = this.errorTranslates[this.gsFromsService.getLang() || 'en'];
+            this.errorText = this.errorTranslates[this.formsService.getLang() || 'en'];
             this.formGroup.controls[this.field.config.model].patchValue('unableToUploadFile');
             this.formGroup.controls[this.field.config.model].updateValueAndValidity();
             this.formGroup.controls[this.field.config.model].setErrors({ unableToUploadFile: true });

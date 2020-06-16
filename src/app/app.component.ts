@@ -232,16 +232,16 @@ export class AppComponent implements OnInit {
       placeholder: 'date widget'
     }),
     // Separated by comma widget
-    new GSeparatedByComma({
-      model: 'comma',
-      label: 'Separated by comma widget',
-      placeholder: 'SBC widget'
-    }),
+    // new GSeparatedByComma({
+    //   model: 'comma',
+    //   label: 'Separated by comma widget',
+    //   placeholder: 'SBC widget'
+    // }),
     // File widget
     new GFieldFile({
       model: 'file',
       label: 'File widget',
-      placeholder: 'File widget',
+      placeholder: 'Select a file',
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
