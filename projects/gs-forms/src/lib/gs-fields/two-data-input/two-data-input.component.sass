@@ -15,20 +15,30 @@ input[type="number"]::-webkit-outer-spin-button
   -webkit-appearance: none
   margin: 0
 
-.gs-form-field_two_data_input
+.rpp-field-input-two-data
   display: grid
   grid-template-columns: auto max-content auto
 
-  .left-input
+  .rpp-field-input-two-data-left,
+  .rpp-field-input-two-data-right,
+  .rpp-field-input-two-data-input-divider
+    grid-row: 1!important
+
+  .rpp-field-input-two-data-left
     padding-right: .5rem
-    text-align: right     
+    text-align: right
+    grid-column: 1!important
+
     &::placeholder
       text-align: left !important
 
-  .right-input
+  .rpp-field-input-two-data-right
     padding-left: .5rem
+    grid-column: 3!important
   
-  .input-divider
+  .rpp-field-input-two-data-divider
     background-color: rgba(0, 0, 0, .1)
     text-align: center
+    align-self: center
     padding: 0 .5rem
+    grid-column: 2!important

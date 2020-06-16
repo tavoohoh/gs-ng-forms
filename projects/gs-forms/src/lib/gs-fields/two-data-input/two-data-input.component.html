@@ -1,46 +1,63 @@
-<div class="input gs-form-field_two_data_input" [ngStyle]="setGrid()">
-  <!-- left input -->
-  <input 
-    class="left-input" 
-    [placeholder]="leftFieldPlaceholder || '' | translate"
-    [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
-    [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
-    [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null" 
-    [decimal]="false"
-    [gsDigitOnly]="leftFieldType === valueType.NUMBER" 
-    [autocomplete]="field.config.autocomplete || 'off'"
-    [(ngModel)]="leftFieldValue" 
-    [min]="checkMinMaxValidator('left', 'MIN')" 
-    [max]="checkMinMaxValidator('left', 'MAX')"
-    (keyup)="onUpdateValue(false)"/>
+<div class="rpp-field" 
+  [class.rpp-field-has-error]="validateField() || validateRequired(false) || validateRequired(true)">
+  
+  <label
+    class="rpp-field-box"
+    [class.rpp-form-field-box-full]="field.config.label">
 
-  <!-- divider -->
-  <span class="input-divider">
-    {{ field.config.divider || '-' }}
+    <span
+      class="rpp-field-label"
+      *ngIf="field.config.label">
+      {{ field.config.label | translate }}
+    </span>
+
+    <div class="rpp-field-input rpp-field-input-two-data" [ngStyle]="setGrid()">
+      <!-- left input -->
+      <input 
+        class="rpp-field-input rpp-field-input-two-data-left" 
+        [placeholder]="leftFieldPlaceholder || '' | translate"
+        [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
+        [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
+        [inputmode]="leftFieldType === valueType.NUMBER ? 'numeric' : null" 
+        [decimal]="false"
+        [gsDigitOnly]="leftFieldType === valueType.NUMBER" 
+        [autocomplete]="field.config.autocomplete || 'off'"
+        [(ngModel)]="leftFieldValue" 
+        [min]="checkMinMaxValidator('left', 'MIN')" 
+        [max]="checkMinMaxValidator('left', 'MAX')"
+        (keyup)="onUpdateValue(false)"/>
+    
+      <!-- divider -->
+      <span class="rpp-field-input-two-data-divider">
+        {{ field.config.divider || '-' }}
+      </span>
+    
+      <!-- right input -->
+      <input 
+        class="rpp-field-input rpp-field-input-two-data-right" 
+        [placeholder]="rightFieldPlaceholder || '' | translate"
+        [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
+        [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
+        [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null" 
+        [decimal]="false"
+        [gsDigitOnly]="rightFieldType === valueType.NUMBER" 
+        [autocomplete]="field.config.autocomplete || 'off'"
+        [min]="checkMinMaxValidator('right', 'MIN')" 
+        [max]="checkMinMaxValidator('right', 'MAX')"
+        [(ngModel)]="rightFieldValue"
+        (keyup)="onUpdateValue(true)"/>
+    </div>
+  </label>
+
+  <span class="rpp-field-error" *ngIf="validateField()">
+    {{ getFieldError(field.config.model) | translate }}
   </span>
-
-  <!-- right input -->
-  <input 
-    class="right-input" 
-    [placeholder]="rightFieldPlaceholder || '' | translate"
-    [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
-    [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
-    [inputmode]="rightFieldType === valueType.NUMBER ? 'numeric' : null" 
-    [decimal]="false"
-    [gsDigitOnly]="rightFieldType === valueType.NUMBER" 
-    [autocomplete]="field.config.autocomplete || 'off'"
-    [min]="checkMinMaxValidator('right', 'MIN')" 
-    [max]="checkMinMaxValidator('right', 'MAX')"
-    [(ngModel)]="rightFieldValue"
-    (keyup)="onUpdateValue(true)"/>
+  <span class="rpp-field-error"
+    *ngIf="validateRequired(false)">
+    {{ requiredText(false) }}
+  </span>
+  <span class="rpp-field-error"
+    *ngIf="validateRequired(true)">
+    {{ requiredText(true) }}
+  </span>
 </div>
-
-<!-- validations -->
-<span class="gs-form-field_error_message"
-  *ngIf="validateRequired(false)">
-  {{ requiredText(false) }}
-</span>
-<span class="gs-form-field_error_message"
-  *ngIf="validateRequired(true)">
-  {{ requiredText(true) }}
-</span>

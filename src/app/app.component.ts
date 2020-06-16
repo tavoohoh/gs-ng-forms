@@ -231,6 +231,15 @@ export class AppComponent implements OnInit {
       label: 'Date widget',
       placeholder: 'date widget'
     }),
+    // Map widget
+    new GMapField({
+      model: 'map',
+      label: 'Map widget',
+      placeholder: 'Map widget',
+      validators: {
+        [GFieldValidatorType.REQUIRED]: true
+      }
+    }),
     // Separated by comma widget
     // new GSeparatedByComma({
     //   model: 'comma',
@@ -269,7 +278,7 @@ export class AppComponent implements OnInit {
         left: {
           type: GFieldValueType.STRING,
           validators: {
-            [GFieldValidatorType.REQUIRED]: false
+            [GFieldValidatorType.REQUIRED]: true
           },
           placeholder: 'Left'
         },
@@ -333,15 +342,6 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       },
-    }),
-    // Map widget
-    new GMapField({
-      model: 'map',
-      label: 'Map widget',
-      placeholder: 'Map widget',
-      validators: {
-        [GFieldValidatorType.REQUIRED]: true
-      }
     }),
     // Textarea widget
     new GTextareaField({

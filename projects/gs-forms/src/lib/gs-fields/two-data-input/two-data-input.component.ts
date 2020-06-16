@@ -1,8 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GTwoDataInput } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldValueType } from '../../gs-forms.enums';
-import { GsFormsService } from '../../gs-forms.service';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 // TODO: add error validators
 enum TwoDataInputErrors {
@@ -16,9 +15,8 @@ enum TwoDataInputErrors {
   templateUrl: './two-data-input.component.html',
   styleUrls: ['./two-data-input.component.sass']
 })
-export class GsTwoDataInputComponent implements OnChanges {
+export class GsTwoDataInputComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GTwoDataInput;
-  @Input() public formGroup: FormGroup;
 
   public leftFieldValue: any;
   public rightFieldValue: any;
@@ -30,8 +28,6 @@ export class GsTwoDataInputComponent implements OnChanges {
   public fieldValidatorType = GFieldValidatorType;
   public rightFieldTouched = false;
   public leftFieldTouched = false;
-
-  constructor(private gsService: GsFormsService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue) {
@@ -99,8 +95,8 @@ export class GsTwoDataInputComponent implements OnChanges {
 
   public requiredText(right: boolean) {
     return right
-      ? this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_RIGHT')
-      : this.gsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_LEFT');
+      ? this.formsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_RIGHT')
+      : this.formsService.getValidationMessage('ERR_REQUIRED_TWO_DATA_LEFT');
   }
 
   public validateRequired(right: boolean) {
