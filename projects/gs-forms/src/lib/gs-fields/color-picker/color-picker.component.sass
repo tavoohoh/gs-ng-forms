@@ -1,5 +1,7 @@
 @import ../../gs-forms.styles
 
+$color-value-size: 30px
+
 input
   background: none
   border: none
@@ -7,10 +9,9 @@ input
   margin: 0
   width: 100%
 
-.gs-form-color-picker
-  display: grid
-  grid-template-columns: 1fr 60px
+.rpp-field-box.rpp-field-box-icon
+  grid-template-columns: 1fr $color-value-size
 
-  .color-value
-    padding: 0
-    cursor: pointer
+  .rpp-field-input.rpp-field-icon
+    width: $color-value-size
+    height: $color-value-size

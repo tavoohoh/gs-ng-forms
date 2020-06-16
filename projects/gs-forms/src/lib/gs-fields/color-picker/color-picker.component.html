@@ -1,18 +1,36 @@
 <ng-container [formGroup]="formGroup">
-  <div class="input gs-form-color-picker">
-    <input
-      class="text-value"
-      type="text"
-      (keyup)="setColorValue()"
-      [formControlName]="field.config.model"
-      [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-      [maxlength]="7"
-      [value]="field.config.value || null">
-    <input
-      class="color-value"
-      type="color"
-      (change)="setColorValue()"
-      [formControlName]="field.config.model"
-      [value]="field.config.value || null">
+  <div class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <label
+      class="rpp-field-box rpp-field-box-icon"
+      [class.rpp-form-field-box-full]="field.config.label">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
+      </span>
+
+      <input
+        class="rpp-field-input"
+        type="text"
+        (keyup)="setColorValue()"
+        [formControlName]="field.config.model"
+        [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+        [maxlength]="7"
+        [value]="field.config.value || null">
+      
+      <input
+        class="rpp-field-input rpp-field-icon"
+        type="color"
+        (change)="setColorValue()"
+        [formControlName]="field.config.model"
+        [value]="field.config.value || null">
+    </label>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
   </div>
 </ng-container>

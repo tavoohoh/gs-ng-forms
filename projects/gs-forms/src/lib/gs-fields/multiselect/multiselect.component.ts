@@ -1,26 +1,21 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GDropdownField } from './../../gs-forms.widgets';
 import { GFieldOptionValues, GFieldExistsOptionValues, GFieldOptionValueExists, GFieldOptionValue } from '../../gs-forms.models';
-import { GsFormsService } from '../../gs-forms.service';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-multiselect',
   templateUrl: './multiselect.component.html',
   styleUrls: ['./multiselect.component.sass']
 })
-export class GsMultiselectComponent implements OnChanges {
+export class GsMultiselectComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GDropdownField;
-  @Input() public formGroup: FormGroup;
   @Input() public fieldOption: GFieldOptionValues;
-  @Input() public rppStyles: boolean;
 
   public options: GFieldExistsOptionValues = [];
   public noSelection = true;
   public touched = false;
   public showMultiselectOptions = false;
-
-  constructor(private gsService: GsFormsService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.fieldOption && changes.fieldOption.currentValue) {
@@ -69,7 +64,7 @@ export class GsMultiselectComponent implements OnChanges {
   }
 
   public requiredText() {
-    return this.gsService.getValidationMessage('ERR_REQUIRED');
+    return this.formsService.getValidationMessage('ERR_REQUIRED');
   }
 
 }
