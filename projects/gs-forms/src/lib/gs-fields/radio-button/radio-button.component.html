@@ -1,17 +1,38 @@
 <ng-container [formGroup]="formGroup">
-  <ng-container *ngFor="let option of fieldOption">
-    <label class="radio default-font">
-      <span class="radio_label">
-        {{ option.text | translate }}
+  <div class="rpp-field" 
+    [class.rpp-field-has-error]="validateField()">
+    
+    <div
+      class="rpp-field-box rpp-field-radio-box"
+      [class.rpp-form-field-box-full]="field.config.label">
+  
+      <span
+        class="rpp-field-label"
+        *ngIf="field.config.label">
+        {{ field.config.label | translate }}
       </span>
-      <input
-        class="gs-form-field_radio"
-        type="radio"
-        [name]="field.config.model"
-        [formControlName]="field.config.model"
-        [value]="option.value"
-        [checked]="field.config.value === option.value ? true : false">
-      <span class="checkmark"></span>
-    </label>
-  </ng-container>
+
+      <div class="rpp-field-input rpp-field-radio">
+        <ng-container *ngFor="let option of fieldOption">
+          <label class="rpp-field-radio-input">
+            <span class="rpp-field-radio-input-label">
+              {{ option.text | translate }}
+            </span>
+            <input
+              class="rpp-field-input"
+              type="radio"
+              [name]="field.config.model"
+              [formControlName]="field.config.model"
+              [value]="option.value"
+              [checked]="field.config.value === option.value ? true : false">
+            <span class="rpp-field-radio-input-checkmark"></span>
+          </label>
+        </ng-container>
+      </div>
+    </div>
+
+    <span class="rpp-field-error" *ngIf="validateField()">
+      {{ getFieldError(field.config.model) | translate }}
+    </span>
+  </div>
 </ng-container>

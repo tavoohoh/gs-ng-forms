@@ -1,42 +1,50 @@
 @import ../../gs-forms.styles
 
 /* change the toggle size by changing the following variable */
-$radioSize: 24px
+$rpp-radio-size: 18px
 
 /* Do not modify the following variables! */
-$size: $radioSize
-$containerPadding: calc(#{$radioSize} + .5rem)
-$labelPadding: calc((#{$radioSize} - #{var(--gs-font-size, $gs-font-size)}) / 2)
-$checkmarkWidth: $radioSize / 5
-$checkmarkHeight: $radioSize / 2
-$checkmarkBorder: $radioSize / 3
+$size: $rpp-radio-size
+$rpp-container-padding: calc(#{$rpp-radio-size} + .5rem)
+$rpp-label-padding: calc((#{$rpp-radio-size} - #{var(--gs-font-size, $gs-font-size)}) / 2)
+$rpp-checkmark-height: $rpp-radio-size / 3
+
+.rpp-field-radio-box
+  min-height: $rpp-input-height
+  height: auto
+
+  .rpp-field-radio
+    display: grid
+    grid-template-columns: repeat( auto-fit, minmax(100px, 1fr))
+    gap: $rpp-padding-xsmall
+    margin-top: 4px
 
 /* The container */
-.radio
+.rpp-field-radio-input
   display: block
   position: relative
-  padding-left: $containerPadding
+  padding-left: $rpp-container-padding
   align-self: center
-  margin: 6px 
+  margin: 0 
   cursor: pointer
   -webkit-user-select: none
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
 
-  .radio_label
+  .rpp-field-radio-input-label
     display: block
-    padding: $labelPadding 0
+    padding: $rpp-label-padding 0
     line-height: 1
 
   input
     position: absolute
-    opacity: 0
+    display: none
     cursor: pointer
     height: 0
     width: 0
 
-  .checkmark
+  .rpp-field-radio-input-checkmark
     @include transition()
     display: grid
     position: absolute
@@ -44,7 +52,7 @@ $checkmarkBorder: $radioSize / 3
     left: 0
     height: $size
     width: $size
-    background-color: var(--gs-color-neutral, $gs-color-neutral)
+    background-color: $rpp-color-disabled
     border-radius: 50%
 
     *
@@ -54,18 +62,17 @@ $checkmarkBorder: $radioSize / 3
       content: ""
       display: none
 
-      width: $checkmarkHeight
-      height: $checkmarkHeight
+      width: $rpp-checkmark-height
+      height: $rpp-checkmark-height
       margin: auto
       border-radius: 50%
-      background: var(--gs-color-white, $gs-color-white)
+      background: $rpp-color-white
 
-
-.radio:hover input ~ .checkmark
+.rpp-field-radio-input:hover input ~ .rpp-field-radio-input-checkmark
   opacity: $opacity
 
-.radio input:checked ~ .checkmark
-  background-color: var(--gs-color-primary, $gs-color-primary)
+.rpp-field-radio-input input:checked ~ .rpp-field-radio-input-checkmark
+  background-color: $rpp-color-black
 
-.radio input:checked ~ .checkmark:after
+.rpp-field-radio-input input:checked ~ .rpp-field-radio-input-checkmark:after
   display: block

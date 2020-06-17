@@ -138,25 +138,6 @@ export class AppComponent implements OnInit {
       label: 'Checkbox widget',
       value: false
     }),
-    // Radio widget
-    // new GRadioField({
-    //   model: 'radio',
-    //   label: 'Radio widget',
-    //   optionValues: [
-    //     {
-    //       value: 'blue',
-    //       text: 'blue'
-    //     },
-    //     {
-    //       value: 'yellow',
-    //       text: 'yellow'
-    //     },
-    //     {
-    //       value: 'red',
-    //       text: 'red'
-    //     }
-    //   ]
-    // }),
     // Dropdown widget
     new GDropdownField({
       model: 'dropdown',
@@ -349,6 +330,25 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: true
       }
+    }),
+    // Radio widget
+    new GRadioField({
+      model: 'radio',
+      label: 'Radio widget',
+      optionValues: [
+        {
+          value: 'blue',
+          text: 'blue'
+        },
+        {
+          value: 'yellow',
+          text: 'yellow'
+        },
+        {
+          value: 'red',
+          text: 'red'
+        }
+      ]
     }),
     // Divider widget
     new GDivider({
