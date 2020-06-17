@@ -1,26 +1,43 @@
-<ng-container>
-  <div class="input separated-by-commas-input" (click)="focusInput()" [class.rpp-styles-separated]="rppStyles">
-    <!-- field values -->
-    <ul *ngIf="fieldOption">
-      <li *ngFor="let item of fieldOption; let i = index;">
-        {{ item }}
-        <button type="button" (click)="removeValue(i)">&times;</button>
-      </li>
-    </ul>
-    <!-- input -->
-    <div class="item_input">
-      <input
-        #inputElement
-        class="input gs-form-field_separated_by_commas-input"
-        type="text"
-        [autocomplete]="'off'"
-        [id]="field.config.model"
-        [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-        [(ngModel)]="value"
-        (keydown.enter)="disableEnter($event)"
-        (keydown)="removeLastValue($event)"
-        (keyup)="addValue($event)"/>
-        <button *ngIf="fieldOption.length > 0" type="button" (click)="removeAll()">&times;</button>
+<div class="rpp-field" 
+  [class.rpp-field-has-error]="validateField()">
+  
+  <label
+    class="rpp-field-box rpp-field-separated-box"
+    [class.rpp-form-field-box-full]="field.config.label">
+
+    <span
+      class="rpp-field-label"
+      *ngIf="field.config.label">
+      {{ field.config.label | translate }}
+    </span>
+
+    <div class="rpp-field-input rpp-field-separated-input">
+      <!-- field values -->
+      <ul *ngIf="fieldOption">
+        <li *ngFor="let item of fieldOption; let i = index;">
+          {{ item }}
+          <button type="button" (click)="removeValue(i)">&times;</button>
+        </li>
+      </ul>
+      <!-- input -->
+      <div class="rpp-field-separated-input-item">
+        <input
+          #inputElement
+          class="rpp-field-input"
+          type="text"
+          [autocomplete]="'off'"
+          [id]="field.config.model"
+          [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
+          [(ngModel)]="value"
+          (keydown.enter)="disableEnter($event)"
+          (keydown)="removeLastValue($event)"
+          (keyup)="addValue($event)"/>
+          <button *ngIf="fieldOption.length > 0" type="button" (click)="removeAll()">&times;</button>
+      </div>
     </div>
-  </div>
-</ng-container>
+  </label>
+
+  <span class="rpp-field-error" *ngIf="validateField()">
+    {{ getFieldError(field.config.model) | translate }}
+  </span>
+</div>

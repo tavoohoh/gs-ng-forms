@@ -1,17 +1,23 @@
 @import ../../gs-forms.styles
 
-.separated-by-commas-input
+.rpp-field-separated-box
+  min-height: $rpp-input-height
+  height: auto
+
+.rpp-field-separated-input
   display: flex
   flex-wrap: wrap
   width: 100%
   padding: 0
 
-  .item_input
+  .rpp-field-separated-input-item
     position: relative
-    display: flex
-    flex-grow: 1
+    display: grid
+    grid-template-columns: 1fr 24px
 
     button
+      grid-column: 2
+      grid-row: 1
       cursor: pointer
       background: none
       border: none
@@ -20,13 +26,15 @@
       color: var(--gs-color-primary, $gs-color-primary)
       font-size: 1.4rem
 
-    .input
+    .rpp-field-input
+      grid-column: 1
+      grid-row: 1
       background: none
       border: none
       outline: none
 
   ul
-    margin: 0
+    margin: 3px 0 0 0
     padding: 0
     list-style: none
     display: flex
@@ -34,11 +42,17 @@
     align-items: center
 
     li
-      padding: 4px 8px
-      color: var(--gs-color-white, $gs-color-white)
-      background-color: var(--gs-color-primary, $gs-color-primary)
-      margin: 4px 0 4px 4px
-      border-radius: 12px
+      padding: 2px 6px
+      color: $rpp-color-white
+      background-color: $rpp-color-black
+      margin: 0 3px 3px 0
+      border-radius: $rpp-border-radius-normal
+      overflow: hidden
+      white-space: nowrap
+
+      &:last-child
+        margin-right: 0
+        margin-bottom: 0
 
       button
         cursor: pointer
@@ -47,6 +61,3 @@
         outline: none
         padding: 0
         color: var(--gs-color-white, $gs-color-white)
-
-.rpp-styles-separated
-  flex-direction: column

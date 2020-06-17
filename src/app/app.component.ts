@@ -220,11 +220,11 @@ export class AppComponent implements OnInit {
       }
     }),
     // Separated by comma widget
-    // new GSeparatedByComma({
-    //   model: 'comma',
-    //   label: 'Separated by comma widget',
-    //   placeholder: 'SBC widget'
-    // }),
+    new GSeparatedByComma({
+      model: 'comma',
+      label: 'Separated by comma widget',
+      placeholder: 'SBC widget'
+    }),
     // Two data widget
     new GTwoDataInput({
       model: 'twoDataInput',

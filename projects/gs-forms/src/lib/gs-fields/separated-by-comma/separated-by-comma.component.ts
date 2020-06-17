@@ -1,21 +1,16 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GSeparatedByComma } from '../../gs-forms.widgets';
-import { GFieldValidatorType } from '../../gs-forms.enums';
+import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-separated-by-comma',
   templateUrl: './separated-by-comma.component.html',
   styleUrls: ['./separated-by-comma.component.sass']
 })
-export class GsSeparatedByCommaComponent implements OnChanges {
+export class GsSeparatedByCommaComponent extends RppGenericFieldComponent implements OnChanges {
   @Input() public field: GSeparatedByComma;
-  @Input() public formGroup: FormGroup;
-  @Input() public rppStyles: boolean;
-  public fieldOption: Array<string> = [];
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
-
-  public fieldValidatorType = GFieldValidatorType;
+  public fieldOption: Array<string> = [];
   public value = '';
 
   ngOnChanges(changes: SimpleChanges) {
