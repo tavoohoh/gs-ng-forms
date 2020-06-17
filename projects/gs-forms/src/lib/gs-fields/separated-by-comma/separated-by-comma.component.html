@@ -12,13 +12,6 @@
     </span>
 
     <div class="rpp-field-input rpp-field-separated-input">
-      <!-- field values -->
-      <ul *ngIf="fieldOption">
-        <li *ngFor="let item of fieldOption; let i = index;">
-          {{ item }}
-          <button type="button" (click)="removeValue(i)">&times;</button>
-        </li>
-      </ul>
       <!-- input -->
       <div class="rpp-field-separated-input-item">
         <input
@@ -32,12 +25,21 @@
           (keydown.enter)="disableEnter($event)"
           (keydown)="removeLastValue($event)"
           (keyup)="addValue($event)"/>
-          <button *ngIf="fieldOption.length > 0" type="button" (click)="removeAll()">&times;</button>
+        <button *ngIf="fieldOption.length > 0" type="button" (click)="removeAll()">&times;</button>
       </div>
     </div>
   </label>
 
   <span class="rpp-field-error" *ngIf="validateField()">
     {{ getFieldError(field.config.model) | translate }}
+  </span>
+
+  <span class="rpp-field-separated-values" *ngIf="fieldOption">
+    <span class="rpp-field-separated-value" *ngFor="let item of fieldOption; let i = index;">
+      <span class="rpp-field-separated-value-name">{{ item }}</span>
+      <button class="rpp-field-separated-value-remove" type="button" (click)="removeValue(i)">
+        &times;
+      </button>
+    </span>
   </span>
 </div>

@@ -4,6 +4,40 @@
   min-height: $rpp-input-height
   height: auto
 
+.rpp-field-separated-values
+  margin: 3px 0 0 0
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+
+  .rpp-field-separated-value
+    padding: 2px 6px
+    margin: 0 3px 3px 0
+    color: $rpp-color-white
+    background-color: $rpp-color-black
+    border-radius: $rpp-border-radius-normal
+    display: grid
+    grid-template-columns: 1fr 10px
+    gap: 3px
+
+    &:last-child
+      margin-right: 0
+
+    .rpp-field-separated-value-remove
+      cursor: pointer
+      background: none
+      border: none
+      outline: none
+      padding: 0
+      color: $rpp-color-white
+      align-self: center
+
+    .rpp-field-separated-value-name
+      width: 100%
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
 .rpp-field-separated-input
   display: flex
   flex-wrap: wrap
@@ -14,6 +48,7 @@
     position: relative
     display: grid
     grid-template-columns: 1fr 24px
+    width: 100%
 
     button
       grid-column: 2
@@ -24,7 +59,6 @@
       outline: none
       padding: 0
       color: var(--gs-color-primary, $gs-color-primary)
-      font-size: 1.4rem
 
     .rpp-field-input
       grid-column: 1
@@ -32,32 +66,3 @@
       background: none
       border: none
       outline: none
-
-  ul
-    margin: 3px 0 0 0
-    padding: 0
-    list-style: none
-    display: flex
-    flex-wrap: wrap
-    align-items: center
-
-    li
-      padding: 2px 6px
-      color: $rpp-color-white
-      background-color: $rpp-color-black
-      margin: 0 3px 3px 0
-      border-radius: $rpp-border-radius-normal
-      overflow: hidden
-      white-space: nowrap
-
-      &:last-child
-        margin-right: 0
-        margin-bottom: 0
-
-      button
-        cursor: pointer
-        background: none
-        border: none
-        outline: none
-        padding: 0
-        color: var(--gs-color-white, $gs-color-white)
