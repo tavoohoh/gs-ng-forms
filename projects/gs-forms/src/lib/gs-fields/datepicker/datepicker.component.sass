@@ -1,21 +1,21 @@
 @import ../../gs-forms.styles
 
-.rpp-field-box
+.gs-field-box
   position: relative
 
-.rpp-datepicker
-  @include rpp-mixin-border-style
-  @include rpp-mixin-shadow-soft
+.gs-datepicker
+  @include gs-mixin-border-style
+  @include gs-mixin-shadow-soft
   position: absolute
-  color: $rpp-color-text
-  background: $rpp-color-white
-  border-radius: $rpp-border-radius-normal
-  top: $rpp-input-height + 2px
+  color: $gs-color-text
+  background: $gs-color-white
+  border-radius: $gs-border-radius-normal
+  top: $gs-input-height + 2px
   width: 100%
   overflow: hidden
   z-index: 100
   
-  .rpp-datepicker-header
+  .gs-datepicker-header
     display: grid
     grid-template-columns: 24px auto 24px
     gap: 6px
@@ -24,16 +24,16 @@
       align-self: center
 
     padding: 8px
-    background-color: $rpp-color-black
+    background-color: $gs-color-black
     
-    .rpp-datepicker-arrow-left,
-    .rpp-datepicker-arrow-right,
-    .rpp-datepicker-selector
+    .gs-datepicker-arrow-left,
+    .gs-datepicker-arrow-right,
+    .gs-datepicker-selector
       text-align: center
       align-self: center
       cursor: pointer
       
-    .rpp-datepicker-selector
+    .gs-datepicker-selector
       button
         text-transform: capitalize
         cursor: pointer
@@ -44,13 +44,13 @@
         background-color: transparent
         border: none
         outline: none
-        color: $rpp-color-white
+        color: $gs-color-white
 
         &:hover
           opacity: $opacity
       
-    .rpp-datepicker-arrow-left,
-    .rpp-datepicker-arrow-right
+    .gs-datepicker-arrow-left,
+    .gs-datepicker-arrow-right
       border: none
       background: none
       outline: none
@@ -58,22 +58,22 @@
       line-height: 1
 
       svg
-        fill: $rpp-color-white
+        fill: $gs-color-white
         width: 16px
 
       &:hover
         opacity: $opacity
   
-  .rpp-datepicker-month-selector,
-  .rpp-datepicker-year-selector,
-  .rpp-datepicker-day-selector
+  .gs-datepicker-month-selector,
+  .gs-datepicker-year-selector,
+  .gs-datepicker-day-selector
     display: grid
     min-height: 230px
 
-  .rpp-datepicker-day-selector
+  .gs-datepicker-day-selector
     padding: 1rem
 
-    .rpp-datepicker-weekdays
+    .gs-datepicker-weekdays
       display: grid
       grid-template-columns: repeat(7, 1fr)
       height: 24px
@@ -84,38 +84,38 @@
         font-weight: bold
         text-transform: uppercase
     
-    .rpp-datepicker-days
+    .gs-datepicker-days
       display: grid
       grid-template-columns: repeat(7, 1fr)
       
-      .rpp-datepicker-previous-days,
-      .rpp-datepicker-current-days,
-      .rpp-datepicker-next-days
+      .gs-datepicker-previous-days,
+      .gs-datepicker-current-days,
+      .gs-datepicker-next-days
         padding: 4px
         text-align: center
         align-self: center
         font-size: .8rem
         border: 1px solid transparent
       
-      .rpp-datepicker-previous-days,
-      .rpp-datepicker-next-days
+      .gs-datepicker-previous-days,
+      .gs-datepicker-next-days
         opacity: .4
       
-      .rpp-datepicker-current-days
+      .gs-datepicker-current-days
         cursor: pointer
 
         &:hover
-          color: $rpp-color-white
-          background-color: $rpp-color-primary
+          color: $gs-color-white
+          background-color: $gs-color-primary
           opacity: $opacity
         
-      .rpp-datepicker-selected-day
-        color: $rpp-color-white
-        background-color: $rpp-color-primary
-        border: 1px solid $rpp-color-primary
+      .gs-datepicker-selected-day
+        color: $gs-color-white
+        background-color: $gs-color-primary
+        border: 1px solid $gs-color-primary
 
-  .rpp-datepicker-month-selector,
-  .rpp-datepicker-year-selector
+  .gs-datepicker-month-selector,
+  .gs-datepicker-year-selector
     grid-template-columns: repeat(4, 1fr)
     
     span
@@ -126,6 +126,6 @@
       text-align: center
       
       &:hover
-        color: $rpp-color-white
-        background-color: $rpp-color-primary
+        color: $gs-color-white
+        background-color: $gs-color-primary
         opacity: $opacity

@@ -8,7 +8,7 @@ $size: $checkboxSize
 $checkmarkHeight: $checkboxSize / 1.6
 
 /* The container */
-.rpp-input-check-box
+.gs-input-check-box
   @include transition()
   position: relative
   -webkit-user-select: none
@@ -16,10 +16,10 @@ $checkmarkHeight: $checkboxSize / 1.6
   -ms-user-select: none
   user-select: none
 
-  .rpp-input-check
+  .gs-input-check
     height: $checkboxSize
 
-  .rpp-input-check-checkbox
+  .gs-input-check-checkbox
     position: absolute
     opacity: 0
     cursor: pointer
@@ -29,7 +29,7 @@ $checkmarkHeight: $checkboxSize / 1.6
     margin: 0
     pointer-events: none
 
-  .rpp-input-check-checkmark
+  .gs-input-check-checkmark
     display: grid
     height: $size
     width: $size
@@ -37,7 +37,7 @@ $checkmarkHeight: $checkboxSize / 1.6
     outline: none
     border: none
     padding: 0
-    background-color: $rpp-color-disabled
+    background-color: $gs-color-disabled
     cursor: pointer
 
     svg
@@ -47,10 +47,10 @@ $checkmarkHeight: $checkboxSize / 1.6
       height: $checkmarkHeight
       width: $checkmarkHeight
       margin: 0 auto
-      fill: $rpp-color-white
+      fill: $gs-color-white
 
-    &.rpp-input-check-checked
-      background: $rpp-color-black
+    &.gs-input-check-checked
+      background: $gs-color-black
 
       svg
         display: block

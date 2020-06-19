@@ -1,19 +1,19 @@
 <ng-container [formGroup]="formGroup">
-  <div class="rpp-field" 
-    [class.rpp-field-has-error]="validateField() || errorText">
+  <div class="gs-field" 
+    [class.gs-field-has-error]="validateField() || errorText">
     
     <label
       (click)="file.click()"
-      class="rpp-field-box rpp-field-box-icon rpp-field-file-box"
-      [class.rpp-form-field-box-full]="field.config.label">
+      class="gs-field-box gs-field-box-icon gs-field-file-box"
+      [class.gs-form-field-box-full]="field.config.label">
   
       <span
-        class="rpp-field-label"
+        class="gs-field-label"
         *ngIf="field.config.label">
         {{ field.config.label | translate }}
       </span>
 
-      <div class="rpp-field-input rpp-field-file-input">
+      <div class="gs-field-input gs-field-file-input">
         <ng-container *ngIf="selectedFile">
           {{ selectedFile.name }}{{ selectedFile.type }}
         </ng-container>
@@ -23,25 +23,25 @@
         </ng-container>
       </div>
 
-      <svg class="rpp-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <svg class="gs-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
       </svg>
     </label>
 
-    <span class="rpp-field-error" *ngIf="validateField()">
+    <span class="gs-field-error" *ngIf="validateField()">
       {{ getFieldError(field.config.model) | translate }}
     </span>
 
-    <span class="rpp-field-error" *ngIf="errorText">
+    <span class="gs-field-error" *ngIf="errorText">
       {{ errorText }}
     </span>
   
-    <span class="rpp-field-hint" *ngIf="field.config.accept">
+    <span class="gs-field-hint" *ngIf="field.config.accept">
       {{ supportedFilesText }}: {{ field.config.accept }}
     </span>
 
     <input #file 
-      class="rpp-field-input-hidden" 
+      class="gs-field-input-hidden" 
       type="file" 
       [id]="field.config.model" 
       [accept]="field.config.accept || null"

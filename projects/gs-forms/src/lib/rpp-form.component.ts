@@ -94,7 +94,6 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
   public fieldValidatorType = GFieldValidatorType;
   private customStyles: GStyles;
   public googleMapApiKey: string;
-  public rppStyles = true;
 
   constructor(
     private formsService: GsFormsService,
@@ -215,44 +214,9 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
    */
   @HostBinding('attr.style')
   public get valueAsStyle(): any {
-    if (this.rppStyles) {
-      let variables = '';
-      variables = variables + `--gs-input-padding: none !important;`;
-      variables = variables + `--gs-input-color: #332927 !important;`;
-      variables = variables + `--gs-input-font-weight: 600 !important;`;
-      variables = variables + `--gs-input-border-size: none !important;`;
-      variables = variables + `--gs-input-border-style: none !important;`;
-      variables = variables + `--gs-input-border-color: none !important;`;
-      variables = variables + `--gs-input-margin-bottom: 2px !important;`;
-      variables = variables + `--gs-color-neutral: #332927 !important;`;
-      variables = variables + `--gs-color-primary: #332927 !important;`;
-      variables = variables + `--gs-layout-padding: 1rem 0 !important;`;
-      variables = variables + `--gs-font-size: 1rem !important;`;
+    let variables = '';
 
-      // buttons
-      variables = variables + `--gs-primary-button-padding: 1rem!important;`;
-      variables = variables + `--gs-primary-button-color: #ffffff!important;`;
-      variables = variables + `--gs-primary-button-background-image: linear-gradient(to right, #ff9259, #ff2426)!important;`;
-      variables = variables + `--gs-primary-button-border-color: none!important;`;
-      variables = variables + `--gs-primary-button-border-radius: 1rem!important;`;
-
-      if (this.formOptions && this.formOptions.layout) {
-        if (this.formOptions.layout.columns) {
-          if (typeof this.formOptions.layout.columns === 'number') {
-            // if typeof number
-            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
-          } else {
-            // if typeof string
-            variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
-          }
-        }
-      }
-      return this.sanitizer.bypassSecurityTrustStyle(
-        variables
-      );
-    } else if (this.customStyles) {
-      let variables = '';
-
+    if (this.customStyles) {
       // colors
       if (this.customStyles.color) {
         if (this.customStyles.color.font) {
@@ -397,7 +361,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
         if (this.formOptions.layout.columns) {
           if (typeof this.formOptions.layout.columns === 'number') {
             // if typeof number
-            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
+          variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
           } else {
             // if typeof string
             variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;

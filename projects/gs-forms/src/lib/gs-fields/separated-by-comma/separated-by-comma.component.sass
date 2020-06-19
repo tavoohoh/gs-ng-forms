@@ -1,21 +1,17 @@
 @import ../../gs-forms.styles
 
-.rpp-field-separated-box
-  min-height: $rpp-input-height
-  height: auto
-
-.rpp-field-separated-values
+.gs-field-separated-values
   margin: 3px 0 0 0
   display: flex
   flex-wrap: wrap
   align-items: center
 
-  .rpp-field-separated-value
+  .gs-field-separated-value
     padding: 2px 6px
     margin: 0 3px 3px 0
-    color: $rpp-color-white
-    background-color: $rpp-color-black
-    border-radius: $rpp-border-radius-normal
+    color: $gs-color-white
+    background-color: $gs-color-black
+    border-radius: $gs-border-radius-normal
     display: grid
     grid-template-columns: 1fr 10px
     gap: 3px
@@ -23,28 +19,29 @@
     &:last-child
       margin-right: 0
 
-    .rpp-field-separated-value-remove
+    .gs-field-separated-value-remove
       cursor: pointer
       background: none
       border: none
       outline: none
       padding: 0
-      color: $rpp-color-white
+      color: $gs-color-white
       align-self: center
 
-    .rpp-field-separated-value-name
+    .gs-field-separated-value-name
       width: 100%
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
+      color: $gs-color-white
 
-.rpp-field-separated-input
+.gs-field-separated-input
   display: flex
   flex-wrap: wrap
   width: 100%
   padding: 0
 
-  .rpp-field-separated-input-item
+  .gs-field-separated-input-item
     position: relative
     display: grid
     grid-template-columns: 1fr 24px
@@ -58,9 +55,9 @@
       border: none
       outline: none
       padding: 0
-      color: var(--gs-color-primary, $gs-color-primary)
+      fill: var(--gs-color-neutral, $gs-color-text)
 
-    .rpp-field-input
+    .gs-field-input
       grid-column: 1
       grid-row: 1
       background: none

@@ -1,4 +1,4 @@
-<button class="button" (click)="action(button.config.action)" [class.rpp-button]="rppStyles">
+<button class="button" (click)="action(button.config.action)">
   <ng-container *ngIf="button.config.action !== fieldValueButtonType.RESET">
     {{ button.config.placeholder || button.config.label | translate }}
   </ng-container>

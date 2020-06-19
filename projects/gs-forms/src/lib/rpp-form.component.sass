@@ -1,8 +1,8 @@
 @import ./gs-forms.styles
 
-.gs-rpp-form
+.gs-form
 
-  .rpp-form-body
+  .gs-form-body
     display: grid
     grid-template-columns: var(--gs-layout-columns-quantity, $layout-columns-quantity)
     padding: var(--gs-layout-padding, $layout-padding)
@@ -14,21 +14,21 @@
       padding: .8rem
       gap: .8rem
 
-      .rpp-form-field
+      .gs-form-field
         grid-column: auto!important
 
-    .rpp-form-field
+    .gs-form-field
       position: relative
 
-      .rpp-form-field_label
+      .gs-form-field_label
         display: block
         font-size: var(--gs-font-size, $gs-font-size)
         margin-bottom: 6px
 
-    .rpp-no-widget
+    .gs-no-widget
       align-self: center
 
-  .rpp-form-footer
+  .gs-form-footer
     display: grid
     grid-template-columns: auto
     gap: 1rem

@@ -1,29 +1,29 @@
 @import ../../gs-forms.styles
 
 /* change the toggle size by changing the following variable */
-$rpp-radio-size: 18px
+$gs-radio-size: 18px
 
 /* Do not modify the following variables! */
-$size: $rpp-radio-size
-$rpp-container-padding: calc(#{$rpp-radio-size} + .5rem)
-$rpp-label-padding: calc((#{$rpp-radio-size} - #{var(--gs-font-size, $gs-font-size)}) / 2)
-$rpp-checkmark-height: $rpp-radio-size / 3
+$size: $gs-radio-size
+$gs-container-padding: calc(#{$gs-radio-size} + .5rem)
+$gs-label-padding: calc((#{$gs-radio-size} - #{var(--gs-font-size, $gs-font-size)}) / 2)
+$gs-checkmark-height: $gs-radio-size / 3
 
-.rpp-field-radio-box
-  min-height: $rpp-input-height
+.gs-field-radio-box
+  min-height: $gs-input-height
   height: auto
 
-  .rpp-field-radio
+  .gs-field-radio
     display: grid
     grid-template-columns: repeat( auto-fit, minmax(100px, 1fr))
-    gap: $rpp-padding-xsmall
+    gap: $gs-padding-xsmall
     margin-top: 4px
 
 /* The container */
-.rpp-field-radio-input
+.gs-field-radio-input
   display: block
   position: relative
-  padding-left: $rpp-container-padding
+  padding-left: $gs-container-padding
   align-self: center
   margin: 0 
   cursor: pointer
@@ -32,9 +32,9 @@ $rpp-checkmark-height: $rpp-radio-size / 3
   -ms-user-select: none
   user-select: none
 
-  .rpp-field-radio-input-label
+  .gs-field-radio-input-label
     display: block
-    padding: $rpp-label-padding 0
+    padding: $gs-label-padding 0
     line-height: 1
 
   input
@@ -44,7 +44,7 @@ $rpp-checkmark-height: $rpp-radio-size / 3
     height: 0
     width: 0
 
-  .rpp-field-radio-input-checkmark
+  .gs-field-radio-input-checkmark
     @include transition()
     display: grid
     position: absolute
@@ -52,7 +52,7 @@ $rpp-checkmark-height: $rpp-radio-size / 3
     left: 0
     height: $size
     width: $size
-    background-color: $rpp-color-disabled
+    background-color: $gs-color-disabled
     border-radius: 50%
 
     *
@@ -62,17 +62,17 @@ $rpp-checkmark-height: $rpp-radio-size / 3
       content: ""
       display: none
 
-      width: $rpp-checkmark-height
-      height: $rpp-checkmark-height
+      width: $gs-checkmark-height
+      height: $gs-checkmark-height
       margin: auto
       border-radius: 50%
-      background: $rpp-color-white
+      background: $gs-color-white
 
-.rpp-field-radio-input:hover input ~ .rpp-field-radio-input-checkmark
+.gs-field-radio-input:hover input ~ .gs-field-radio-input-checkmark
   opacity: $opacity
 
-.rpp-field-radio-input input:checked ~ .rpp-field-radio-input-checkmark
-  background-color: $rpp-color-black
+.gs-field-radio-input input:checked ~ .gs-field-radio-input-checkmark
+  background-color: $gs-color-black
 
-.rpp-field-radio-input input:checked ~ .rpp-field-radio-input-checkmark:after
+.gs-field-radio-input input:checked ~ .gs-field-radio-input-checkmark:after
   display: block

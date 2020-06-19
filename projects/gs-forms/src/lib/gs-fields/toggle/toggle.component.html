@@ -1,28 +1,28 @@
 <ng-container [formGroup]="formGroup">
   <div
-    class="rpp-field" 
-    [class.rpp-field-has-error]="validateField()">
+    class="gs-field" 
+    [class.gs-field-has-error]="validateField()">
     
-    <label class="rpp-field-box rpp-input-switch-box">
+    <label class="gs-field-box gs-input-switch-box">
   
       <span
-        class="rpp-field-label"
+        class="gs-field-label"
         *ngIf="field.config.label">
         {{ field.config.label | translate }}
       </span>
 
-      <div class="rpp-input-switch">
+      <div class="gs-input-switch">
         <input 
-          class="rpp-input-switch-checkbox"
+          class="gs-input-switch-checkbox"
           type="checkbox" 
           [id]="field.config.model"
           [formControlName]="field.config.model"
           [value]="field.config.value || null"/>
-        <div class="rpp-input-switch-slider"></div>
+        <div class="gs-input-switch-slider"></div>
       </div>
     </label>
 
-    <span class="rpp-field-error" *ngIf="validateField()">
+    <span class="gs-field-error" *ngIf="validateField()">
       {{ getFieldError(field.config.model) | translate }}
     </span>
   </div>

@@ -1,20 +1,20 @@
-<div class="rpp-field" 
-  [class.rpp-field-has-error]="validateField()"
+<div class="gs-field" 
+  [class.gs-field-has-error]="validateField()"
   gsClickOutside 
   (gsClickOutside)="toggleDatePickerSelector(false)">
   
-  <label class="rpp-field-box"
-    [class.rpp-form-field-box-full]="field.config.label">
+  <label class="gs-field-box"
+    [class.gs-form-field-box-full]="field.config.label">
 
     <span
-      class="rpp-field-label"
+      class="gs-field-label"
       *ngIf="field.config.label">
       {{ field.config.label | translate }}
     </span>
 
     <input
       #inputElement
-      class="rpp-field-input rpp-field-input-date"
+      class="gs-field-input gs-field-input-date"
       type="text"
       [id]="field.config.model"
       [placeholder]="'YYYY-MM-DD'"
@@ -26,13 +26,13 @@
     />
   </label>
 
-  <div class="rpp-datepicker" *ngIf="showDatePickerSelector">
+  <div class="gs-datepicker" *ngIf="showDatePickerSelector">
     
-    <div class="rpp-datepicker-header">
+    <div class="gs-datepicker-header">
       <!-- arrow-left -->
       <button 
         type="button" 
-        class="rpp-datepicker-arrow-left" 
+        class="gs-datepicker-arrow-left" 
         (click)="navigateSelectors(false)">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -44,7 +44,7 @@
           </svg>
       </button>
   
-      <span class="rpp-datepicker-selector">
+      <span class="gs-datepicker-selector">
         <!-- day selector header -->
         <button
           type="button"
@@ -72,7 +72,7 @@
       <!-- arrow-right -->
       <button 
         type="button" 
-        class="rpp-datepicker-arrow-right"
+        class="gs-datepicker-arrow-right"
         (click)="navigateSelectors(true)">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -86,24 +86,24 @@
     </div>
   
     <!-- days selector --> 
-    <div class="rpp-datepicker-day-selector" *ngIf="showSelector === showSelectorType.DAY">
-      <div class="rpp-datepicker-weekdays">
+    <div class="gs-datepicker-day-selector" *ngIf="showSelector === showSelectorType.DAY">
+      <div class="gs-datepicker-weekdays">
         <span *ngFor="let day of weekdays">
           {{ day }}
         </span>
       </div>
   
-      <div class="rpp-datepicker-days" *ngIf="daysInCurrentMonth">
+      <div class="gs-datepicker-days" *ngIf="daysInCurrentMonth">
         <!-- previous month -->
         <span *ngFor="let previousDay of daysInPreviousMonthWeek"
-          class="rpp-datepicker-previous-days" 
+          class="gs-datepicker-previous-days" 
           (click)="changeMonth(false)">
           {{ previousDay }}
         </span>
   
         <!-- current and available days for current month -->
         <span *ngFor="let date of daysInCurrentMonth" 
-          class="rpp-datepicker-current-days"
+          class="gs-datepicker-current-days"
           [class.selected-day]="date.status === 'selected'"
           (click)="selectDate(date.day)">
             {{ date.day }}
@@ -111,7 +111,7 @@
   
         <!-- next month -->
         <span *ngFor="let nextDay of daysInNextMonthWeek" 
-          class="rpp-datepicker-next-days"
+          class="gs-datepicker-next-days"
           (click)="changeMonth(true)">
           {{ nextDay }}
         </span>
@@ -119,14 +119,14 @@
     </div>
   
     <!-- months selector --> 
-    <div class="rpp-datepicker-month-selector" *ngIf="showSelector === showSelectorType.MONTH">
+    <div class="gs-datepicker-month-selector" *ngIf="showSelector === showSelectorType.MONTH">
       <span *ngFor="let month of months; let i = index;" (click)="selectMonth(i)">
         {{ month | slice:0:3 }}
       </span>
     </div>
   
     <!-- years selector --> 
-    <div class="rpp-datepicker-month-selector" *ngIf="showSelector === showSelectorType.YEAR">
+    <div class="gs-datepicker-month-selector" *ngIf="showSelector === showSelectorType.YEAR">
       <span
         *ngFor="let x of yearUiArray; let i = index;"
         (click)="selectYear(currentYear + yearMultiplier + i)">
@@ -135,7 +135,7 @@
     </div>
   </div>
 
-  <span class="rpp-field-error" *ngIf="validateField()">
+  <span class="gs-field-error" *ngIf="validateField()">
     {{ getFieldError(field.config.model) | translate }}
   </span>
 </div>

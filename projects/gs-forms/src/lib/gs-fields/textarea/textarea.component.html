@@ -1,20 +1,20 @@
 <ng-container [formGroup]="formGroup">
   <div
-    class="rpp-field" 
-    [class.rpp-field-has-error]="validateField()">
+    class="gs-field" 
+    [class.gs-field-has-error]="validateField()">
     
     <label
-      class="rpp-field-box"
-      [class.rpp-form-field-box-full]="field.config.label">
+      class="gs-field-box"
+      [class.gs-form-field-box-full]="field.config.label">
   
       <span
-        class="rpp-field-label"
+        class="gs-field-label"
         *ngIf="field.config.label">
         {{ field.config.label | translate }}
       </span>
 
       <textarea
-        class="rpp-field-input"
+        class="gs-field-input"
         type="text"
         [id]="field.config.model"
         [minlength]="field.config.validators ? field.config.validators[fieldValidatorType.MIN_LENGTH] : null"
@@ -24,7 +24,7 @@
         [value]="field.config.value || null"></textarea>
     </label>
 
-    <span class="rpp-field-error" *ngIf="validateField()">
+    <span class="gs-field-error" *ngIf="validateField()">
       {{ getFieldError(field.config.model) | translate }}
     </span>
   </div>

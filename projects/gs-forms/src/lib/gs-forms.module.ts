@@ -20,7 +20,6 @@ import { GsDropdownComponent } from './gs-fields/dropdown/dropdown.component';
 import { GsCurrencyInputComponent } from './gs-fields/currency-input/currency-input.component';
 import { GsPhoneInputComponent } from './gs-fields/phone-input/phone-input.component';
 import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
-import { GsTaxTypeComponent } from './gs-fields/tax-type/tax-type.component';
 import { GsSeparatedByCommaComponent } from './gs-fields/separated-by-comma/separated-by-comma.component';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsDividerComponent } from './gs-fields/divider/divider.component';
@@ -51,7 +50,6 @@ const widgets = [
   GsCurrencyInputComponent,
   GsPhoneInputComponent,
   GsDatePickerComponent,
-  GsTaxTypeComponent,
   GsSeparatedByCommaComponent,
   GsFileInputComponent,
   GsDividerComponent,
@@ -89,7 +87,7 @@ const widgets = [
   ]
 })
 export class GsFormsModule {
-  public static forRoot(styles?: GStyles, googleMapApiKey?: string, rppStyles = false): ModuleWithProviders {
+  public static forRoot(styles?: GStyles, googleMapApiKey?: string): ModuleWithProviders {
     if (googleMapApiKey && !document.getElementById('google-map-script')) {
       const googleScript = document.createElement('script');
       googleScript.defer = true;
@@ -110,10 +108,6 @@ export class GsFormsModule {
         {
           provide: 'googleMapApiKey',
           useValue: googleMapApiKey
-        },
-        {
-          provide: 'rppStyles',
-          useValue: rppStyles
         }
       ]
     };

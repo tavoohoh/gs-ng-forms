@@ -9,7 +9,6 @@ import { GFieldValueButtonType } from '../../gs-forms.enums';
 })
 export class GsButtonComponent {
   @Input() public button: GButton;
-  @Input() public rppStyles: boolean;
   @Output() hdlAction = new EventEmitter(null);
 
   public fieldValueButtonType = GFieldValueButtonType;

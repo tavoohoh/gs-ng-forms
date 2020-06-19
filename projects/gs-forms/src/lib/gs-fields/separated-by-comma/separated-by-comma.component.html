@@ -1,22 +1,22 @@
-<div class="rpp-field" 
-  [class.rpp-field-has-error]="validateField()">
+<div class="gs-field" 
+  [class.gs-field-has-error]="validateField()">
   
   <label
-    class="rpp-field-box rpp-field-separated-box"
-    [class.rpp-form-field-box-full]="field.config.label">
+    class="gs-field-box gs-field-separated-box"
+    [class.gs-form-field-box-full]="field.config.label">
 
     <span
-      class="rpp-field-label"
+      class="gs-field-label"
       *ngIf="field.config.label">
       {{ field.config.label | translate }}
     </span>
 
-    <div class="rpp-field-input rpp-field-separated-input">
+    <div class="gs-field-input gs-field-separated-input">
       <!-- input -->
-      <div class="rpp-field-separated-input-item">
+      <div class="gs-field-separated-input-item">
         <input
           #inputElement
-          class="rpp-field-input"
+          class="gs-field-input"
           type="text"
           [autocomplete]="'off'"
           [id]="field.config.model"
@@ -30,14 +30,14 @@
     </div>
   </label>
 
-  <span class="rpp-field-error" *ngIf="validateField()">
+  <span class="gs-field-error" *ngIf="validateField()">
     {{ getFieldError(field.config.model) | translate }}
   </span>
 
-  <span class="rpp-field-separated-values" *ngIf="fieldOption">
-    <span class="rpp-field-separated-value" *ngFor="let item of fieldOption; let i = index;">
-      <span class="rpp-field-separated-value-name">{{ item }}</span>
-      <button class="rpp-field-separated-value-remove" type="button" (click)="removeValue(i)">
+  <span class="gs-field-separated-values" *ngIf="fieldOption">
+    <span class="gs-field-separated-value" *ngFor="let item of fieldOption; let i = index;">
+      <span class="gs-field-separated-value-name">{{ item }}</span>
+      <button class="gs-field-separated-value-remove" type="button" (click)="removeValue(i)">
         &times;
       </button>
     </span>

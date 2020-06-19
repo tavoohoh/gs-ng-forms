@@ -1,53 +1,53 @@
 @import ../../gs-forms.styles
 
 /* change the toggle size by changing the following variable */
-$rpp-switch-size: 17px
+$gs-switch-size: 17px
 
 /* Do not modify the following variables! */
-$rpp-switch-height: $rpp-switch-size
-$rpp-switch-width: ($rpp-switch-size * 2) - 4
-$rpp-switch-translation: $rpp-switch-size - 4
-$rpp-switch-slider-size: $rpp-switch-size - 6
-$rpp-switch-border-radius: $rpp-switch-size + 4
+$gs-switch-height: $gs-switch-size
+$gs-switch-width: ($gs-switch-size * 2) - 4
+$gs-switch-translation: $gs-switch-size - 4
+$gs-switch-slider-size: $gs-switch-size - 6
+$gs-switch-border-radius: $gs-switch-size + 4
 
-.rpp-input-switch-box
+.gs-input-switch-box
 
-  .rpp-input-switch
+  .gs-input-switch
     position: relative
     display: inline-block
-    height: $rpp-switch-height
-    width: $rpp-switch-width
+    height: $gs-switch-height
+    width: $gs-switch-width
     margin-top: 5px
 
-    .rpp-input-switch-checkbox
+    .gs-input-switch-checkbox
       display: none
 
-      &:checked ~ .rpp-input-switch-slider
-        background-color: $rpp-color-black
+      &:checked ~ .gs-input-switch-slider
+        background-color: $gs-color-black
 
-      &:checked ~ .rpp-input-switch-slider:before
-        -webkit-transform: translateX($rpp-switch-translation)
-        -ms-transform: translateX($rpp-switch-translation)
-        transform: translateX($rpp-switch-translation)
+      &:checked ~ .gs-input-switch-slider:before
+        -webkit-transform: translateX($gs-switch-translation)
+        -ms-transform: translateX($gs-switch-translation)
+        transform: translateX($gs-switch-translation)
 
-    .rpp-input-switch-slider
+    .gs-input-switch-slider
       position: absolute
       cursor: pointer
       top: 0
       left: 0
       right: 0
       bottom: 0
-      background-color: $rpp-color-disabled
-      border-radius: $rpp-switch-border-radius
+      background-color: $gs-color-disabled
+      border-radius: $gs-switch-border-radius
 
       &:before
-        @include rpp-mixin-transition
+        @include gs-mixin-transition
 
         position: absolute
         content: ""
-        height: $rpp-switch-slider-size
-        width: $rpp-switch-slider-size
+        height: $gs-switch-slider-size
+        width: $gs-switch-slider-size
         left: 3px
         bottom: 3px
-        background-color: $rpp-color-white
+        background-color: $gs-color-white
         border-radius: 50%

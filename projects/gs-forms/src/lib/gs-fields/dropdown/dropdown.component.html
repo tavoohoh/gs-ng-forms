@@ -1,40 +1,40 @@
 <ng-container [formGroup]="formGroup">
   <div
-    class="rpp-field" 
-    [class.rpp-field-has-error]="validateField()">
+    class="gs-field" 
+    [class.gs-field-has-error]="validateField()">
     
     <label
-      class="rpp-field-box rpp-input-select-box rpp-field-box-icon"
-      [class.rpp-form-field-box-full]="field.config.label">
+      class="gs-field-box gs-input-select-box gs-field-box-icon"
+      [class.gs-form-field-box-full]="field.config.label">
   
       <span
-        class="rpp-field-label"
+        class="gs-field-label"
         *ngIf="field.config.label">
         {{ field.config.label | translate }}
       </span>
 
-      <div class="rpp-input-select">
-        <div class="rpp-input-select-value" data-value={selectValue.value}>
+      <div class="gs-input-select">
+        <div class="gs-input-select-value" data-value={selectValue.value}>
           {{ dropdownTextValue | translate }}
         </div>
-        <input class="rpp-input-select-checkbox" type="checkbox" />
-        <div class="rpp-input-select-options">
+        <input class="gs-input-select-checkbox" type="checkbox" />
+        <div class="gs-input-select-options">
           <div
             *ngFor="let option of fieldOption"
-            class="rpp-input-select-option"
-            [class.rpp-input-select-option-active]="option.value === formGroup.controls[field.config.model].value"
+            class="gs-input-select-option"
+            [class.gs-input-select-option-active]="option.value === formGroup.controls[field.config.model].value"
             (click)="changeValue(option.text, option.value)">
             {{ option.text | translate }}
           </div>
         </div>
       </div>
 
-      <svg class="rpp-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <svg class="gs-field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z" />
       </svg>
     </label>
 
-    <span class="rpp-field-error" *ngIf="validateField()">
+    <span class="gs-field-error" *ngIf="validateField()">
       {{ getFieldError(field.config.model) | translate }}
     </span>
   </div>

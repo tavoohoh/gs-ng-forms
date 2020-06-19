@@ -1,20 +1,20 @@
-<div class="rpp-field" 
-  [class.rpp-field-has-error]="validateField() || validateRequired(false) || validateRequired(true)">
+<div class="gs-field" 
+  [class.gs-field-has-error]="validateField() || validateRequired(false) || validateRequired(true)">
   
   <label
-    class="rpp-field-box"
-    [class.rpp-form-field-box-full]="field.config.label">
+    class="gs-field-box"
+    [class.gs-form-field-box-full]="field.config.label">
 
     <span
-      class="rpp-field-label"
+      class="gs-field-label"
       *ngIf="field.config.label">
       {{ field.config.label | translate }}
     </span>
 
-    <div class="rpp-field-input rpp-field-input-two-data" [ngStyle]="setGrid()">
+    <div class="gs-field-input gs-field-input-two-data" [ngStyle]="setGrid()">
       <!-- left input -->
       <input 
-        class="rpp-field-input rpp-field-input-two-data-left" 
+        class="gs-field-input gs-field-input-two-data-left" 
         [placeholder]="leftFieldPlaceholder || '' | translate"
         [type]="leftFieldType === valueType.NUMBER ? 'number' : 'string'"
         [pattern]="leftFieldType === valueType.NUMBER ? '[0-9]*' : null"
@@ -28,13 +28,13 @@
         (keyup)="onUpdateValue(false)"/>
     
       <!-- divider -->
-      <span class="rpp-field-input-two-data-divider">
+      <span class="gs-field-input-two-data-divider">
         {{ field.config.divider || '-' }}
       </span>
     
       <!-- right input -->
       <input 
-        class="rpp-field-input rpp-field-input-two-data-right" 
+        class="gs-field-input gs-field-input-two-data-right" 
         [placeholder]="rightFieldPlaceholder || '' | translate"
         [type]="rightFieldType === valueType.NUMBER ? 'number' : 'string'"
         [pattern]="rightFieldType === valueType.NUMBER ? '[0-9]*' : null"
@@ -49,14 +49,14 @@
     </div>
   </label>
 
-  <span class="rpp-field-error" *ngIf="validateField()">
+  <span class="gs-field-error" *ngIf="validateField()">
     {{ getFieldError(field.config.model) | translate }}
   </span>
-  <span class="rpp-field-error"
+  <span class="gs-field-error"
     *ngIf="validateRequired(false)">
     {{ requiredText(false) }}
   </span>
-  <span class="rpp-field-error"
+  <span class="gs-field-error"
     *ngIf="validateRequired(true)">
     {{ requiredText(true) }}
   </span>

@@ -1,22 +1,22 @@
 @import ../../gs-forms.styles
 
-.rpp-input-select-box
-  @include rpp-mixin-no-selectable
+.gs-input-select-box
+  @include gs-mixin-no-selectable
   cursor: pointer
 
-  .rpp-input-select
+  .gs-input-select
     position: relative
 
-    .rpp-input-select-options
-      @include rpp-mixin-border-style
-      @include rpp-mixin-shadow-soft
+    .gs-input-select-options
+      @include gs-mixin-border-style
+      @include gs-mixin-shadow-soft
       display: none
       position: absolute
-      background: $rpp-color-white
-      border-radius: $rpp-border-radius-normal
+      background: $gs-color-white
+      border-radius: $gs-border-radius-normal
       top: 32px
-      left: calc(-#{$rpp-padding-small} - 2px)
-      width: calc(100% + (2 * #{$rpp-padding-small}) + 24px) // 24 is because 20 = icon width, 4 = border * 2  
+      left: calc(-#{$gs-padding-small} - 2px)
+      width: calc(100% + (2 * #{$gs-padding-small}) + 24px) // 24 is because 20 = icon width, 4 = border * 2  
       overflow-x: hidden
       overflow-y: auto
       max-height: 180px
@@ -38,34 +38,34 @@
         z-index: 900
         pointer-events: auto
 
-      .rpp-input-select-option
+      .gs-input-select-option
         cursor: pointer
         position: relative
         display: flex
-        height: $rpp-input-height
-        padding: $rpp-padding-xsmall $rpp-padding-small
+        height: $gs-input-height
+        padding: $gs-padding-xsmall $gs-padding-small
         align-items: center
-        border-bottom: 1px solid $rpp-color-gray-light
+        border-bottom: 1px solid $gs-color-gray-light
         z-index: 901
 
         &:hover,
-        &.rpp-input-select-option-active
-          background-color: $rpp-color-gray-light
+        &.gs-input-select-option-active
+          background-color: $gs-color-gray-light
 
-    .rpp-input-select-checkbox
+    .gs-input-select-checkbox
       display: none
 
-      &:checked ~ .rpp-input-select-options
+      &:checked ~ .gs-input-select-options
         display: block
 
-    .rpp-input-select-value
+    .gs-input-select-value
       display: block
       font-weight: 600
-      font-size: $rpp-font-size-input
+      font-size: $gs-font-size-input
       line-height: 1
       padding: 0.1rem 0 0
 
       &::placeholder
-        color: $rpp-color-black
+        color: $gs-color-black
         opacity: 1
         font-weight: 400

@@ -1,4 +1,4 @@
-<div class="rpp-field" [class.rpp-field-has-error]="
+<div class="gs-field" [class.gs-field-has-error]="
   validateField() ||
   validateRequired(true) && !validateFormatMinutes && !validateFormatHours && !validateRequiredHours && validateRequiredMinutes ||
   validateRequired() && !validateFormatMinutes && !validateFormatHours && validateRequiredHours && !validateRequiredMinutes ||
@@ -9,20 +9,20 @@
 ">
   
   <label
-    class="rpp-field-box"
-    [class.rpp-form-field-box-full]="field.config.label">
+    class="gs-field-box"
+    [class.gs-form-field-box-full]="field.config.label">
 
     <span
-      class="rpp-field-label"
+      class="gs-field-label"
       *ngIf="field.config.label">
       {{ field.config.label | translate }}
     </span>
 
-    <div class="rpp-field-input rpp-field-timepicker">
+    <div class="gs-field-input gs-field-timepicker">
       <!-- hour input -->
       <input 
         type="text"
-        class="rpp-field-input rpp-field-timepicker-input-hour" 
+        class="gs-field-input gs-field-timepicker-input-hour" 
         placeholder="HH"
         [decimal]="false"
         [gsDigitOnly]="true" 
@@ -31,11 +31,11 @@
         maxlength="2"
         (keyup)="onUpdateValue(false)"/>
       <!-- : divider -->
-      <span class="rpp-field-input rpp-field-timepicker-input-divider">:</span>
+      <span class="gs-field-input gs-field-timepicker-input-divider">:</span>
       <!-- min input -->
       <input 
         type="text"
-        class="rpp-field-input rpp-field-timepicker-input-min" 
+        class="gs-field-input gs-field-timepicker-input-min" 
         placeholder="mm"
         [decimal]="false"
         [gsDigitOnly]="true" 
@@ -46,7 +46,7 @@
     </div>
   </label>
 
-  <span class="rpp-field-error">
+  <span class="gs-field-error">
     <!-- show one error at a time --->
     <ng-container *ngIf="validateField()">
       {{ getFieldError(field.config.model) | translate }}
