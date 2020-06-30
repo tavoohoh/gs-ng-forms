@@ -5,7 +5,8 @@
     gsClickOutside
     (gsClickOutside)="toggleCountryOptions(true)"
     class="gs-field-box"
-    [class.gs-form-field-box-full]="field.config.label">
+    [class.gs-form-field-box-full]="field.config.label"
+    [for]="field.config.model">
 
     <span
       class="gs-field-label"
@@ -14,7 +15,6 @@
     </span>
 
     <div class="gs-field-phone">
-
       <button 
         class="gs-field-phone-country-select"
         [class.gs-field-phone-disabled]="!editCountry"
@@ -41,6 +41,7 @@
         type="text"
         [autocomplete]="field.config.autocomplete || 'off'"
         [id]="field.config.model"
+        [name]="field.config.model"
         [placeholder]="phoneMask"
         [(ngModel)]="value"
         (input)="formatPhone(true)"/>
