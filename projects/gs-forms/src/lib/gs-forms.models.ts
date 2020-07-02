@@ -350,6 +350,10 @@ export class GFieldDividerConfiguration extends GFieldConfiguration {
    * If true the divider horizontal line wont be showed
    */
   hideLine?: boolean;
+  /**
+   * A little description
+   */
+  description?: string;
 }
 
 /**
