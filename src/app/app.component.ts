@@ -89,6 +89,18 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.REQUIRED]: true
       },
     }),
+    // Text widget
+    new GTextField({
+      model: 'text1',
+      label: 'Text widget with symbol',
+      placeholder: 'Text widget',
+      symbol: '%',
+      validators: {
+        [GFieldValidatorType.MIN_LENGTH]: 2,
+        [GFieldValidatorType.MAX_LENGTH]: 30,
+        [GFieldValidatorType.REQUIRED]: true
+      },
+    }),
     // Email input (text widget)
     new GTextField({
       model: 'email',

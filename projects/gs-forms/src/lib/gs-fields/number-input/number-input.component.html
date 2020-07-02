@@ -28,6 +28,11 @@
         [value]="field.config.value || null"
         (input)="setPresicion($event.target)"
         gsDigitOnly>
+
+        <!-- symbol -->
+        <div class="gs-form-field_symbol" *ngIf="field.config.symbol">
+          {{field.config.symbol}}
+        </div>
     </label>
 
     <span class="gs-field-error" *ngIf="validateField()">
