@@ -353,10 +353,19 @@ export class AppComponent implements OnInit {
     // Divider widget
     new GDivider({
       model: null,
+      seccionName: 'Divider widget with description',
+      hideLine: false,
+      padding: '1rem 0',
+      description: 'i am a little description, hi mom i am famous',
+      gridColumn: '1 / 6'
+    }),
+    // Divider widget
+    new GDivider({
+      model: null,
       seccionName: 'Divider widget',
       hideLine: false,
       padding: '1rem 0',
-      gridColumn: '1 / 4'
+      gridColumn: '1 / 6'
     }),
     // Show data widget
     new GShowData({
