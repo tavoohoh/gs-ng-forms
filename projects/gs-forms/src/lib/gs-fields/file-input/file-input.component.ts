@@ -11,7 +11,7 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
   @Input() public field: GFieldFile;
 
   public name: string;
-  public size: string;
+  public size: number;
   public img: any = '';
 
   public loading = false;
@@ -31,7 +31,13 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
     en: 'Supported files',
     pt: 'Arquivos suportados'
   };
+  private supportedSizeFilesTranslates = {
+    es: `Tamaño limite`,
+    en: 'Size limit',
+    pt: 'Limite de tamanhos'
+  };
   public supportedFilesText: string;
+  public supportedSizeFilesText: string;
 
   private errorTranslates = {
     es: 'Ocurrio un error al subir el archivo. Por favor intenta de nuevo.',
@@ -42,6 +48,7 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
 
   ngOnInit() {
     this.supportedFilesText = this.supportedFilesTranslates[this.formsService.getLang() || 'en'];
+    this.supportedSizeFilesText = this.supportedSizeFilesTranslates[this.formsService.getLang() || 'en'];
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -61,6 +68,10 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
       } else {
         this.returnFile = false;
       }
+
+      if (this.field.config.size) {
+
+      }
     }
   }
 
@@ -73,7 +84,9 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
     const fileName = file.name.split('.').reverse()[1];
     let isValidType = true;
 
-    if (!this.validFileType(file)) {
+    this.size = file.size;
+
+    if (!this.validFileType(file) || !this.validFileSize()) {      
       isValidType = false;
       this.loading = false;
     }
@@ -134,7 +147,7 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
     reader.readAsDataURL(file);
   }
 
-  private returnFileSize(size: number): string {
+  public returnFileSize(size: number): string {
     if (size < 1024) {
       return size + 'bytes';
     } else if (size >= 1024 && size < 1048576) {
@@ -142,6 +155,10 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
     } else if (size >= 1048576) {
       return (size / 1048576).toFixed(1) + 'MB';
     }
+  }
+
+  public validFileSize(): boolean {
+    return this.field.config.size < this.size;
   }
 
   private validFileType(file: File): boolean {

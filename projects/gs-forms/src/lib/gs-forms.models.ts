@@ -274,6 +274,10 @@ export class GFieldFileConfiguration extends GFieldConfiguration {
    */
   accept?: string;
   /**
+   * valid limit size
+   */
+  size?: number;
+  /**
    * Default file value
    */
   value?: {
