@@ -22,6 +22,7 @@ import { GFieldSelector, GFieldValidatorType, GFieldValueButtonType } from './gs
 import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
 import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
 import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
+import { GsDropdownComponent } from './gs-fields/dropdown/dropdown.component';
 
 @Component({
   selector: 'rpp-form',
@@ -88,6 +89,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
+  @ViewChildren(GsDropdownComponent) dropdownComponent: QueryList<GsDropdownComponent>;
 
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
@@ -394,6 +396,10 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
 
           if (this.datePickerComponent !== undefined) {
             this.datePickerComponent.forEach(el => el.resetField());
+          }
+
+          if (this.dropdownComponent !== undefined) {
+            this.dropdownComponent.forEach(el => el.resetField());
           }
         }
         break;

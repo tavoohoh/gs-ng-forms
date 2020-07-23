@@ -46,4 +46,7 @@ export class GsDropdownComponent extends RppGenericFieldComponent implements OnC
       this.field.config.placeholder || this.field.config.label || this.field.config.model;
   }
 
+  public resetField() {
+    this.field.config.value = '';
+  }
 }
