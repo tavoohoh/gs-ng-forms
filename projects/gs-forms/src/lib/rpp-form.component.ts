@@ -389,6 +389,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
       case GFieldValueButtonType.RESET:
         if (this.formGroup) {
           this.formGroup.reset();
+          
 
           if (this.fileInputComponent !== undefined) {
             this.fileInputComponent.forEach(el => el.resetField());
