@@ -363,7 +363,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
         if (this.formOptions.layout.columns) {
           if (typeof this.formOptions.layout.columns === 'number') {
             // if typeof number
-          variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
+            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
           } else {
             // if typeof string
             variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
@@ -389,7 +389,6 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
       case GFieldValueButtonType.RESET:
         if (this.formGroup) {
           this.formGroup.reset();
-          
 
           if (this.fileInputComponent !== undefined) {
             this.fileInputComponent.forEach(el => el.resetField());

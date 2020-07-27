@@ -47,10 +47,6 @@ export class GsDropdownComponent extends RppGenericFieldComponent implements OnC
   }
 
   public resetField() {
-    console.log('me reinicio?')
     this.dropdownTextValue = this.field.config.placeholder || this.field.config.label || this.field.config.model;
-    this.field.config.value = null;
-    this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
-    this.formGroup.controls[this.field.config.model].updateValueAndValidity();
   }
 }
