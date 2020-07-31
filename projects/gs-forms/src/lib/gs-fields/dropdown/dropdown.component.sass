@@ -7,6 +7,21 @@
   .gs-input-select
     position: relative
 
+    .gs-input-select-options-background
+      cursor: default
+      opacity: 0
+      background-color: transparent
+      height: 100vh
+      width: 100vw
+      display: none
+      position: fixed
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      z-index: 900
+      pointer-events: auto
+
     .gs-input-select-options
       @include gs-mixin-border-style
       @include gs-mixin-shadow-soft
@@ -16,27 +31,11 @@
       border-radius: $gs-border-radius-normal
       top: 32px
       left: calc(-#{$gs-padding-small} - 2px)
-      width: calc(100% + (2 * #{$gs-padding-small}) + 24px) // 24 is because 20 = icon width, 4 = border * 2  
+      width: calc(100% + (2 * #{$gs-padding-small}) + 24px) // 24 is because 20 = icon width, 4 = border * 2
       overflow-x: hidden
       overflow-y: auto
       max-height: 180px
-      z-index: 100
-
-      &::before
-        content: ""
-        cursor: default
-        opacity: 0
-        background-color: transparent
-        height: 100vh
-        width: 100vw
-        display: block
-        position: fixed
-        top: 0
-        bottom: 0
-        left: 0
-        right: 0
-        z-index: 900
-        pointer-events: auto
+      z-index: 900
 
       .gs-input-select-option
         cursor: pointer
@@ -55,7 +54,8 @@
     .gs-input-select-checkbox
       display: none
 
-      &:checked ~ .gs-input-select-options
+      &:checked ~ .gs-input-select-options,
+      &:checked ~ .gs-input-select-options-background
         display: block
 
     .gs-input-select-value
