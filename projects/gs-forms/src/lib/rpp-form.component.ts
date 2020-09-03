@@ -20,8 +20,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { GsFormsService } from './gs-forms.service';
 import { GFieldSelector, GFieldValidatorType, GFieldValueButtonType } from './gs-forms.enums';
 import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
-import { GsFileInputComponent } from './gs-fields/file-input/file-input.component';
-import { GsDatePickerComponent } from './gs-fields/datepicker/datepicker.component';
+import { GsFileInputComponent, GsDatePickerComponent } from './gs-fields';
 
 @Component({
   selector: 'rpp-form',
@@ -85,6 +84,10 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
    * Get button event selected
    */
   @Output() private customButtonClick = new EventEmitter<string>();
+  /**
+   * Get form group changes. formGroup: FormGroup `form`
+   */
+  @Output() private fieldChanged = new EventEmitter<string>();
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
@@ -401,5 +404,9 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
         this.customButtonClick.emit(id);
         break;
     }
+  }
+
+  public onFieldChanged(fieldName: string): void {
+    this.fieldChanged.emit(fieldName);
   }
 }
