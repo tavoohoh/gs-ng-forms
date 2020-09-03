@@ -20,7 +20,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { GsFormsService } from './gs-forms.service';
 import { GFieldSelector, GFieldValidatorType, GFieldValueButtonType } from './gs-forms.enums';
 import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
-import { GsFileInputComponent, GsDatePickerComponent } from './gs-fields';
+import { GsFileInputComponent, GsDatePickerComponent, GsDropdownComponent } from './gs-fields';
 
 @Component({
   selector: 'rpp-form',
@@ -91,6 +91,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
+  @ViewChildren(GsDropdownComponent) dropdownComponent: QueryList<GsDropdownComponent>;
 
   public formGroup: FormGroup;
   public fieldSelector = GFieldSelector;
@@ -364,7 +365,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
         if (this.formOptions.layout.columns) {
           if (typeof this.formOptions.layout.columns === 'number') {
             // if typeof number
-          variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
+            variables = variables + `--gs-layout-columns-quantity: repeat(${this.formOptions.layout.columns}, 1fr)!important;`;
           } else {
             // if typeof string
             variables = variables + `--gs-layout-columns-quantity: ${this.formOptions.layout.columns}!important;`;
@@ -397,6 +398,10 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
 
           if (this.datePickerComponent !== undefined) {
             this.datePickerComponent.forEach(el => el.resetField());
+          }
+
+          if (this.dropdownComponent !== undefined) {
+            this.dropdownComponent.forEach(el => el.resetField());
           }
         }
         break;

@@ -216,7 +216,7 @@ export const LOCATION: { [key: string]: GLocation } = {
     },
     phoneFormat: {
       code: '52',
-      mask: '00 00000 0000'
+      mask: '00 0000 0000'
     },
     currencyFormat: {
       code: 'MXN',

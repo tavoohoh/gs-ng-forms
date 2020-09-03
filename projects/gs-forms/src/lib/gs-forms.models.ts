@@ -274,6 +274,10 @@ export class GFieldFileConfiguration extends GFieldConfiguration {
    */
   accept?: string;
   /**
+   * valid limit size
+   */
+  size?: number;
+  /**
    * Default file value
    */
   value?: {
@@ -350,6 +354,10 @@ export class GFieldDividerConfiguration extends GFieldConfiguration {
    * If true the divider horizontal line wont be showed
    */
   hideLine?: boolean;
+  /**
+   * A little description
+   */
+  description?: string;
 }
 
 /**

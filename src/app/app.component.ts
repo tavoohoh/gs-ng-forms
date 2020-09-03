@@ -89,6 +89,18 @@ export class AppComponent implements OnInit {
         [GFieldValidatorType.REQUIRED]: true
       },
     }),
+    // Text widget
+    new GTextField({
+      model: 'text1',
+      label: 'Text widget with symbol',
+      placeholder: 'Text widget',
+      symbol: '%',
+      validators: {
+        [GFieldValidatorType.MIN_LENGTH]: 2,
+        [GFieldValidatorType.MAX_LENGTH]: 30,
+        [GFieldValidatorType.REQUIRED]: true
+      },
+    }),
     // Email input (text widget)
     new GTextField({
       model: 'email',
@@ -314,6 +326,7 @@ export class AppComponent implements OnInit {
       validators: {
         [GFieldValidatorType.REQUIRED]: false
       },
+      size: 5200000,
       returnFile: false,
       api: {
         url: 'http://www.googleapis.com/upload/drive/v2/files?uploadType=multipart',
@@ -353,10 +366,19 @@ export class AppComponent implements OnInit {
     // Divider widget
     new GDivider({
       model: null,
+      seccionName: 'Divider widget with description',
+      hideLine: false,
+      padding: '1rem 0',
+      description: 'i am a little description, hi mom i am famous',
+      gridColumn: '1 / 6'
+    }),
+    // Divider widget
+    new GDivider({
+      model: null,
       seccionName: 'Divider widget',
       hideLine: false,
       padding: '1rem 0',
-      gridColumn: '1 / 4'
+      gridColumn: '1 / 6'
     }),
     // Show data widget
     new GShowData({

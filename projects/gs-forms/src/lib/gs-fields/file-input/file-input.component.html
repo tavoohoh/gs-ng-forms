@@ -38,6 +38,9 @@
   
     <span class="gs-field-hint" *ngIf="field.config.accept">
       {{ supportedFilesText }}: {{ field.config.accept }}
+      <span *ngIf="field.config.size">
+       - {{ supportedSizeFilesText }}: {{ returnFileSize(field.config.size) }}
+      </span>
     </span>
 
     <input #file 

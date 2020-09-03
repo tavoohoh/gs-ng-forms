@@ -21,7 +21,12 @@
         [maxlength]="field.config.validators ? field.config.validators[fieldValidatorType.MAX_LENGTH] : null"
         [formControlName]="field.config.model"
         [placeholder]="field.config.placeholder || field.config.label || field.config.model | translate"
-        [value]="field.config.value || null">
+        [value]="field.config.value || null">      
+
+        <!-- symbol -->
+        <div class="gs-form-field_symbol" *ngIf="field.config.symbol">
+          {{field.config.symbol}}
+        </div>
     </label>
 
     <span class="gs-field-error" *ngIf="validateField()">
