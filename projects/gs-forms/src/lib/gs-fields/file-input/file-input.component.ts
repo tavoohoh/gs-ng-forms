@@ -9,7 +9,7 @@ import { GFieldFile } from './../../gs-forms.widgets';
 })
 export class GsFileInputComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
-  @Output() private fieldChanged = new EventEmitter<void>();
+  @Output() private fieldChanged = new EventEmitter<{ file: File; fileName: string; }>();
 
   public name: string;
   public size: number;
@@ -87,7 +87,7 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
 
     this.size = file.size;
 
-    if (!this.validFileType(file) || !this.validFileSize()) {      
+    if (!this.validFileType(file) || !this.validFileSize()) {
       isValidType = false;
       this.loading = false;
     }
@@ -112,7 +112,7 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
       };
     }
 
-    this.fieldChanged.emit();
+    this.fieldChanged.emit({file, fileName});
 
     if (this.returnFile) {
       this.formGroup.controls[this.field.config.model].patchValue(file);

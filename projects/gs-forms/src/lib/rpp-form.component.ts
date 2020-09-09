@@ -87,7 +87,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
   /**
    * Get form group changes. formGroup: FormGroup `form`
    */
-  @Output() private fieldChanged = new EventEmitter<string>();
+  @Output() private fieldChanged = new EventEmitter<{ [key: string]: string }>();
 
   @ViewChildren(GsFileInputComponent) fileInputComponent: QueryList<GsFileInputComponent>;
   @ViewChildren(GsDatePickerComponent) datePickerComponent: QueryList<GsDatePickerComponent>;
@@ -411,7 +411,7 @@ export class RppFormComponent implements AfterViewChecked, OnChanges {
     }
   }
 
-  public onFieldChanged(fieldName: string): void {
-    this.fieldChanged.emit(fieldName);
+  public onFieldChanged(changes: { [key: string]: string }): void {
+    this.fieldChanged.emit(changes);
   }
 }
