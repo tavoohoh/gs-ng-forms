@@ -190,12 +190,15 @@ export class GsFormsService {
   public patchFormValues(
     formFields: GFormFields | GFormFieldsReadOnly,
     formValues: { [key: string]: any },
-    resetForm?: boolean
+    resetForm?: boolean,
+    resetFields?: boolean
   ): GFormFields {
 
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < formFields.length; i++) {
-      formFields[i].config.value = null;
+    if (!resetFields) {
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < formFields.length; i++) {
+        formFields[i].config.value = null;
+      }
     }
 
     if (!resetForm) {
