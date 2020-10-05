@@ -210,6 +210,7 @@ export class AppComponent implements OnInit {
       model: 'phone',
       label: 'Phone widget',
       placeholder: 'Phone widget',
+      value: '573123123299',
       country: GFieldCountryCode.CO,
       validators: {
         [GFieldValidatorType.REQUIRED]: false

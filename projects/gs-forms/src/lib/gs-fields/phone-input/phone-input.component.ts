@@ -45,7 +45,13 @@ export class GsPhoneInputComponent extends RppGenericFieldComponent implements O
     this.phoneMask = location.phoneFormat.mask;
 
     if (changes.field.currentValue.config.value) {
-      const phoneValue = changes.field.currentValue.config.value;
+      let phoneValue: any;
+
+      if (changes.field.currentValue.config.value.startsWith(location.phoneFormat.code, 0)) {
+        phoneValue = changes.field.currentValue.config.value.substring(2);
+      } else {
+        phoneValue = changes.field.currentValue.config.value;
+      }
 
       if (phoneValue.phone) {
         this.value = phoneValue.phone.toString();
