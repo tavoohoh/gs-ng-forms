@@ -9,22 +9,11 @@ import { GFieldFile } from './../../gs-forms.widgets';
 })
 export class GsFileInputComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
-  @Output() private fieldChanged = new EventEmitter<void>();
+  @Output() private fieldChanged = new EventEmitter<{ file: File; model: string; }>();
 
-  public name: string;
   public size: number;
-  public img: any = '';
-
+  public selectedFile: File;
   public loading = false;
-
-  public selectedFile: {
-    isImage: boolean;
-    type: string;
-    isValidType: boolean;
-    name: string;
-    path?: string | any;
-  };
-
   private returnFile: boolean;
 
   private supportedFilesTranslates = {
@@ -55,13 +44,9 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
   ngOnChanges(changes: SimpleChanges) {
     if (changes.field.currentValue) {
       if (this.field.config.value) {
-        this.selectedFile = {
-          isImage: this.field.config.value.isImage,
-          type: this.field.config.value.type,
-          isValidType: true,
-          name: this.field.config.value.name,
-          path: this.field.config.value.path || null
-        };
+        this.selectedFile = this.field.config.value;
+        this.formGroup.controls[this.field.config.model].patchValue(this.field.config.value);
+        this.formGroup.controls[this.field.config.model].updateValueAndValidity();
       }
 
       if (this.field.config.returnFile) {
@@ -81,38 +66,25 @@ export class GsFileInputComponent extends RppGenericFieldComponent implements On
 
     const reader = new FileReader();
     const file: File = $event.target.files[0];
-    const fileType = file.name.split('.').reverse()[0];
     const fileName = file.name.split('.').reverse()[1];
-    let isValidType = true;
+    this.field.config.value = file;
 
     this.size = file.size;
 
-    if (!this.validFileType(file) || !this.validFileSize()) {      
-      isValidType = false;
+    if (!this.validFileType(file) || !this.validFileSize()) {
       this.loading = false;
     }
 
     if (file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        this.selectedFile = {
-          isImage: true,
-          path: reader.result,
-          name: fileName,
-          type: `.${fileType}`,
-          isValidType
-        };
+        this.selectedFile = file;
       };
     } else {
-      this.selectedFile = {
-        isImage: false,
-        name: fileName,
-        type: `.${fileType}`,
-        isValidType
-      };
+      this.selectedFile = file;
     }
 
-    this.fieldChanged.emit();
+    this.fieldChanged.emit({file, model: this.field.config.model});
 
     if (this.returnFile) {
       this.formGroup.controls[this.field.config.model].patchValue(file);

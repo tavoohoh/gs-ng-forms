@@ -280,24 +280,7 @@ export class GFieldFileConfiguration extends GFieldConfiguration {
   /**
    * Default file value
    */
-  value?: {
-    /**
-     * If true the file will expect an image `path`
-     */
-    isImage: boolean;
-    /**
-     * File type
-     */
-    type: string;
-    /**
-     * File name
-     */
-    name: string;
-    /**
-     * If an image, its path
-     */
-    path?: string | any;
-  };
+  value?: File;
 }
 
 /**

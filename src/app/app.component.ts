@@ -511,4 +511,8 @@ export class AppComponent implements OnInit {
         break;
     }
   }
+
+  public test(name) {
+    console.log(name);
+  }
 }
