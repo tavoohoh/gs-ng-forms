@@ -1,5 +1,5 @@
 {
-  "name": "@rappipay/gs-forms",
+  "name": "@gs/ng-forms",
   "version": "2.1.10",
   "description": "Simple and easy to use Angular 8 dynamic forms",
   "keywords": [

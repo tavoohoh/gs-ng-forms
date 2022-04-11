@@ -14,16 +14,8 @@ Simple angular 8 forms library.
   * [gs-form service](#gs-form-service)
 
 ## Installation
-- You will need Rappi PROD VPN connected. If you do not have this VPN configured, request one at https://rappidev.atlassian.net/servicedesk/customer/portal/26/group/84
-
-- Configure the rappipay registry:
 ```sh
-npm config set @rappipay:registry http://repo.ops.rappi.com/repository/npm-hosted/
-```
-
-- Install the library via NPM
-```sh
-npm install @rappipay/gs-forms --save
+npm install @gs/ng-forms --save
 ```
 
 ## Getting Started
@@ -31,7 +23,7 @@ npm install @rappipay/gs-forms --save
 Add `GsFormsModule` into the imports array of the module that will use `gs-forms`
 
 ```ts
-import { GsFormsModule} from '@rappipay/gs-forms';
+import { GsFormsModule} from '@gs/ng-forms';
 
 @NgModule({
   imports: [
@@ -44,7 +36,7 @@ export class AppModule { }
 
 If you would like to use custom styles for the form fields you can pass a `GStyles` object to the module:
 ```ts
-import { GsFormsModule} from '@rappipay/gs-forms';
+import { GsFormsModule} from '@gs/ng-forms';
 
 @NgModule({
   imports: [
@@ -511,5 +503,3 @@ You can consume the gs-form service to help you with the following scenarios:
     category: this.gsFormService.mapFieldOptionValues(response.data, 'key', 'value');
   };
 ```
-
-For issues or questions please contact `gustavo.santamaria` or email gustavo.santamaria@rappi.com

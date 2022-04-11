@@ -7,7 +7,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 
 import { GsFormsModule } from 'projects/gs-forms/src/public-api';
-// import { GsFormsModule, GStyles } from '@rappipay/gs-forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
