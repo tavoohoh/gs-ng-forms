@@ -1,0 +1,31 @@
+{
+  "name": "@gs/ng-forms",
+  "version": "2.1.10",
+  "description": "Simple and easy to use Angular 8 dynamic forms",
+  "keywords": [
+    "angular",
+    "angular forms"
+  ],
+  "author": {
+    "name": "Gustavo Santamaria",
+    "email": "gustavo.santamaria@rappi.com"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  },
+  "main": "bundles/gs-ng-forms.umd.js",
+  "module": "fesm5/gs-ng-forms.js",
+  "es2015": "fesm2015/gs-ng-forms.js",
+  "esm5": "esm5/gs-ng-forms.js",
+  "esm2015": "esm2015/gs-ng-forms.js",
+  "fesm5": "fesm5/gs-ng-forms.js",
+  "fesm2015": "fesm2015/gs-ng-forms.js",
+  "typings": "gs-ng-forms.d.ts",
+  "metadata": "gs-ng-forms.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
