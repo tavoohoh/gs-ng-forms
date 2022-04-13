@@ -1,16 +1,15 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { GCurrencyField } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldCountryCode } from '../../gs-forms.enums';
 import { LOCATION } from '../../gs-forms.constants';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-currency-input',
   templateUrl: './currency-input.component.html',
   styleUrls: ['./currency-input.component.sass']
 })
-export class GsCurrencyInputComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsCurrencyInputComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GCurrencyField;
   @Input() private countryGlobal: GFieldCountryCode;
 

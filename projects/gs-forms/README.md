@@ -67,11 +67,11 @@ Add `gs-form` component to your HTML, import interfaces and define properties.
 ##### HTML ex. app.component.html
 ```html
 <h1>My form</h1>
-<rpp-form
+<gs-form
   [formFields]="yourFormFieldsArray"
   [formOptions]="yourFormOptions"
   (form)="onCheckForm($event)">
-</rpp-form>
+</gs-form>
 ```
 
 |                           |                                                              |

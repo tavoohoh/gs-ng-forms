@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { GNumberField } from '../../gs-forms.widgets';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-number-input',
   templateUrl: './number-input.component.html',
   styleUrls: ['./number-input.component.sass']
 })
-export class GsNumberInputComponent extends RppGenericFieldComponent {
+export class GsNumberInputComponent extends GsGenericFieldComponent {
   @Input() public field: GNumberField;
 
   public setPresicion(input: { value: string }): void {

@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { GMapField } from '../../gs-forms.widgets';
 import { LOCATION } from '../../gs-forms.constants';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 const WINDOW: any = window;
 
@@ -10,7 +10,7 @@ const WINDOW: any = window;
   templateUrl: './map-field.component.html',
   styleUrls: ['./map-field.component.sass']
 })
-export class GsMapFieldComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
+export class GsMapFieldComponent extends GsGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GMapField;
   @Input() private googleMapApiKey: string;
 

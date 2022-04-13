@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GShowData } from './../../gs-forms.widgets';
+import { GShowData } from '../../gs-forms.widgets';
 
 @Component({
   selector: 'gs-show-data',

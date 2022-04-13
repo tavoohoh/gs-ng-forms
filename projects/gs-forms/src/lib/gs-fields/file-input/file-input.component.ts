@@ -1,13 +1,13 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
-import { GFieldFile } from './../../gs-forms.widgets';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GFieldFile } from '../../gs-forms.widgets';
 
 @Component({
   selector: 'gs-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.sass']
 })
-export class GsFileInputComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
+export class GsFileInputComponent extends GsGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GFieldFile;
   @Output() private fieldChanged = new EventEmitter<{ file: File; model: string; }>();
 

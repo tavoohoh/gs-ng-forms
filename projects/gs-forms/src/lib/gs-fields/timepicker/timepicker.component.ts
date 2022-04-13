@@ -1,7 +1,6 @@
 import { Component, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GTimeField } from '../../gs-forms.widgets';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { RppGenericFieldComponent } from '../_generic-field/_generic-field.compo
   templateUrl: './timepicker.component.html',
   styleUrls: ['./timepicker.component.sass']
 })
-export class GsTimePickerComponent extends RppGenericFieldComponent implements OnChanges, OnInit {
+export class GsTimePickerComponent extends GsGenericFieldComponent implements OnChanges, OnInit {
   @Input() public field: GTimeField;
 
   public fieldValueHours: any;

@@ -6,7 +6,7 @@ import { GFieldValidatorType } from '../../gs-forms.enums';
 @Component({
   template: ``
 })
-export class RppGenericFieldComponent {
+export class GsGenericFieldComponent {
   @Input() public field: any;
   @Input() public formGroup: FormGroup;
 

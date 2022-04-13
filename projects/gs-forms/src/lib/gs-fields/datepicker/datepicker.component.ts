@@ -1,9 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GDatePickerField } from '../../gs-forms.widgets';
-import { GFieldValidatorType } from '../../gs-forms.enums';
-import { GsFormsService } from '../../gs-forms.service';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 const MONTHS = {
   en: [
@@ -73,7 +70,7 @@ enum ShowSelector {
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.sass']
 })
-export class GsDatePickerComponent extends RppGenericFieldComponent implements OnInit, OnChanges {
+export class GsDatePickerComponent extends GsGenericFieldComponent implements OnInit, OnChanges {
   @Input() public field: GDatePickerField;
   public dateValue: string;
   public lang: string;

@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { GTwoDataInput } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldValueType } from '../../gs-forms.enums';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 // TODO: add error validators
 enum TwoDataInputErrors {
@@ -15,7 +15,7 @@ enum TwoDataInputErrors {
   templateUrl: './two-data-input.component.html',
   styleUrls: ['./two-data-input.component.sass']
 })
-export class GsTwoDataInputComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsTwoDataInputComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GTwoDataInput;
 
   public leftFieldValue: any;

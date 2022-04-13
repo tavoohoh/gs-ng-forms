@@ -23,11 +23,11 @@ import { GFormFields, GStyles, GFormOptions, GField } from './gs-forms.models';
 import { GsFileInputComponent, GsDatePickerComponent, GsDropdownComponent } from './gs-fields';
 
 @Component({
-  selector: 'rpp-form',
-  templateUrl: './rpp-form.component.html',
-  styleUrls: ['./rpp-form.component.sass']
+  selector: 'gs-form',
+  templateUrl: './gs-form.component.html',
+  styleUrls: ['./gs-form.component.sass']
 })
-export class RppFormComponent implements AfterViewChecked, OnChanges {
+export class GsFormComponent implements AfterViewChecked, OnChanges {
   private destroyed$ = new Subject();
   /**
    * Input: formOptions: GFormOptions

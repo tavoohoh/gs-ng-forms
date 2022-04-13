@@ -1,14 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { GDropdownField } from '../../gs-forms.widgets';
 import { GFieldOptionValues } from '../../gs-forms.models';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.sass']
 })
-export class GsDropdownComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsDropdownComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GDropdownField;
   @Input() public fieldOption: GFieldOptionValues;
 

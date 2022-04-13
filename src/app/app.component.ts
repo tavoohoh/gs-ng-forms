@@ -29,7 +29,7 @@ import {
 import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { GsFormsService } from 'projects/gs-forms/src/public-api';
-import { RppFormComponent } from 'projects/gs-forms/src/public-api';
+import { GsFormComponent } from 'projects/gs-forms/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +37,7 @@ import { RppFormComponent } from 'projects/gs-forms/src/public-api';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(RppFormComponent, { static: false }) rppFormComponent: RppFormComponent;
+  @ViewChild(GsFormComponent, { static: false }) gsFormComponent: GsFormComponent;
 
   private toMapOptions = [
     {
@@ -493,11 +493,11 @@ export class AppComponent implements OnInit {
   }
 
   public resetForm() {
-    this.rppFormComponent.formActions('reset');
+    this.gsFormComponent.formActions('reset');
   }
 
   public submitForm() {
-    this.rppFormComponent.formActions('submit');
+    this.gsFormComponent.formActions('submit');
   }
 
   actions(action) {

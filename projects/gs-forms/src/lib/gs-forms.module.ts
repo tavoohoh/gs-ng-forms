@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GStyles } from './gs-forms.models';
-import { RppGenericFieldComponent } from './gs-fields/_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from './gs-fields/_generic-field/_generic-field.component';
 import { DigitOnlyDirective } from './gs-directives/digit-only/digit-only.directive';
 import { ClickOutsideDirective } from './gs-directives/click-outside/click-outside.directive';
 import { GsTextInputComponent } from './gs-fields/text-input/text-input.component';
@@ -29,7 +29,7 @@ import { GsMapFieldComponent } from './gs-fields/map-field/map-field.component';
 import { GsColorPickerComponent } from './gs-fields/color-picker/color-picker.component';
 import { GsShowDataComponent } from './gs-fields/show-data/show-data.component';
 import { GsTimePickerComponent } from './gs-fields';
-import { RppFormComponent } from './rpp-form.component';
+import { GsFormComponent } from './gs-form.component';
 import { GsFormsService } from './gs-forms.service';
 
 const directive = [
@@ -38,7 +38,7 @@ const directive = [
 ];
 
 const widgets = [
-  RppGenericFieldComponent,
+  GsGenericFieldComponent,
   GsTextInputComponent,
   GsTextareaComponent,
   GsPasswordInputComponent,
@@ -60,7 +60,7 @@ const widgets = [
   GsTimePickerComponent,
   GsButtonComponent,
   GsShowDataComponent,
-  RppFormComponent
+  GsFormComponent
 ];
 
 @NgModule({

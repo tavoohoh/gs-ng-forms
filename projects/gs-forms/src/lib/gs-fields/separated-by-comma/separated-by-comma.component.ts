@@ -1,13 +1,13 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { GSeparatedByComma } from '../../gs-forms.widgets';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-separated-by-comma',
   templateUrl: './separated-by-comma.component.html',
   styleUrls: ['./separated-by-comma.component.sass']
 })
-export class GsSeparatedByCommaComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsSeparatedByCommaComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GSeparatedByComma;
   @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
   public fieldOption: Array<string> = [];

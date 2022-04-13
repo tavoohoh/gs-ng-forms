@@ -1,17 +1,15 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { GPhoneField } from '../../gs-forms.widgets';
 import { GFieldValidatorType, GFieldCountryCode } from '../../gs-forms.enums';
 import { LOCATION } from '../../gs-forms.constants';
-import { GsFormsService } from '../../gs-forms.service';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-phone-input',
   templateUrl: './phone-input.component.html',
   styleUrls: ['./phone-input.component.sass']
 })
-export class GsPhoneInputComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsPhoneInputComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GPhoneField;
   @Input() private countryGlobal: GFieldCountryCode;
 

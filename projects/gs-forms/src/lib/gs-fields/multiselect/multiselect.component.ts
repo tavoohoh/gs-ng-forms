@@ -1,14 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { GDropdownField } from './../../gs-forms.widgets';
+import { GDropdownField } from '../../gs-forms.widgets';
 import { GFieldOptionValues, GFieldExistsOptionValues, GFieldOptionValueExists, GFieldOptionValue } from '../../gs-forms.models';
-import { RppGenericFieldComponent } from '../_generic-field/_generic-field.component';
+import { GsGenericFieldComponent } from '../_generic-field/_generic-field.component';
 
 @Component({
   selector: 'gs-multiselect',
   templateUrl: './multiselect.component.html',
   styleUrls: ['./multiselect.component.sass']
 })
-export class GsMultiselectComponent extends RppGenericFieldComponent implements OnChanges {
+export class GsMultiselectComponent extends GsGenericFieldComponent implements OnChanges {
   @Input() public field: GDropdownField;
   @Input() public fieldOption: GFieldOptionValues;
 
