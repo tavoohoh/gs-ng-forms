@@ -22,7 +22,7 @@ $gs-font-size-big: 1.6rem
 $gs-font-size-normal: 1.1rem
 $gs-font-size-input: 1rem
 $gs-font-size-small: 0.8rem
-$gs-font-size-xsmall: 0.7rem
+$gs-font-size-xsmall: 0.6rem
 
 $gs-padding-big: 3rem
 $gs-padding-normal: 1.5rem
@@ -38,7 +38,7 @@ $gs-padding: .5rem
 
 // input
 $gs-input-color: $gs-color-black
-$gs-input-padding: none
+$gs-input-padding: 12px
 $gs-input-background: #ffffff
 $gs-input-font-weigth: normal
 
@@ -154,7 +154,7 @@ textarea
   &::-webkit-input-placeholder
     opacity: .5
 
-  &:-ms-input-placeholder 
+  &:-ms-input-placeholder
     opacity: .5
 
   &::placeholder
@@ -174,7 +174,6 @@ textarea
   padding: var(--gs-primary-button-padding, $gs-primary-button-padding)
   color: var(--gs-primary-button-color, $gs-color-white)
   background: var(--gs-primary-button-background, $gs-color-disabled)
-  background-image: var(--gs-primary-button-background-image, $gs-primary-button-background-image)
   border: none
   border-radius: var(--gs-primary-button-border-radius, $gs-primary-button-border-radius)
 
@@ -185,7 +184,6 @@ textarea
   padding: var(--gs-primary-button-padding, $gs-primary-button-padding)
   color: var(--gs-primary-button-color, $gs-color-white)
   background: var(--gs-primary-button-background, $gs-primary-button-background)
-  background-image: var(--gs-primary-button-background-image, $gs-primary-button-background-image)
   border: none
   border-radius: var(--gs-primary-button-border-radius, $gs-primary-button-border-radius)
 
@@ -202,8 +200,9 @@ select,
 textarea
   font-size: var(--gs-font-size, $gs-font-size)
   font-family: inherit
+  background-color: transparent
 
-.gs-no-select 
+.gs-no-select
   -webkit-touch-callout: none
   -webkit-user-select: none
   -khtml-user-select: none
@@ -223,17 +222,19 @@ textarea
 
 /** field content **/
 .gs-field-box
-  @include gs-mixin-border-style
+  @include gs-mixin-border-style($color: var(--gs-input-border-color, $gs-input-border-color))
   display: grid
-  background-color: $gs-color-white
-  padding: $gs-padding-xsmall $gs-padding-small
-  border-radius: $gs-border-radius-normal
+  background-color: var(--gs-input-background, $gs-input-background)
+  padding: var(--gs-input-padding, $gs-input-padding)
+  border-radius: var(--gs-input-border-radius, $gs-border-radius-normal)
   height: $gs-input-height
 
   .gs-field-label
     @include gs-mixin-subtitle
     grid-column: 1
     grid-row: 1
+    color: var(--gs-input-color, $gs-color-black)
+    opacity: 0.5
 
   .gs-field-input
     @include gs-mixin-clean-input
@@ -245,10 +246,10 @@ textarea
     grid-row: 2
 
     &::placeholder
-      color: $gs-color-black
-      opacity: 1
+      color: var(--gs-input-color, $gs-color-black)
+      opacity: 0.7
       font-weight: 400
-  
+
   .gs-form-field_symbol
     grid-column: 2
     grid-row: 1/3
